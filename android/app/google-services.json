@@ -1,0 +1,93 @@
+{
+  "project_info": {
+    "project_number": "89215794553",
+    "firebase_url": "https://fluttertq.firebaseio.com",
+    "project_id": "fluttertq",
+    "storage_bucket": "fluttertq.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:89215794553:android:95ad7343f1a1eeb33803a8",
+        "android_client_info": {
+          "package_name": "com.e.e"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "89215794553-34da4cu82gi40cgin7aob132o8o1kp4t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1oqmIdGwGmbq4Q7uYdXNbfFYaCtb5t98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "89215794553-34da4cu82gi40cgin7aob132o8o1kp4t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:89215794553:android:f0b9debb4192ac273803a8",
+        "android_client_info": {
+          "package_name": "edapps.com.flutter_tutorials_and_quizzes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "89215794553-p6aorsjcbamdh26ivslfqh6t4qjue5oo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edapps.com.flutter_tutorials_and_quizzes",
+            "certificate_hash": "0738815616ecb509b52842f61f38a1edd6e01f2b"
+          }
+        },
+        {
+          "client_id": "89215794553-ma9ltk0n1j2embi3dovjgmmio4r8668s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edapps.com.flutter_tutorials_and_quizzes",
+            "certificate_hash": "c12c76ac15b9cbef84ada801d688f6412c2cc6f0"
+          }
+        },
+        {
+          "client_id": "89215794553-a5m7r9i25hdephepfvdo8ea8j2rll6pa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edapps.com.flutter_tutorials_and_quizzes",
+            "certificate_hash": "b0c12e2146631d04d71f738d11c0bdcf05ce4f53"
+          }
+        },
+        {
+          "client_id": "89215794553-34da4cu82gi40cgin7aob132o8o1kp4t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1oqmIdGwGmbq4Q7uYdXNbfFYaCtb5t98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "89215794553-34da4cu82gi40cgin7aob132o8o1kp4t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

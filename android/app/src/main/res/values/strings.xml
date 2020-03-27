@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Flutter Tutorials And Quizzes</string>
+    <string name="facebook_app_id">627387121434415</string>
+    <string name="fb_login_protocol_scheme">fb627387121434415</string>
+</resources>
