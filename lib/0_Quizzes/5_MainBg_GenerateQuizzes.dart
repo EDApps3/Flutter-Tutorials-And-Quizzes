@@ -12,10 +12,8 @@ class cl_MainBgQuizz extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title:"Generate Quizzes",
-      debugShowCheckedModeBanner:false,
-      home:
+    return Scaffold(
+        body:
 
       (MainBgQuizzRan==0)?
        Cmp_Fields_Quizz (

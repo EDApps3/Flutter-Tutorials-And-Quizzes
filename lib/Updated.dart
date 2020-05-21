@@ -37,33 +37,48 @@ class UpdatesState extends State<UpdatesUI> {
         children: <Widget>[
           Divider(color:Colors.black,),
 
-          CmpTitle(Title:"Improvement:",),
-          CmpSubTitle(SubTitle:"-Sound Mute Added\n-Bug Fix",),
+          Container(
+            height:200,
+            child:ListView(
+              children: <Widget>[
+                CmpTitle(Title:"Improvement:",),
+                CmpSubTitle(SubTitle:"-Bug Fix",),
+                CmpSubTitle(SubTitle:"-Option To Disable Update Popup",),
+                CmpSubTitle(SubTitle:"-Codes PlayGround:\n -ScrollFix For Some Device\n -Theme Change\n",),
 
-          SizedBox(height:7,),
+                SizedBox(height:7,),
 
-          CmpTitle(Title:"Contents:",),
-          CmpSubTitle(SubTitle:"-Advance PDF Viewer Asset",),
-          CmpSubTitle(SubTitle:"-Advance PDF Viewer Url",),
-          CmpSubTitle(SubTitle:"-Google NavBar",),
-          CmpSubTitle(SubTitle:"-Clippy Triangle",),
-          CmpSubTitle(SubTitle:"-Clippy Chevron",),
-          CmpSubTitle(SubTitle:"-Clippy Arc",),
-          CmpSubTitle(SubTitle:"-Clippy Diagonal",),
-          CmpSubTitle(SubTitle:"-Clippy Bevel",),
-          CmpSubTitle(SubTitle:"-Clippy ButtCheek",),
-          CmpSubTitle(SubTitle:"-Water Drop",),
+                CmpTitle(Title:"Contents:",),
+                CmpSubTitle(SubTitle:"-GestureDetector Body DoubleTap",),
+                CmpSubTitle(SubTitle:"-GridView.count",),
+                CmpSubTitle(SubTitle:"-GridView.builder",),
+                CmpSubTitle(SubTitle:"-GridView.custom",),
+                CmpSubTitle(SubTitle:"-GridView.extent",),
+                CmpSubTitle(SubTitle:"-Curved Navigation Bar",),
+                CmpSubTitle(SubTitle:"-Simple Floating Action Button",),
+                CmpSubTitle(SubTitle:"-Animated Floating Action Button",),
+                CmpSubTitle(SubTitle:"-Circular Floating Action Button",),
+                CmpSubTitle(SubTitle:"-Tooltip",),
+                CmpSubTitle(SubTitle:"-Back Detector",),
+                CmpSubTitle(SubTitle:"-ClipOval",),
+                CmpSubTitle(SubTitle:"-ClipRRect",),
+                CmpSubTitle(SubTitle:"-NavBar Rail",),
+                CmpSubTitle(SubTitle:"-Fancy Bottom NavBar",),
+                CmpSubTitle(SubTitle:"-Color Picker",),
+                CmpSubTitle(SubTitle:"-Like Button",),
+                CmpSubTitle(SubTitle:"-Sliver AppBar",),
+                CmpSubTitle(SubTitle:"-Advanced Animation",),
+                CmpSubTitle(SubTitle:"-Bounce Sound Button",),
 
+              ],
+            ),
+          ),
 
-          SizedBox(height:7,),
-
-          //CmpTitle(Title:"Quizzes:",),
-          //CmpSubTitle(SubTitle:"-Text Quizz",),
 
           SizedBox(height:10,),
 
           Text(
-              "Feel Free To Contact Us At edapps.contact@gmail.com For Any Suggestions Or Any Error,Thank You.",
+            "Feel Free To Contact Us At edapps.contact@gmail.com For Any Suggestions Or Any Error,Thank You.",
             style:TextStyle(
               color:Colors.indigo,
             ),
@@ -84,6 +99,3 @@ class UpdatesState extends State<UpdatesUI> {
 
 
 }
-
-
-

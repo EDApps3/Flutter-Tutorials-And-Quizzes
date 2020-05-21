@@ -28,7 +28,7 @@ class _AdvancePdfViewerUrlState extends State<AdvancePdfViewerUrl> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Advance Pdf Viewer Asset'),
+          title: const Text('Advance Pdf Viewer Url'),
         ),
         body: Center(
           child: _isLoading ?

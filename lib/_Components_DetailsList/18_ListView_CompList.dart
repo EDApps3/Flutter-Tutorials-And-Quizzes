@@ -327,3 +327,108 @@ List ListView_ScrollTo_list =[
 //-------------------------------------------------------------
 
 
+
+
+String ListView_MoveTo_Explanation=
+    "-main is a principal method called once the program is loaded\n\n"
+    "-Once Program Is Loaded runApp Will Run And Call Our Class That We Created(LVMoveTo) To Be Runned\n\n"
+    "-This Class Is Stateless Widget As We Just Need To Create a Scrollable List Moving To Top And Bottom Using Controller (No Change To Do)\n\n"
+    "-As Flutter is Based On Widget A Widget must be Builded\n\n"
+    "-Creating ScrollController SCTopBottom That Allow Scrolling Into The ListView And Control It\n\n"
+    "-Creating An Material App That Hold the Title Of The App That Show When We Need To Close It\n\n"
+    "-As An Home Contain The Scaffold \n\n"
+    "-Scaffold Allow Us To Use AppBar And Set The Body Of The Page\n\n"
+    "-As AppBar It Has An Title\n\n"
+    "-As An Body It Take ListView That Allow Scrolling And Avoiding Overflow Controlled By The Controller Created SCTopBottom And Having As Children Simple Container That Have Max Width Of The Screen And Height 300 With A BgColor Set By Color And A Centered Text\n\n"
+    "-Now As floatingActionButton (Putted Bottom To The Right) Has A Column (Give 2 Rows)\n\n"
+    "-Row 1 Has A FloatingActionButton BackgroundColor Set To Green By Color On Pressed animate The Controller To The Top Position(0) with fastOutSlowIn Animation And duration 500ms\n\n"
+    "-Row 2 Has A FloatingActionButton BackgroundColor Set To Green By Color On Pressed animate The Controller To The Bottom Position(SCTopBottom.position.maxScrollExtent) with fastOutSlowIn Animation And duration 500ms\n\n"
+    "";
+
+
+
+
+List ListView_MoveTo_list =[
+  SizedBox(height:5,),
+  Container (
+    padding: new EdgeInsets.only(bottom: 20.0),
+    child:
+    new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CmpTitle(Title:"Getting Started:",),
+              Divider(),
+
+              CmpSubTitle(SubTitle:"1-Creating Scroll Controller Given To The ListView\n"),
+              CmpCode(CodeTxt: "ScrollController SCTopBottom = new ScrollController();\n\n",),
+
+              CmpSubTitle(SubTitle:"2-Scrolling To Top\n"),
+              CmpCode(CodeTxt:
+                 "SCTopBottom.animateTo(\n"
+                 " 0,\n"
+                 " duration:Duration(milliseconds:500),\n"
+                 " curve:Curves.fastOutSlowIn,\n"
+                 ");"
+                ,),
+
+              CmpSubTitle(SubTitle:"3-Scrolling To Bottom\n"),
+              CmpCode(CodeTxt:
+              "SCTopBottom.animateTo(\n"
+                  " SCTopBottom.position.maxScrollExtent,\n"
+                  " duration:Duration(milliseconds:500),\n"
+                  " curve:Curves.fastOutSlowIn,\n"
+                  ");"
+                ,),
+
+
+            ]
+        ),
+      ),
+    ),
+  ),
+
+  SizedBox(height:5,),
+  Container (
+    padding: new EdgeInsets.only(bottom: 20.0),
+    child:
+    new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CmpTitle(Title:"ListView Code:",),
+              Divider(),
+              CmpCode(
+                CodeTxt:
+                    "ListView(\n"
+                    " controller:SCTopBottom,\n"
+                    " children: <Widget>[\n"
+                    "  //Widget\n"
+                    " ],\n"
+                    ")\n",
+              ),
+
+
+            ]
+        ),
+      ),
+    ),
+  ),
+];
+
+
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+
+

@@ -14,10 +14,8 @@ class cl_ImageQuizz extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title:"Generate Quizzes",
-      debugShowCheckedModeBanner:false,
-      home:
+    return Scaffold(
+      body:
 
       (ImageQuizzRan==0)?
        Cmp_Fields_Quizz (
@@ -112,9 +110,6 @@ class cl_ImageQuizz extends StatelessWidget {
       ),
 
 
-      routes: <String, WidgetBuilder>{
-       "/Generate_Image_Quizz": (BuildContext context) => cl_ImageQuizz(),
-      },
 
     );
   }

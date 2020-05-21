@@ -10,7 +10,7 @@ class CmpExpTileCard extends StatefulWidget {
 
   final Color CardBg;
   var CardIcon;
-  final String CardTitle,CardSubTitle,GoRoute;
+  var CardTitle,CardSubTitle,GoRoute;
 
 
   CmpExpTileCard({
@@ -40,7 +40,7 @@ class _CmpExpTileCardState extends State<CmpExpTileCard> {
   }
 
   void PlayTapSound() async{
-    if(AppSoundRetrieve=="NotMuted") {
+    if(SoundResult=="NotMuted") {
       audioCache.play('Music/Tap.mp3');
     }
   }
@@ -67,7 +67,7 @@ class _CmpExpTileCardState extends State<CmpExpTileCard> {
         ),
         onTap: (){
           PlayTapSound();
-          Navigator.of(context).pushReplacementNamed(widget.GoRoute);
+          Navigator.pushNamed(context,widget.GoRoute);
         },
       ),
     );

@@ -1,4 +1,3 @@
-import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import '0_SourceCode.dart';
 import '1000_Rating.dart';
@@ -16,18 +15,12 @@ class FrontEndPage extends StatefulWidget {
 }
 
 class FrontEndPageState extends State<FrontEndPage> with AutomaticKeepAliveClientMixin {
-
-  void initState(){
-    if(loadAds>8){
-      loadAds=0;
-    }
-    loadAds++;
-  }
-
+  ScrollController SCFrontPage = new ScrollController();
 
   Widget build(BuildContext context) {
     return Scaffold(
       body:ListView(
+        controller:SCFrontPage,
         children:<Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -967,12 +960,221 @@ class FrontEndPageState extends State<FrontEndPage> with AutomaticKeepAliveClien
                   ),
 
 
+                  SizedBox(height: 10,),
+                  CmpCustExpTile(
+                    ExpIcon:Icon(Icons.timer),
+                    ExpTitle:"66.Day Night Picker",
+                    ExpBg:Colors.teal,
+                    ExInsideBg:Colors.teal[100],
+                    BordRadius:20.0,
+                    InQuizzRoute:"/Generate_DayNightPicker_Quizz",
+                    CardLength:DayNightPickerList.length,
+                    CardsList:DayNightPickerList,
+                  ),
+
+                  SizedBox(height: 10,),
+                  CmpCustExpTile(
+                    ExpIcon:Icon(Icons.import_contacts),
+                    ExpTitle:"67.GrafPix",
+                    ExpBg:Colors.teal,
+                    ExInsideBg:Colors.teal[100],
+                    BordRadius:20.0,
+                    InQuizzRoute:"/Generate_GrafPix_Quizz",
+                    CardLength:GrafPixList.length,
+                    CardsList:GrafPixList,
+                  ),
+
+                  SizedBox(height: 10,),
+                  CmpCustExpTile(
+                    ExpIcon:Icon(Icons.wb_iridescent),
+                    ExpTitle:"68.ListScrollWheel",
+                    ExpBg:Colors.teal,
+                    ExInsideBg:Colors.teal[100],
+                    BordRadius:20.0,
+                    InQuizzRoute:"/Generate_ListScrollWheel_Quizz",
+                    CardLength:ListScrollWheelList.length,
+                    CardsList:ListScrollWheelList,
+                  ),
+
+                  SizedBox(height: 10,),
+                  CmpCustExpTile(
+                    ExpIcon:Icon(Icons.warning),
+                    ExpTitle:"69.Animated Dialog",
+                    ExpBg:Colors.teal,
+                    ExInsideBg:Colors.teal[100],
+                    BordRadius:20.0,
+                    InQuizzRoute:"/Generate_AnimatedDialog_Quizz",
+                    CardLength:AnimatedDialog.length,
+                    CardsList:AnimatedDialog,
+                  ),
+
+                  SizedBox(height: 10,),
+                  CmpCustExpTile(
+                    ExpIcon:Icon(Icons.repeat),
+                    ExpTitle:"70.Toggle Buttons",
+                    ExpBg:Colors.teal,
+                    ExInsideBg:Colors.teal[100],
+                    BordRadius:20.0,
+                    InQuizzRoute:"/Generate_ToggleButtons_Quizz",
+                    CardLength:ToggleButtonsLst.length,
+                    CardsList:ToggleButtonsLst,
+                  ),
+
+                  SizedBox(height: 10,),
+                  CmpCustExpTile(
+                    ExpIcon:Icon(Icons.title),
+                    ExpTitle:"71.Selectable Text",
+                    ExpBg:Colors.teal,
+                    ExInsideBg:Colors.teal[100],
+                    BordRadius:20.0,
+                    InQuizzRoute:"/Generate_Selectable_Quizz",
+                    CardLength:SelectableTextLst.length,
+                    CardsList:SelectableTextLst,
+                  ),
+
+                  SizedBox(height: 10,),
+                  CmpCustExpTile(
+                    ExpIcon:Icon(Icons.grid_on),
+                    ExpTitle:"72.GridView",
+                    ExpBg:Colors.teal,
+                    ExInsideBg:Colors.teal[100],
+                    BordRadius:20.0,
+                    InQuizzRoute:"/Generate_Selectable_Quizz",
+                    CardLength:GridViewLst.length,
+                    CardsList:GridViewLst,
+                  ),
+
+
+                  SizedBox(height: 10,),
+                  CmpCustExpTile(
+                    ExpIcon:Icon(Icons.navigation),
+                    ExpTitle:"73.Curved NavBar",
+                    ExpBg:Colors.teal,
+                    ExInsideBg:Colors.teal[100],
+                    BordRadius:20.0,
+                    InQuizzRoute:"/Generate_CurvedNavBar_Quizz",
+                    CardLength:CurvedNavBarLst.length,
+                    CardsList:CurvedNavBarLst,
+                  ),
+
+                  SizedBox(height: 10,),
+                  CmpCustExpTile(
+                    ExpIcon:Icon(Icons.navigation),
+                    ExpTitle:"74.FloatingActionButton",
+                    ExpBg:Colors.teal,
+                    ExInsideBg:Colors.teal[100],
+                    BordRadius:20.0,
+                    InQuizzRoute:"/Generate_FloatingActionButton_Quizz",
+                    CardLength:FloatingActionButtonLst.length,
+                    CardsList:FloatingActionButtonLst,
+                  ),
+
+                  SizedBox(height: 10,),
+                  CmpCustExpTile(
+                    ExpIcon:Icon(Icons.info),
+                    ExpTitle:"75.ToolTip",
+                    ExpBg:Colors.teal,
+                    ExInsideBg:Colors.teal[100],
+                    BordRadius:20.0,
+                    InQuizzRoute:"/Generate_ToolTip_Quizz",
+                    CardLength:ToolTipLst.length,
+                    CardsList:ToolTipLst,
+                  ),
+
+                  SizedBox(height: 10,),
+                  CmpCustExpTile(
+                    ExpIcon:Icon(Icons.arrow_back),
+                    ExpTitle:"76.Back Detector",
+                    ExpBg:Colors.teal,
+                    ExInsideBg:Colors.teal[100],
+                    BordRadius:20.0,
+                    InQuizzRoute:"/Generate_BackDetector_Quizz",
+                    CardLength:BackDetectorLst.length,
+                    CardsList:BackDetectorLst,
+                  ),
+
+                  SizedBox(height: 10,),
+                  CmpCustExpTile(
+                    ExpIcon:Icon(Icons.content_cut),
+                    ExpTitle:"77.Clipping",
+                    ExpBg:Colors.teal,
+                    ExInsideBg:Colors.teal[100],
+                    BordRadius:20.0,
+                    InQuizzRoute:"/Generate_Clipping_Quizz",
+                    CardLength:ClippingLst.length,
+                    CardsList:ClippingLst,
+                  ),
+
+                  SizedBox(height: 10,),
+                  CmpCustExpTile(
+                    ExpIcon:Icon(Icons.navigation),
+                    ExpTitle:"78.NavigationBar Rail",
+                    ExpBg:Colors.teal,
+                    ExInsideBg:Colors.teal[100],
+                    BordRadius:20.0,
+                    InQuizzRoute:"/Generate_NavigationBarRail_Quizz",
+                    CardLength:NavBarRailLst.length,
+                    CardsList:NavBarRailLst,
+                  ),
+
+                  SizedBox(height: 10,),
+                  CmpCustExpTile(
+                    ExpIcon:Icon(Icons.navigation),
+                    ExpTitle:"79.Fancy Bottom NavBar",
+                    ExpBg:Colors.teal,
+                    ExInsideBg:Colors.teal[100],
+                    BordRadius:20.0,
+                    InQuizzRoute:"/Generate_FancyBottomNavBar_Quizz",
+                    CardLength:FancyNavBarLst.length,
+                    CardsList:FancyNavBarLst,
+                  ),
+
+                  SizedBox(height: 10,),
+                  CmpCustExpTile(
+                    ExpIcon:Icon(Icons.color_lens),
+                    ExpTitle:"80.Color Picker",
+                    ExpBg:Colors.teal,
+                    ExInsideBg:Colors.teal[100],
+                    BordRadius:20.0,
+                    InQuizzRoute:"/Generate_ColorPicker_Quizz",
+                    CardLength:ColorPickerLst.length,
+                    CardsList:ColorPickerLst,
+                  ),
+
+
+
+                  SizedBox(height: 10,),
+                  CmpCustExpTile(
+                    ExpIcon:Icon(Icons.favorite),
+                    ExpTitle:"81.Like Button",
+                    ExpBg:Colors.teal,
+                    ExInsideBg:Colors.teal[100],
+                    BordRadius:20.0,
+                    InQuizzRoute:"/Generate_LikeButton_Quizz",
+                    CardLength:LikeButtonLst.length,
+                    CardsList:LikeButtonLst,
+                  ),
+
+                  SizedBox(height: 10,),
+                  CmpCustExpTile(
+                    ExpIcon:Icon(Icons.fiber_dvr),
+                    ExpTitle:"82.Sliver AppBar",
+                    ExpBg:Colors.teal,
+                    ExInsideBg:Colors.teal[100],
+                    BordRadius:20.0,
+                    InQuizzRoute:"/Generate_SliverAppBar_Quizz",
+                    CardLength:SliverAppBarLst.length,
+                    CardsList:SliverAppBarLst,
+                  ),
+
+
+
 
 
                   SizedBox(height: 10,),
                   CmpCustExpTile(
                     ExpIcon:Icon(Icons.more_horiz),
-                    ExpTitle:"66.Advanced",
+                    ExpTitle:"83.Advanced",
                     ExpBg:Colors.teal,
                     ExInsideBg:Colors.teal[100],
                     BordRadius:20.0,
@@ -980,9 +1182,6 @@ class FrontEndPageState extends State<FrontEndPage> with AutomaticKeepAliveClien
                     CardLength:AdvancedList.length,
                     CardsList:AdvancedList,
                   ),
-
-
-
 
 
 
@@ -997,6 +1196,46 @@ class FrontEndPageState extends State<FrontEndPage> with AutomaticKeepAliveClien
           ),
         ],
       ),
+      floatingActionButton:Column(
+        mainAxisAlignment:MainAxisAlignment.end,
+        children: <Widget>[
+          Container(
+            width:37,
+            height:37,
+            child:FloatingActionButton(
+              heroTag:"FrontPage_Up",
+              backgroundColor:Colors.deepOrange,
+              child:Icon(Icons.arrow_drop_up),
+              onPressed:(){
+                SCFrontPage.animateTo(
+                  0,
+                  duration:Duration(milliseconds:500),
+                  curve:Curves.fastOutSlowIn,
+                );
+              },
+            ),
+          ),
+          SizedBox(height:6,),
+          Container(
+            width:37,
+            height:37,
+            child:FloatingActionButton(
+              heroTag:"FrontPage_Down",
+              backgroundColor:Colors.deepOrange,
+              child:Icon(Icons.arrow_drop_down),
+              onPressed:(){
+                SCFrontPage.animateTo(
+                  SCFrontPage.position.maxScrollExtent,
+                  duration:Duration(milliseconds:500),
+                  curve:Curves.fastOutSlowIn,
+                );
+              },
+            ),
+          ),
+
+        ],
+      ),
+
     );
   }
 

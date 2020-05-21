@@ -17,10 +17,8 @@ class cl_FlutterSyntaxe_State extends State<cl_FlutterSyntaxe> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp (
-      title: "Generate Quizzes",
-      debugShowCheckedModeBanner: false,
-      home:
+    return Scaffold(
+      body:
 
       (GestureDetectorQuizzRan == 0) ?
       Cmp_Fields_Quizz (
@@ -120,9 +118,6 @@ class cl_FlutterSyntaxe_State extends State<cl_FlutterSyntaxe> {
 
 
 
-      routes: <String, WidgetBuilder>{
-        "/Generate_FlutterSyntaxe_Quizz": (BuildContext context) => cl_FlutterSyntaxe(),
-      },
 
     );
   }

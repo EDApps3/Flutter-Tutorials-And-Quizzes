@@ -21,7 +21,7 @@ Future _showNotification() async {
       'EDApps',
       'FlutterTutorials',
       'Learn And Run Quizzes',
-      sound:'tone',
+      sound:RawResourceAndroidNotificationSound('tone'),
       importance: Importance.Max,
       priority: Priority.High
   );

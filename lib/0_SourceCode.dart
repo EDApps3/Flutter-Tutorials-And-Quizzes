@@ -53,7 +53,7 @@ class SourceCodeUIState extends State<SourceCodeUI> {
           ),
         ),
         onTap: (){
-          if(AppSoundRetrieve=="NotMuted"){
+          if(SoundResult=="NotMuted"){
             PlayTapSound();
           }
 
@@ -188,7 +188,7 @@ class SourceCodeUIState extends State<SourceCodeUI> {
   }
 
   _launchUrl() async{
-    const url="https://play.google.com/store/apps/details?id=edapps.com.flutter_tutorials_and_quizzes";
+    const url="https://github.com/EDApps3/Flutter-Tutorials-And-Quizzes";
 
     if(await canLaunch(url)){
       await launch(url);

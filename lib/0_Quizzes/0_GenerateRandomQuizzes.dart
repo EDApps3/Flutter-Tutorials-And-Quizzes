@@ -18,10 +18,8 @@ class cl_RandomQuizz extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title:"Generate Quizzes",
-      debugShowCheckedModeBanner:false,
-      home:
+    return Scaffold(
+      body:
 
       (RandomQuizz==0)?
         cl_IntroQuizz():

@@ -13,6 +13,7 @@ class BackEndPage extends StatefulWidget {
 }
 
 class BackEndPageState extends State<BackEndPage> with AutomaticKeepAliveClientMixin {
+  ScrollController SCBackendPage = new ScrollController();
 
 
   Widget build(BuildContext context) {
@@ -20,6 +21,7 @@ class BackEndPageState extends State<BackEndPage> with AutomaticKeepAliveClientM
       body:Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(
+          controller:SCBackendPage,
           children:<Widget>[
 
 
@@ -86,6 +88,18 @@ class BackEndPageState extends State<BackEndPage> with AutomaticKeepAliveClientM
               CardsList:FireBaseAdmob_List,
             ),
 
+            SizedBox(height: 10,),
+            CmpCustExpTile(
+              ExpIcon:Icon(Icons.data_usage),
+              ExpTitle:"6.FireBase Push Notification",
+              ExpBg:Colors.teal,
+              ExInsideBg:Colors.teal[100],
+              BordRadius:20.0,
+              InQuizzRoute:"/Generate_FireBasePushNotification_Quizz",
+              CardLength:FireBasePushNotification_List.length,
+              CardsList:FireBasePushNotification_List,
+            ),
+
 
             SizedBox(height: 10,),
             RatingUI(),
@@ -95,6 +109,45 @@ class BackEndPageState extends State<BackEndPage> with AutomaticKeepAliveClientM
 
           ],
         ),
+      ),
+      floatingActionButton:Column(
+        mainAxisAlignment:MainAxisAlignment.end,
+        children: <Widget>[
+          Container(
+            width:37,
+            height:37,
+            child:FloatingActionButton(
+              heroTag:"BackEndPage_Up",
+              backgroundColor:Colors.deepOrange,
+              child:Icon(Icons.arrow_drop_up),
+              onPressed:(){
+                SCBackendPage.animateTo(
+                  0,
+                  duration:Duration(milliseconds:500),
+                  curve:Curves.fastOutSlowIn,
+                );
+              },
+            ),
+          ),
+          SizedBox(height:6,),
+          Container(
+            width:37,
+            height:37,
+            child:FloatingActionButton(
+              heroTag:"BackEndPage_Down",
+              backgroundColor:Colors.deepOrange,
+              child:Icon(Icons.arrow_drop_down),
+              onPressed:(){
+                SCBackendPage.animateTo(
+                  SCBackendPage.position.maxScrollExtent,
+                  duration:Duration(milliseconds:500),
+                  curve:Curves.fastOutSlowIn,
+                );
+              },
+            ),
+          ),
+
+        ],
       ),
     );
   }

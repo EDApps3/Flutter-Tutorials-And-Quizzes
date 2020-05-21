@@ -1034,6 +1034,13 @@ List GestureDetectorList =[
     CardSubTitle:"Detecting Pos X Y Tap",
     GoRoute:"/GestureDetector_TapCoords",
   ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.touch_app),
+    CardTitle:"Double Tap",
+    CardSubTitle:"Applying Double Tap On Body",
+    GoRoute:"/GestureDetector_Body_DoubleTap",
+  ),
 ];
 
 //-----------------------------------------
@@ -1075,6 +1082,13 @@ List ListViewList =[
     CardTitle:"Scroll To",
     CardSubTitle:"Scroll To",
     GoRoute:"/ListView_ScrollTo",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.filter_list),
+    CardTitle:"Move To Top Bottom",
+    CardSubTitle:"Move To Top Bottom",
+    GoRoute:"/ListView_Move_To_Top_Bottom",
   ),
 
 ];
@@ -1314,6 +1328,16 @@ List NotificationList =[
     CardSubTitle:"A Notification With Custom Icon",
     GoRoute:"/Notification_CustomIcon",
   ),
+  /*
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.notifications_active),
+    CardTitle:"Daily Notification",
+    CardSubTitle:"A Daily Notification",
+    GoRoute:"/Notification_Daily",
+  ),
+   */
+
 ];
 
 //-----------------------------------------
@@ -2367,7 +2391,36 @@ List AdvancedList =[
     CardSubTitle:"Dynamic Image List",
     GoRoute:"/Advanced4",
   ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.more_horiz),
+    CardTitle:"Row Layout",
+    CardSubTitle:"Row Layout",
+    GoRoute:"/Advanced5_Row_Layout",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.more_horiz),
+    CardTitle:"Col Layout",
+    CardSubTitle:"Col Layout",
+    GoRoute:"/Advanced6_Col_Layout",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.more_horiz),
+    CardTitle:"Advanced Animation",
+    CardSubTitle:"Advanced Animation",
+    GoRoute:"/Advanced7",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.more_horiz),
+    CardTitle:"Bounce Sound Button",
+    CardSubTitle:"Bounce Sound Button",
+    GoRoute:"/Advanced8",
+  ),
 ];
+
 
 
 //-----------------------------------------
@@ -2805,3 +2858,331 @@ List WaterDropList =[
 //-----------------------------------------
 //-----------------------------------------
 //-----------------------------------------
+
+
+List DayNightPickerList =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.timer),
+    CardTitle:"Day Night Picker",
+    CardSubTitle:"Simple Day Night Picker",
+    GoRoute:"/Day_Night_Picker",
+  ),
+];
+
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+
+
+List GrafPixList =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.import_contacts),
+    CardTitle:"GrafPix Icons",
+    CardSubTitle:"GrafPix Icons",
+    GoRoute:"/GrafPix_Icons",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.import_contacts),
+    CardTitle:"GrafPix Loaders",
+    CardSubTitle:"GrafPix Loaders",
+    GoRoute:"/GrafPix_Loaders",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.import_contacts),
+    CardTitle:"GrafPix Button",
+    CardSubTitle:"GrafPix Button",
+    GoRoute:"/GrafPix_Button",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.import_contacts),
+    CardTitle:"GrafPix Medal",
+    CardSubTitle:"GrafPix Medal",
+    GoRoute:"/GrafPix_Medal",
+  ),
+];
+
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+
+List ListScrollWheelList =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.wb_iridescent),
+    CardTitle:"Simple ListScrollWheel",
+    CardSubTitle:"Simple ListScrollWheel",
+    GoRoute:"/SimpleListScrollWheel",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.wb_iridescent),
+    CardTitle:"ListScrollWheel ItemExtent",
+    CardSubTitle:"ListScrollWheel ItemExtent",
+    GoRoute:"/ListScrollWheel_ItemExtent",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.wb_iridescent),
+    CardTitle:"ListScrollWheel OffAxis",
+    CardSubTitle:"ListScrollWheel OffAxis",
+    GoRoute:"/ListScrollWheel_OffAxis",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.wb_iridescent),
+    CardTitle:"ListScrollWheel UseMagnifier",
+    CardSubTitle:"ListScrollWheel UseMagnifier",
+    GoRoute:"/ListScrollWheel_UseMagnifier",
+  ),
+];
+
+
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+
+List AnimatedDialog =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.warning),
+    CardTitle:"Dialog From Left To Right",
+    CardSubTitle:"Dialog From Left To Right",
+    GoRoute:"/AnimatedDialog_LTR",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.warning),
+    CardTitle:"Dialog From Right To Left",
+    CardSubTitle:"Dialog From Right To Left",
+    GoRoute:"/AnimatedDialog_RTL",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.warning),
+    CardTitle:"Dialog From Top To Bottom",
+    CardSubTitle:"Dialog From Top To Bottom",
+    GoRoute:"/AnimatedDialog_TTB",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.warning),
+    CardTitle:"Dialog From Bottom To Top",
+    CardSubTitle:"Dialog From Bottom To Top",
+    GoRoute:"/AnimatedDialog_BTT",
+  ),
+];
+
+
+List ToggleButtonsLst =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.repeat),
+    CardTitle:"Toggle Buttons",
+    CardSubTitle:"Toggle Buttons",
+    GoRoute:"/Toggle_Buttons",
+  ),
+];
+
+
+List SelectableTextLst =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.title),
+    CardTitle:"Selectable Text",
+    CardSubTitle:"Selectable Text",
+    GoRoute:"/Selectable_Text",
+  ),
+];
+
+
+List GridViewLst =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.grid_on),
+    CardTitle:"GridView.count",
+    CardSubTitle:"GridView.count",
+    GoRoute:"/GridView_Count",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.grid_on),
+    CardTitle:"GridView.builder",
+    CardSubTitle:"GridView.builder",
+    GoRoute:"/GridView_Builder",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.grid_on),
+    CardTitle:"GridView.custom",
+    CardSubTitle:"GridView.custom",
+    GoRoute:"/GridView_Custom",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.grid_on),
+    CardTitle:"GridView.extent",
+    CardSubTitle:"GridView.extent",
+    GoRoute:"/GridView_Extent",
+  ),
+];
+
+
+
+List CurvedNavBarLst =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.navigation),
+    CardTitle:"Curved NavBar",
+    CardSubTitle:"Curved NavBar",
+    GoRoute:"/Curved_Navigation_Bar",
+  ),
+];
+
+
+List FloatingActionButtonLst =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.swap_vertical_circle),
+    CardTitle:"Simple Floating Action Button",
+    CardSubTitle:"Simple Floating Action Button",
+    GoRoute:"/Floating_Button_Simple",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.swap_vertical_circle),
+    CardTitle:"Animated Floating Action Button",
+    CardSubTitle:"Animated Floating Action Button",
+    GoRoute:"/Floating_Button_Animated",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.swap_vertical_circle),
+    CardTitle:"Circular Floating Action Button",
+    CardSubTitle:"Circular Floating Action Button",
+    GoRoute:"/Floating_Button_Circular",
+  ),
+];
+
+
+List ToolTipLst =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.info),
+    CardTitle:"ToolTip",
+    CardSubTitle:"ToolTip",
+    GoRoute:"/ToolTip",
+  ),
+];
+
+
+List BackDetectorLst =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.arrow_back),
+    CardTitle:"Back Detector",
+    CardSubTitle:"Back Detector",
+    GoRoute:"/Back_Detector",
+  ),
+];
+
+
+List NavBarRailLst =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.navigation),
+    CardTitle:"NavBar Rail",
+    CardSubTitle:"NavBar Rail",
+    GoRoute:"/NavigationBar_Rail",
+  ),
+];
+
+
+List ClippingLst =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.content_cut),
+    CardTitle:"ClipOval",
+    CardSubTitle:"ClipOval",
+    GoRoute:"/Clipping_ClipOval",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.content_cut),
+    CardTitle:"ClipRRect",
+    CardSubTitle:"ClipRRect",
+    GoRoute:"/Clipping_ClipRRect",
+  ),
+];
+
+
+List FancyNavBarLst =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.navigation),
+    CardTitle:"Fancy Bottom NavBar",
+    CardSubTitle:"Fancy Bottom NavBar",
+    GoRoute:"/Fancy_Bottom_NavBar",
+  ),
+];
+
+List ColorPickerLst =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.color_lens),
+    CardTitle:"Color Picker",
+    CardSubTitle:"Color Picker",
+    GoRoute:"/Color_Picker",
+  ),
+];
+
+
+List LikeButtonLst =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.favorite),
+    CardTitle:"Like Button",
+    CardSubTitle:"Like Button",
+    GoRoute:"/Like_Button",
+  ),
+];
+
+List SliverAppBarLst =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.fiber_dvr),
+    CardTitle:"Sliver AppBar",
+    CardSubTitle:"Sliver AppBar",
+    GoRoute:"/Sliver_AppBar",
+  ),
+];
+
+
+
+
+

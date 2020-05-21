@@ -50,19 +50,19 @@ class _Cmp_Quizz_2Radio_State extends State<Cmp_Quizz_2Radio> {
   }
 
   void PlayTapSound() async{
-    if(AppSoundRetrieve=="NotMuted") {
+    if(SoundResult=="NotMuted") {
       audioCache.play('Music/Tap.mp3');
     }
   }
 
   void PlayWinSound() async{
-    if(AppSoundRetrieve=="NotMuted") {
+    if(SoundResult=="NotMuted") {
       audioCache.play('Music/Success.mp3');
     }
   }
 
   void PlayLoseSound() async{
-    if(AppSoundRetrieve=="NotMuted") {
+    if(SoundResult=="NotMuted") {
       audioCache.play('Music/Wrong.mp3');
     }
   }

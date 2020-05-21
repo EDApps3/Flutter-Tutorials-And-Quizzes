@@ -16,10 +16,8 @@ class cl_GestureDetector_State extends State<cl_GestureDetector> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp (
-      title: "Generate Quizzes",
-      debugShowCheckedModeBanner: false,
-      home:
+    return Scaffold(
+      body:
 
       (GestureDetectorQuizzRan == 0) ?
       Cmp_Fields_Quizz (
@@ -75,9 +73,7 @@ class cl_GestureDetector_State extends State<cl_GestureDetector> {
 
 
 
-      routes: <String, WidgetBuilder>{
-        "/Generate_GestureDetector_Quizz": (BuildContext context) => cl_GestureDetector(),
-      },
+
 
     );
   }

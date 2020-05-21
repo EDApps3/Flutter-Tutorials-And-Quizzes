@@ -26,7 +26,7 @@ class RatingUIState extends State<RatingUI> {
   }
 
   void PlayTapSound() async{
-    if(AppSoundRetrieve=="NotMuted") {
+    if(SoundResult=="NotMuted") {
       audioCache.play('Music/Tap.mp3');
     }
   }

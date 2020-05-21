@@ -43,7 +43,6 @@ class Page extends StatelessWidget {
                   primaryButtonText: "Create My Account",
                   primaryButtonRoute: "/Page",
                   secondaryButtonText: "Maybe Later",
-                  secondaryButtonRoute: "/Page",
                 ),
               );
             },
@@ -119,8 +118,6 @@ class CustomDialog extends StatelessWidget {
                     fontSize: 17.0,
                   ),
                 ),
-
-
                 SizedBox(height: 24.0),
                 RaisedButton(
                   color: primaryColor,
@@ -140,12 +137,30 @@ class CustomDialog extends StatelessWidget {
                   ),
                   onPressed: () {
                     Navigator.of(context).pop();
-                    Navigator.of(context)
-                        .pushReplacementNamed(primaryButtonRoute);
+                    Navigator.of(context).pushReplacementNamed(primaryButtonRoute);
                   },
                 ),
                 SizedBox(height: 10.0),
-                showSecondaryButton(context),
+                RaisedButton(
+                  color: primaryColor,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0)),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                    child: Text(
+                      secondaryButtonText,
+                      maxLines: 1,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w200,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
               ],
             ),
           )
@@ -154,25 +169,5 @@ class CustomDialog extends StatelessWidget {
     );
   }
 
-  showSecondaryButton(BuildContext context) {
-    if (secondaryButtonRoute != null && secondaryButtonText != null ){
-      return FlatButton(
-        child: Text(
-          secondaryButtonText,
-          maxLines: 1,
-          style: TextStyle(
-            fontSize: 18,
-            color: primaryColor,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-        onPressed: () {
-          Navigator.of(context).pop();
-          Navigator.of(context).pushReplacementNamed(secondaryButtonRoute);
-        },
-      );
-    } else {
-      return SizedBox(height: 10.0);
-    }
-  }
+
 }

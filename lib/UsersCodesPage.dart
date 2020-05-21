@@ -27,7 +27,7 @@ class _UsersCodePageState extends State<UsersCodePage> {
   }
 
   void PlayTapSound() async{
-    if(AppSoundRetrieve=="NotMuted") {
+    if(SoundResult=="NotMuted") {
       audioCache.play('Music/Tap.mp3');
     }
   }
@@ -54,41 +54,32 @@ class _UsersCodePageState extends State<UsersCodePage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
 
-                  Container(
-                    padding: new EdgeInsets.only(bottom: 20.0),
-                    child:
-                    new Card(
-                      child: new Container(
-                        padding: new EdgeInsets.all(15.0),
-                        child: new Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              "No Codes Found yet!",
-                              style:TextStyle(
-                                fontFamily: "PT Mono",
-                                fontSize: 23,
-                                fontWeight: FontWeight.w200,
-                                color: Colors.teal,
-                              ),
-                            ),
-                            Divider(color: Colors.grey,),
-                            Text(
-                                  "Send Your Code At\n"
-                                  "edapps.contact@gmail.com\n"
-                                  "And The Code Will Be Uploaded Under Your Name\n\n\n"
-                                      "We Can Flutter Together!\n\n\n",
-                              style:TextStyle(
-                                fontFamily: "Lobster",
-                                fontSize: 20,
-                                fontWeight: FontWeight.w200,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                  Card(
+                    color:Colors.grey[200],
+                    child: ListTile(
+                      leading:Icon(Icons.contacts),
+                      title:Text("Contact List",style:TextStyle(fontSize:15),),
+                      subtitle:Text("Submitted By Davi",style:TextStyle(fontSize:13),),
+                      trailing:Icon(Icons.arrow_forward_ios),
+                      onTap:(){
+                        Navigator.pushNamed(context,"/Davi_ContactList");
+                      },
                     ),
                   ),
+
+                  Card(
+                    color:Colors.teal[200],
+                    child: ListTile(
+                      leading:Icon(Icons.code),
+                      title:Text("Submit Yours!",style:TextStyle(fontSize:15),),
+                      subtitle:Text("Send Your Code At edapps.contact@gmail.com And The Code Will Be Published  Under Your Name",style:TextStyle(fontSize:13),),
+                      trailing:Icon(Icons.arrow_forward_ios),
+                    ),
+                  ),
+
+
+
+
 
                 ],
               ),

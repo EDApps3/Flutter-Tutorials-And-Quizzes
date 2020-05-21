@@ -1,7 +1,7 @@
 name: flutter_tutorials_and_quizzes
 description: A new Flutter application.
 
-version: 1.0.24+24
+version: 1.0.29+29
 
 environment:
   sdk: ">=2.5.2 <3.0.0"
@@ -15,6 +15,17 @@ dependencies:
   flutter:
     sdk: flutter
 
+  animated_text_kit: ^2.0.1
+  expandable: ^4.0.2
+  flutter_colorpicker: ^0.3.4
+  like_button: ^0.2.0
+  fancy_bottom_navigation: ^0.3.2
+  fab_circular_menu: ^1.0.0
+  curved_navigation_bar: ^0.3.2 
+  rxdart: ^0.23.1
+  grafpix: ^1.2.8
+  day_night_time_picker: ^0.1.1
+  firebase_messaging: ^5.1.2
   firebase_admob:
   advance_pdf_viewer: ^1.1.2
   google_nav_bar: ^2.1.0
@@ -39,18 +50,16 @@ dependencies:
   widget_with_codeview: ^1.0.3
   wave: ^0.0.8
   marquee: ^1.3.1
-  expandable: ^4.0.2
   smooth_page_indicator: ^0.1.2
   flutter_flip_view: ^1.0.3
   flip_card: ^0.4.4
   admob_flutter: ^0.3.4
-  grafpix: ^1.1.2
   splashscreen: ^1.2.0
   flushbar: ^1.9.1
   animator: ^1.0.0
   chewie: ^0.9.8
   audioplayers: ^0.13.7
-  flutter_local_notifications: ^0.8.4
+  flutter_local_notifications: ^1.4.2
   flutter_spinkit: ^2.1.0
   carousel_slider: ^1.3.0
   url_launcher: ^5.1.4
@@ -67,6 +76,16 @@ flutter:
   uses-material-design: true
 
   assets:
+    - Images/Moon.png
+    - Images/Sun.png
+    - Images/GrafPixYaml.PNG
+    - Images/Circular_FAB.PNG
+    - Images/ColorPicker.PNG
+    - Images/Expandable.PNG
+    - Images/AnimatedTextKit.PNG
+    - Images/FBN.PNG
+    - Images/LB.PNG
+    - Images/CurvedNavBar.PNG
     - assets/PdfTest.pdf
     - assets/Music/Luncher.mp3
     - assets/Music/Wrong.mp3
@@ -95,7 +114,6 @@ flutter:
     - Images/Img1.png
     - Images/Img2.png
     - Images/Img3.png
-    - Images/GradBtn.png
     - Images/R1.png
     - Images/D1.png
     - Images/D2.png
@@ -108,8 +126,6 @@ flutter:
     - Images/S3.jpg
     - Images/IS.PNG
     - Images/Ntf.PNG
-    - Images/Moon.png
-    - Images/Sun.png
     - Images/LoaderYaml.PNG
     - Images/PdfTestAsset.PNG
     - Images/WaterDrop.PNG
@@ -128,6 +144,17 @@ flutter:
     - Images/WidgetWithCodeView2.PNG
     - Images/SQLFlite.PNG
     - Images/WebView.PNG
+    - Images/CloudMessaging_-1.PNG
+    - Images/CloudMessaging_0.PNG
+    - Images/CloudMessaging_1.PNG
+    - Images/CloudMessaging_2.PNG
+    - Images/CloudMessaging_3.PNG
+    - Images/CloudMessaging_4.PNG
+    - Images/CloudMessaging_5.PNG
+    - Images/CloudMessaging_6.PNG
+    - Images/CloudMessaging_7.PNG
+    - Images/CloudMessaging_8.PNG
+    - Images/CloudMessaging_9.PNG
     - Images/Glow.PNG
     - Images/M1.PNG
     - Images/M2.PNG
@@ -149,13 +176,15 @@ flutter:
     - Images/Ad10.PNG
     - Images/Ad11.PNG
     - Images/Ad12.PNG
+    - Images/DNP1.PNG
+    - Images/DNP2.PNG
     - Images/SUP.PNG
+    - Images/DayNightPicker.PNG
     - Images/Anim1.PNG
     - Images/Marquee.PNG
     - Images/FB1.PNG
     - Images/FFV.PNG
     - Images/MSS.PNG
-    - Images/Grafpix.PNG
     - Images/FC.PNG
     - Images/FV.PNG
     - Images/SPI.PNG
@@ -211,6 +240,8 @@ flutter:
     - Images/AG6.PNG
     - Images/AG7.PNG
     - Images/AG8.PNG
+    - assets/sun.png
+    - assets/moon.png
     - Images/FB_1.PNG
     - Images/FB_2.PNG
     - Images/FB_3.PNG
@@ -232,6 +263,7 @@ flutter:
     - Images/FB18.PNG
     - Images/FB_19.PNG
     - Images/FB_20.PNG
+    - Images/ContactImg.png
     - Images/SetupSHA_Debug.PNG
     - Images/SetupSHA_Release.PNG
     - Images/SetupSHA_PS1.PNG
@@ -331,9 +363,11 @@ flutter:
     - lib/17_GestureDetector/1_GestImg_Run.dart
     - lib/17_GestureDetector/2_GestAppBarTitleRun.dart
     - lib/17_GestureDetector/3_Tap_Coords_Run.dart
+    - lib/17_GestureDetector/4_Double_Tap.dart
     - lib/18_ListView/1_ListView_Horizontal_Run.dart
     - lib/18_ListView/2_ListView_Vertical_Run.dart
     - lib/18_ListView/3_ListView_ScrollTo.dart
+    - lib/18_ListView/4_Move_To_Top_Bottom.dart
     - lib/19_TextField/1_TextField_Simple_Run.dart
     - lib/19_TextField/2_TextField_NoBorder_Run.dart
     - lib/19_TextField/3_TextField_MultiLine_Run.dart
@@ -500,10 +534,46 @@ flutter:
     - lib/64_Clippy/5_Clippy_Bevel.dart
     - lib/64_Clippy/6_ButtCheek.dart
     - lib/65_Water_Drop/1_Water_Drop.dart
+    - lib/66_DayNightPicker/1_DayNightPicker.dart
+    - lib/67_GrafPix/1_GrafPix_Icons.dart
+    - lib/67_GrafPix/2_GrafPix_Loaders.dart
+    - lib/67_GrafPix/3_GrafPix_Button.dart
+    - lib/67_GrafPix/4_GrafPix_Medal.dart
+    - lib/68_ListScrollWheel/1_Simple_ListScrollWheel.dart
+    - lib/68_ListScrollWheel/2_ListScrollWheel_ItemExtent.dart
+    - lib/68_ListScrollWheel/3_ListScrollWheel_OffAxis.dart
+    - lib/68_ListScrollWheel/4_ListScrollWheel_UseMagnifier.dart
+    - lib/69_Dialog_Transition/1_Dialog_Transition_LTR.dart
+    - lib/69_Dialog_Transition/2_Dialog_Transition_RTL.dart
+    - lib/69_Dialog_Transition/3_Dialog_Transition_TTB.dart
+    - lib/69_Dialog_Transition/4_Dialog_Transition_BTT.dart
+    - lib/70_Toggle_Button/1_Toggle_Button.dart
+    - lib/71_Selectable_Text/1_Selectable_Text.dart
+    - lib/72_GridView/1_GridView_Count.dart
+    - lib/72_GridView/2_GridView_Builder.dart
+    - lib/72_GridView/3_GridView_Custom.dart
+    - lib/72_GridView/4_GridView_Extent.dart
+    - lib/73_Curved_Navigation_Bar/1_Curved_Navigation_Bar.dart
+    - lib/74_Floating_Action_Button/1_Floating_Button_Simple.dart
+    - lib/74_Floating_Action_Button/2_Floating_Button_Animated.dart
+    - lib/74_Floating_Action_Button/3_Floating_Button_Circular.dart
+    - lib/75_ToolTip/1_ToolTip.dart
+    - lib/76_Back_Detector/1_Back_Detector.dart
+    - lib/77_Clipping/1_Clipping_Clip_Oval.dart
+    - lib/77_Clipping/2_Clipping_ClipRRect.dart
+    - lib/78_Navigation_Rail/1_NavigationBar_Rail.dart
+    - lib/79_Fancy_Bottom_NavBar/1_Fancy_Bottom_NavBar.dart
+    - lib/80_Color_Picker/1_Color_Picker.dart
+    - lib/81_Like_Button/1_Like_Button.dart
+    - lib/82_Sliver_AppBar/1_Sliver_AppBar.dart
     - lib/Advanced/A1Run.dart
     - lib/Advanced/A2Run.dart
     - lib/Advanced/A3Run.dart
     - lib/Advanced/A4Run.dart
+    - lib/Advanced/A5_Row_Layout.dart
+    - lib/Advanced/A6_Column_Layout.dart
+    - lib/Advanced/A7Run.dart
+    - lib/Advanced/A8Run.dart
     - lib/Backend_1_SQFlite/1_SQFlite_Insert.dart
     - lib/Backend_1_SQFlite/2_SQFlite_Update.dart
     - lib/Backend_1_SQFlite/3_SQFlite_Delete.dart
@@ -517,6 +587,8 @@ flutter:
     - lib/Backend_4_FireStore/1_FireStore.dart
     - lib/Backend_5_FireBase_Admob/1_FireBase_Admob_Banner.dart
     - lib/Backend_5_FireBase_Admob/2_FireBase_Admob_Interstitial.dart
+    - lib/Backend_6_FireBase_Push_Notification/FireBasePushNotification.dart
+    - lib/UsersCode/1_Davi_Contact_List/ContactList.dart
 
 
   fonts:

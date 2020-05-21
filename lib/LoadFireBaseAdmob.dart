@@ -2,17 +2,21 @@ import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter_tutorials_and_quizzes/main.dart';
 
 
-const String testDevice = 'C0824EEB8BC13759DD074F008FB94448';
 BannerAd MyBanner;
 InterstitialAd MyinterstitialAd;
 
+String AddAppID="ca-app-pub-1650436277039127~3083637146";
+String AddBanID=BannerAd.testAdUnitId;
+String AddIntID=InterstitialAd.testAdUnitId;
 
 MobileAdTargetingInfo MytargetingInfo = MobileAdTargetingInfo(
-  testDevices: testDevice != null ? <String>[testDevice] : null,
-  keywords: <String>['foo', 'bar'],
-  contentUrl: 'http://foo.com/bar.html',
-  childDirected: true,
-  nonPersonalizedAds: true,
+  keywords: <String>['flutterio', 'flutterTutorials'],
+  contentUrl: 'https://flutter.io',
+  birthday:DateTime.now(),
+  childDirected:false,
+  designedForFamilies:false,
+  gender:MobileAdGender.unknown,
+  testDevices: <String>[]
 );
 
 BannerAd createMyBannerAd() {
@@ -23,7 +27,7 @@ BannerAd createMyBannerAd() {
     listener: (MobileAdEvent event) {
       if(event==MobileAdEvent.failedToLoad){
         print("Banner Failed To Load,Load Another Again!\n");
-        MyBanner..load();
+        MyBanner..load()..show();
       }
       else if(event==MobileAdEvent.loaded){
         print("Banner Loaded,Must Show!\n");
@@ -44,15 +48,23 @@ InterstitialAd createMyInterstitialAd() {
   );
 }
 
-
-void ShowMyAds(){
+void InitAd(){
   FirebaseAdMob.instance.initialize(
       appId:AddAppID
   );
-  MyBanner = createMyBannerAd()..load();
-  if(loadAds>4){
+}
+
+
+void ShowMyAds(){
+
+  if(loadBannerAd>18){
+    MyBanner = createMyBannerAd()..load();
+    loadBannerAd=0;
+  }
+
+  if(loadIntertitialAd>11){
     MyinterstitialAd = createMyInterstitialAd()..load()..show();
-    loadAds=0;
+    loadIntertitialAd=0;
   }
 }
 

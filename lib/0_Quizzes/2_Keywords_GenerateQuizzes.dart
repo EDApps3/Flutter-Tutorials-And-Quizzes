@@ -10,10 +10,8 @@ class cl_KeywordsQuizz extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title:"Generate Quizzes",
-      debugShowCheckedModeBanner:false,
-      home:
+    return Scaffold(
+      body:
 
       (KeywordsQuizzRan==0)?
        Cmp_Quizz_2Radio(
@@ -195,10 +193,7 @@ class cl_KeywordsQuizz extends StatelessWidget{
 
 
 
-      routes: <String, WidgetBuilder>{
-        "/Generate_Intro_Quizz": (BuildContext context)           => cl_IntroQuizz(),
-        "/Generate_Keywords_Quizz": (BuildContext context)        => cl_KeywordsQuizz(),
-      },
+
 
     );
   }

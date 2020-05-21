@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter_tutorials_and_quizzes/SettingPage.dart';
 
-import 'SettingPage.dart';
 import 'UsersCodesPage.dart';
 
 class CodesByUsersUI extends StatefulWidget {
@@ -26,7 +26,7 @@ class CodesByUsersUIState extends State<CodesByUsersUI> {
   }
 
   void PlayTapSound() async{
-    if(AppSoundRetrieve=="NotMuted") {
+    if(SoundResult=="NotMuted") {
       audioCache.play('Music/Tap.mp3');
     }
   }

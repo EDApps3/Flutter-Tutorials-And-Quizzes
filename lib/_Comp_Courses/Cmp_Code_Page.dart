@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorials_and_quizzes/_Comp_Courses/Cmp_Title.dart';
 import 'package:marquee/marquee.dart';
-import 'package:widget_with_codeview/source_code_view.dart';
 import '../LoadFireBaseAdmob.dart';
 import '../SettingPage.dart';
 import '../main.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter_tutorials_and_quizzes/Backend_5_FireBase_Admob/1_FireBase_Admob_Banner.dart';
+import 'EditedCodeView.dart';
+
 
 
 typedef void OnError(Exception exception);
@@ -21,7 +23,7 @@ var Public_RunCodeRout,Public_CodeRoute,Public_ItemList,Public_ToDo,Pub_Exp;
 
 class CmpCodePage extends StatefulWidget {
 
-  final String Title,BackRoute,NextRoute,CodeRoute,ToDo,TxtExplanation;
+  var Title,BackRoute,NextRoute,CodeRoute,ToDo,TxtExplanation;
   final List ItemList;
   final Icon TabIcon;
   var RunCodeRoute;
@@ -66,7 +68,7 @@ class _CmpCodePageState extends State<CmpCodePage> with SingleTickerProviderStat
     initPlayer();
     tabController = new TabController(vsync: this, length: 3,);
 
-    ShowMyAds();
+    WidgetsBinding.instance.addPostFrameCallback((_)=>ShowMyAds());
 
 
   }
@@ -78,7 +80,7 @@ class _CmpCodePageState extends State<CmpCodePage> with SingleTickerProviderStat
   }
 
   void PlayTapSound() async{
-    if(AppSoundRetrieve=="NotMuted") {
+    if(SoundResult=="NotMuted") {
       audioCache.play('Music/Tap.mp3');
     }
   }
@@ -86,97 +88,112 @@ class _CmpCodePageState extends State<CmpCodePage> with SingleTickerProviderStat
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title:widget.Title,
-      home:Scaffold(
-        appBar: new AppBar(
-          leading: IconButton(
-            icon: new Icon(
-              Icons.arrow_back,
-              color: Colors.white,
-            ),
-            onPressed: (){
-              loadAds++;
-              PlayTapSound();
-              Navigator.of(context).pushReplacementNamed(widget.BackRoute);
-            },
+    return WillPopScope(
+        onWillPop:(){
+          MyBanner?.dispose();
+          bannerAdTutorial?.dispose();
+          loadBannerAd++;
+          loadIntertitialAd++;
+      PlayTapSound();
+      Navigator.pop(context);
+    },
+    child:Scaffold(
+      appBar: new AppBar(
+        leading: IconButton(
+          icon: new Icon(
+            Icons.arrow_back,
+            color: Colors.white,
           ),
-          title: Row(
-            mainAxisAlignment:
-            MainAxisAlignment.center,
-            children: <Widget>[
-              Expanded(
-              child:
-              SizedBox(
-                  width: MediaQuery.of(context).size.width-50,
-                  height: MediaQuery.of(context).size.height,
-                  child:
-                  Marquee(
-                    text:widget.Title,
-                    style:TextStyle(
-                        fontSize:20,
-                        fontFamily: "PT Mono",
-                        fontWeight:FontWeight.bold,
-                        color:Colors.white
-                    ),
-                    scrollAxis:Axis.horizontal,
-                    blankSpace:300,
-                    crossAxisAlignment:CrossAxisAlignment.center,
-                  )
-              )
-              ),
-            ],
-          ),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.format_list_numbered),
-              onPressed: (){
-                loadAds++;
-                PlayTapSound();
-                Navigator.push(context,MaterialPageRoute(builder:(context)=>Main()));
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.arrow_forward),
-              onPressed: (){
-                loadAds++;
-                PlayTapSound();
-                Navigator.of(context).pushReplacementNamed(widget.NextRoute);
-              },
-            ),
-          ],
-          bottom: new TabBar(
-            controller: tabController,
-            tabs: [
-              Tab(icon: widget.TabIcon,text:"About"),
-              Tab(icon: Icon(Icons.code,),text:"Code"),
-              Tab(icon: Icon(Icons.receipt,),text:"Run"),
-            ],
-            onTap:(index){
-              if(index==1){
-                MyBanner.dispose();
-              }
-              else if(index==2){
-                MyBanner.dispose();
-              }
-              else{
-                ShowMyAds();
-              }
-            },
-          ),
+          onPressed: (){
+            MyBanner?.dispose();
+            bannerAdTutorial?.dispose();
+            loadBannerAd++;
+            loadIntertitialAd++;
+            PlayTapSound();
+            Navigator.pushNamed(context,widget.BackRoute);
+          },
         ),
-
-        body: TabBarView(
-          controller: tabController,
-          children: [
-               About(),
-               CodeView(),
-               RunCode(),
+        title: Row(
+          mainAxisAlignment:
+          MainAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+                child:
+                SizedBox(
+                    width: MediaQuery.of(context).size.width-50,
+                    height: MediaQuery.of(context).size.height,
+                    child:
+                    Marquee(
+                      text:widget.Title,
+                      style:TextStyle(
+                          fontSize:20,
+                          fontFamily: "PT Mono",
+                          fontWeight:FontWeight.bold,
+                          color:Colors.white
+                      ),
+                      scrollAxis:Axis.horizontal,
+                      blankSpace:300,
+                      crossAxisAlignment:CrossAxisAlignment.center,
+                    )
+                )
+            ),
           ],
-
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.format_list_numbered),
+            onPressed: (){
+              MyBanner?.dispose();
+              bannerAdTutorial?.dispose();
+              loadBannerAd++;
+              loadIntertitialAd++;
+              PlayTapSound();
+              Navigator.pushNamed(context,"/Main");
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.arrow_forward),
+            onPressed: (){
+              MyBanner?.dispose();
+              bannerAdTutorial?.dispose();
+              loadBannerAd++;
+              loadIntertitialAd++;
+              PlayTapSound();
+              Navigator.pushNamed(context,widget.NextRoute);
+            },
+          ),
+        ],
+        bottom: new TabBar(
+          controller: tabController,
+          tabs: [
+            Tab(icon: widget.TabIcon,text:"About"),
+            Tab(icon: Icon(Icons.code,),text:"Code"),
+            Tab(icon: Icon(Icons.receipt,),text:"Run"),
+          ],
+          onTap:(index){
+            if(index==1){
+              MyBanner.dispose();
+            }
+            else if(index==2){
+              MyBanner.dispose();
+            }
+            else{
+              ShowMyAds();
+            }
+          },
         ),
       ),
+
+      body: TabBarView(
+        controller: tabController,
+        children: [
+          About(),
+          CodeView(),
+          RunCode(),
+        ],
+
+      ),
+    ),
     );
   }
 }
@@ -191,12 +208,14 @@ class About extends StatefulWidget {
 
 
 class AboutState extends State<About> with AutomaticKeepAliveClientMixin {
+  ScrollController SCCodePage = new ScrollController();
 
   Widget build(BuildContext context) {
 
     return Scaffold(
       body:
       ListView (
+        controller:SCCodePage,
         children: <Widget>[
           Container(
             padding: new EdgeInsets.all(20.0),
@@ -204,9 +223,9 @@ class AboutState extends State<About> with AutomaticKeepAliveClientMixin {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
 
+
                 for(var item in Public_ItemList)
                   Container(child:item),
-
 
 
                 Container (
@@ -283,10 +302,52 @@ class AboutState extends State<About> with AutomaticKeepAliveClientMixin {
                   ),
                 ),
 
+                SizedBox(height:85),
+
+
 
               ],
             ),
           ),
+        ],
+      ),
+      floatingActionButton:Column(
+        mainAxisAlignment:MainAxisAlignment.end,
+        children: <Widget>[
+          Container(
+            width:37,
+            height:37,
+            child:FloatingActionButton(
+              heroTag:"FAB_1_Up",
+              backgroundColor:Colors.deepOrange,
+              child:Icon(Icons.arrow_drop_up),
+              onPressed:(){
+                SCCodePage.animateTo(
+                  0,
+                  duration:Duration(milliseconds:500),
+                  curve:Curves.fastOutSlowIn,
+                );
+              },
+            ),
+          ),
+          SizedBox(height:6,),
+          Container(
+            width:37,
+            height:37,
+            child:FloatingActionButton(
+              heroTag:"FAB_1_Down",
+              backgroundColor:Colors.deepOrange,
+              child:Icon(Icons.arrow_drop_down),
+              onPressed:(){
+                SCCodePage.animateTo(
+                  SCCodePage.position.maxScrollExtent,
+                  duration:Duration(milliseconds:500),
+                  curve:Curves.fastOutSlowIn,
+                );
+              },
+            ),
+          ),
+          SizedBox(height:65)
         ],
       ),
     );
@@ -312,9 +373,13 @@ class CodeView extends StatefulWidget {
 class CodeViewState extends State<CodeView> with AutomaticKeepAliveClientMixin {
 
   Widget build(BuildContext context) {
-
-    return SourceCodeView(
-      filePath:Public_CodeRoute,
+    return MaterialApp(
+      debugShowCheckedModeBanner:false,
+      home:Scaffold(
+        body:EditedSourceCodeView(
+          filePath:Public_CodeRoute,
+        ),
+      ),
     );
   }
 

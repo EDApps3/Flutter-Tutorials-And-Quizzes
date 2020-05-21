@@ -17,10 +17,8 @@ class cl_HeaderAppBarQuizz extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title:"Generate Quizzes",
-      debugShowCheckedModeBanner:false,
-      home:
+    return Scaffold(
+      body:
 
       (HeaderAppBarQuizzRan==0)?
        Cmp_Fields_Quizz (
@@ -134,9 +132,7 @@ class cl_HeaderAppBarQuizz extends StatelessWidget{
 
        :AppBarQ6(),
 
-      routes: <String, WidgetBuilder>{
-        "/Generate_HeaderAppBar_Quizz": (BuildContext context) => cl_HeaderAppBarQuizz(),
-      },
+
 
 
     );

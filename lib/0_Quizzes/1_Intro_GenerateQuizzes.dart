@@ -13,10 +13,8 @@ class cl_IntroQuizz extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title:"Generate Quizzes",
-      debugShowCheckedModeBanner:false,
-      home:
+    return Scaffold(
+      body:
 
       (IntroQuizzRan==0)?
         Cmp_Quizz_2Radio(
@@ -160,11 +158,7 @@ class cl_IntroQuizz extends StatelessWidget {
         GoRoute:"/Generate_Intro_Quizz",
        ),
 
-      routes: <String, WidgetBuilder>{
-        "/Generate_Intro_Quizz": (BuildContext context)           => cl_IntroQuizz(),
-        "/Generate_Keywords_Quizz": (BuildContext context)        => cl_KeywordsQuizz(),
-        "/Generate_Text_Quizz": (BuildContext context)            => cl_TextQuizz(),
-      },
+
 
     );
   }

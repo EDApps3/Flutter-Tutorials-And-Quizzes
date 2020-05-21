@@ -55,19 +55,19 @@ class _Cmp_Field_Quizz_State extends State<Cmp_Fields_Quizz> {
   }
 
   void PlayTapSound() async{
-    if(AppSoundRetrieve=="NotMuted") {
+    if(SoundResult=="NotMuted") {
       audioCache.play('Music/Tap.mp3');
     }
   }
 
   void PlayWinSound() async{
-    if(AppSoundRetrieve=="NotMuted") {
+    if(SoundResult=="NotMuted") {
       audioCache.play('Music/Success.mp3');
     }
   }
 
   void PlayLoseSound() async{
-    if(AppSoundRetrieve=="NotMuted") {
+    if(SoundResult=="NotMuted") {
       audioCache.play('Music/Wrong.mp3');
     }
   }

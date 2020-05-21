@@ -22,10 +22,8 @@ class cl_TextQuizz_State extends State<cl_TextQuizz> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp (
-      title: "Generate Quizzes",
-      debugShowCheckedModeBanner: false,
-      home:
+    return Scaffold(
+      body:
 
       (TextQuizzRan == 0) ?
       Cmp_Fields_Quizz (
@@ -252,11 +250,7 @@ class cl_TextQuizz_State extends State<cl_TextQuizz> {
       ),
 
 
-      routes: <String, WidgetBuilder>{
-        "/Generate_Intro_Quizz": (BuildContext context) => cl_IntroQuizz (),
-        "/Generate_Keywords_Quizz": (BuildContext context) => cl_KeywordsQuizz (),
-        "/Generate_Text_Quizz": (BuildContext context) => cl_TextQuizz (),
-      },
+
 
     );
   }

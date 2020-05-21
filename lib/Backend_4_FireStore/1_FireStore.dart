@@ -21,15 +21,11 @@ class FireStoreProduct extends StatefulWidget {
 }
 
 class _FireStoreProductState extends State<FireStoreProduct> {
-
-  TextEditingController phoneInputController;
   TextEditingController nameInputController;
   String id;
   final db = Firestore.instance;
   String name;
-  String phone;
   var ST;
-
 
   @override
   void initState(){

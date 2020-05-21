@@ -47,7 +47,7 @@ class _CmpCustExpTileState extends State<CmpCustExpTile> {
   }
 
   void PlayTapSound() async{
-    if(AppSoundRetrieve=="NotMuted") {
+    if(SoundResult=="NotMuted") {
       audioCache.play('Music/Tap.mp3');
     }
   }
