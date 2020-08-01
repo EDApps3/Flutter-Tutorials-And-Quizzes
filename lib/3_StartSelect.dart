@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'AppLang.dart';
 
 class StartSelectUI extends StatelessWidget{
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class StartSelectUI extends StatelessWidget{
         child:Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            "Select Where You Want To Start!",
+            SelectWhereYouWantToStartTxtTrans,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,

@@ -1,7 +1,7 @@
 name: flutter_tutorials_and_quizzes
 description: A new Flutter application.
 
-version: 1.0.29+29
+version: 1.0.42+42
 
 environment:
   sdk: ">=2.5.2 <3.0.0"
@@ -15,56 +15,76 @@ dependencies:
   flutter:
     sdk: flutter
 
-  animated_text_kit: ^2.0.1
-  expandable: ^4.0.2
-  flutter_colorpicker: ^0.3.4
-  like_button: ^0.2.0
-  fancy_bottom_navigation: ^0.3.2
-  fab_circular_menu: ^1.0.0
-  curved_navigation_bar: ^0.3.2 
-  rxdart: ^0.23.1
-  grafpix: ^1.2.8
-  day_night_time_picker: ^0.1.1
-  firebase_messaging: ^5.1.2
+  apk_admin: ^1.0.2
+  translator: ^0.1.4
+  kf_drawer: ^1.1.2
+  animated_background: ^1.0.5
+  percent_indicator:
+  geolocator: ^5.3.2+2
+  google_maps_flutter: ^0.5.28+1
+  in_app_purchase: ^0.3.4+1
+  toast:
+  shared_preferences: ^0.5.2
+  flutter_app_badger: ^1.1.2
+  flutter_phoenix:
+  get:
+  package_info:
+  url_launcher:
+  http:
+  pimp_my_button:
+  sqflite:
+  path_provider:
+  tflite:
+  image_picker:
+  share:
+  in_app_update:
+  spincircle_bottom_bar:
+  flutter_staggered_grid_view:
+  google_sign_in:
+  foldable_sidebar:
+  animated_text_kit:
+  expandable:
+  flutter_colorpicker:
+  like_button:
+  fancy_bottom_navigation:
+  fab_circular_menu:
+  curved_navigation_bar:
+  rxdart:
+  grafpix:
+  day_night_time_picker:
+  firebase_messaging:
   firebase_admob:
-  advance_pdf_viewer: ^1.1.2
-  google_nav_bar: ^2.1.0
-  clippy_flutter: ^1.1.1
-  water_drop: ^1.0.0
+  advance_pdf_viewer:
+  google_nav_bar:
+  clippy_flutter:
+  water_drop:
   cloud_firestore:
-  image_picker: ^0.6.0+1
   firebase_storage:
-  flutter_auth_buttons: ^0.6.0
-  google_sign_in: ^4.1.1
-  flutter_facebook_login: ^3.0.0
-  provider: ^3.1.0
+  flutter_auth_buttons:
+  flutter_facebook_login:
+  provider:
   firebase_auth:
-  backdrop: ^0.2.8
-  multi_image_picker: ^4.6.2
-  flutter_webview_plugin: 0.3.10
-  avatar_glow: ^1.1.0
-  http: ^0.12.0
-  sqflite: ^1.2.0
-  path_provider: ^1.5.1
-  sliding_up_panel: ^1.0.0
-  widget_with_codeview: ^1.0.3
-  wave: ^0.0.8
-  marquee: ^1.3.1
-  smooth_page_indicator: ^0.1.2
-  flutter_flip_view: ^1.0.3
-  flip_card: ^0.4.4
-  admob_flutter: ^0.3.4
-  splashscreen: ^1.2.0
-  flushbar: ^1.9.1
-  animator: ^1.0.0
-  chewie: ^0.9.8
-  audioplayers: ^0.13.7
-  flutter_local_notifications: ^1.4.2
-  flutter_spinkit: ^2.1.0
-  carousel_slider: ^1.3.0
-  url_launcher: ^5.1.4
-  toast: ^0.1.5
-  cupertino_icons: ^0.1.2
+  backdrop:
+  multi_image_picker:
+  flutter_webview_plugin:
+  avatar_glow:
+  sliding_up_panel:
+  widget_with_codeview:
+  wave:
+  marquee:
+  smooth_page_indicator:
+  flutter_flip_view:
+  flip_card:
+  admob_flutter:
+  splashscreen:
+  flushbar:
+  animator:
+  chewie:
+  audioplayers:
+  flutter_local_notifications:
+  flutter_spinkit:
+  carousel_slider:
+  cupertino_icons:
 
 
 dev_dependencies:
@@ -76,519 +96,147 @@ flutter:
   uses-material-design: true
 
   assets:
-    - Images/Moon.png
-    - Images/Sun.png
-    - Images/GrafPixYaml.PNG
-    - Images/Circular_FAB.PNG
-    - Images/ColorPicker.PNG
-    - Images/Expandable.PNG
-    - Images/AnimatedTextKit.PNG
-    - Images/FBN.PNG
-    - Images/LB.PNG
-    - Images/CurvedNavBar.PNG
-    - assets/PdfTest.pdf
-    - assets/Music/Luncher.mp3
-    - assets/Music/Wrong.mp3
-    - assets/Music/Success.mp3
-    - assets/Music/Tap.mp3
-    - videos/LaLuna.mp4
-    - assets/Music/Despacito.mp3
-    - assets/Music/Unstoppable.mp3
-    - Images/Cover_Despacito.jpg
-    - Images/Cover_Unstoppable.jpg
-    - Images/160x160_Flutter.png
-    - Images/Dart_Logo.png
-    - Images/Flutter_Logo.png
-    - Images/Flutter_Logo_Flipped.png
-    - Images/Google_Logo.png
-    - Images/Use.png
-    - Images/Quizz.png
-    - Images/T.png
-    - Images/Keyword.png
-    - Images/Widget.png
-    - Images/Font1.png
-    - Images/Font2.png
-    - Images/Font3.png
-    - Images/Font4.png
-    - Images/Font5.png
-    - Images/Img1.png
-    - Images/Img2.png
-    - Images/Img3.png
-    - Images/R1.png
-    - Images/D1.png
-    - Images/D2.png
-    - Images/Url.png
-    - Images/R_Tips.png
-    - Images/C_Tips.png
-    - Images/FbLike.gif
-    - Images/S1.jpg
-    - Images/S2.jpg
-    - Images/S3.jpg
-    - Images/IS.PNG
-    - Images/Ntf.PNG
-    - Images/LoaderYaml.PNG
-    - Images/PdfTestAsset.PNG
-    - Images/WaterDrop.PNG
-    - Images/GoogleNavBar.PNG
-    - Images/AdvancePdfViewer.PNG
-    - Images/FireBaseAdmob.PNG
-    - Images/FBAds1.PNG
-    - Images/FBAds2.PNG
-    - Images/FBAds3.PNG
-    - Images/Clippy.PNG
-    - Images/FLN.PNG
-    - Images/CustIcon.PNG
-    - Images/Tone.PNG
-    - Images/highlight.PNG
-    - Images/WidgetWithCodeView.PNG
-    - Images/WidgetWithCodeView2.PNG
-    - Images/SQLFlite.PNG
-    - Images/WebView.PNG
-    - Images/CloudMessaging_-1.PNG
-    - Images/CloudMessaging_0.PNG
-    - Images/CloudMessaging_1.PNG
-    - Images/CloudMessaging_2.PNG
-    - Images/CloudMessaging_3.PNG
-    - Images/CloudMessaging_4.PNG
-    - Images/CloudMessaging_5.PNG
-    - Images/CloudMessaging_6.PNG
-    - Images/CloudMessaging_7.PNG
-    - Images/CloudMessaging_8.PNG
-    - Images/CloudMessaging_9.PNG
-    - Images/Glow.PNG
-    - Images/M1.PNG
-    - Images/M2.PNG
-    - Images/M3.PNG
-    - Images/V1.PNG
-    - Images/V2.PNG
-    - Images/V3.PNG
-    - Images/V4.PNG
-    - Images/V5.PNG
-    - Images/Ad1.PNG
-    - Images/Ad2.PNG
-    - Images/Ad3.PNG
-    - Images/Ad4.PNG
-    - Images/Ad5.PNG
-    - Images/Ad6.PNG
-    - Images/Ad7.PNG
-    - Images/Ad8.PNG
-    - Images/Ad9.PNG
-    - Images/Ad10.PNG
-    - Images/Ad11.PNG
-    - Images/Ad12.PNG
-    - Images/DNP1.PNG
-    - Images/DNP2.PNG
-    - Images/SUP.PNG
-    - Images/DayNightPicker.PNG
-    - Images/Anim1.PNG
-    - Images/Marquee.PNG
-    - Images/FB1.PNG
-    - Images/FFV.PNG
-    - Images/MSS.PNG
-    - Images/FC.PNG
-    - Images/FV.PNG
-    - Images/SPI.PNG
-    - Images/Waves.PNG
-    - Images/BackDrop.PNG
-    - Images/H1.PNG
-    - Images/H2.PNG
-    - Images/H3.PNG
-    - Images/H4.PNG
-    - Images/H5.PNG
-    - Images/H6.PNG
-    - Images/H7.PNG
-    - Images/H8.PNG
-    - Images/H9.PNG
-    - Images/H10.PNG
-    - Images/H11.PNG
-    - Images/H12.PNG
-    - Images/H13.PNG
-    - Images/H14.PNG
-    - Images/H15.PNG
-    - Images/H16.PNG
-    - Images/H17.PNG
-    - Images/F_1.PNG
-    - Images/F_2.PNG
-    - Images/F_3.PNG
-    - Images/F_4.PNG
-    - Images/F_5.PNG
-    - Images/F_6.PNG
-    - Images/F_7.PNG
-    - Images/F_8.PNG
-    - Images/F_9.PNG
-    - Images/F_10.PNG
-    - Images/F_11.PNG
-    - Images/F_12.PNG
-    - Images/F_13.PNG
-    - Images/F_14.PNG
-    - Images/F_15.PNG
-    - Images/F_16.PNG
-    - Images/F_17.PNG
-    - Images/F_18.PNG
-    - Images/F_19.PNG
-    - Images/F_20.PNG
-    - Images/F_21.PNG
-    - Images/Auth_1.PNG
-    - Images/Auth_2.PNG
-    - Images/Auth_3.PNG
-    - Images/Auth_4.PNG
-    - Images/AG1.PNG
-    - Images/AG2.PNG
-    - Images/AG3.PNG
-    - Images/AG4.PNG
-    - Images/AG5.PNG
-    - Images/AG6.PNG
-    - Images/AG7.PNG
-    - Images/AG8.PNG
-    - assets/sun.png
-    - assets/moon.png
-    - Images/FB_1.PNG
-    - Images/FB_2.PNG
-    - Images/FB_3.PNG
-    - Images/FB_4.PNG
-    - Images/FB_5.PNG
-    - Images/FB_6.PNG
-    - Images/FB_7.PNG
-    - Images/FB_8.PNG
-    - Images/FB_9.PNG
-    - Images/FB_10.PNG
-    - Images/FB_11.PNG
-    - Images/FB_11.PNG
-    - Images/FB_12.PNG
-    - Images/FB_13.PNG
-    - Images/FB_14.PNG
-    - Images/FB_15.PNG
-    - Images/FB_16.PNG
-    - Images/FB17.PNG
-    - Images/FB18.PNG
-    - Images/FB_19.PNG
-    - Images/FB_20.PNG
-    - Images/ContactImg.png
-    - Images/SetupSHA_Debug.PNG
-    - Images/SetupSHA_Release.PNG
-    - Images/SetupSHA_PS1.PNG
-    - Images/SetupSHA_PS2.PNG
-    - Images/SetupSHA_FireBase1.PNG
-    - Images/SetupSHA_FireBase2.PNG
-    - Images/SetupSHA_FireBase3.PNG
-    - Images/SetupSHA_FireBase4.PNG
-    - Images/ImagePicker.PNG
-    - Images/MultipleImagePicker.PNG
-    - Images/FireStorePlugin.PNG
-    - Images/FS_1.PNG
-    - Images/FS_2.PNG
-    - lib/3_Text/1_TextDirection_ltr_Run.dart
-    - lib/3_Text/2_TextDirection_rtl_Run.dart
-    - lib/3_Text/3_TextColorRun.dart
-    - lib/3_Text/4_TextBoldRun.dart
-    - lib/3_Text/5_TextItalicRun.dart
-    - lib/3_Text/6_TextUnderlineRun.dart
-    - lib/3_Text/7_TextLineTroughRun.dart
-    - lib/3_Text/8_TextOverlineRun.dart
-    - lib/3_Text/9_TextFontSizeRun.dart
-    - lib/3_Text/10_TextShadowRun.dart
-    - lib/3_Text/11_TextFontFamilyRun.dart
-    - lib/3_Text/12_TextBackgroundColorRun.dart
-    - lib/3_Text/13_RichTextRun.dart
-    - lib/3_Text/14_TextAlignCenterRun.dart
-    - lib/3_Text/15_TextAlignLeftRun.dart
-    - lib/3_Text/16_TextAlignRightRun.dart
-    - lib/4_AppBar/1_SimpleAppBarLightRun.dart
-    - lib/4_AppBar/2_SimpleAppBarDarkRun.dart
-    - lib/4_AppBar/3_SimpleAppBar_YellowBg_RedColorRun.dart
-    - lib/4_AppBar/4_AppBarGradient_Run.dart
-    - lib/4_AppBar/5_AppBarGreyBgTextCenteredIndigoLeftIconRun.dart
-    - lib/4_AppBar/6_AppBarLeftRightIconRun.dart
-    - lib/4_AppBar/7_AppBarDoubleSideIconsRun.dart
-    - lib/5_MainBg/1_MainBgCustomColorRun.dart
-    - lib/5_MainBg/2_MainBgGradientRun.dart
-    - lib/5_MainBg/3_MainBgGradientAppBarRun.dart
-    - lib/5_MainBg/4_MainBgDarkGAppBarRun.dart
-    - lib/5_MainBg/5_MainBgLightRAppBarRun.dart
-    - lib/6_Image/ImgInsImgRun.dart
-    - lib/6_Image/ImgWidthHeightRun.dart
-    - lib/6_Image/ImgNetworkRun.dart
-    - lib/7_Buttons/1_BtnSimpleRaisedBtnRun.dart
-    - lib/7_Buttons/2_BtnSimpleRaisedBtnFullWidthRun.dart
-    - lib/7_Buttons/3_BtnSimpleRaisedRoundedBtnRun.dart
-    - lib/7_Buttons/4_BtnRaisedRoundedRedBgWTxtRun.dart
-    - lib/7_Buttons/5_BtnRaisedRoundedGradientRun.dart
-    - lib/7_Buttons/6_BtnRoundedIconButtonRun.dart
-    - lib/7_Buttons/7_BtnSimpleFlatBtnRun.dart
-    - lib/7_Buttons/8_BtnFlatIconGreyBgBtnRun.dart
-    - lib/7_Buttons/9_Simple_Outline_Button.dart
-    - lib/7_Buttons/10_Style_Outline_Button.dart
-    - lib/7_Buttons/11_Round_Outline_Button.dart
-    - lib/8_Toast/1_ToastTopRun.dart
-    - lib/8_Toast/2_ToastCenterRun.dart
-    - lib/8_Toast/3_ToastBottomRun.dart
-    - lib/9_Layouts/1_Layout_Col_MainAlign_Center_Run.dart
-    - lib/9_Layouts/2_Layout_Col_MainAlign_Start_Run.dart
-    - lib/9_Layouts/3_Layout_Col_MainAlign_End_Run.dart
-    - lib/9_Layouts/4_Layout_Row_MainAlign_Center_Run.dart
-    - lib/9_Layouts/5_Layout_Row_MainAlign_Start_Run.dart
-    - lib/9_Layouts/6_Layout_Row_MainAlign_End_Run.dart
-    - lib/9_Layouts/7_Contact_List_Run.dart
-    - lib/10_Dialogs/1_Simple_Dialog_Run.dart
-    - lib/10_Dialogs/2_Custumized_Dialog_Run.dart
-    - lib/11_Divider/1_Simple_Divider_Run.dart
-    - lib/11_Divider/2_Divider_Color_Run.dart
-    - lib/11_Divider/3_Divider_WH_Run.dart
-    - lib/12_Navigation/1_Navigator_Pages_Run.dart
-    - lib/12_Navigation/2_Navigator_Links_Run.dart
-    - lib/12_Navigation/3_Navigator_Tel_Run.dart
-    - lib/12_Navigation/4_Navigator_Sms_Run.dart
-    - lib/12_Navigation/5_Navigator_Email_Run.dart
-    - lib/13_SnBar/1_Simple_SnackBar_Run.dart
-    - lib/13_SnBar/2_Simple_Red_SnackBar_Run.dart
-    - lib/13_SnBar/3_SnackBar_Duration_Run.dart
-    - lib/13_SnBar/4_SnackBar_Shape_Run.dart
-    - lib/13_SnBar/5_SnackBar_Action_Run.dart
-    - lib/14_FlushBar/1_Simple_FlushBar_Run.dart
-    - lib/14_FlushBar/2_FlushBar_Red_BackgroundColor_Run.dart
-    - lib/14_FlushBar/3_FlushBar_Yellow_Text_Run.dart
-    - lib/14_FlushBar/4_FlushBar_Icon_Run.dart
-    - lib/14_FlushBar/5_FlushBar_Main_Action_Button_Run.dart
-    - lib/14_FlushBar/6_FlushBar_Position_Run.dart
-    - lib/14_FlushBar/7_FlushBar_Duration_Run.dart
-    - lib/15_Card/1_Simple_Card_Run.dart
-    - lib/15_Card/2_Card_WH_Run.dart
-    - lib/15_Card/3_Card_Bg_Run.dart
-    - lib/15_Card/4_Card_Cust_Run.dart
-    - lib/15_Card/5_Card_Elevator_Run.dart
-    - lib/16_TextOverflow/1_TxtF_ClipRun.dart
-    - lib/16_TextOverflow/2_TxtF_EllipsisRun.dart
-    - lib/16_TextOverflow/3_TxtF_FadeRun.dart
-    - lib/16_TextOverflow/4_TxtF_VisibleRun.dart
-    - lib/17_GestureDetector/1_GestImg_Run.dart
-    - lib/17_GestureDetector/2_GestAppBarTitleRun.dart
-    - lib/17_GestureDetector/3_Tap_Coords_Run.dart
-    - lib/17_GestureDetector/4_Double_Tap.dart
-    - lib/18_ListView/1_ListView_Horizontal_Run.dart
-    - lib/18_ListView/2_ListView_Vertical_Run.dart
-    - lib/18_ListView/3_ListView_ScrollTo.dart
-    - lib/18_ListView/4_Move_To_Top_Bottom.dart
-    - lib/19_TextField/1_TextField_Simple_Run.dart
-    - lib/19_TextField/2_TextField_NoBorder_Run.dart
-    - lib/19_TextField/3_TextField_MultiLine_Run.dart
-    - lib/19_TextField/4_TextField_Icon_Run.dart
-    - lib/19_TextField/5_TextField_Style_Run.dart
-    - lib/19_TextField/6_TextField_Password_Run.dart
-    - lib/19_TextField/7_TextField_Login_Form_Run.dart
-    - lib/19_TextField/8_TextForm_Form_Validation_Run.dart
-    - lib/20_Footer/1_Simple_Footer_Run.dart
-    - lib/20_Footer/2_Bottom_NavBar_Run.dart
-    - lib/21_ImageSlider/1_IS_InitialPage_Run.dart
-    - lib/21_ImageSlider/2_IS_EnlargeCenterPage_Run.dart
-    - lib/21_ImageSlider/3_IS_AutoPlay_Run.dart
-    - lib/21_ImageSlider/4_IS_Enable_Infinite_Scroll_Run.dart
-    - lib/21_ImageSlider/5_IS_AutoPlayInterval_Run.dart
-    - lib/21_ImageSlider/6_IS_Pause_AutoPlay_OnTouch_Run.dart
-    - lib/21_ImageSlider/7_IS_ScrollDirection_Run.dart
-    - lib/21_ImageSlider/8_Slider_WIth_Button_Run.dart
-    - lib/21_ImageSlider/9_Slider_With_Caption_Run.dart
-    - lib/21_ImageSlider/10_Dots_Slider_Run.dart
-    - lib/22_Notification/1_Notification_Without_Sound_Run.dart
-    - lib/22_Notification/2_Notification_Default_Sound_Run.dart
-    - lib/22_Notification/3_Notification_Custom_Sound_Run.dart
-    - lib/22_Notification/4_Notification_Custom_Icon_Run.dart
-    - lib/23_Switch/1_Simple_Switch_Run.dart
-    - lib/23_Switch/2_Switch_AppBar_Theme_Run.dart
-    - lib/23_Switch/3_Switch_Light_Dark_Mode_Run.dart
-    - lib/24_Audio/1_Audio_Button_Sound_Run.dart
-    - lib/24_Audio/2_Audio_Music_Player_Run.dart
-    - lib/25_VideoPlayer/1_Video_From_File_Run.dart
-    - lib/25_VideoPlayer/2_Video_From_Url_Run.dart
-    - lib/26_SimpleLoader/1_SLD1_Run.dart
-    - lib/26_SimpleLoader/2_SLD2_Run.dart
-    - lib/27_Advanced_Loader/1_LD1_Run.dart
-    - lib/27_Advanced_Loader/2_LD2_Run.dart
-    - lib/27_Advanced_Loader/3_LD3_Run.dart
-    - lib/27_Advanced_Loader/4_LD4_Run.dart
-    - lib/27_Advanced_Loader/5_LD5_Run.dart
-    - lib/27_Advanced_Loader/6_LD6_Run.dart
-    - lib/27_Advanced_Loader/7_LD7_Run.dart
-    - lib/27_Advanced_Loader/8_LD8_Run.dart
-    - lib/27_Advanced_Loader/9_LD9_Run.dart
-    - lib/27_Advanced_Loader/10_LD10_Run.dart
-    - lib/27_Advanced_Loader/11_LD11_Run.dart
-    - lib/27_Advanced_Loader/12_LD12_Run.dart
-    - lib/27_Advanced_Loader/13_LD13_Run.dart
-    - lib/27_Advanced_Loader/14_LD14_Run.dart
-    - lib/27_Advanced_Loader/15_LD15_Run.dart
-    - lib/27_Advanced_Loader/16_LD16_Run.dart
-    - lib/27_Advanced_Loader/17_LD17_Run.dart
-    - lib/27_Advanced_Loader/18_LD18_Run.dart
-    - lib/27_Advanced_Loader/19_LD19_Run.dart
-    - lib/27_Advanced_Loader/20_LD20_Run.dart
-    - lib/28_Animation/1_Animation_Opacity_Run.dart
-    - lib/28_Animation/2_Animation_Fade_Run.dart
-    - lib/28_Animation/3_Animation_Tween_LtR_Run.dart
-    - lib/28_Animation/4_Animation_Tween_RtL_Run.dart
-    - lib/28_Animation/5_Animation_Rotate_Run.dart
-    - lib/28_Animation/6_Animation_Matrix4_RotZ_Run.dart
-    - lib/28_Animation/7_Animation_Matrix4_RotY_Run.dart
-    - lib/28_Animation/8_Animation_Rotation_Transition_Run.dart
-    - lib/28_Animation/9_Animation_ElasticOut_Run.dart
-    - lib/28_Animation/10_Animation_ElasticIn_Run.dart
-    - lib/28_Animation/11_Animation_BounceIn_Run.dart
-    - lib/29_Radio/1_Simple_Radio_Run.dart
-    - lib/29_Radio/2_Radio_AppBar_BackgroungColor_Changer_Run.dart
-    - lib/29_Radio/3_Radio_MainBg_Theme_Changer_Run.dart
-    - lib/30_CheckBox/1_Simple_CheckBox_Run.dart
-    - lib/30_CheckBox/2_CheckBox_Tile_Run.dart
-    - lib/31_Chip/1_SimpleChip_Run.dart
-    - lib/31_Chip/2_Chip_OnDeleted_Run.dart
-    - lib/32_TabBar/1_TopTabBar_Run.dart
-    - lib/32_TabBar/2_BottomTabBar_Run.dart
-    - lib/33_PageSelector/1_PageSelector_Simple_Run.dart
-    - lib/33_PageSelector/2_PageSelector_Btn_Run.dart
-    - lib/34_Flex/1_Image_Flex_Run.dart
-    - lib/34_Flex/2_Button_Flex_Run.dart
-    - lib/34_Flex/3_Advanced_Flex_Run.dart
-    - lib/35_SelectComboBox/1_SelectComboBox_Run.dart
-    - lib/36_ExpandableList/1_Simple_Expandable_List_Run.dart
-    - lib/36_ExpandableList/2_Expandable_List_Trail_Run.dart
-    - lib/36_ExpandableList/3_Expandable_List_BackColor_Run.dart
-    - lib/36_ExpandableList/4_Expandable_List_With_Card_And_Icon_Run.dart
-    - lib/36_ExpandableList/5_Expandable_List_Customized.dart
-    - lib/36_ExpandableList/6_Expandable_List_Sound_Run.dart
-    - lib/36_ExpandableList/7_Expandable_List_Anim_Run.dart
-    - lib/37_Slider/1_SimpleSliderRun.dart
-    - lib/37_Slider/2_SliderColorRun.dart
-    - lib/37_Slider/3_SliderMinMaxDivRun.dart
-    - lib/38_Drawer/1_Drawer_Left_Run.dart
-    - lib/38_Drawer/2_Drawer_Right_Run.dart
-    - lib/39_SplashScreenLoading/MainSplashScreenRun.dart
-    - lib/40_Admob/2_AdmobBanner_Run.dart
-    - lib/40_Admob/3_AdmobInterstitial_Run.dart
-    - lib/41_FlipCard/2_FlipCardHor_Run.dart
-    - lib/41_FlipCard/3_FlipCardVert_Run.dart
-    - lib/42_FlipView/2_SimpleFlipView.dart
-    - lib/43_Stepper/2_StepperHor_Run.dart
-    - lib/43_Stepper/3_StepperVer_Run.dart
-    - lib/44_BottomSheet/SimpleBottomSheetRun.dart
-    - lib/45_SmoothPageIndicator/2_SPI_Worm_Run.dart
-    - lib/45_SmoothPageIndicator/3_SPI_ExpDots_Run.dart
-    - lib/45_SmoothPageIndicator/4_SPI_JumpDots_Run.dart
-    - lib/45_SmoothPageIndicator/5_SPI_ScrollDots_Run.dart
-    - lib/45_SmoothPageIndicator/6_SPI_Scale_Run.dart
-    - lib/45_SmoothPageIndicator/7_SPI_Slide_Run.dart
-    - lib/46_Expandable/Simple_Expandable_Run.dart
-    - lib/47_Marquee/1_SimpleMarquee_Run.dart
-    - lib/47_Marquee/2_Marquee_ScrollAxis_Run.dart
-    - lib/47_Marquee/3_Marquee_CrossAxisAlignement_Run.dart
-    - lib/47_Marquee/4_Marquee_PauseAfterRound_Run.dart
-    - lib/47_Marquee/5_Marquee_AccelerationDuration_Run.dart
-    - lib/48_ContainerWaves/ContainerWaves_Simple_Run.dart
-    - lib/49_RouteTransition/1_RouteTransition_SlideRight.dart
-    - lib/49_RouteTransition/2_RouteTransition_SlideLeft.dart
-    - lib/49_RouteTransition/3_RouteTransition_SlideUp.dart
-    - lib/49_RouteTransition/4_RouteTransition_SlideDown.dart
-    - lib/49_RouteTransition/5_RouteTransition_Scale.dart
-    - lib/49_RouteTransition/6_RouteTransition_Rotate.dart
-    - lib/49_RouteTransition/7_RouteTransition_Size.dart
-    - lib/49_RouteTransition/8_RouteTransition_Fade.dart
-    - lib/50_Flutter_Syntaxe/1_FlutterSyntaxe_CodeView_Run.dart
-    - lib/50_Flutter_Syntaxe/2_FlutterSyntaxe_CodeAndSourceView_Run.dart
-    - lib/51_SlidingUpPanel/1_Simple_Sliding_Up_Panel_Run.dart
-    - lib/52_Popup_Menu_Button/1_Simple_AppBar_Popup_Menu_Button.dart
-    - lib/52_Popup_Menu_Button/2_ListTile_Popup_Menu_Button.dart
-    - lib/53_Hero_Animation/1_Simple_Hero.dart
-    - lib/53_Hero_Animation/2_Advanced_Hero.dart
-    - lib/54_AvatarGlow/1_AvatarGlow_1Glow.dart
-    - lib/54_AvatarGlow/2_AvatarGlow_2Glow.dart
-    - lib/54_AvatarGlow/3_AvatarGlow_More.dart
-    - lib/55_DataTable/1_DataTable_Simple.dart
-    - lib/55_DataTable/2_DataTable_Sort.dart
-    - lib/55_DataTable/3_DataTable_Insert.dart
-    - lib/55_DataTable/4_DataTable_Update.dart
-    - lib/55_DataTable/5_DataTable_Delete.dart
-    - lib/55_DataTable/6_DataTable_DeleteAll.dart
-    - lib/56_WebView/1_WebView_Simple.dart
-    - lib/57_BackDrop/1_BackDrop_Left.dart
-    - lib/57_BackDrop/2_BackDrop_Right.dart
-    - lib/57_BackDrop/3_BackDrop_Custom.dart
-    - lib/58_Animated_Icon/1_AI_1.dart
-    - lib/58_Animated_Icon/2_AI_2.dart
-    - lib/58_Animated_Icon/3_AI_3.dart
-    - lib/58_Animated_Icon/4_AI_4.dart
-    - lib/58_Animated_Icon/5_AI_5.dart
-    - lib/58_Animated_Icon/6_AI_6.dart
-    - lib/58_Animated_Icon/7_AI_7.dart
-    - lib/58_Animated_Icon/8_AI_8.dart
-    - lib/58_Animated_Icon/9_AI_9.dart
-    - lib/58_Animated_Icon/10_AI_10.dart
-    - lib/58_Animated_Icon/11_AI_11.dart
-    - lib/58_Animated_Icon/12_AI_12.dart
-    - lib/59_TinderSwipe/1_Tinder_Swipe.dart
-    - lib/60_ImagePicker/ImagePicker.dart
-    - lib/61_MultipleImagePicker/MultipleImagePicker.dart
-    - lib/62_Advance_Pdf_Viewer/1_Advance_Pdf_Viewer_Asset.dart
-    - lib/62_Advance_Pdf_Viewer/2_Advance_Pdf_Viewer_Url.dart
-    - lib/63_Google_NavBar/1_Google_NavBar.dart
-    - lib/64_Clippy/1_Clippy_Triangle.dart
-    - lib/64_Clippy/2_Clippy_Chevron.dart
-    - lib/64_Clippy/3_Clippy_Arc.dart
-    - lib/64_Clippy/4_Clippy_Diagonal.dart
-    - lib/64_Clippy/5_Clippy_Bevel.dart
-    - lib/64_Clippy/6_ButtCheek.dart
-    - lib/65_Water_Drop/1_Water_Drop.dart
-    - lib/66_DayNightPicker/1_DayNightPicker.dart
-    - lib/67_GrafPix/1_GrafPix_Icons.dart
-    - lib/67_GrafPix/2_GrafPix_Loaders.dart
-    - lib/67_GrafPix/3_GrafPix_Button.dart
-    - lib/67_GrafPix/4_GrafPix_Medal.dart
-    - lib/68_ListScrollWheel/1_Simple_ListScrollWheel.dart
-    - lib/68_ListScrollWheel/2_ListScrollWheel_ItemExtent.dart
-    - lib/68_ListScrollWheel/3_ListScrollWheel_OffAxis.dart
-    - lib/68_ListScrollWheel/4_ListScrollWheel_UseMagnifier.dart
-    - lib/69_Dialog_Transition/1_Dialog_Transition_LTR.dart
-    - lib/69_Dialog_Transition/2_Dialog_Transition_RTL.dart
-    - lib/69_Dialog_Transition/3_Dialog_Transition_TTB.dart
-    - lib/69_Dialog_Transition/4_Dialog_Transition_BTT.dart
-    - lib/70_Toggle_Button/1_Toggle_Button.dart
-    - lib/71_Selectable_Text/1_Selectable_Text.dart
-    - lib/72_GridView/1_GridView_Count.dart
-    - lib/72_GridView/2_GridView_Builder.dart
-    - lib/72_GridView/3_GridView_Custom.dart
-    - lib/72_GridView/4_GridView_Extent.dart
-    - lib/73_Curved_Navigation_Bar/1_Curved_Navigation_Bar.dart
-    - lib/74_Floating_Action_Button/1_Floating_Button_Simple.dart
-    - lib/74_Floating_Action_Button/2_Floating_Button_Animated.dart
-    - lib/74_Floating_Action_Button/3_Floating_Button_Circular.dart
-    - lib/75_ToolTip/1_ToolTip.dart
-    - lib/76_Back_Detector/1_Back_Detector.dart
-    - lib/77_Clipping/1_Clipping_Clip_Oval.dart
-    - lib/77_Clipping/2_Clipping_ClipRRect.dart
-    - lib/78_Navigation_Rail/1_NavigationBar_Rail.dart
-    - lib/79_Fancy_Bottom_NavBar/1_Fancy_Bottom_NavBar.dart
-    - lib/80_Color_Picker/1_Color_Picker.dart
-    - lib/81_Like_Button/1_Like_Button.dart
-    - lib/82_Sliver_AppBar/1_Sliver_AppBar.dart
-    - lib/Advanced/A1Run.dart
-    - lib/Advanced/A2Run.dart
-    - lib/Advanced/A3Run.dart
-    - lib/Advanced/A4Run.dart
-    - lib/Advanced/A5_Row_Layout.dart
-    - lib/Advanced/A6_Column_Layout.dart
-    - lib/Advanced/A7Run.dart
-    - lib/Advanced/A8Run.dart
-    - lib/Backend_1_SQFlite/1_SQFlite_Insert.dart
-    - lib/Backend_1_SQFlite/2_SQFlite_Update.dart
-    - lib/Backend_1_SQFlite/3_SQFlite_Delete.dart
-    - lib/Backend_1_SQFlite/4_SQFlite_DeleteAll.dart
-    - lib/Backend_2_PHP_Http/1_PHP_GetData.dart
-    - lib/Backend_2_PHP_Http/2_PHP_InsertData.dart
-    - lib/Backend_2_PHP_Http/3_PHP_Update.dart
-    - lib/Backend_2_PHP_Http/4_PHP_Delete.dart
-    - lib/Backend_2_PHP_Http/5_PHP_DeleteAll.dart
-    - lib/Backend_3_FireBase/1_FireBase_Auth_Email_FB_Google.dart
-    - lib/Backend_4_FireStore/1_FireStore.dart
-    - lib/Backend_5_FireBase_Admob/1_FireBase_Admob_Banner.dart
-    - lib/Backend_5_FireBase_Admob/2_FireBase_Admob_Interstitial.dart
-    - lib/Backend_6_FireBase_Push_Notification/FireBasePushNotification.dart
+    - assets/
+    - assets/MoreCodes/ 
+    - Images/
+    - Images/LifePath/
+    - Images/LandingPage/
+    - assets/Music/
+    - assets/TensorFlow/
+    - videos/
+    - lib/Codes_FrontEnd/2_Keywords/
+    - lib/Codes_FrontEnd/3_Text/
+    - lib/Codes_FrontEnd/4_AppBar/
+    - lib/Codes_FrontEnd/5_MainBg/
+    - lib/Codes_FrontEnd/6_Image/
+    - lib/Codes_FrontEnd/7_Buttons/
+    - lib/Codes_FrontEnd/8_Toast/
+    - lib/Codes_FrontEnd/9_Layouts/
+    - lib/Codes_FrontEnd/10_Dialogs/
+    - lib/Codes_FrontEnd/11_Divider/
+    - lib/Codes_FrontEnd/12_Navigation/
+    - lib/Codes_FrontEnd/13_SnBar/
+    - lib/Codes_FrontEnd/14_FlushBar/
+    - lib/Codes_FrontEnd/15_Card/
+    - lib/Codes_FrontEnd/16_TextOverflow/
+    - lib/Codes_FrontEnd/17_GestureDetector/
+    - lib/Codes_FrontEnd/18_ListView/
+    - lib/Codes_FrontEnd/19_TextField/
+    - lib/Codes_FrontEnd/20_Footer/
+    - lib/Codes_FrontEnd/21_ImageSlider/
+    - lib/Codes_FrontEnd/22_Notification/
+    - lib/Codes_FrontEnd/23_Switch/
+    - lib/Codes_FrontEnd/24_Audio/
+    - lib/Codes_FrontEnd/25_VideoPlayer/
+    - lib/Codes_FrontEnd/26_SimpleLoader/
+    - lib/Codes_FrontEnd/27_Advanced_Loader/
+    - lib/Codes_FrontEnd/28_Animation/
+    - lib/Codes_FrontEnd/29_Radio/
+    - lib/Codes_FrontEnd/30_CheckBox/
+    - lib/Codes_FrontEnd/31_Chip/
+    - lib/Codes_FrontEnd/32_TabBar/
+    - lib/Codes_FrontEnd/33_PageSelector/
+    - lib/Codes_FrontEnd/34_Flex/
+    - lib/Codes_FrontEnd/35_SelectComboBox/
+    - lib/Codes_FrontEnd/36_ExpandableList/
+    - lib/Codes_FrontEnd/37_Slider/
+    - lib/Codes_FrontEnd/38_Drawer/
+    - lib/Codes_FrontEnd/39_SplashScreenLoading/
+    - lib/Codes_FrontEnd/40_Admob/
+    - lib/Codes_FrontEnd/41_FlipCard/
+    - lib/Codes_FrontEnd/42_FlipView/
+    - lib/Codes_FrontEnd/43_Stepper/
+    - lib/Codes_FrontEnd/44_BottomSheet/
+    - lib/Codes_FrontEnd/45_SmoothPageIndicator/
+    - lib/Codes_FrontEnd/46_Expandable/
+    - lib/Codes_FrontEnd/47_Marquee/
+    - lib/Codes_FrontEnd/48_ContainerWaves/
+    - lib/Codes_FrontEnd/49_RouteTransition/
+    - lib/Codes_FrontEnd/50_Flutter_Syntaxe/
+    - lib/Codes_FrontEnd/51_SlidingUpPanel/
+    - lib/Codes_FrontEnd/52_Popup_Menu_Button/1_Simple_AppBar_Popup_Menu_Button.dart
+    - lib/Codes_FrontEnd/52_Popup_Menu_Button/2_ListTile_Popup_Menu_Button.dart
+    - lib/Codes_FrontEnd/53_Hero_Animation/1_Simple_Hero.dart
+    - lib/Codes_FrontEnd/53_Hero_Animation/2_Advanced_Hero.dart
+    - lib/Codes_FrontEnd/54_AvatarGlow/1_AvatarGlow_1Glow.dart
+    - lib/Codes_FrontEnd/54_AvatarGlow/2_AvatarGlow_2Glow.dart
+    - lib/Codes_FrontEnd/54_AvatarGlow/3_AvatarGlow_More.dart
+    - lib/Codes_FrontEnd/55_DataTable/
+    - lib/Codes_FrontEnd/56_WebView/1_WebView_Simple.dart
+    - lib/Codes_FrontEnd/57_BackDrop/
+    - lib/Codes_FrontEnd/58_Animated_Icon/
+    - lib/Codes_FrontEnd/59_TinderSwipe/
+    - lib/Codes_FrontEnd/60_ImagePicker/
+    - lib/Codes_FrontEnd/61_MultipleImagePicker/
+    - lib/Codes_FrontEnd/62_Advance_Pdf_Viewer/
+    - lib/Codes_FrontEnd/63_Google_NavBar/1_Google_NavBar.dart
+    - lib/Codes_FrontEnd/64_Clippy/
+    - lib/Codes_FrontEnd/65_Water_Drop/
+    - lib/Codes_FrontEnd/66_DayNightPicker/
+    - lib/Codes_FrontEnd/67_GrafPix/
+    - lib/Codes_FrontEnd/68_ListScrollWheel/
+    - lib/Codes_FrontEnd/69_Dialog_Transition/
+    - lib/Codes_FrontEnd/70_Toggle_Button/1_Toggle_Button.dart
+    - lib/Codes_FrontEnd/71_Selectable_Text/1_Selectable_Text.dart
+    - lib/Codes_FrontEnd/72_GridView/
+    - lib/Codes_FrontEnd/73_Curved_Navigation_Bar/
+    - lib/Codes_FrontEnd/74_Floating_Action_Button/
+    - lib/Codes_FrontEnd/75_ToolTip/1_ToolTip.dart
+    - lib/Codes_FrontEnd/76_Back_Detector/1_Back_Detector.dart
+    - lib/Codes_FrontEnd/77_Clipping/
+    - lib/Codes_FrontEnd/78_Navigation_Rail/
+    - lib/Codes_FrontEnd/79_Fancy_Bottom_NavBar/
+    - lib/Codes_FrontEnd/80_Color_Picker/
+    - lib/Codes_FrontEnd/81_Like_Button/
+    - lib/Codes_FrontEnd/82_Sliver_AppBar/
+    - lib/Codes_FrontEnd/83_Animated_Text_Kit/1_AnimatedTextKit_TypewriterAnimatedTextKit.dart
+    - lib/Codes_FrontEnd/83_Animated_Text_Kit/2_AnimatedTextKit_Rotate.dart
+    - lib/Codes_FrontEnd/83_Animated_Text_Kit/3_AnimatedTextKit_Fade.dart
+    - lib/Codes_FrontEnd/83_Animated_Text_Kit/4_AnimatedTextKit_Scale.dart
+    - lib/Codes_FrontEnd/83_Animated_Text_Kit/5_AnimatedTextKit_Colorize.dart
+    - lib/Codes_FrontEnd/83_Animated_Text_Kit/6_AnimatedTextKit_TextLiquidFill.dart
+    - lib/Codes_FrontEnd/83_Animated_Text_Kit/7_AnimatedTextKit_Typer.dart
+    - lib/Codes_FrontEnd/84_Foldable_SideBar/1_Foldable_SideBar.dart
+    - lib/Codes_FrontEnd/Advanced/
+    - lib/Codes_FrontEnd/85_Percent_Indicator/
+    - lib/Codes_FrontEnd/86_Connectivity/
+    - lib/Codes_FrontEnd/87_SpinCircleBottomBar/
+    - lib/Codes_FrontEnd/88_Staggered_GridView/
+    - lib/Codes_FrontEnd/89_InAppUpdate/
+    - lib/Codes_FrontEnd/90_Timer/
+    - lib/Codes_FrontEnd/91_Share/
+    - lib/Codes_FrontEnd/92_ExitApp/1_ExitApp.dart
+    - lib/Codes_FrontEnd/93_TensorFlow/
+    - lib/Codes_FrontEnd/94_PimpMyButton/
+    - lib/Codes_FrontEnd/95_AnimatedList/
+    - lib/Codes_FrontEnd/96_FlutterAppBadger/
+    - lib/Codes_FrontEnd/97_InAppPurchase/
+    - lib/Codes_FrontEnd/98_PageView_Animation/
+    - lib/Codes_FrontEnd/99_AnimatedBackground/
+    - lib/Codes_FrontEnd/100_Geolocator/
+    - lib/Codes_FrontEnd/101_GoogleMaps/
+    - lib/Codes_FrontEnd/102_KF_Drawer/
+    - lib/Codes_FrontEnd/103_GoogleTranslator/
+    - lib/Codes_FrontEnd/104_ApkAdmin/
+    - lib/Codes_BackEnd/Backend_1_SQFlite/
+    - lib/Codes_BackEnd/Backend_2_PHP_Http/
+    - lib/Codes_BackEnd/Backend_3_FireBase/
+    - lib/Codes_BackEnd/Backend_4_FireStore/
+    - lib/Codes_BackEnd/Backend_5_FireBase_Admob/
+    - lib/Codes_BackEnd/Backend_6_FireBase_Push_Notification/
+    - lib/Codes_BackEnd/Backend_7_PhoneVerificationCode/
+    - lib/Codes_BackEnd/Backend_8_HTTP_PHP_Auth/
+    - lib/Codes_BackEnd/Backend_9_HTTP_CRUD_Img/
     - lib/UsersCode/1_Davi_Contact_List/ContactList.dart
+    - lib/_UISamples/UISample_1/UISamples_1.dart
+    - lib/_UISamples/UISample_2/UISample_2.dart
+    - lib/_UISamples/UISample_3/UISample_3.dart
+    - lib/_UISamples/UISample_4/UISample_4.dart
+    - lib/_UISamples/UISample_5/UISample_5.dart
+    - lib/_UISamples/UISample_6/UISample_6.dart
+    - lib/_UISamples/UISample_7/UISample_7.dart
+    - lib/_UISamples/UISample_8/UISample_8.dart
+    - lib/_UISamples/UISample_9/UISample_9.dart
 
 
   fonts:

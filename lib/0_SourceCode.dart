@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audio_cache.dart';
-import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter_tutorials_and_quizzes/AppSoundPlay.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import 'SettingPage.dart';
-import 'UsersCodesPage.dart';
+import 'AppLang.dart';
 
 class SourceCodeUI extends StatefulWidget {
   @override
@@ -12,22 +10,10 @@ class SourceCodeUI extends StatefulWidget {
 }
 
 class SourceCodeUIState extends State<SourceCodeUI> {
-  AudioPlayer advancedPlayer;
-  AudioCache audioCache;
 
   @override
   void initState(){
     super.initState();
-    initPlayer();
-  }
-
-  void initPlayer(){
-    advancedPlayer = new AudioPlayer();
-    audioCache = new AudioCache(fixedPlayer: advancedPlayer);
-  }
-
-  void PlayTapSound() async{
-    audioCache.play('Music/Tap.mp3');
   }
 
   Widget build(BuildContext context) {
@@ -35,27 +21,26 @@ class SourceCodeUIState extends State<SourceCodeUI> {
         borderRadius:BorderRadius.circular(30.0),
       child:
       Card(
-      color: Colors.lightBlue,
+      color:(ThemeResult=="Light")?Colors.lightBlue:Colors.black.withOpacity(0.5),
       child:
       ListTile (
-        leading:new Icon(Icons.code),
+        leading:new Icon(Icons.code,color:Colors.blueGrey,size:45,),
         title: Text (
-          "App Code",
+          AppCodeTxtTrans,
           style: TextStyle(
             color: Colors.white,
             fontFamily: "Raleway",
           ),
         ),
         subtitle: Text (
-          "Want The Full Code?",
+          WantTheFullCodeTxtTrans,
           style: TextStyle(
             fontFamily: "PT Mono",
+            color:Colors.white,
           ),
         ),
         onTap: (){
-          if(SoundResult=="NotMuted"){
-            PlayTapSound();
-          }
+         PlayTapSound();
 
           showGeneralDialog(
               context: context,
@@ -93,7 +78,7 @@ class SourceCodeUIState extends State<SourceCodeUI> {
                             SizedBox (height: 14.0),
                             ListTile(
                               title:Text (
-                                "App Full Code",
+                                AppCodeTxtTrans,
                                 textAlign: TextAlign.left,
                                 style: TextStyle (
                                   color: Colors.blue,
@@ -128,7 +113,7 @@ class SourceCodeUIState extends State<SourceCodeUI> {
                             Padding(
                               padding: const EdgeInsets.all(15.0),
                               child: Text (
-                                "By Rating Us 5 Stars Code Will Stay Up To Date!\n",
+                                "$AppCodeRateTxtTrans\n",
                                 textAlign: TextAlign.left,
                                 style: TextStyle (
                                   color: Colors.indigo,

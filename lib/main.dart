@@ -1,52 +1,413 @@
 import 'dart:async';
+import 'package:kf_drawer/kf_drawer.dart';
+import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
+import 'package:in_app_purchase/in_app_purchase.dart';
+import '0_Quizzes/10_Dialogs_GenerateQuizzes.dart';
+import '0_Quizzes/11_Divider_GenerateQuizzes.dart';
+import '0_Quizzes/12_Navigation_GenerateQuizzes.dart';
+import '0_Quizzes/7_Buttons_GenerateRandomQuizzes.dart';
+import '0_Quizzes/8_Toast_GenerateQuizzes.dart';
+import '0_Quizzes/9_Layout_GenerateQuizzes.dart';
+import 'Codes_BackEnd/Backend_7_PhoneVerificationCode/1_Phone_Verification_Code.dart';
+import 'Codes_BackEnd/Backend_8_HTTP_PHP_Auth/1_HTTP_PHP_AUTH_SignIn.dart';
+import 'Codes_BackEnd/Backend_8_HTTP_PHP_Auth/1_HTTP_PHP_AUTH_SignUp.dart';
+import 'Codes_BackEnd/Backend_9_HTTP_CRUD_Img/1_HTTP_CRUD_Img_Upload.dart';
+import 'Codes_BackEnd/Backend_9_HTTP_CRUD_Img/2_HTTP_CRUD_Img_Get.dart';
+import 'Codes_BackEnd/Backend_9_HTTP_CRUD_Img/3_HTTP_CRUD_Img_Delete.dart';
+import 'Codes_FrontEnd/101_GoogleMaps/1_GoogleMap.dart';
+import 'Codes_FrontEnd/102_KF_Drawer/1_KF_Drawer.dart';
+import 'Codes_FrontEnd/103_GoogleTranslator/1_GoogleTranslator.dart';
+import 'Codes_FrontEnd/104_ApkAdmin/1_Apk_Admin.dart';
+import 'Codes_FrontEnd/10_Dialogs/3_Dialog_BarrierDismissible.dart';
+import 'Codes_FrontEnd/10_Dialogs/4_Dialog_WillPopScope.dart';
+import 'Codes_FrontEnd/2_Keywords/1_Scaffold_AvoidBottom_false.dart';
+import 'Codes_FrontEnd/2_Keywords/2_Scaffold_AvoidBottom_true.dart';
+import 'Codes_FrontEnd/2_Keywords/3_MaterialApp_Title_Theme.dart';
+import 'Codes_FrontEnd/32_TabBar/3_Top_TabBar_Hidden_Run.dart';
+import 'Codes_FrontEnd/32_TabBar/4_Bottom_TabBar_Hidden_Run.dart';
+import 'Codes_FrontEnd/55_DataTable/8_DataTable_Pagination.dart';
+import 'Codes_FrontEnd/6_Image/4_Img_Fit_Contain.dart';
+import 'Codes_FrontEnd/6_Image/5_Img_Fit_Cover.dart';
+import 'Codes_FrontEnd/6_Image/6_Img_Fit_Fill.dart';
+import 'Codes_FrontEnd/90_Timer/1_Timer_CountDown.dart';
+import 'Codes_FrontEnd/90_Timer/2_Timer_DaysCountDown.dart';
+import 'Codes_FrontEnd/91_Share/1_Share_Link.dart';
+import 'Codes_FrontEnd/91_Share/2_Share_Content.dart';
+import 'Codes_FrontEnd/92_ExitApp/1_ExitApp.dart';
+import 'Codes_FrontEnd/93_TensorFlow/1_TensorFlow_Phone_Laptop_Detector.dart';
+import 'Codes_FrontEnd/94_PimpMyButton/1_DemoParticle.dart';
+import 'Codes_FrontEnd/94_PimpMyButton/2_RectangleDemoParticle.dart';
+import 'Codes_FrontEnd/94_PimpMyButton/3_Rectangle2DemoParticle.dart';
+import 'Codes_FrontEnd/94_PimpMyButton/4_Rectangle3DemoParticle.dart';
+import 'Codes_FrontEnd/95_AnimatedList/1_AnimatedList_Insert.dart';
+import 'Codes_FrontEnd/95_AnimatedList/2_AnimatedList_Delete.dart';
+import 'Codes_FrontEnd/95_AnimatedList/3_AnimatedList_DeleteAll.dart';
+import 'Codes_FrontEnd/95_AnimatedList/4_AnimatedList_Update.dart';
+import 'Codes_FrontEnd/96_FlutterAppBadger/1_FlutterAppBadger.dart';
+import 'Codes_FrontEnd/97_InAppPurchase/1_InAppPurchase.dart';
+import 'Codes_FrontEnd/98_PageView_Animation/1_PageView_Transition1.dart';
+import 'Codes_FrontEnd/98_PageView_Animation/2_PageView_Transition2.dart';
+import 'Codes_FrontEnd/99_AnimatedBackground/1_AnimatedBackground_1.dart';
+import 'Codes_FrontEnd/99_AnimatedBackground/2_AnimatedBackground_2.dart';
+import 'Codes_FrontEnd/100_Geolocator/1_Geolocator_Positions.dart';
+import 'Codes_FrontEnd/Advanced/A12Run.dart';
+import '_Comp_Courses/Cmp_Code_Page_MoreTab.dart';
+import '_Components_DetailsList/101_Geolocator_CompList.dart';
+import '_Components_DetailsList/102_GoogleMap_CompList.dart';
+import '_Components_DetailsList/103_KFDrawer_CompList.dart';
+import '_Components_DetailsList/104_GoogleTranslator.dart';
+import '_Components_DetailsList/105_ApkAdmin_CmpList.dart';
+import '_Components_DetailsList/90_Timer_CmpList.dart';
+import '_Components_DetailsList/91_Share_CompList.dart';
+import '_Components_DetailsList/92_ExitApp_CmpList.dart';
+import '_Components_DetailsList/93_TensorFlow_CompList.dart';
+import '_Components_DetailsList/94_PimpMyButton_CompList.dart';
+import '_Components_DetailsList/95_AnimatedList_CompList.dart';
+import '_Components_DetailsList/96_FlutterAppBadger.dart';
+import '_Components_DetailsList/97_InAppPurchase_CompList.dart';
+import '_Components_DetailsList/98_PageView_Animation.dart';
+import '_Components_DetailsList/99_AnimatedBackground_CompList.dart';
+import '_Components_DetailsList/Backend_8_PHP_HTTP_AUTH_CompList.dart';
+import '_Components_DetailsList/Backend_9_PHP_HTTP_CRUD_Image_CompList.dart';
+import '_Components_DetailsList/Sample5_CompList.dart';
+import '_Components_DetailsList/Sample6_CompList.dart';
+import '_Components_DetailsList/Sample7_CompList.dart';
+import '_Components_DetailsList/Sample8_CompList.dart';
+import '_Components_DetailsList/Sample9_CompList.dart';
+import '_UISamples/UISample_1/UISamples_1.dart';
+import '_UISamples/UISample_2/UISample_2.dart';
+import '_UISamples/UISample_5/UISample_5.dart';
+import '_UISamples/UISample_7/UISample_7.dart';
+import 'CheckConnection.dart';
+import 'UpdateApp.dart';
+import 'package:flutter_tutorials_and_quizzes/Samples.dart';
+import 'AuthCheck.dart';
+import 'CheckConnection.dart';
+import 'Codes_FrontEnd/4_AppBar/8_PreferredSize_AppBar.dart';
+import 'Codes_FrontEnd/86_Connectivity/1_Connectivity.dart';
+import 'Codes_FrontEnd/87_SpinCircleBottomBar/1_SpinCircleBottomBar.dart';
+import 'Codes_FrontEnd/88_Staggered_GridView/1_Staggered_GridView.dart';
+import 'Codes_FrontEnd/88_Staggered_GridView/2_Staggered_GridView.dart';
+import 'Codes_FrontEnd/88_Staggered_GridView/3_Staggered_GridView.dart';
+import 'Codes_FrontEnd/89_InAppUpdate/1_InAppUpdate.dart';
+import 'Codes_FrontEnd/89_InAppUpdate/2_InAppUpdate.dart';
+import 'Gifts.dart';
+import 'LeaderBoard.dart';
+import 'Levels.dart';
+import 'package:flutter_tutorials_and_quizzes/LeaderBoard.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'Landing_Loading_Page_Component/Btn_Google.dart';
+import 'Landing_Loading_Page_Component/Btn_Facebook.dart';
+import 'Codes_BackEnd/Backend_1_SQFlite/1_SQFlite_Insert.dart';
+import 'Codes_BackEnd/Backend_1_SQFlite/2_SQFlite_Update.dart';
+import 'Codes_BackEnd/Backend_1_SQFlite/3_SQFlite_Delete.dart';
+import 'Codes_BackEnd/Backend_1_SQFlite/4_SQFlite_DeleteAll.dart';
+import 'Codes_BackEnd/Backend_2_PHP_Http/1_PHP_GetData.dart';
+import 'Codes_BackEnd/Backend_2_PHP_Http/2_PHP_InsertData.dart';
+import 'Codes_BackEnd/Backend_2_PHP_Http/3_PHP_Update.dart';
+import 'Codes_BackEnd/Backend_2_PHP_Http/4_PHP_Delete.dart';
+import 'Codes_BackEnd/Backend_3_FireBase/1_FireBase_Auth_Email_FB_Google.dart';
+import 'Codes_BackEnd/Backend_4_FireStore/1_FireStore.dart';
+import 'Codes_BackEnd/Backend_5_FireBase_Admob/1_FireBase_Admob_Banner.dart';
+import 'Codes_BackEnd/Backend_5_FireBase_Admob/2_FireBase_Admob_Interstitial.dart';
+import 'Codes_FrontEnd/10_Dialogs/1_Simple_Dialog_Run.dart';
+import 'Codes_FrontEnd/10_Dialogs/2_Custumized_Dialog_Run.dart';
+import 'Codes_FrontEnd/11_Divider/1_Simple_Divider_Run.dart';
+import 'Codes_FrontEnd/11_Divider/2_Divider_Color_Run.dart';
+import 'Codes_FrontEnd/11_Divider/3_Divider_WH_Run.dart';
+import 'Codes_FrontEnd/12_Navigation/1_Navigator_Pages_Run.dart';
+import 'Codes_FrontEnd/12_Navigation/2_Navigator_Links_Run.dart';
+import 'Codes_FrontEnd/12_Navigation/3_Navigator_Tel_Run.dart';
+import 'Codes_FrontEnd/12_Navigation/4_Navigator_Sms_Run.dart';
+import 'Codes_FrontEnd/12_Navigation/5_Navigator_Email_Run.dart';
+import 'Codes_FrontEnd/13_SnBar/1_Simple_SnackBar_Run.dart';
+import 'Codes_FrontEnd/13_SnBar/2_Simple_Red_SnackBar_Run.dart';
+import 'Codes_FrontEnd/13_SnBar/3_SnackBar_Duration_Run.dart';
+import 'Codes_FrontEnd/13_SnBar/4_SnackBar_Shape_Run.dart';
+import 'Codes_FrontEnd/13_SnBar/5_SnackBar_Action_Run.dart';
+import 'Codes_FrontEnd/14_FlushBar/1_Simple_FlushBar_Run.dart';
+import 'Codes_FrontEnd/14_FlushBar/2_FlushBar_Red_BackgroundColor_Run.dart';
+import 'Codes_FrontEnd/14_FlushBar/3_FlushBar_Yellow_Text_Run.dart';
+import 'Codes_FrontEnd/14_FlushBar/4_FlushBar_Icon_Run.dart';
+import 'Codes_FrontEnd/14_FlushBar/5_FlushBar_Main_Action_Button_Run.dart';
+import 'Codes_FrontEnd/14_FlushBar/6_FlushBar_Position_Run.dart';
+import 'Codes_FrontEnd/14_FlushBar/7_FlushBar_Duration_Run.dart';
+import 'Codes_FrontEnd/15_Card/1_Simple_Card_Run.dart';
+import 'Codes_FrontEnd/15_Card/2_Card_WH_Run.dart';
+import 'Codes_FrontEnd/15_Card/3_Card_Bg_Run.dart';
+import 'Codes_FrontEnd/15_Card/4_Card_Cust_Run.dart';
+import 'Codes_FrontEnd/15_Card/5_Card_Elevator_Run.dart';
+import 'Codes_FrontEnd/16_TextOverflow/1_TxtF_ClipRun.dart';
+import 'Codes_FrontEnd/16_TextOverflow/2_TxtF_EllipsisRun.dart';
+import 'Codes_FrontEnd/16_TextOverflow/3_TxtF_FadeRun.dart';
+import 'Codes_FrontEnd/16_TextOverflow/4_TxtF_VisibleRun.dart';
+import 'Codes_FrontEnd/17_GestureDetector/1_GestImg_Run.dart';
+import 'Codes_FrontEnd/17_GestureDetector/2_GestAppBarTitleRun.dart';
+import 'Codes_FrontEnd/17_GestureDetector/3_Tap_Coords_Run.dart';
+import 'Codes_FrontEnd/17_GestureDetector/4_Double_Tap.dart';
+import 'Codes_FrontEnd/18_ListView/1_ListView_Horizontal_Run.dart';
+import 'Codes_FrontEnd/18_ListView/2_ListView_Vertical_Run.dart';
+import 'Codes_FrontEnd/18_ListView/3_ListView_ScrollTo.dart';
+import 'Codes_FrontEnd/18_ListView/4_Move_To_Top_Bottom.dart';
+import 'Codes_FrontEnd/19_TextField/1_TextField_Simple_Run.dart';
+import 'Codes_FrontEnd/19_TextField/2_TextField_NoBorder_Run.dart';
+import 'Codes_FrontEnd/19_TextField/3_TextField_MultiLine_Run.dart';
+import 'Codes_FrontEnd/19_TextField/4_TextField_Icon_Run.dart';
+import 'Codes_FrontEnd/19_TextField/5_TextField_Style_Run.dart';
+import 'Codes_FrontEnd/19_TextField/6_TextField_Password_Run.dart';
+import 'Codes_FrontEnd/19_TextField/7_TextField_Login_Form_Run.dart';
+import 'Codes_FrontEnd/19_TextField/8_TextForm_Form_Validation_Run.dart';
+import 'Codes_FrontEnd/20_Footer/1_Simple_Footer_Run.dart';
+import 'Codes_FrontEnd/20_Footer/2_Bottom_NavBar_Run.dart';
+import 'Codes_FrontEnd/21_ImageSlider/10_Dots_Slider_Run.dart';
+import 'Codes_FrontEnd/21_ImageSlider/1_IS_InitialPage_Run.dart';
+import 'Codes_FrontEnd/21_ImageSlider/2_IS_EnlargeCenterPage_Run.dart';
+import 'Codes_FrontEnd/21_ImageSlider/3_IS_AutoPlay_Run.dart';
+import 'Codes_FrontEnd/21_ImageSlider/4_IS_Enable_Infinite_Scroll_Run.dart';
+import 'Codes_FrontEnd/21_ImageSlider/5_IS_AutoPlayInterval_Run.dart';
+import 'Codes_FrontEnd/21_ImageSlider/6_IS_Pause_AutoPlay_OnTouch_Run.dart';
+import 'Codes_FrontEnd/21_ImageSlider/7_IS_ScrollDirection_Run.dart';
+import 'Codes_FrontEnd/21_ImageSlider/8_Slider_WIth_Button_Run.dart';
+import 'Codes_FrontEnd/21_ImageSlider/9_Slider_With_Caption_Run.dart';
+import 'Codes_FrontEnd/22_Notification/1_Notification_Without_Sound_Run.dart';
+import 'Codes_FrontEnd/22_Notification/2_Notification_Default_Sound_Run.dart';
+import 'Codes_FrontEnd/22_Notification/3_Notification_Custom_Sound_Run.dart';
+import 'Codes_FrontEnd/22_Notification/4_Notification_Custom_Icon_Run.dart';
+import 'Codes_FrontEnd/22_Notification/5_Notification_Daily.dart';
+import 'Codes_FrontEnd/23_Switch/1_Simple_Switch_Run.dart';
+import 'Codes_FrontEnd/23_Switch/2_Switch_AppBar_Theme_Run.dart';
+import 'Codes_FrontEnd/23_Switch/3_Switch_Light_Dark_Mode_Run.dart';
+import 'Codes_FrontEnd/24_Audio/1_Audio_Button_Sound_Run.dart';
+import 'Codes_FrontEnd/24_Audio/2_Audio_Music_Player_Run.dart';
+import 'Codes_FrontEnd/25_VideoPlayer/1_Video_From_File_Run.dart';
+import 'Codes_FrontEnd/25_VideoPlayer/2_Video_From_Url_Run.dart';
+import 'Codes_FrontEnd/26_SimpleLoader/1_SLD1_Run.dart';
+import 'Codes_FrontEnd/26_SimpleLoader/2_SLD2_Run.dart';
+import 'Codes_FrontEnd/28_Animation/10_Animation_ElasticIn_Run.dart';
+import 'Codes_FrontEnd/28_Animation/11_Animation_BounceIn_Run.dart';
+import 'Codes_FrontEnd/28_Animation/1_Animation_Opacity_Run.dart';
+import 'Codes_FrontEnd/28_Animation/2_Animation_Fade_Run.dart';
+import 'Codes_FrontEnd/28_Animation/3_Animation_Tween_LtR_Run.dart';
+import 'Codes_FrontEnd/28_Animation/4_Animation_Tween_RtL_Run.dart';
+import 'Codes_FrontEnd/28_Animation/5_Animation_Rotate_Run.dart';
+import 'Codes_FrontEnd/28_Animation/6_Animation_Matrix4_RotZ_Run.dart';
+import 'Codes_FrontEnd/28_Animation/7_Animation_Matrix4_RotY_Run.dart';
+import 'Codes_FrontEnd/28_Animation/8_Animation_Rotation_Transition_Run.dart';
+import 'Codes_FrontEnd/28_Animation/9_Animation_ElasticOut_Run.dart';
+import 'Codes_FrontEnd/29_Radio/1_Simple_Radio_Run.dart';
+import 'Codes_FrontEnd/29_Radio/2_Radio_AppBar_BackgroungColor_Changer_Run.dart';
+import 'Codes_FrontEnd/29_Radio/3_Radio_MainBg_Theme_Changer_Run.dart';
+import 'Codes_FrontEnd/30_CheckBox/1_Simple_CheckBox_Run.dart';
+import 'Codes_FrontEnd/30_CheckBox/2_CheckBox_Tile_Run.dart';
+import 'Codes_FrontEnd/31_Chip/1_SimpleChip_Run.dart';
+import 'Codes_FrontEnd/31_Chip/2_Chip_OnDeleted_Run.dart';
+import 'Codes_FrontEnd/32_TabBar/1_TopTabBar_Run.dart';
+import 'Codes_FrontEnd/32_TabBar/2_BottomTabBar_Run.dart';
+import 'Codes_FrontEnd/33_PageSelector/1_PageSelector_Simple_Run.dart';
+import 'Codes_FrontEnd/33_PageSelector/2_PageSelector_Btn_Run.dart';
+import 'Codes_FrontEnd/34_Flex/1_Image_Flex_Run.dart';
+import 'Codes_FrontEnd/34_Flex/2_Button_Flex_Run.dart';
+import 'Codes_FrontEnd/34_Flex/3_Advanced_Flex_Run.dart';
+import 'Codes_FrontEnd/35_SelectComboBox/1_SelectComboBox_Run.dart';
+import 'Codes_FrontEnd/36_ExpandableList/1_Simple_Expandable_List_Run.dart';
+import 'Codes_FrontEnd/36_ExpandableList/2_Expandable_List_Trail_Run.dart';
+import 'Codes_FrontEnd/36_ExpandableList/3_Expandable_List_BackColor_Run.dart';
+import 'Codes_FrontEnd/36_ExpandableList/4_Expandable_List_With_Card_And_Icon_Run.dart';
+import 'Codes_FrontEnd/36_ExpandableList/5_Expandable_List_Customized.dart';
+import 'Codes_FrontEnd/36_ExpandableList/6_Expandable_List_Sound_Run.dart';
+import 'Codes_FrontEnd/36_ExpandableList/7_Expandable_List_Anim_Run.dart';
+import 'Codes_FrontEnd/37_Slider/1_SimpleSliderRun.dart';
+import 'Codes_FrontEnd/37_Slider/2_SliderColorRun.dart';
+import 'Codes_FrontEnd/37_Slider/3_SliderMinMaxDivRun.dart';
+import 'Codes_FrontEnd/38_Drawer/1_Drawer_Left_Run.dart';
+import 'Codes_FrontEnd/38_Drawer/2_Drawer_Right_Run.dart';
+import 'Codes_FrontEnd/39_SplashScreenLoading/MainSplashScreenRun.dart';
+import 'Codes_FrontEnd/3_Text/10_TextShadowRun.dart';
+import 'Codes_FrontEnd/3_Text/11_TextFontFamilyRun.dart';
+import 'Codes_FrontEnd/3_Text/12_TextBackgroundColorRun.dart';
+import 'Codes_FrontEnd/3_Text/13_RichTextRun.dart';
+import 'Codes_FrontEnd/3_Text/14_TextAlignCenterRun.dart';
+import 'Codes_FrontEnd/3_Text/15_TextAlignLeftRun.dart';
+import 'Codes_FrontEnd/3_Text/16_TextAlignRightRun.dart';
+import 'Codes_FrontEnd/3_Text/1_TextDirection_ltr_Run.dart';
+import 'Codes_FrontEnd/3_Text/2_TextDirection_rtl_Run.dart';
+import 'Codes_FrontEnd/3_Text/3_TextColorRun.dart';
+import 'Codes_FrontEnd/3_Text/4_TextBoldRun.dart';
+import 'Codes_FrontEnd/3_Text/5_TextItalicRun.dart';
+import 'Codes_FrontEnd/3_Text/6_TextUnderlineRun.dart';
+import 'Codes_FrontEnd/3_Text/7_TextLineTroughRun.dart';
+import 'Codes_FrontEnd/3_Text/8_TextOverlineRun.dart';
+import 'Codes_FrontEnd/3_Text/9_TextFontSizeRun.dart';
+import 'Codes_FrontEnd/40_Admob/2_AdmobBanner_Run.dart';
+import 'Codes_FrontEnd/40_Admob/3_AdmobInterstitial_Run.dart';
+import 'Codes_FrontEnd/41_FlipCard/2_FlipCardHor_Run.dart';
+import 'Codes_FrontEnd/41_FlipCard/3_FlipCardVert_Run.dart';
+import 'Codes_FrontEnd/42_FlipView/2_SimpleFlipView.dart';
+import 'Codes_FrontEnd/43_Stepper/2_StepperHor_Run.dart';
+import 'Codes_FrontEnd/43_Stepper/3_StepperVer_Run.dart';
+import 'Codes_FrontEnd/44_BottomSheet/SimpleBottomSheetRun.dart';
+import 'Codes_FrontEnd/45_SmoothPageIndicator/2_SPI_Worm_Run.dart';
+import 'Codes_FrontEnd/45_SmoothPageIndicator/3_SPI_ExpDots_Run.dart';
+import 'Codes_FrontEnd/45_SmoothPageIndicator/4_SPI_JumpDots_Run.dart';
+import 'Codes_FrontEnd/45_SmoothPageIndicator/5_SPI_ScrollDots_Run.dart';
+import 'Codes_FrontEnd/45_SmoothPageIndicator/6_SPI_Scale_Run.dart';
+import 'Codes_FrontEnd/45_SmoothPageIndicator/7_SPI_Slide_Run.dart';
+import 'Codes_FrontEnd/46_Expandable/Simple_Expandable_Run.dart';
+import 'Codes_FrontEnd/47_Marquee/1_SimpleMarquee_Run.dart';
+import 'Codes_FrontEnd/47_Marquee/2_Marquee_ScrollAxis_Run.dart';
+import 'Codes_FrontEnd/47_Marquee/3_Marquee_CrossAxisAlignement_Run.dart';
+import 'Codes_FrontEnd/47_Marquee/4_Marquee_PauseAfterRound_Run.dart';
+import 'Codes_FrontEnd/47_Marquee/5_Marquee_AccelerationDuration_Run.dart';
+import 'Codes_FrontEnd/48_ContainerWaves/ContainerWaves_Simple_Run.dart';
+import 'Codes_FrontEnd/49_RouteTransition/1_RouteTransition_SlideRight.dart';
+import 'Codes_FrontEnd/49_RouteTransition/2_RouteTransition_SlideLeft.dart';
+import 'Codes_FrontEnd/49_RouteTransition/3_RouteTransition_SlideUp.dart';
+import 'Codes_FrontEnd/49_RouteTransition/4_RouteTransition_SlideDown.dart';
+import 'Codes_FrontEnd/49_RouteTransition/5_RouteTransition_Scale.dart';
+import 'Codes_FrontEnd/49_RouteTransition/6_RouteTransition_Rotate.dart';
+import 'Codes_FrontEnd/49_RouteTransition/7_RouteTransition_Size.dart';
+import 'Codes_FrontEnd/49_RouteTransition/8_RouteTransition_Fade.dart';
+import 'Codes_FrontEnd/4_AppBar/1_SimpleAppBarLightRun.dart';
+import 'Codes_FrontEnd/4_AppBar/2_SimpleAppBarDarkRun.dart';
+import 'Codes_FrontEnd/4_AppBar/3_SimpleAppBar_YellowBg_RedColorRun.dart';
+import 'Codes_FrontEnd/4_AppBar/4_AppBarGradient_Run.dart';
+import 'Codes_FrontEnd/4_AppBar/5_AppBarGreyBgTextCenteredIndigoLeftIconRun.dart';
+import 'Codes_FrontEnd/4_AppBar/6_AppBarLeftRightIconRun.dart';
+import 'Codes_FrontEnd/4_AppBar/7_AppBarDoubleSideIconsRun.dart';
+import 'Codes_FrontEnd/50_Flutter_Syntaxe/1_FlutterSyntaxe_CodeView_Run.dart';
+import 'Codes_FrontEnd/50_Flutter_Syntaxe/2_FlutterSyntaxe_CodeAndSourceView_Run.dart';
+import 'Codes_FrontEnd/51_SlidingUpPanel/1_Simple_Sliding_Up_Panel_Run.dart';
+import 'Codes_FrontEnd/52_Popup_Menu_Button/1_Simple_AppBar_Popup_Menu_Button.dart';
+import 'Codes_FrontEnd/52_Popup_Menu_Button/2_ListTile_Popup_Menu_Button.dart';
+import 'Codes_FrontEnd/53_Hero_Animation/1_Simple_Hero.dart';
+import 'Codes_FrontEnd/53_Hero_Animation/2_Advanced_Hero.dart';
+import 'Codes_FrontEnd/54_AvatarGlow/1_AvatarGlow_1Glow.dart';
+import 'Codes_FrontEnd/54_AvatarGlow/2_AvatarGlow_2Glow.dart';
+import 'Codes_FrontEnd/54_AvatarGlow/3_AvatarGlow_More.dart';
+import 'Codes_FrontEnd/55_DataTable/1_DataTable_Simple.dart';
+import 'Codes_FrontEnd/55_DataTable/2_DataTable_Sort.dart';
+import 'Codes_FrontEnd/55_DataTable/3_DataTable_Insert.dart';
+import 'Codes_FrontEnd/55_DataTable/4_DataTable_Update.dart';
+import 'Codes_FrontEnd/55_DataTable/5_DataTable_Delete.dart';
+import 'Codes_FrontEnd/55_DataTable/6_DataTable_DeleteAll.dart';
+import 'Codes_FrontEnd/55_DataTable/7_DataTable_BgColor.dart';
+import 'Codes_FrontEnd/56_WebView/1_WebView_Simple.dart';
+import 'Codes_FrontEnd/57_BackDrop/1_BackDrop_Left.dart';
+import 'Codes_FrontEnd/57_BackDrop/2_BackDrop_Right.dart';
+import 'Codes_FrontEnd/57_BackDrop/3_BackDrop_Custom.dart';
+import 'Codes_FrontEnd/59_TinderSwipe/1_Tinder_Swipe.dart';
+import 'Codes_FrontEnd/5_MainBg/1_MainBgCustomColorRun.dart';
+import 'Codes_FrontEnd/5_MainBg/2_MainBgGradientRun.dart';
+import 'Codes_FrontEnd/5_MainBg/3_MainBgGradientAppBarRun.dart';
+import 'Codes_FrontEnd/5_MainBg/4_MainBgDarkGAppBarRun.dart';
+import 'Codes_FrontEnd/5_MainBg/5_MainBgLightRAppBarRun.dart';
+import 'Codes_FrontEnd/60_ImagePicker/ImagePicker.dart';
+import 'Codes_FrontEnd/61_MultipleImagePicker/MultipleImagePicker.dart';
+import 'Codes_FrontEnd/62_Advance_Pdf_Viewer/1_Advance_Pdf_Viewer_Asset.dart';
+import 'Codes_FrontEnd/62_Advance_Pdf_Viewer/2_Advance_Pdf_Viewer_Url.dart';
+import 'Codes_FrontEnd/63_Google_NavBar/1_Google_NavBar.dart';
+import 'Codes_FrontEnd/64_Clippy/1_Clippy_Triangle.dart';
+import 'Codes_FrontEnd/64_Clippy/2_Clippy_Chevron.dart';
+import 'Codes_FrontEnd/64_Clippy/3_Clippy_Arc.dart';
+import 'Codes_FrontEnd/64_Clippy/4_Clippy_Diagonal.dart';
+import 'Codes_FrontEnd/64_Clippy/5_Clippy_Bevel.dart';
+import 'Codes_FrontEnd/64_Clippy/6_Buttcheek.dart';
+import 'Codes_FrontEnd/65_Water_Drop/1_Water_Drop.dart';
+import 'Codes_FrontEnd/66_DayNightPicker/1_DayNightPicker.dart';
+import 'Codes_FrontEnd/67_GrafPix/1_GrafPix_Icons.dart';
+import 'Codes_FrontEnd/67_GrafPix/2_GrafPix_Loaders.dart';
+import 'Codes_FrontEnd/67_GrafPix/3_GrafPix_Button.dart';
+import 'Codes_FrontEnd/68_ListScrollWheel/1_Simple_ListScrollWheel.dart';
+import 'Codes_FrontEnd/68_ListScrollWheel/2_ListScrollWheel_ItemExtent.dart';
+import 'Codes_FrontEnd/68_ListScrollWheel/3_ListScrollWheel_OffAxis.dart';
+import 'Codes_FrontEnd/68_ListScrollWheel/4_ListScrollWheel_UseMagnifier.dart';
+import 'Codes_FrontEnd/69_Dialog_Transition/1_Dialog_Transition_LTR.dart';
+import 'Codes_FrontEnd/69_Dialog_Transition/2_Dialog_Transition_RTL.dart';
+import 'Codes_FrontEnd/69_Dialog_Transition/3_Dialog_Transition_TTB.dart';
+import 'Codes_FrontEnd/69_Dialog_Transition/4_Dialog_Transition_BTT.dart';
+import 'Codes_FrontEnd/6_Image/ImgInsImgRun.dart';
+import 'Codes_FrontEnd/6_Image/ImgNetworkRun.dart';
+import 'Codes_FrontEnd/6_Image/ImgWidthHeightRun.dart';
+import 'Codes_FrontEnd/70_Toggle_Button/1_Toggle_Button.dart';
+import 'Codes_FrontEnd/71_Selectable_Text/1_Selectable_Text.dart';
+import 'Codes_FrontEnd/72_GridView/1_GridView_Count.dart';
+import 'Codes_FrontEnd/72_GridView/2_GridView_Builder.dart';
+import 'Codes_FrontEnd/72_GridView/3_GridView_Custom.dart';
+import 'Codes_FrontEnd/72_GridView/4_GridView_Extent.dart';
+import 'Codes_FrontEnd/73_Curved_Navigation_Bar/1_Curved_Navigation_Bar.dart';
+import 'Codes_FrontEnd/74_Floating_Action_Button/1_Floating_Button_Simple.dart';
+import 'Codes_FrontEnd/74_Floating_Action_Button/2_Floating_Button_Animated.dart';
+import 'Codes_FrontEnd/74_Floating_Action_Button/3_Floating_Button_Circular.dart';
+import 'Codes_FrontEnd/75_ToolTip/1_ToolTip.dart';
+import 'Codes_FrontEnd/76_Back_Detector/1_Back_Detector.dart';
+import 'Codes_FrontEnd/77_Clipping/1_Clipping_Clip_Oval.dart';
+import 'Codes_FrontEnd/77_Clipping/2_Clipping_ClipRRect.dart';
+import 'Codes_FrontEnd/78_Navigation_Rail/1_NavigationBar_Rail.dart';
+import 'Codes_FrontEnd/79_Fancy_Bottom_NavBar/1_Fancy_Bottom_NavBar.dart';
+import 'Codes_FrontEnd/7_Buttons/10_Style_Outline_Button.dart';
+import 'Codes_FrontEnd/7_Buttons/11_Round_Outline_Button.dart';
+import 'Codes_FrontEnd/7_Buttons/1_BtnSimpleRaisedBtnRun.dart';
+import 'Codes_FrontEnd/7_Buttons/2_BtnSimpleRaisedBtnFullWidthRun.dart';
+import 'Codes_FrontEnd/7_Buttons/3_BtnSimpleRaisedRoundedBtnRun.dart';
+import 'Codes_FrontEnd/7_Buttons/4_BtnRaisedRoundedRedBgWTxtRun.dart';
+import 'Codes_FrontEnd/7_Buttons/5_BtnRaisedRoundedGradientRun.dart';
+import 'Codes_FrontEnd/7_Buttons/6_BtnRoundedIconButtonRun.dart';
+import 'Codes_FrontEnd/7_Buttons/7_BtnSimpleFlatBtnRun.dart';
+import 'Codes_FrontEnd/7_Buttons/8_BtnFlatIconGreyBgBtnRun.dart';
+import 'Codes_FrontEnd/7_Buttons/9_Simple_Outline_Button.dart';
+import 'Codes_FrontEnd/80_Color_Picker/1_Color_Picker.dart';
+import 'Codes_FrontEnd/81_Like_Button/1_Like_Button.dart';
+import 'Codes_FrontEnd/82_Sliver_AppBar/1_Sliver_AppBar.dart';
+import 'Codes_FrontEnd/83_Animated_Text_Kit/1_AnimatedTextKit_TypewriterAnimatedTextKit.dart';
+import 'Codes_FrontEnd/83_Animated_Text_Kit/2_AnimatedTextKit_Rotate.dart';
+import 'Codes_FrontEnd/83_Animated_Text_Kit/3_AnimatedTextKit_Fade.dart';
+import 'Codes_FrontEnd/83_Animated_Text_Kit/4_AnimatedTextKit_Scale.dart';
+import 'Codes_FrontEnd/83_Animated_Text_Kit/5_AnimatedTextKit_Colorize.dart';
+import 'Codes_FrontEnd/83_Animated_Text_Kit/6_AnimatedTextKit_TextLiquidFill.dart';
+import 'Codes_FrontEnd/83_Animated_Text_Kit/7_AnimatedTextKit_Typer.dart';
+import 'Codes_FrontEnd/84_Foldable_SideBar/1_Foldable_SideBar.dart';
+import 'Codes_FrontEnd/85_Percent_Indicator/1_CircularPercentIndicator.dart';
+import 'Codes_FrontEnd/85_Percent_Indicator/2_LinearPercentIndicator.dart';
+import 'Codes_FrontEnd/85_Percent_Indicator/3_Advanced_LinearPercentIndicator.dart';
+import 'Codes_FrontEnd/8_Toast/1_ToastTopRun.dart';
+import 'Codes_FrontEnd/8_Toast/2_ToastCenterRun.dart';
+import 'Codes_FrontEnd/8_Toast/3_ToastBottomRun.dart';
+import 'Codes_FrontEnd/9_Layouts/1_Layout_Col_MainAlign_Center_Run.dart';
+import 'Codes_FrontEnd/9_Layouts/2_Layout_Col_MainAlign_Start_Run.dart';
+import 'Codes_FrontEnd/9_Layouts/3_Layout_Col_MainAlign_End_Run.dart';
+import 'Codes_FrontEnd/9_Layouts/4_Layout_Row_MainAlign_Center_Run.dart';
+import 'Codes_FrontEnd/9_Layouts/5_Layout_Row_MainAlign_Start_Run.dart';
+import 'Codes_FrontEnd/9_Layouts/6_Layout_Row_MainAlign_End_Run.dart';
+import 'Codes_FrontEnd/9_Layouts/7_Contact_List_Run.dart';
+import 'Codes_FrontEnd/Advanced/A1Run.dart';
+import 'Codes_FrontEnd/Advanced/A2Run.dart';
+import 'Codes_FrontEnd/Advanced/A3Run.dart';
+import 'Codes_FrontEnd/Advanced/A4Run.dart';
+import 'Codes_FrontEnd/Advanced/A5_Row_Layout.dart';
+import 'Codes_FrontEnd/Advanced/A6_Column_Layout.dart';
+import 'Codes_FrontEnd/Advanced/A7Run.dart';
+import 'Codes_FrontEnd/Advanced/A8Run.dart';
+import 'Codes_FrontEnd/Advanced/A9Run.dart';
+import 'Codes_FrontEnd/Advanced/A10Run.dart';
+import 'Codes_FrontEnd/Advanced/A11Run.dart';
+
+import 'Landing_Login_Page.dart';
+import 'Profile.dart';
 import 'dart:io' as io;
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:flutter_tutorials_and_quizzes/67_GrafPix/4_GrafPix_Medal.dart';
-import 'package:path/path.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/67_GrafPix/4_GrafPix_Medal.dart';
+import 'package:flutter_tutorials_and_quizzes/UserDataInfo.dart';
+import 'package:flutter_tutorials_and_quizzes/_Components_DetailsList/83_AanimtedTextKit_ComLst.dart';
+import 'package:flutter_tutorials_and_quizzes/_Components_DetailsList/84_FoldableSideBar_CompList.dart';
+import 'package:flutter_tutorials_and_quizzes/_Components_DetailsList/Sample1_CompList.dart';
+import 'package:flutter_tutorials_and_quizzes/_Components_DetailsList/Sample2_CompList.dart';
+import 'package:flutter_tutorials_and_quizzes/_Components_DetailsList/Sample3_CompList.dart';
+import 'package:flutter_tutorials_and_quizzes/_Components_DetailsList/Sample4_CompList.dart';
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '17_GestureDetector/4_Double_Tap.dart';
-import '18_ListView/4_Move_To_Top_Bottom.dart';
-import '66_DayNightPicker/1_DayNightPicker.dart';
-import '67_GrafPix/1_GrafPix_Icons.dart';
-import '67_GrafPix/3_GrafPix_Button.dart';
-import '67_GrafPix/2_GrafPix_Loaders.dart';
-import '68_ListScrollWheel/1_Simple_ListScrollWheel.dart';
-import '68_ListScrollWheel/2_ListScrollWheel_ItemExtent.dart';
-import '68_ListScrollWheel/3_ListScrollWheel_OffAxis.dart';
-import '68_ListScrollWheel/4_ListScrollWheel_UseMagnifier.dart';
-import '69_Dialog_Transition/1_Dialog_Transition_LTR.dart';
-import '69_Dialog_Transition/2_Dialog_Transition_RTL.dart';
-import '69_Dialog_Transition/3_Dialog_Transition_TTB.dart';
-import '69_Dialog_Transition/4_Dialog_Transition_BTT.dart';
-import '70_Toggle_Button/1_Toggle_Button.dart';
-import '71_Selectable_Text/1_Selectable_Text.dart';
-import '72_GridView/1_GridView_Count.dart';
-import '72_GridView/2_GridView_Builder.dart';
-import '72_GridView/3_GridView_Custom.dart';
-import '72_GridView/4_GridView_Extent.dart';
-import '73_Curved_Navigation_Bar/1_Curved_Navigation_Bar.dart';
-import '74_Floating_Action_Button/1_Floating_Button_Simple.dart';
-import '74_Floating_Action_Button/2_Floating_Button_Animated.dart';
-import '74_Floating_Action_Button/3_Floating_Button_Circular.dart';
-import '75_ToolTip/1_ToolTip.dart';
-import '76_Back_Detector/1_Back_Detector.dart';
-import '77_Clipping/1_Clipping_Clip_Oval.dart';
-import '77_Clipping/2_Clipping_ClipRRect.dart';
-import '78_Navigation_Rail/1_NavigationBar_Rail.dart';
-import '79_Fancy_Bottom_NavBar/1_Fancy_Bottom_NavBar.dart';
-import '80_Color_Picker/1_Color_Picker.dart';
-import '81_Like_Button/1_Like_Button.dart';
-import '82_Sliver_AppBar/1_Sliver_AppBar.dart';
-import 'Advanced/A5_Row_Layout.dart';
-import 'Advanced/A6_Column_Layout.dart';
-import 'Advanced/A7Run.dart';
-import 'Advanced/A8Run.dart';
-import 'Backend_5_FireBase_Admob/1_FireBase_Admob_Banner.dart';
 import 'LoadFireBaseAdmob.dart';
 import 'MainSplashScreen.dart';
 import 'Page_BackEnd.dart';
@@ -57,252 +418,18 @@ import 'UpdatePage.dart';
 import 'Updated.dart';
 import 'UsersCode/1_Davi_Contact_List/ContactList.dart';
 import '_Comp_Courses/Cmp_Intro_Page.dart';
+import '_Components_DetailsList/1001_Production_CompList.dart';
 import '_Components_DetailsList/1_Introduction_CompList.dart';
 import 'package:flutter_tutorials_and_quizzes/MainSplashScreen.dart';
 import '0_Quizzes/1_Intro_GenerateQuizzes.dart';
 import '0_Quizzes/2_Keywords_GenerateQuizzes.dart';
 import '0_Quizzes/4_AppBar_GenerateQuizzes.dart';
-import '10_Dialogs/1_Simple_Dialog_Run.dart';
-import '10_Dialogs/2_Custumized_Dialog_Run.dart';
-import '11_Divider/1_Simple_Divider_Run.dart';
-import '11_Divider/2_Divider_Color_Run.dart';
-import '11_Divider/3_Divider_WH_Run.dart';
-import '12_Navigation/1_Navigator_Pages_Run.dart';
-import '12_Navigation/2_Navigator_Links_Run.dart';
-import '12_Navigation/3_Navigator_Tel_Run.dart';
-import '12_Navigation/4_Navigator_Sms_Run.dart';
-import '12_Navigation/5_Navigator_Email_Run.dart';
-import '13_SnBar/1_Simple_SnackBar_Run.dart';
-import '13_SnBar/2_Simple_Red_SnackBar_Run.dart';
-import '13_SnBar/3_SnackBar_Duration_Run.dart';
-import '13_SnBar/4_SnackBar_Shape_Run.dart';
-import '13_SnBar/5_SnackBar_Action_Run.dart';
-import '14_FlushBar/1_Simple_FlushBar_Run.dart';
-import '14_FlushBar/2_FlushBar_Red_BackgroundColor_Run.dart';
-import '14_FlushBar/3_FlushBar_Yellow_Text_Run.dart';
-import '14_FlushBar/4_FlushBar_Icon_Run.dart';
-import '14_FlushBar/5_FlushBar_Main_Action_Button_Run.dart';
-import '14_FlushBar/6_FlushBar_Position_Run.dart';
-import '14_FlushBar/7_FlushBar_Duration_Run.dart';
-import '15_Card/1_Simple_Card_Run.dart';
-import '15_Card/2_Card_WH_Run.dart';
-import '15_Card/3_Card_Bg_Run.dart';
-import '15_Card/4_Card_Cust_Run.dart';
-import '15_Card/5_Card_Elevator_Run.dart';
-import '16_TextOverflow/1_TxtF_ClipRun.dart';
-import '16_TextOverflow/2_TxtF_EllipsisRun.dart';
-import '16_TextOverflow/3_TxtF_FadeRun.dart';
-import '16_TextOverflow/4_TxtF_VisibleRun.dart';
-import '17_GestureDetector/1_GestImg_Run.dart';
-import '17_GestureDetector/2_GestAppBarTitleRun.dart';
-import '17_GestureDetector/3_Tap_Coords_Run.dart';
-import '18_ListView/1_ListView_Horizontal_Run.dart';
-import '18_ListView/3_ListView_ScrollTo.dart';
-import '18_ListView/2_ListView_Vertical_Run.dart';
-import '19_TextField/1_TextField_Simple_Run.dart';
-import '19_TextField/2_TextField_NoBorder_Run.dart';
-import '19_TextField/3_TextField_MultiLine_Run.dart';
-import '19_TextField/4_TextField_Icon_Run.dart';
-import '19_TextField/5_TextField_Style_Run.dart';
-import '19_TextField/6_TextField_Password_Run.dart';
-import '19_TextField/8_TextForm_Form_Validation_Run.dart';
-import '19_TextField/7_TextField_Login_Form_Run.dart';
-import '20_Footer/1_Simple_Footer_Run.dart';
-import '20_Footer/2_Bottom_NavBar_Run.dart';
-import '21_ImageSlider/10_Dots_Slider_Run.dart';
-import '21_ImageSlider/1_IS_InitialPage_Run.dart';
-import '21_ImageSlider/2_IS_EnlargeCenterPage_Run.dart';
-import '21_ImageSlider/3_IS_AutoPlay_Run.dart';
-import '21_ImageSlider/4_IS_Enable_Infinite_Scroll_Run.dart';
-import '21_ImageSlider/5_IS_AutoPlayInterval_Run.dart';
-import '21_ImageSlider/6_IS_Pause_AutoPlay_OnTouch_Run.dart';
-import '21_ImageSlider/7_IS_ScrollDirection_Run.dart';
-import '21_ImageSlider/8_Slider_WIth_Button_Run.dart';
-import '21_ImageSlider/9_Slider_With_Caption_Run.dart';
-import '22_Notification/1_Notification_Without_Sound_Run.dart';
-import '22_Notification/2_Notification_Default_Sound_Run.dart';
-import '22_Notification/3_Notification_Custom_Sound_Run.dart';
-import '22_Notification/4_Notification_Custom_Icon_Run.dart';
-import '22_Notification/5_Notification_Daily.dart';
-import '23_Switch/1_Simple_Switch_Run.dart';
-import '23_Switch/2_Switch_AppBar_Theme_Run.dart';
-import '23_Switch/3_Switch_Light_Dark_Mode_Run.dart';
-import '24_Audio/1_Audio_Button_Sound_Run.dart';
-import '24_Audio/2_Audio_Music_Player_Run.dart';
-import '25_VideoPlayer/1_Video_From_File_Run.dart';
-import '25_VideoPlayer/2_Video_From_Url_Run.dart';
-import '26_SimpleLoader/1_SLD1_Run.dart';
-import '26_SimpleLoader/2_SLD2_Run.dart';
-import '28_Animation/10_Animation_ElasticIn_Run.dart';
-import '28_Animation/11_Animation_BounceIn_Run.dart';
-import '28_Animation/1_Animation_Opacity_Run.dart';
-import '28_Animation/2_Animation_Fade_Run.dart';
-import '28_Animation/3_Animation_Tween_LtR_Run.dart';
-import '28_Animation/4_Animation_Tween_RtL_Run.dart';
-import '28_Animation/5_Animation_Rotate_Run.dart';
-import '28_Animation/6_Animation_Matrix4_RotZ_Run.dart';
-import '28_Animation/7_Animation_Matrix4_RotY_Run.dart';
-import '28_Animation/8_Animation_Rotation_Transition_Run.dart';
-import '28_Animation/9_Animation_ElasticOut_Run.dart';
-import '29_Radio/1_Simple_Radio_Run.dart';
-import '29_Radio/2_Radio_AppBar_BackgroungColor_Changer_Run.dart';
-import '29_Radio/3_Radio_MainBg_Theme_Changer_Run.dart';
-import '30_CheckBox/1_Simple_CheckBox_Run.dart';
-import '30_CheckBox/2_CheckBox_Tile_Run.dart';
-import '31_Chip/1_SimpleChip_Run.dart';
-import '31_Chip/2_Chip_OnDeleted_Run.dart';
-import '32_TabBar/1_TopTabBar_Run.dart';
-import '32_TabBar/2_BottomTabBar_Run.dart';
-import '33_PageSelector/1_PageSelector_Simple_Run.dart';
-import '33_PageSelector/2_PageSelector_Btn_Run.dart';
-import '34_Flex/1_Image_Flex_Run.dart';
-import '34_Flex/2_Button_Flex_Run.dart';
-import '34_Flex/3_Advanced_Flex_Run.dart';
-import '35_SelectComboBox/1_SelectComboBox_Run.dart';
-import '36_ExpandableList/1_Simple_Expandable_List_Run.dart';
-import '36_ExpandableList/2_Expandable_List_Trail_Run.dart';
-import '36_ExpandableList/3_Expandable_List_BackColor_Run.dart';
-import '36_ExpandableList/4_Expandable_List_With_Card_And_Icon_Run.dart';
-import '36_ExpandableList/5_Expandable_List_Customized.dart';
-import '36_ExpandableList/6_Expandable_List_Sound_Run.dart';
-import '36_ExpandableList/7_Expandable_List_Anim_Run.dart';
-import '37_Slider/1_SimpleSliderRun.dart';
-import '37_Slider/2_SliderColorRun.dart';
-import '37_Slider/3_SliderMinMaxDivRun.dart';
-import '38_Drawer/1_Drawer_Left_Run.dart';
-import '38_Drawer/2_Drawer_Right_Run.dart';
-import '39_SplashScreenLoading/MainSplashScreenRun.dart';
-import '3_Text/10_TextShadowRun.dart';
-import '3_Text/11_TextFontFamilyRun.dart';
-import '3_Text/12_TextBackgroundColorRun.dart';
-import '3_Text/14_TextAlignCenterRun.dart';
-import '3_Text/15_TextAlignLeftRun.dart';
-import '3_Text/16_TextAlignRightRun.dart';
-import '3_Text/3_TextColorRun.dart';
-import '3_Text/5_TextItalicRun.dart';
-import '3_Text/7_TextLineTroughRun.dart';
-import '3_Text/8_TextOverlineRun.dart';
-import '3_Text/9_TextFontSizeRun.dart';
 import '0_Quizzes/3_Text_GenerateQuizzes.dart';
-import '3_Text/13_RichTextRun.dart';
-import '3_Text/4_TextBoldRun.dart';
-import '3_Text/1_TextDirection_ltr_Run.dart';
-import '3_Text/2_TextDirection_rtl_Run.dart';
-import '3_Text/6_TextUnderlineRun.dart';
+import '0_Quizzes/5_MainBg_GenerateQuizzes.dart';
+import '0_Quizzes/6_Image_GenerateQuizzes.dart';
 
-import '40_Admob/2_AdmobBanner_Run.dart';
-import '40_Admob/3_AdmobInterstitial_Run.dart';
-import '41_FlipCard/2_FlipCardHor_Run.dart';
-import '41_FlipCard/3_FlipCardVert_Run.dart';
-import '42_FlipView/2_SimpleFlipView.dart';
-import '43_Stepper/2_StepperHor_Run.dart';
-import '43_Stepper/3_StepperVer_Run.dart';
-import '44_BottomSheet/SimpleBottomSheetRun.dart';
-import '45_SmoothPageIndicator/2_SPI_Worm_Run.dart';
-import '45_SmoothPageIndicator/3_SPI_ExpDots_Run.dart';
-import '45_SmoothPageIndicator/4_SPI_JumpDots_Run.dart';
-import '45_SmoothPageIndicator/5_SPI_ScrollDots_Run.dart';
-import '45_SmoothPageIndicator/6_SPI_Scale_Run.dart';
-import '45_SmoothPageIndicator/7_SPI_Slide_Run.dart';
-import '46_Expandable/Simple_Expandable_Run.dart';
-import '47_Marquee/1_SimpleMarquee_Run.dart';
-import '47_Marquee/2_Marquee_ScrollAxis_Run.dart';
-import '47_Marquee/3_Marquee_CrossAxisAlignement_Run.dart';
-import '47_Marquee/4_Marquee_PauseAfterRound_Run.dart';
-import '47_Marquee/5_Marquee_AccelerationDuration_Run.dart';
-import '48_ContainerWaves/ContainerWaves_Simple_Run.dart';
-import '49_RouteTransition/1_RouteTransition_SlideRight.dart';
-import '49_RouteTransition/2_RouteTransition_SlideLeft.dart';
-import '49_RouteTransition/3_RouteTransition_SlideUp.dart';
-import '49_RouteTransition/4_RouteTransition_SlideDown.dart';
-import '49_RouteTransition/5_RouteTransition_Scale.dart';
-import '49_RouteTransition/6_RouteTransition_Rotate.dart';
-import '49_RouteTransition/7_RouteTransition_Size.dart';
-import '49_RouteTransition/8_RouteTransition_Fade.dart';
-import '4_AppBar/7_AppBarDoubleSideIconsRun.dart';
-import '4_AppBar/4_AppBarGradient_Run.dart';
-import '4_AppBar/5_AppBarGreyBgTextCenteredIndigoLeftIconRun.dart';
-import '4_AppBar/6_AppBarLeftRightIconRun.dart';
-import '4_AppBar/2_SimpleAppBarDarkRun.dart';
-import '4_AppBar/1_SimpleAppBarLightRun.dart';
-import '4_AppBar/3_SimpleAppBar_YellowBg_RedColorRun.dart';
-import '50_Flutter_Syntaxe/1_FlutterSyntaxe_CodeView_Run.dart';
-import '50_Flutter_Syntaxe/2_FlutterSyntaxe_CodeAndSourceView_Run.dart';
-import '51_SlidingUpPanel/1_Simple_Sliding_Up_Panel_Run.dart';
-import '52_Popup_Menu_Button/1_Simple_AppBar_Popup_Menu_Button.dart';
-import '52_Popup_Menu_Button/2_ListTile_Popup_Menu_Button.dart';
-import '53_Hero_Animation/1_Simple_Hero.dart';
-import '53_Hero_Animation/2_Advanced_Hero.dart';
-import '54_AvatarGlow/1_AvatarGlow_1Glow.dart';
-import '54_AvatarGlow/2_AvatarGlow_2Glow.dart';
-import '54_AvatarGlow/3_AvatarGlow_More.dart';
-import '55_DataTable/1_DataTable_Simple.dart';
-import '55_DataTable/2_DataTable_Sort.dart';
-import '55_DataTable/3_DataTable_Insert.dart';
-import '55_DataTable/4_DataTable_Update.dart';
-import '55_DataTable/5_DataTable_Delete.dart';
-import '55_DataTable/6_DataTable_DeleteAll.dart';
-import '56_WebView/1_WebView_Simple.dart';
-import '57_BackDrop/1_BackDrop_Left.dart';
-import '57_BackDrop/2_BackDrop_Right.dart';
-import '57_BackDrop/3_BackDrop_Custom.dart';
-import '59_TinderSwipe/1_Tinder_Swipe.dart';
-import '5_MainBg/1_MainBgCustomColorRun.dart';
-import '5_MainBg/2_MainBgGradientRun.dart';
-import '5_MainBg/3_MainBgGradientAppBarRun.dart';
-import '5_MainBg/4_MainBgDarkGAppBarRun.dart';
-import '5_MainBg/5_MainBgLightRAppBarRun.dart';
-import '60_ImagePicker/ImagePicker.dart';
-import '61_MultipleImagePicker/MultipleImagePicker.dart';
-import '62_Advance_Pdf_Viewer/1_Advance_Pdf_Viewer_Asset.dart';
-import '62_Advance_Pdf_Viewer/2_Advance_Pdf_Viewer_Url.dart';
-import '63_Google_NavBar/1_Google_NavBar.dart';
-import '64_Clippy/1_Clippy_Triangle.dart';
-import '64_Clippy/2_Clippy_Chevron.dart';
-import '64_Clippy/3_Clippy_Arc.dart';
-import '64_Clippy/4_Clippy_Diagonal.dart';
-import '64_Clippy/5_Clippy_Bevel.dart';
-import '64_Clippy/6_Buttcheek.dart';
-import '65_Water_Drop/1_Water_Drop.dart';
-import '6_Image/ImgInsImgRun.dart';
-import '6_Image/ImgNetworkRun.dart';
-import '6_Image/ImgWidthHeightRun.dart';
-import '7_Buttons/10_Style_Outline_Button.dart';
-import '7_Buttons/11_Round_Outline_Button.dart';
-import '7_Buttons/1_BtnSimpleRaisedBtnRun.dart';
-import '7_Buttons/2_BtnSimpleRaisedBtnFullWidthRun.dart';
-import '7_Buttons/3_BtnSimpleRaisedRoundedBtnRun.dart';
-import '7_Buttons/4_BtnRaisedRoundedRedBgWTxtRun.dart';
-import '7_Buttons/5_BtnRaisedRoundedGradientRun.dart';
-import '7_Buttons/6_BtnRoundedIconButtonRun.dart';
-import '7_Buttons/7_BtnSimpleFlatBtnRun.dart';
-import '7_Buttons/8_BtnFlatIconGreyBgBtnRun.dart';
-import '7_Buttons/9_Simple_Outline_Button.dart';
-import '8_Toast/1_ToastTopRun.dart';
-import '8_Toast/2_ToastCenterRun.dart';
-import '8_Toast/3_ToastBottomRun.dart';
-import '9_Layouts/1_Layout_Col_MainAlign_Center_Run.dart';
-import '9_Layouts/2_Layout_Col_MainAlign_Start_Run.dart';
-import '9_Layouts/3_Layout_Col_MainAlign_End_Run.dart';
-import '9_Layouts/4_Layout_Row_MainAlign_Center_Run.dart';
-import '9_Layouts/7_Contact_List_Run.dart';
-import '9_Layouts/6_Layout_Row_MainAlign_End_Run.dart';
-import '9_Layouts/5_Layout_Row_MainAlign_Start_Run.dart';
-import 'Advanced/A1Run.dart';
-import 'Advanced/A2Run.dart';
-import 'Advanced/A3Run.dart';
-import 'Advanced/A4Run.dart';
-import 'Backend_1_SQFlite/1_SQFlite_Insert.dart';
-import 'Backend_1_SQFlite/2_SQFlite_Update.dart';
-import 'Backend_1_SQFlite/3_SQFlite_Delete.dart';
-import 'Backend_1_SQFlite/4_SQFlite_DeleteAll.dart';
-import 'Backend_2_PHP_Http/1_PHP_GetData.dart';
-import 'Backend_2_PHP_Http/2_PHP_InsertData.dart';
-import 'Backend_2_PHP_Http/3_PHP_Update.dart';
-import 'Backend_2_PHP_Http/4_PHP_Delete.dart';
-import 'Backend_3_FireBase/1_FireBase_Auth_Email_FB_Google.dart';
-import 'Backend_4_FireStore/1_FireStore.dart';
-import 'Backend_5_FireBase_Admob/2_FireBase_Admob_Interstitial.dart';
+
+import 'Page_FrontEnd.dart';
 import 'NoCodePage.dart';
 import '_Components_DetailsList/100_Advanced_CompList.dart';
 import '_Components_DetailsList/10_Dialogs_CompList.dart';
@@ -333,7 +460,6 @@ import '_Components_DetailsList/57_BackDrop_CompList.dart';
 import '_Components_DetailsList/58_Animated_Icons_CompList.dart';
 import '_Components_DetailsList/59_TinderSwipe_CompList.dart';
 import '_Components_DetailsList/5_Main_Page_Bg_Bg_Color_CompList.dart';
-import '_Components_DetailsList/1_Introduction_CompList.dart';
 import '_Components_DetailsList/60_ImagePicker_CompList.dart';
 import '_Components_DetailsList/61_MultipleImagePicker_CompList.dart';
 import '_Components_DetailsList/62_AdvancePdfViewer_CompList.dart';
@@ -358,6 +484,11 @@ import '_Components_DetailsList/7_Button_CompList.dart';
 import '_Components_DetailsList/80_Like_Button_CmpList.dart';
 import '_Components_DetailsList/81_Color_Picker.dart';
 import '_Components_DetailsList/82_Sliver_AppBar.dart';
+import '_Components_DetailsList/85_Percent_Indicator.dart';
+import '_Components_DetailsList/86_Connectivity_CmpList.dart';
+import '_Components_DetailsList/87_SpinCircleBottomBar_CompList.dart';
+import '_Components_DetailsList/88_Staggered_GridView.dart';
+import '_Components_DetailsList/89_InAppUpdate_CompList.dart';
 import '_Components_DetailsList/8_Toast_CompList.dart';
 import '_Components_DetailsList/9_Layout_CompList.dart';
 import '_Components_DetailsList/3_Text_CompList.dart';
@@ -393,10 +524,16 @@ import '_Components_DetailsList/Backend_3_FireBase_CompList.dart';
 import '_Components_DetailsList/Backend_4_FireStore_CompList.dart';
 import '_Components_DetailsList/Backend_5_FireBase_Admob_CompList.dart';
 import '_Components_DetailsList/Backend_6_FireBase_Push_Notification_CompList.dart';
+import '_Components_DetailsList/Backend_7_PhoneVerification_CmpList.dart';
 import '_Components_DetailsList/UsersCode_1_Davi_Contact_List.dart';
 import '_Components_DetailsList/74_FAB_CompList.dart';
 import 'package:toast/toast.dart';
 
+import '_UISamples/UISample_3/UISample_3.dart';
+import '_UISamples/UISample_4/UISample_4.dart';
+import '_UISamples/UISample_6/UISample_6.dart';
+import '_UISamples/UISample_8/UISample_8.dart';
+import '_UISamples/UISample_9/UISample_9.dart';
 
 AudioPlayer advancedPlayer;
 AudioCache audioCache;
@@ -408,4964 +545,6278 @@ var PopupBool;
 AdmobInterstitial admobInterstitial;
 
 
+
 void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner:false,
-    title:"Flutter:Tutorials & Quizzes",
-    initialRoute: '/',
-    routes: {
-      '/': (context) => MainSplashScreen(),
-
-      "/Main": (BuildContext context)                           => Main(),
-
-      "/Intro_Flutter": (BuildContext context)                  => CmpIntroPage(
-        Title:"Flutter Intro",
-        BackRoute:"/Main",
-        NextRoute:"/Intro_Dart",
-        ItemList:FlutterIntroCompList,
-      ),
-
-      "/Intro_Dart": (BuildContext context)                     => CmpIntroPage(
-        Title:"Dart Intro",
-        BackRoute:"/Intro_Flutter",
-        NextRoute:"/Intro_Use",
-        ItemList:DartIntroCompList,
-      ),
-
-
-      "/Intro_Use": (BuildContext context)                      => CmpIntroPage(
-        Title:"Flutter Use",
-        BackRoute:"/Intro_Dart",
-        NextRoute:"/Keywords_Widget",
-        ItemList:FlutterUseIntroCompList,
-      ),
-
-
-      "/Keywords_Widget": (BuildContext context)                => CmpIntroPage(
-        Title:"Widget Intro",
-        BackRoute:"/Main",
-        NextRoute:"/Keywords_Stateless",
-        ItemList:WidgetKeywordsCompList,
-      ),
-
-
-      "/Keywords_Stateless": (BuildContext context)             => CmpIntroPage(
-        Title:"Stateless Widget",
-        BackRoute:"/Keywords_Widget",
-        NextRoute:"/Keywords_Statefull",
-        ItemList:StatelessKeywordsCompList,
-      ),
-
-
-      "/Keywords_Statefull": (BuildContext context)             => CmpIntroPage(
-        Title:"Statefull Widget",
-        BackRoute:"/Keywords_Stateless",
-        NextRoute:"/Keywords_Navigator",
-        ItemList:StatefullKeywordsCompList,
-      ),
-
-
-      "/Keywords_Navigator": (BuildContext context)             => CmpIntroPage(
-        Title:"Navigator",
-        BackRoute:"/Keywords_Statefull",
-        NextRoute:"/Keywords_Scaffold",
-        ItemList:NavigatorKeywordsCompList,
-      ),
-
-
-      "/Keywords_Scaffold": (BuildContext context)              => CmpIntroPage(
-        Title:"Scaffold",
-        BackRoute:"/Keywords_Navigator",
-        NextRoute:"/Keywords_AppBar",
-        ItemList:ScaffoldKeywordsCompList,
-      ),
-
-
-      "/Keywords_AppBar": (BuildContext context)                => CmpIntroPage(
-        Title:"AppBar",
-        BackRoute:"/Keywords_Scaffold",
-        NextRoute:"/Keywords_MaterialApp",
-        ItemList:AppBarKeywordsCompList,
-      ),
-
-
-      "/Keywords_MaterialApp": (BuildContext context)           => CmpIntroPage(
-        Title:"Material App",
-        BackRoute:"/Keywords_AppBar",
-        NextRoute:"/Text_ltr",
-        ItemList:MaterialAppKeywordsCompList,
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/Text_ltr": (BuildContext context)                       => CmpCodePage(
-        Title:"TextDirection ltr",
-        BackRoute:"/Keywords_MaterialApp",
-        NextRoute:"/Text_rtl",
-        ItemList:TextDirection_ltr_list,
-        CodeRoute:"lib/3_Text/1_TextDirection_ltr_Run.dart",
-        TabIcon:Icon(Icons.format_textdirection_l_to_r),
-        ToDo:"We Need To Write A Simple Text That Flows From Left To Right And Appear in The Center Of The Body",
-        TxtExplanation:TextDirection_ltr_Explanation,
-        RunCodeRoute:new TextDirection_ltr_Run(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-
-      "/Text_rtl": (BuildContext context)                       => CmpCodePage(
-        Title:"TextDirection rtl",
-        BackRoute:"/Text_ltr",
-        NextRoute:"/Text_Color",
-        ItemList:TextDirection_rtl_list,
-        CodeRoute:"lib/3_Text/2_TextDirection_rtl_Run.dart",
-        TabIcon:Icon(Icons.format_textdirection_r_to_l),
-        ToDo:"We Need To Write A Simple Text That Flows From Right To Left And Appear in The Center Of The Body",
-        TxtExplanation:TextDirection_rtl_Explanation,
-        RunCodeRoute:new TextDirection_rtl_Run(),
-      ),
-
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-
-      "/Text_Color": (BuildContext context)                     => CmpCodePage(
-        Title:"Text Color",
-        BackRoute:"/Text_rtl",
-        NextRoute:"/Text_Bold",
-        ItemList:TextColor_list,
-        CodeRoute:"lib/3_Text/3_TextColorRun.dart",
-        TabIcon:Icon(Icons.color_lens),
-        ToDo:"We Need To Write A Simple Red Text That Appear in The Center Of The Body",
-        TxtExplanation:TextColor_Explanation,
-        RunCodeRoute:new TextColorRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-
-      "/Text_Bold": (BuildContext context)                      => CmpCodePage(
-        Title:"Bold Text",
-        BackRoute:"/Text_Color",
-        NextRoute:"/Text_Italic",
-        ItemList:TextBold_list,
-        CodeRoute:"lib/3_Text/4_TextBoldRun.dart",
-        TabIcon:Icon(Icons.format_bold),
-        ToDo:"We Need To Write A Simple Bold Text That Appear in The Center Of The Body",
-        TxtExplanation:TextBold_Explanation,
-        RunCodeRoute:new TextBoldRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-
-      "/Text_Italic": (BuildContext context)                    => CmpCodePage(
-        Title:"Italic Text",
-        BackRoute:"/Text_Bold",
-        NextRoute:"/Text_Underline",
-        ItemList:TextItalic_list,
-        CodeRoute:"lib/3_Text/5_TextItalicRun.dart",
-        TabIcon:Icon(Icons.format_italic),
-        ToDo:"We Need To Write A Simple Italic Text That Appear in The Center Of The Body",
-        TxtExplanation:TextItalic_Explanation,
-        RunCodeRoute:new TextItalicRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-
-      "/Text_Underline": (BuildContext context)                 => CmpCodePage(
-        Title:"Underline Text",
-        BackRoute:"/Text_Italic",
-        NextRoute:"/Text_LineThrough",
-        ItemList:TextUnderline_list,
-        CodeRoute:"lib/3_Text/6_TextUnderlineRun.dart",
-        TabIcon:Icon(Icons.format_underlined),
-        ToDo:"We Need To Write A Simple Underline Text That Appear in The Center Of The Body",
-        TxtExplanation:TextUnderline_Explanation,
-        RunCodeRoute:new TextUnderlineRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-
-      "/Text_LineThrough": (BuildContext context)               => CmpCodePage(
-        Title:"Text Line Through",
-        BackRoute:"/Text_Underline",
-        NextRoute:"/Text_OverLine",
-        ItemList:TextLineThrough_list,
-        CodeRoute:"lib/3_Text/7_TextLineTroughRun.dart",
-        TabIcon:Icon(Icons.line_weight),
-        ToDo:"We Need To Write A Simple Line Through Text That Appear in The Center Of The Body",
-        TxtExplanation:TextLineThrough_Explanation,
-        RunCodeRoute:new TextThroughRun(),
-      ),
-
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-
-      "/Text_OverLine": (BuildContext context)                  => CmpCodePage(
-        Title:"Text OverLine",
-        BackRoute:"/Text_LineThrough",
-        NextRoute:"/Text_FontSize",
-        ItemList:TextOverLine_list,
-        CodeRoute:"lib/3_Text/8_TextOverlineRun.dart",
-        TabIcon:Icon(Icons.line_weight),
-        ToDo:"We Need To Write A Simple Overline Text That Appear in The Center Of The Body",
-        TxtExplanation:TextOverLine_Explanation,
-        RunCodeRoute:new TextOverlineRun(),
-      ),
-
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/Text_FontSize": (BuildContext context)                  => CmpCodePage(
-        Title:"Text Font Size",
-        BackRoute:"/Text_OverLine",
-        NextRoute:"/Text_Shadow",
-        ItemList:TextFontSize_list,
-        CodeRoute:"lib/3_Text/9_TextFontSizeRun.dart",
-        TabIcon:Icon(Icons.text_fields),
-        ToDo:"We Need To Write A Simple Text With 20 As a Size That Appear in The Center Of The Body",
-        TxtExplanation:TextFontSize_Explanation,
-        RunCodeRoute:new TextFontSizeRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-
-      "/Text_Shadow": (BuildContext context)                    => CmpCodePage(
-        Title:"Text Shadow",
-        BackRoute:"/Text_FontSize",
-        NextRoute:"/Text_FontFamily",
-        ItemList:TextShadow_list,
-        CodeRoute:"lib/3_Text/10_TextShadowRun.dart",
-        TabIcon:Icon(Icons.texture),
-        ToDo:"We Need To Write A Simple Text That Has An Shodow With An Blur 10 And 5 Offset With Color Blue That Appear in The Center Of The Body",
-        TxtExplanation:TextShadow_Explanation,
-        RunCodeRoute:new TextShadowRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/Text_FontFamily": (BuildContext context)                => CmpCodePage(
-        Title:"Text Font Family",
-        BackRoute:"/Text_Shadow",
-        NextRoute:"/Text_BgColor",
-        ItemList:TextFontFamily_list,
-        CodeRoute:"lib/3_Text/11_TextFontFamilyRun.dart",
-        TabIcon:Icon(Icons.font_download),
-        ToDo:"We Need To Write A Simple Text With Raleway Family Font That Appear in The Center Of The Body",
-        TxtExplanation:TextFontFamily_Explanation,
-        RunCodeRoute:new TextFontFamilyRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/Text_BgColor": (BuildContext context)                   => CmpCodePage(
-        Title:"Text Bg Color",
-        BackRoute:"/Text_FontFamily",
-        NextRoute:"/Text_RichText",
-        ItemList:TextBgColor_list,
-        CodeRoute:"lib/3_Text/12_TextBackgroundColorRun.dart",
-        TabIcon:Icon(Icons.format_color_fill),
-        ToDo:"We Need To Write A Simple Text That Has A Blue Background Color in The Center Of The Body",
-        TxtExplanation:TextBgColor_Explanation,
-        RunCodeRoute:new TextBgColorRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/Text_RichText": (BuildContext context)                 => CmpCodePage(
-        Title:"Rich Text",
-        BackRoute:"/Text_BgColor",
-        NextRoute:"/Text_AlignCenter",
-        ItemList:TextRich_list,
-        CodeRoute:"lib/3_Text/13_RichTextRun.dart",
-        TabIcon:Icon(Icons.title),
-        ToDo:"We Need To Write A Simple Centered Text HelloWorld That Appear In The Center Of The Body Noting That :\nHello Must Appear In Red\nWorld in Blue\n",
-        TxtExplanation:TextRich_Explanation,
-        RunCodeRoute:new RichTextRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/Text_AlignCenter": (BuildContext context)               => CmpCodePage(
-        Title:"Text Align Center",
-        BackRoute:"/Text_RichText",
-        NextRoute:"/Text_AlignLeft",
-        ItemList:TextAlignCenter_list,
-        CodeRoute:"lib/3_Text/14_TextAlignCenterRun.dart",
-        TabIcon:Icon(Icons.format_align_center),
-        ToDo:"We Need To Write A Simple Text That Appear In The Center Of Container\n",
-        TxtExplanation:TextAlignCenter_Explanation,
-        RunCodeRoute:new TextAlignCenterRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/Text_AlignLeft": (BuildContext context)                 => CmpCodePage(
-        Title:"Text Align Left",
-        BackRoute:"/Text_AlignCenter",
-        NextRoute:"/Text_AlignRight",
-        ItemList:TextAlignLeft_list,
-        CodeRoute:"lib/3_Text/15_TextAlignLeftRun.dart",
-        TabIcon:Icon(Icons.format_align_left),
-        ToDo:"We Need To Write A Simple Text That Appear In The Left Of Container\n\n",
-        TxtExplanation:TextAlignLeft_Explanation,
-        RunCodeRoute:new TextAlignLeftRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/Text_AlignRight": (BuildContext context)               => CmpCodePage(
-        Title:"Text Align Right",
-        BackRoute:"/Text_AlignLeft",
-        NextRoute:"/AppBar_Light",
-        ItemList:TextAlignRight_list,
-        CodeRoute:"lib/3_Text/16_TextAlignRightRun.dart",
-        TabIcon:Icon(Icons.format_align_right),
-        ToDo:"We Need To Write A Simple Text That Appear In The Right Of Container\n\n",
-        TxtExplanation:TextAlignRight_Explanation,
-        RunCodeRoute:new TextAlignRightRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-
-      "/AppBar_Light": (BuildContext context)                   => CmpCodePage(
-        Title:"Light AppBar",
-        BackRoute:"/Text_AlignRight",
-        NextRoute:"/AppBar_Dark",
-        ItemList:AppBar_Light_list,
-        CodeRoute:"lib/4_AppBar/1_SimpleAppBarLightRun.dart",
-        TabIcon:Icon(Icons.fiber_dvr),
-        ToDo:"Write a Code That Create A Simple Light Theme AppBar Having App Bar As An Title\n",
-        TxtExplanation:AppBar_Light_Explanation,
-        RunCodeRoute:new SimpleAppBarLightRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/AppBar_Dark": (BuildContext context)                      => CmpCodePage(
-        Title:"Dark AppBar",
-        BackRoute:"/AppBar_Light",
-        NextRoute:"/AppBar_YBG_RTXT",
-        ItemList:AppBar_Dark_list,
-        CodeRoute:"lib/4_AppBar/2_SimpleAppBarDarkRun.dart",
-        TabIcon:Icon(Icons.fiber_dvr),
-        ToDo:"Write a Code That Create A Simple Dark Theme AppBar Having App Bar As An Title\n",
-        TxtExplanation:AppBar_Dark_Explanation,
-        RunCodeRoute:new SimpleAppBarDarkRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/AppBar_YBG_RTXT": (BuildContext context)                => CmpCodePage(
-        Title:"Yellow Bg Red Text",
-        BackRoute:"/AppBar_Dark",
-        NextRoute:"/AppBar_Gradient",
-        ItemList:AppBar_YBG_RTXT_list,
-        CodeRoute:"lib/4_AppBar/3_SimpleAppBar_YellowBg_RedColorRun.dart",
-        TabIcon:Icon(Icons.fiber_dvr),
-        ToDo:"Create An AppBar Having Dark Theme Where You Have To Style The AppBar To:\n-Background Color -> Yellow\n-TextColor -> Red\n-Title:Yellow Bg - Red Text",
-        TxtExplanation:AppBar_YBG_RTXT_Explanation,
-        RunCodeRoute:new SimpleAppBarYBG_RTXT_Run(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/AppBar_Gradient": (BuildContext context)                => CmpCodePage(
-        Title:"Gradient AppBar",
-        BackRoute:"/AppBar_YBG_RTXT",
-        NextRoute:"/AppBar_LeftIcon",
-        ItemList:AppBar_Gradient_list,
-        CodeRoute:"lib/4_AppBar/4_AppBarGradient_Run.dart",
-        TabIcon:Icon(Icons.fiber_dvr),
-        ToDo:"Create A Gradient App Bar Having Gradiant AppBar! As An Title\n",
-        TxtExplanation:AppBar_Gradient_Explanation,
-        RunCodeRoute:new GradientAppBarRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/AppBar_LeftIcon": (BuildContext context)                => CmpCodePage(
-        Title:"AppBar Left Icon",
-        BackRoute:"/AppBar_Gradient",
-        NextRoute:"/AppBar_LeftRightIcon",
-        ItemList:AppBar_LeftIcon_list,
-        CodeRoute:"lib/4_AppBar/5_AppBarGreyBgTextCenteredIndigoLeftIconRun.dart",
-        TabIcon:Icon(Icons.fiber_dvr),
-        ToDo:"Create A AppBar Having Grey BackgroundColor,Title LeftIcon Set To Indigo Color Aligned To The Center,Leaded By a Left Icon.\n",
-        TxtExplanation:AppBar_LeftIcon_Explanation,
-        RunCodeRoute:new AppBarLeftIconRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/AppBar_LeftRightIcon": (BuildContext context)           => CmpCodePage(
-        Title:"AppBar Left & Right Icon",
-        BackRoute:"/AppBar_LeftIcon",
-        NextRoute:"/AppBar_DoubleSideIcon",
-        ItemList:AppBar_LeftRightIcon_list,
-        CodeRoute:"lib/4_AppBar/6_AppBarLeftRightIconRun.dart",
-        TabIcon:Icon(Icons.fiber_dvr),
-        ToDo:"Create An AppBar Having <-- Icons --> As A Title And Has Balance Icon From Left And Right\n",
-        TxtExplanation:AppBar_LeftRightIcon_Explanation,
-        RunCodeRoute:new AppBarLeftRightIconRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/AppBar_DoubleSideIcon": (BuildContext context)          => CmpCodePage(
-        Title:"AppBar Double Side Icons",
-        BackRoute:"/AppBar_LeftRightIcon",
-        NextRoute:"/MainBg_BgColor",
-        ItemList:AppBar_DoubleSideIcon_list,
-        CodeRoute:"lib/4_AppBar/7_AppBarDoubleSideIconsRun.dart",
-        TabIcon:Icon(Icons.fiber_dvr),
-        ToDo:"Write an AppBar That Hold 2 Icons Left And Right Side With An Centered Title\n",
-        TxtExplanation:AppBar_DoubleSideIcon_Explanation,
-        RunCodeRoute:new AppBarDoubleSideIconsRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/MainBg_BgColor": (BuildContext context)                 => CmpCodePage(
-        Title:"Custom Background Color",
-        BackRoute:"/AppBar_DoubleSideIcon",
-        NextRoute:"/MainBg_GradientBgColor",
-        ItemList:MainBg_MainBg_list,
-        CodeRoute:"lib/5_MainBg/1_MainBgCustomColorRun.dart",
-        TabIcon:Icon(Icons.format_paint),
-        ToDo:"Create A Simple Body That Has An Blue Background Color\n",
-        TxtExplanation:MainBg_MainBg_Explanation,
-        RunCodeRoute:new MainBgCustomColorRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/MainBg_GradientBgColor": (BuildContext context)         => CmpCodePage(
-        Title:"Gradient Background Color",
-        BackRoute:"/MainBg_BgColor",
-        NextRoute:"/MainBg_GradientBgColorAppBar",
-        ItemList:MainBg_GradientBgColor_list,
-        CodeRoute:"lib/5_MainBg/2_MainBgGradientRun.dart",
-        TabIcon:Icon(Icons.format_paint),
-        ToDo:"Create A Simple Body That Has An Gradient Background Color\n",
-        TxtExplanation:MainBg_GradientBgColor_Explanation,
-        RunCodeRoute:new MainBgGradientRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/MainBg_GradientBgColorAppBar": (BuildContext context)   => CmpCodePage(
-        Title:"Gradient Background With AppBar",
-        BackRoute:"/MainBg_GradientBgColor",
-        NextRoute:"/MainBg_BgDarkGAppBar",
-        ItemList:MainBg_GradientBgColorAppBar_list,
-        CodeRoute:"lib/5_MainBg/3_MainBgGradientAppBarRun.dart",
-        TabIcon:Icon(Icons.format_paint),
-        ToDo:"Create A Simple Body That Has An Gradient Background Color Having An AppBar\n",
-        TxtExplanation:MainBg_GradientBgColorAppBar_Explanation,
-        RunCodeRoute:new MainBgGradientAppBarRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/MainBg_BgDarkGAppBar": (BuildContext context)           => CmpCodePage(
-        Title:"Dark Background Grey AppBar",
-        BackRoute:"/MainBg_GradientBgColorAppBar",
-        NextRoute:"/MainBg_BgLightRAppBar",
-        ItemList:MainBg_BgDarkGAppBar_list,
-        CodeRoute:"lib/5_MainBg/4_MainBgDarkGAppBarRun.dart",
-        TabIcon:Icon(Icons.format_paint),
-        ToDo:"Create A Simple Page That Has Dark Theme With Grey AppBar Background Color\n\n",
-        TxtExplanation:MainBg_BgDarkGAppBar_Explanation,
-        RunCodeRoute:new MainBgDarkGAppBarRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/MainBg_BgLightRAppBar": (BuildContext context)           => CmpCodePage(
-        Title:"Light Background Red AppBar",
-        BackRoute:"/MainBg_BgDarkGAppBar",
-        NextRoute:"/Image_Insert",
-        ItemList:MainBg_BgLightRAppBar_list,
-        CodeRoute:"lib/5_MainBg/5_MainBgLightRAppBarRun.dart",
-        TabIcon:Icon(Icons.format_paint),
-        ToDo:"Create A Simple Page That Has Light Theme With Red AppBar Background Color\n\n",
-        TxtExplanation:MainBg_BgLightRAppBar_Explanation,
-        RunCodeRoute:new MainBgLightRAppBarRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-
-      "/Image_Insert": (BuildContext context)                   => CmpCodePage(
-        Title:"Image Insert",
-        BackRoute:"/MainBg_BgLightRAppBar",
-        NextRoute:"/Image_WidthHeight",
-        ItemList:ImageInsert_list,
-        CodeRoute:"lib/6_Image/ImgInsImgRun.dart",
-        TabIcon:Icon(Icons.image),
-        ToDo:"We Need To Write A Page That Show An Image in The Center Of The Body",
-        TxtExplanation:ImageInsert_Explanation,
-        RunCodeRoute:new ImgInsRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-
-      "/Image_WidthHeight": (BuildContext context)              => CmpCodePage(
-        Title:"Image Width & Height",
-        BackRoute:"/Image_Insert",
-        NextRoute:"/Button_SimpleRaisedBtn",
-        ItemList:ImageWidthHeight_list,
-        CodeRoute:"lib/6_Image/ImgWidthHeightRun.dart",
-        TabIcon:Icon(Icons.image),
-        ToDo:"We Need To Write A Page That Show An Image in The Center Of The Body With An Width & Height 40",
-        TxtExplanation:ImageWidthHeight_Explanation,
-        RunCodeRoute:new ImgInsWHRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/Image_Network": (BuildContext context)              => CmpCodePage(
-        Title:"Image From Network",
-        BackRoute:"/Image_WidthHeight",
-        NextRoute:"/Button_SimpleRaisedBtn",
-        ItemList:ImageNetwork_list,
-        CodeRoute:"lib/6_Image/ImgNetworkRun.dart",
-        TabIcon:Icon(Icons.image),
-        ToDo:"We Need To Write A Page That Show An Image Loaded From Url",
-        TxtExplanation:ImageNetwork_Explanation,
-        RunCodeRoute:new ImgNetworkRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/Button_SimpleRaisedBtn": (BuildContext context)         => CmpCodePage(
-        Title:"Raised Button",
-        BackRoute:"/Main",
-        NextRoute:"/Button_MatchParent",
-        ItemList:SimpleRaisedBtn_list,
-        CodeRoute:"lib/7_Buttons/1_BtnSimpleRaisedBtnRun.dart",
-        TabIcon:Icon(Icons.check_box_outline_blank),
-        ToDo:"We Need To Write A Page That Show A Raised Button in The Center Of The Body Having Value Click Me\n",
-        TxtExplanation:Btn_SimpleRaisedBtn_Explanation,
-        RunCodeRoute:new BtnSimpleRaisedBtnRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/Button_MatchParent": (BuildContext context)              => CmpCodePage(
-        Title:"Raised Button Full Width",
-        BackRoute:"/Button_SimpleRaisedBtn",
-        NextRoute:"/Button_RaisedRoundedBtn",
-        ItemList:ButtonMatchParent_list,
-        CodeRoute:"lib/7_Buttons/2_BtnSimpleRaisedBtnFullWidthRun.dart",
-        TabIcon:Icon(Icons.check_box_outline_blank),
-        ToDo:"We Need To Write A Page That Show A Raised Button in The Center Of The Body Having Value Click Me And Has The Full Width Of The Screen\n",
-        TxtExplanation:ButtonMatchParent_Explanation,
-        RunCodeRoute:new BtnSimpleRaisedBtnFullWidthRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/Button_RaisedRoundedBtn": (BuildContext context)        => CmpCodePage(
-        Title:"Rounded Raised Button",
-        BackRoute:"/Button_MatchParent",
-        NextRoute:"/Button_RaisedStyledBtn",
-        ItemList:Btn_RaisedRoundedBtn_list,
-        CodeRoute:"lib/7_Buttons/3_BtnSimpleRaisedRoundedBtnRun.dart",
-        TabIcon:Icon(Icons.check_box_outline_blank),
-        ToDo:"We Need To Write A Page That Show A Rounded Raised Button in The Center Of The Body Having Value Click Me",
-        TxtExplanation:Btn_RaisedRounded_Explanation,
-        RunCodeRoute:new BtnSimpleRaisedRoundedBtnRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/Button_RaisedStyledBtn": (BuildContext context)         => CmpCodePage(
-        Title:"Rounded Red Background Button With With White Text",
-        BackRoute:"/Button_RaisedRoundedBtn",
-        NextRoute:"/Button_RaisedGradientBtn",
-        ItemList:Btn_RaisedStyled_list,
-        CodeRoute:"lib/7_Buttons/4_BtnRaisedRoundedRedBgWTxtRun.dart",
-        TabIcon:Icon(Icons.check_box_outline_blank),
-        ToDo:"We Need To Write A Page That Show A Raised Button in The Center Of The Body Having Value Click Me With Red Background Color And White Text",
-        TxtExplanation:Btn_RaisedStyled_Explanation,
-        RunCodeRoute:new BtnRaisedRoundedRedBgWTxtRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/Button_RaisedGradientBtn": (BuildContext context)       => CmpCodePage(
-        Title:"Rounded Raised Gradient Button",
-        BackRoute:"/Button_RaisedStyledBtn",
-        NextRoute:"/Button_RoundedIconBtn",
-        ItemList:Btn_RaisedRoundedGradient_list,
-        CodeRoute:"lib/7_Buttons/5_BtnRaisedRoundedGradientRun.dart",
-        TabIcon:Icon(Icons.check_box_outline_blank),
-        ToDo:"We Need To Write A Page That Show A Rounded Gradient Raised Button in The Center Of The Body Having Value Gradient Button",
-        TxtExplanation:Btn_RaisedRoundedGradient_Explanation,
-        RunCodeRoute:new BtnRoundedRaisedGradientBtnRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/Button_RoundedIconBtn": (BuildContext context)          => CmpCodePage(
-        Title:"Rounded Icon Button",
-        BackRoute:"/Button_RaisedGradientBtn",
-        NextRoute:"/Button_FlatBtn",
-        ItemList:Btn_RoundedIconButton_list,
-        CodeRoute:"lib/7_Buttons/6_BtnRoundedIconButtonRun.dart",
-        TabIcon:Icon(Icons.check_box_outline_blank),
-        ToDo:"We Need To Write A Page That Show A Rounded Icon Button in The Center Of The Body Having Android Icon That Appear In Yellow With a Blue Background Color",
-        TxtExplanation:Btn_RoundedIconButton_Explanation,
-        RunCodeRoute:new BtnLittleRoundedIconBtnRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/Button_FlatBtn": (BuildContext context)                 => CmpCodePage(
-        Title:"Simple Flat Button",
-        BackRoute:"/Button_RoundedIconBtn",
-        NextRoute:"/Button_FlatIconBtn",
-        ItemList:Btn_FlatButton_list,
-        CodeRoute:"lib/7_Buttons/7_BtnSimpleFlatBtnRun.dart",
-        TabIcon:Icon(Icons.check_box_outline_blank),
-        ToDo:"We Need To Write A Page That Show A Flat Button in The Center Of The Body Having Value Login",
-        TxtExplanation:Btn_FlatButton_Explanation,
-        RunCodeRoute:new BtnSimpleFlatBtnRun(),
-      ),
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-
-      "/Button_FlatIconBtn": (BuildContext context)             => CmpCodePage(
-        Title:"Flat Button Icon",
-        BackRoute:"/Button_FlatBtn",
-        NextRoute:"/Button_SimpleOutline",
-        ItemList:Btn_FlatIconButton_list,
-        CodeRoute:"lib/7_Buttons/8_BtnFlatIconGreyBgBtnRun.dart",
-        TabIcon:Icon(Icons.check_box_outline_blank),
-        ToDo:"We Need To Write A Page That Show A Raised Button in The Center Of The Body Having label Add With An AddIcon(+) ",
-        TxtExplanation:Btn_FlatIconButton_Explanation,
-        RunCodeRoute:new BtnFlatIconGreyBgBtnRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Button_SimpleOutline": (BuildContext context)             => CmpCodePage(
-        Title:"Simple Outline Button",
-        BackRoute:"/Button_FlatIconBtn",
-        NextRoute:"/Button_StyledOutline",
-        ItemList:Btn_SimpleOutlineButton_list,
-        CodeRoute:"lib/7_Buttons/9_Simple_Outline_Button.dart",
-        TabIcon:Icon(Icons.check_box_outline_blank),
-        ToDo:"We Need To Write A Page That Show A Simple Outline Button in The Center Of The Body",
-        TxtExplanation:Btn_SimpleOutlineButton_Explanation,
-        RunCodeRoute:new SimpleOutlineBtn(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Button_StyledOutline": (BuildContext context)             => CmpCodePage(
-        Title:"Styled Outline Button",
-        BackRoute:"/Button_SimpleOutline",
-        NextRoute:"/Button_RoundedOutline",
-        ItemList:Btn_StyledOutlineButton_list,
-        CodeRoute:"lib/7_Buttons/10_Style_Outline_Button.dart",
-        TabIcon:Icon(Icons.check_box_outline_blank),
-        ToDo:"We Need To Write A Page That Show A Outline Button Having Color blueAccent When Tapped,TextColor And Border Color Set To Teal in The Center Of The Body",
-        TxtExplanation:Btn_StyledOutlineButton_Explanation,
-        RunCodeRoute:new SimpleStyledOutlineBtn(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Button_RoundedOutline": (BuildContext context)             => CmpCodePage(
-        Title:"Rounded Outline Button",
-        BackRoute:"/Button_StyledOutline",
-        NextRoute:"/Toast_Intro",
-        ItemList:Btn_RoundedOutlineButton_list,
-        CodeRoute:"lib/7_Buttons/11_Round_Outline_Button.dart",
-        TabIcon:Icon(Icons.check_box_outline_blank),
-        ToDo:"We Need To Write A Page That Show An Rounded Outline Button In The Center Of The Body",
-        TxtExplanation:Btn_RoundedOutlineButton_Explanation,
-        RunCodeRoute:new RoundOutlineBtn(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-
-      "/Toast_Intro": (BuildContext context)                    => CmpIntroPage(
-        Title:"Toast Introduction",
-        BackRoute:"/Button_FlatIconBtn",
-        NextRoute:"/Toast_Top_Short",
-        ItemList:Toast_Intro_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Toast_Top_Short": (BuildContext context)                 => CmpCodePage(
-        Title:"Short Top Toast",
-        BackRoute:"/Toast_Intro",
-        NextRoute:"/Toast_Center_Fast",
-        ItemList:Toast_TopToast_list,
-        CodeRoute:"lib/8_Toast/1_ToastTopRun.dart",
-        TabIcon:Icon(Icons.album),
-        ToDo:"We Need To Create a Raised Button Having Value ShowToast That Appear In The Center Of The Body, Once The Button Is Clicked A Toast Message Must Appear\nToast Must Have:\n-Short Duration\n-Appear At The Top\n",
-        TxtExplanation:Toast_TopToast_Explanation,
-        RunCodeRoute:new ToastTopRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Toast_Center_Fast": (BuildContext context)               => CmpCodePage(
-        Title:"Fast Centered Toast With Red Background",
-        BackRoute:"/Toast_Top_Short",
-        NextRoute:"/Toast_Bottom_Short",
-        ItemList:Toast_CenterToast_list,
-        CodeRoute:"lib/8_Toast/2_ToastCenterRun.dart",
-        TabIcon:Icon(Icons.album),
-        ToDo:"We Need To Create a Raised Button Having Value ShowToast That Appear In The Center Of The Body, Once The Button Is Clicked A Toast Message Must Appear\nToast Must Have:\n-Long Duration\n-Appear At The Center\n-Having Red Background Color\n",
-        TxtExplanation:Toast_CenterToast_Explanation,
-        RunCodeRoute:new ToastCenterRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Toast_Bottom_Short": (BuildContext context)               => CmpCodePage(
-        Title:"Short Bottom Toast With Blue Text",
-        BackRoute:"/Toast_Center_Fast",
-        NextRoute:"/Layout_Intro",
-        ItemList:Toast_BottomToast_list,
-        CodeRoute:"lib/8_Toast/3_ToastBottomRun.dart",
-        TabIcon:Icon(Icons.album),
-        ToDo:"We Need To Create a Raised Button Having Value ShowToast That Appear In The Center Of The Body, Once The Button Is Clicked A Toast Message Must Appear\nToast Must Have:\n-Short Duration\n-Appear At The Bottom\n-Having Blue Text Color\n",
-        TxtExplanation:Toast_BottomToast_Explanation,
-        RunCodeRoute:new ToastBottomRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Layout_Intro": (BuildContext context)                     => CmpIntroPage(
-        Title:"Layout Introduction",
-        BackRoute:"/Toast_Bottom_Short",
-        NextRoute:"/Layout_Col_MAC",
-        ItemList:Layout_Intro_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Layout_Col_MAC": (BuildContext context)                     => CmpCodePage(
-        Title:"Column Main Align Center",
-        BackRoute:"/Layout_Intro",
-        NextRoute:"/Layout_Col_MAS",
-        ItemList:Layout_Col_MAC_list,
-        CodeRoute:"lib/9_Layouts/1_Layout_Col_MainAlign_Center_Run.dart",
-        TabIcon:Icon(Icons.grid_on),
-        ToDo:"Write Simple Page That Contain 2 Images Globbed By A Container Having Red Border With Width 2 px where Each Image Display On A Row,Note:Use MainAxisAlignment.center\n",
-        TxtExplanation:Layout_Col_MAC_Explanation,
-        RunCodeRoute:new Col_MA_CenterRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Layout_Col_MAS": (BuildContext context)                     => CmpCodePage(
-        Title:"Column Main Align Start",
-        BackRoute:"/Layout_Col_MAC",
-        NextRoute:"/Layout_Col_MAE",
-        ItemList:Layout_Col_MAS_list,
-        CodeRoute:"lib/9_Layouts/2_Layout_Col_MainAlign_Start_Run.dart",
-        TabIcon:Icon(Icons.grid_on),
-        ToDo:"Write Simple Page That Contain 2 Texts Globbed By A Container Having Red Border With Width 2 px where Each Text Display On A Row,Note:Use MainAxisAlignment.start (Must Use Column)\n",
-        TxtExplanation:Layout_Col_MAS_Explanation,
-        RunCodeRoute:new Col_MA_StartRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Layout_Col_MAE": (BuildContext context)                     => CmpCodePage(
-        Title:"Column Main Align End",
-        BackRoute:"/Layout_Col_MAS",
-        NextRoute:"/Layout_Row_MAC",
-        ItemList:Layout_Col_MAE_list,
-        CodeRoute:"lib/9_Layouts/3_Layout_Col_MainAlign_End_Run.dart",
-        TabIcon:Icon(Icons.grid_on),
-        ToDo:"Write Simple Page That Contain IconButtton(Android) And Text(Android) Globbed By A Container Having Red Border With Width 2 px where Each Display On A Row,Note:Use MainAxisAlignment.end\n",
-        TxtExplanation:Layout_Col_MAE_Explanation,
-        RunCodeRoute:new Col_MA_EndRun(),
-      ),
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Layout_Row_MAC": (BuildContext context)                     => CmpCodePage(
-        Title:"Row Main Align Center",
-        BackRoute:"/Layout_Col_MAE",
-        NextRoute:"/Layout_Row_MAS",
-        ItemList:Layout_Row_MAC_list,
-        CodeRoute:"lib/9_Layouts/4_Layout_Row_MainAlign_Center_Run.dart",
-        TabIcon:Icon(Icons.grid_on),
-        ToDo:"Write Simple Page That Contain 2 RaisedButton where Buttons Display On One Row ,Note:Use MainAxisAlignment.center\n",
-        TxtExplanation:Layout_Row_MAC_Explanation,
-        RunCodeRoute:new Row_MA_CenterRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Layout_Row_MAS": (BuildContext context)                     => CmpCodePage(
-        Title:"Row Main Align Start",
-        BackRoute:"/Layout_Row_MAC",
-        NextRoute:"/Layout_Row_MAE",
-        ItemList:Layout_Row_MAS_list,
-        CodeRoute:"lib/9_Layouts/5_Layout_Row_MainAlign_Start_Run.dart",
-        TabIcon:Icon(Icons.grid_on),
-        ToDo:"Write Simple Page That Contain 2 RaisedButton where Buttons Display On One Row ,Note:Use MainAxisAlignment.start\n",
-        TxtExplanation:Layout_Row_MAS_Explanation,
-        RunCodeRoute:new Row_MA_StartRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Layout_Row_MAE": (BuildContext context)                     => CmpCodePage(
-        Title:"Row Main Align End",
-        BackRoute:"/Layout_Row_MAS",
-        NextRoute:"/Layout_ContactListRun",
-        ItemList:Layout_Row_MAE_list,
-        CodeRoute:"lib/9_Layouts/6_Layout_Row_MainAlign_End_Run.dart",
-        TabIcon:Icon(Icons.grid_on),
-        ToDo:"Write Simple Page That Contain 2 RaisedButton where Buttons Display On One Row ,Note:Use MainAxisAlignment.end\n",
-        TxtExplanation:Layout_Row_MAE_Explanation,
-        RunCodeRoute:new Row_MA_EndRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Layout_ContactListRun": (BuildContext context)                => CmpCodePage(
-        Title:"Contact List Using Column Rows",
-        BackRoute:"/Layout_Row_MAE",
-        NextRoute:"/Dialog_Simple",
-        ItemList:Layout_Contact_List_list,
-        CodeRoute:"lib/9_Layouts/7_Contact_List_Run.dart",
-        TabIcon:Icon(Icons.grid_on),
-        ToDo:"Write Simple Page That Display Contact List Using Columns And Rows Layouts\n",
-        TxtExplanation:Layout_Contact_List_Explanation,
-        RunCodeRoute:new CListRun(),
-      ),
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Dialog_Simple": (BuildContext context)                        => CmpCodePage(
-        Title:"Simple Dialog",
-        BackRoute:"/Layout_ContactListRun",
-        NextRoute:"/Dialog_Customized",
-        ItemList:Dialogs_Simple_list,
-        CodeRoute:"lib/10_Dialogs/1_Simple_Dialog_Run.dart",
-        TabIcon:Icon(Icons.chrome_reader_mode),
-        ToDo:"We Need To Write A Page That Show A Raised Button Centered In The Body,Once Button Is Pressed An Alert Dialog Must Pop\n",
-        TxtExplanation:Dialogs_Simple_Explanation,
-        RunCodeRoute:new SimpleDialogRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Dialog_Customized": (BuildContext context)                     => CmpCodePage(
-        Title:"Customized Dialog",
-        BackRoute:"/Dialog_Simple",
-        NextRoute:"/Divider_Intro",
-        ItemList:Dialogs_Customized_list,
-        CodeRoute:"lib/10_Dialogs/2_Custumized_Dialog_Run.dart",
-        TabIcon:Icon(Icons.chrome_reader_mode),
-        ToDo:"We Need To Write A Page That Show An Raised Button Once Pressed Show A Custumizable Dialog(Title,Content:text+Button)\n",
-        TxtExplanation:Dialogs_Customized_Explanation,
-        RunCodeRoute:new SimpleCustumizedDialogRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Divider_Intro": (BuildContext context)                         => CmpIntroPage(
-        Title:"Divider Introduction",
-        BackRoute:"/Dialog_Customized",
-        NextRoute:"/Divider_Simple",
-        ItemList:Divider_Intro_list,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Divider_Simple": (BuildContext context)                         => CmpCodePage(
-        Title:"Simple Divider",
-        BackRoute:"/Divider_Intro",
-        NextRoute:"/Divider_Color",
-        ItemList:Divider_Simple_list,
-        CodeRoute:"lib/11_Divider/1_Simple_Divider_Run.dart",
-        TabIcon:Icon(Icons.linear_scale),
-        ToDo:"We Need To Write A Page That Show A Divider At The center Of The Body\n",
-        TxtExplanation:Divider_Simple_Explanation,
-        RunCodeRoute:new SimpleDividerRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Divider_Color": (BuildContext context)                         => CmpCodePage(
-        Title:"Divider Color",
-        BackRoute:"/Divider_Simple",
-        NextRoute:"/Divider_WH",
-        ItemList:Divider_Color_list,
-        CodeRoute:"lib/11_Divider/2_Divider_Color_Run.dart",
-        TabIcon:Icon(Icons.linear_scale),
-        ToDo:"We Need To Write A Page That Show A Divider With Blue Color At The center Of The Body\n",
-        TxtExplanation:Divider_Color_Explanation,
-        RunCodeRoute:new DividerColorRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Divider_WH": (BuildContext context)                             => CmpCodePage(
-        Title:"Custom Divider Width & Height",
-        BackRoute:"/Divider_Color",
-        NextRoute:"/Navigation_Page",
-        ItemList:Divider_WH_list,
-        CodeRoute:"lib/11_Divider/3_Divider_WH_Run.dart",
-        TabIcon:Icon(Icons.linear_scale),
-        ToDo:"We Need To Write A Page That Show A Divider With red Color At The center Of The Body , The Divider Has Width 250 , Height 10\n",
-        TxtExplanation:Divider_WH_Explanation,
-        RunCodeRoute:new DividerWHRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Navigation_Page": (BuildContext context)                         => CmpCodePage(
-        Title:"Navigations Through Pages",
-        BackRoute:"/Divider_WH",
-        NextRoute:"/Navigation_Link",
-        ItemList:Navigator_Page_list,
-        CodeRoute:"lib/12_Navigation/1_Navigator_Pages_Run.dart",
-        TabIcon:Icon(Icons.navigation),
-        ToDo:"Write 2 Pages :\n\n"
-            "Main Page:\n"
-            "-Contain A Raised Button That Take Us To Page1\n\n"
-            "Page1:\n"
-            "Contain An AppBar Leaded With a Left Icon That Take Us Back To Main Page",
-        TxtExplanation:Navigator_Page_Explanation,
-        RunCodeRoute:new NavPagesRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Navigation_Link": (BuildContext context)                         =>  CmpCodePage(
-        Title:"Navigations Through Links",
-        BackRoute:"/Navigation_Page",
-        NextRoute:"/Navigation_Dialer",
-        ItemList:Navigator_Links_list,
-        CodeRoute:"lib/12_Navigation/2_Navigator_Links_Run.dart",
-        TabIcon:Icon(Icons.navigation),
-        ToDo:"Write A Page That Contain An Raised button When Clicked It Take The User To A PlayStore App Link ",
-        TxtExplanation:Navigator_Links_Explanation,
-        RunCodeRoute:new NavLinksRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Navigation_Dialer": (BuildContext context)                        => CmpCodePage(
-        Title:"Navigations Through Tel",
-        BackRoute:"/Navigation_Link",
-        NextRoute:"/Navigation_SMS",
-        ItemList:Navigator_Tel_list,
-        CodeRoute:"lib/12_Navigation/3_Navigator_Tel_Run.dart",
-        TabIcon:Icon(Icons.navigation),
-        ToDo:"Write A Page That Contain An Raised button When Clicked It Take The User To Call +96176404762\n\n",
-        TxtExplanation:Navigator_Tel_Explanation,
-        RunCodeRoute:new NavTelRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Navigation_SMS": (BuildContext context)                           => CmpCodePage(
-        Title:"Navigations Through SMS",
-        BackRoute:"/Navigation_Dialer",
-        NextRoute:"/Navigation_Email",
-        ItemList:Navigator_SMS_list,
-        CodeRoute:"lib/12_Navigation/4_Navigator_Sms_Run.dart",
-        TabIcon:Icon(Icons.navigation),
-        ToDo:"Write A Page That Contain An Raised button When Clicked It Take The User To Send A SMS To +96176404762\n\n",
-        TxtExplanation:Navigator_SMS_Explanation,
-        RunCodeRoute:new NavSMSRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Navigation_Email": (BuildContext context)                         => CmpCodePage(
-        Title:"Navigations Through Email",
-        BackRoute:"/Navigation_SMS",
-        NextRoute:"/SnackBar_Intro",
-        ItemList:Navigator_Email_list,
-        CodeRoute:"lib/12_Navigation/5_Navigator_Email_Run.dart",
-        TabIcon:Icon(Icons.navigation),
-        ToDo:"Write A Page That Contain An Raised button When Clicked It Take The User To Send An Email To edapps.contact@gmail.com\n\n",
-        TxtExplanation:Navigator_Email_Explanation,
-        RunCodeRoute:new NavEmailRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/SnackBar_Intro": (BuildContext context)                           => CmpIntroPage(
-        Title:"SnackBar Introduction",
-        BackRoute:"/Navigation_Email",
-        NextRoute:"/SnackBar_Simple",
-        ItemList:SnackBar_Intro_list,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/SnackBar_Simple": (BuildContext context)                          =>CmpCodePage(
-        Title:"Simple SnackBar",
-        BackRoute:"/SnackBar_Intro",
-        NextRoute:"/SnackBar_Red_Simple",
-        ItemList:Snackbar_Simple_list,
-        CodeRoute:"lib/13_SnBar/1_Simple_SnackBar_Run.dart",
-        TabIcon:Icon(Icons.blur_linear),
-        ToDo:"We Need To Create a Page That Show A Flat Button Centered In The Body,Once The Button Clicked A SnackBar Must Appear \n",
-        TxtExplanation:SnackBar_Simple_Explanation,
-        RunCodeRoute:new SimpleSnBarRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/SnackBar_Red_Simple": (BuildContext context)                       =>CmpCodePage(
-        Title:"Simple Red SnackBar",
-        BackRoute:"/SnackBar_Simple",
-        NextRoute:"/SnackBar_Duration",
-        ItemList:Snackbar_Red_list,
-        CodeRoute:"lib/13_SnBar/2_Simple_Red_SnackBar_Run.dart",
-        TabIcon:Icon(Icons.blur_linear),
-        ToDo:"We Need To Create a Page That Show A Flat Button Centered In The Body,Once The Button Clicked A Red Background color SnackBar Must Appear \n",
-        TxtExplanation:SnackBar_Red_Explanation,
-        RunCodeRoute:new SnBarBgRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/SnackBar_Duration": (BuildContext context)                        =>CmpCodePage(
-        Title:"SnackBar Duration",
-        BackRoute:"/SnackBar_Red_Simple",
-        NextRoute:"/SnackBar_Shape",
-        ItemList:Snackbar_Duration_list,
-        CodeRoute:"lib/13_SnBar/3_SnackBar_Duration_Run.dart",
-        TabIcon:Icon(Icons.blur_linear),
-        ToDo:"We Need To Create a Page That Show A Flat Button Centered In The Body,Once The Button Clicked A SnackBar Must Appear for 10 Sec \n",
-        TxtExplanation:SnackBar_Duration_Explanation,
-        RunCodeRoute:new SnBarDurRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/SnackBar_Shape": (BuildContext context)                           =>CmpCodePage(
-        Title:"SnackBar Shape",
-        BackRoute:"/SnackBar_Duration",
-        NextRoute:"/SnackBar_Action",
-        ItemList:Snackbar_Shape_list,
-        CodeRoute:"lib/13_SnBar/4_SnackBar_Shape_Run.dart",
-        TabIcon:Icon(Icons.blur_linear),
-        ToDo:"We Need To Create a Page That Show A Flat Button Centered In The Body,Once The Button Clicked A SnackBar Must Appear , The Snackbar Must Have Radius Border Shape Set to 30Deg\n",
-        TxtExplanation:SnackBar_Shape_Explanation,
-        RunCodeRoute:new SnBarShapeRun(),
-      ),
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/SnackBar_Action": (BuildContext context)                           =>CmpCodePage(
-        Title:"SnackBar Action Button",
-        BackRoute:"/SnackBar_Shape",
-        NextRoute:"/FlushBar_Simple",
-        ItemList:Snackbar_Action_list,
-        CodeRoute:"lib/13_SnBar/5_SnackBar_Action_Run.dart",
-        TabIcon:Icon(Icons.blur_linear),
-        ToDo:"We Need To Create a Page That Show A Flat Button Centered In The Body,Once The Button Clicked A SnackBar Must Appear With GetIt Now Text And A Download Label That Take The User To Play Store!\n",
-        TxtExplanation:SnackBar_Action_Explanation,
-        RunCodeRoute:new SnBarActRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/FlushBar_Simple": (BuildContext context)                          =>CmpCodePage(
-        Title:"Simple FlushBar",
-        BackRoute:"/SnackBar_Action",
-        NextRoute:"/Flushbar_RedBg",
-        ItemList:FlushBar_Simple_list,
-        CodeRoute:"lib/14_FlushBar/1_Simple_FlushBar_Run.dart",
-        TabIcon:Icon(Icons.space_bar),
-        ToDo:"We Need To Write A Page That Show A Raised Button Centered In The Body,Once Button Is Pressed A FlushhBar Must Be Shown\n",
-        TxtExplanation:FlushBar_Simple_Explanation,
-        RunCodeRoute:new SimpleFlushBarRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Flushbar_RedBg": (BuildContext context)                          =>CmpCodePage(
-        Title:"FlushBar With Red Background Color",
-        BackRoute:"/FlushBar_Simple",
-        NextRoute:"/Flushbar_YwText",
-        ItemList:FlushBar_RedBg_list,
-        CodeRoute:"lib/14_FlushBar/2_FlushBar_Red_BackgroundColor_Run.dart",
-        TabIcon:Icon(Icons.space_bar),
-        ToDo:"We Need To Write A Page That Show A Raised Button Centered In The Body,Once Button Is Pressed A Red FlushhBar Must Be Shown\n",
-        TxtExplanation:FlushBar_RedBg_Explanation,
-        RunCodeRoute:new FlushBarBGRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Flushbar_YwText": (BuildContext context)                         =>CmpCodePage(
-        Title:"FlushBar Yellow Text",
-        BackRoute:"/Flushbar_RedBg",
-        NextRoute:"/Flushbar_Icon",
-        ItemList:FlushBar_Yellow_Text_list,
-        CodeRoute:"lib/14_FlushBar/3_FlushBar_Yellow_Text_Run.dart",
-        TabIcon:Icon(Icons.space_bar),
-        ToDo:"We Need To Write A Page That Show A Raised Button Centered In The Body,Once Button Is Pressed A FlushhBar With Yellow Text Must Be Shown\n",
-        TxtExplanation:FlushBar_Yellow_Text_Explanation,
-        RunCodeRoute:new FlushBarYWTxtRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Flushbar_Icon": (BuildContext context)                           =>CmpCodePage(
-        Title:"FlushBar Icon",
-        BackRoute:"/Flushbar_YwText",
-        NextRoute:"/Flushbar_ActionButton",
-        ItemList:FlushBar_Icon_list,
-        CodeRoute:"lib/14_FlushBar/4_FlushBar_Icon_Run.dart",
-        TabIcon:Icon(Icons.space_bar),
-        ToDo:"We Need To Write A Page That Show A Raised Button Centered In The Body,Once Button Is Pressed A FlushhBar With Leading Icon Must Be Shown\n",
-        TxtExplanation:FlushBar_Icon_Explanation,
-        RunCodeRoute:new FlushBarIconRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Flushbar_ActionButton": (BuildContext context)                    =>CmpCodePage(
-        Title:"FlushBar Main Action Button",
-        BackRoute:"/Flushbar_Icon",
-        NextRoute:"/Flushbar_Position",
-        ItemList:FlushBar_MainButton_list,
-        CodeRoute:"lib/14_FlushBar/5_FlushBar_Main_Action_Button_Run.dart",
-        TabIcon:Icon(Icons.space_bar),
-        ToDo:"We Need To Write A Page That Show A Raised Button Centered In The Body,Once Button Is Pressed A FlushBar Must Be Shown That Display A Title,Message And A Main Button That Do An Action\n",
-        TxtExplanation:FlushBar_MainButton_Explanation,
-        RunCodeRoute:new FlushBarMainBtnRun(),
-      ),
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Flushbar_Position": (BuildContext context)                        =>CmpCodePage(
-        Title:"FlushBar Position",
-        BackRoute:"/Flushbar_ActionButton",
-        NextRoute:"/Flushbar_Duration",
-        ItemList:FlushBar_Position_list,
-        CodeRoute:"lib/14_FlushBar/6_FlushBar_Position_Run.dart",
-        TabIcon:Icon(Icons.space_bar),
-        ToDo:"We Need To Write A Page That Show A Raised Button Centered In The Body,Once Button Is Pressed It Show A Top And A Bottom FlushBar!\n",
-        TxtExplanation:FlushBar_Position_Explanation,
-        RunCodeRoute:new FlushBarPosRun(),
-      ),
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Flushbar_Duration": (BuildContext context)                        =>CmpCodePage(
-        Title:"FlushBar Duration",
-        BackRoute:"/Flushbar_Position",
-        NextRoute:"/Card_Intro",
-        ItemList:FlushBar_Duration_list,
-        CodeRoute:"lib/14_FlushBar/7_FlushBar_Duration_Run.dart",
-        TabIcon:Icon(Icons.space_bar),
-        ToDo:"We Need To Write A Page That Show A Raised Button Centered In The Body,Once Button Is Pressed It Has To Show FlushBar For 2 Seconds!\n",
-        TxtExplanation:FlushBar_Position_Explanation,
-        RunCodeRoute:new FlushBarDuration(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Card_Intro": (BuildContext context)                                   =>CmpIntroPage(
-        Title:"Card Introduction",
-        BackRoute:"/Flushbar_Duration",
-        NextRoute:"/Card_Simple",
-        ItemList:Card_Intro_list,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Card_Simple": (BuildContext context)                              =>CmpCodePage(
-        Title:"Simple Card",
-        BackRoute:"/Card_Intro",
-        NextRoute:"/Card_WH",
-        ItemList:Card_Simple_list,
-        CodeRoute:"lib/15_Card/1_Simple_Card_Run.dart",
-        TabIcon:Icon(Icons.four_k),
-        ToDo:"We Need To Create 2 Simple Card Having Just Text In The Body\n",
-        TxtExplanation:Card_Simple_Explanation,
-        RunCodeRoute:new SimpleCardRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Card_WH": (BuildContext context)                                 =>CmpCodePage(
-        Title:"Card Width & Height",
-        BackRoute:"/Card_Simple",
-        NextRoute:"/Card_Red_WH",
-        ItemList:Card_WH_list,
-        CodeRoute:"lib/15_Card/2_Card_WH_Run.dart",
-        TabIcon:Icon(Icons.four_k),
-        ToDo:"We Need To Create a Page That Show A Card Centered In The Body Having Maximum Width,Height 200\n",
-        TxtExplanation:Card_WH_Explanation,
-        RunCodeRoute:new SimpleCardWHRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Card_Red_WH": (BuildContext context)                              =>CmpCodePage(
-        Title:"Red Card Width & Height",
-        BackRoute:"/Card_WH",
-        NextRoute:"/Card_Customized",
-        ItemList:Card_Red_WH_list,
-        CodeRoute:"lib/15_Card/3_Card_Bg_Run.dart",
-        TabIcon:Icon(Icons.four_k),
-        ToDo:"We Need To Create a Page That Show A Card Centered In The Body Having Maximum Width,Height 200 , Red Background Color\n",
-        TxtExplanation:Card_Red_WH_Explanation,
-        RunCodeRoute:new SimpleBgCardWHRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Card_Customized": (BuildContext context)                          =>CmpCodePage(
-        Title:"Customized Card",
-        BackRoute:"/Card_Red_WH",
-        NextRoute:"/Card_Elevator",
-        ItemList:Card_Cust_list,
-        CodeRoute:"lib/15_Card/4_Card_Cust_Run.dart",
-        TabIcon:Icon(Icons.four_k),
-        ToDo:"We Need To Create a Customized Card That Take As First Row Image+Text , Second Row Text\n",
-        TxtExplanation:Card_Cust_Explanation,
-        RunCodeRoute:new CustCardRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Card_Elevator": (BuildContext context)                            =>CmpCodePage(
-        Title:"Card Elevator",
-        BackRoute:"/Card_Customized",
-        NextRoute:"/TextOverFlow_Clip",
-        ItemList:Card_Elavator_list,
-        CodeRoute:"lib/15_Card/5_Card_Elevator_Run.dart",
-        TabIcon:Icon(Icons.four_k),
-        ToDo:"We Need To Create a Menu Page That Contain 2 Cards Containing Liste Tiles That Take Users To Pages,Use Elevation 20\n",
-        TxtExplanation:Card_Elevator_Explanation,
-        RunCodeRoute:new CardElevatorRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/TextOverFlow_Clip": (BuildContext context)                        =>CmpCodePage(
-        Title:"TextOverFlow Clip",
-        BackRoute:"/Card_Elevator",
-        NextRoute:"/TextOverFlow_Ellipsis",
-        ItemList:TextOverFlow_Clip_list,
-        CodeRoute:"lib/16_TextOverflow/1_TxtF_ClipRun.dart",
-        TabIcon:Icon(Icons.title),
-        ToDo:"We Need To Write A Page That Show A Container Having Clipped OverFlowed Text\n",
-        TxtExplanation:TextOverFlow_Clip_Explanation,
-        RunCodeRoute:new TxtFClipRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/TextOverFlow_Ellipsis": (BuildContext context)                     =>CmpCodePage(
-        Title:"TextOverFlow Ellipsis",
-        BackRoute:"/TextOverFlow_Clip",
-        NextRoute:"/TextOverFlow_Fade",
-        ItemList:TextOverFlow_Ellipsis_list,
-        CodeRoute:"lib/16_TextOverflow/2_TxtF_EllipsisRun.dart",
-        TabIcon:Icon(Icons.title),
-        ToDo:"We Need To Write A Page That Show A Container That Show Ellipsis When Text Is Overflowed\n",
-        TxtExplanation:TextOverFlow_Ellipsis_Explanation,
-        RunCodeRoute:new TxtFEllipsisRun(),
-      ),
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/TextOverFlow_Fade": (BuildContext context)                         =>CmpCodePage(
-        Title:"TextOverFlow Fade",
-        BackRoute:"/TextOverFlow_Ellipsis",
-        NextRoute:"/TextOverFlow_Visible",
-        ItemList:TextOverFlow_Fade_list,
-        CodeRoute:"lib/16_TextOverflow/3_TxtF_FadeRun.dart",
-        TabIcon:Icon(Icons.title),
-        ToDo:"We Need To Write A Page That Show A Container Having Faded OverFlowed Text\n",
-        TxtExplanation:TextOverFlow_Fade_Explanation,
-        RunCodeRoute:new TxtFFadeRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/TextOverFlow_Visible": (BuildContext context)                      =>CmpCodePage(
-        Title:"TextOverFlow Visible",
-        BackRoute:"/TextOverFlow_Fade",
-        NextRoute:"/GestureDetector_Intro",
-        ItemList:TextOverFlow_Visible_list,
-        CodeRoute:"lib/16_TextOverflow/4_TxtF_VisibleRun.dart",
-        TabIcon:Icon(Icons.title),
-        ToDo:"We Need To Write A Page That Show A Container Having Visible OverFlowed Text\n",
-        TxtExplanation:TextOverFlow_Visible_Explanation,
-        RunCodeRoute:new TxtFVisibleRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/GestureDetector_Intro": (BuildContext context)                     =>CmpIntroPage(
-        Title:"Gesture Detector Introduction",
-        BackRoute:"/TextOverFlow_Visible",
-        NextRoute:"/GestureDetector_Image",
-        ItemList:GestureDetector_Intro_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/GestureDetector_Image": (BuildContext context)                     => CmpCodePage(
-        Title:"Image Gesture Detector",
-        BackRoute:"/GestureDetector_Intro",
-        NextRoute:"/GestureDetector_AppBarTitle",
-        ItemList:GestureDetector_GestImg_list,
-        CodeRoute:"lib/17_GestureDetector/1_GestImg_Run.dart",
-        TabIcon:Icon(Icons.touch_app),
-        ToDo:"We Need To Write A Page That Show A Image Centered Into The Body,Once The Image Is Tapped An Alert Must Pop\n",
-        TxtExplanation:GestureDetector_GestImg_Explanation,
-        RunCodeRoute:new GestImgRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/GestureDetector_AppBarTitle": (BuildContext context)               => CmpCodePage(
-        Title:"AppBar Title Gesture Detector",
-        BackRoute:"/GestureDetector_Image",
-        NextRoute:"/GestureDetector_TapCoords",
-        ItemList:GestureDetector_GestAppBarTitle_list,
-        CodeRoute:"lib/17_GestureDetector/2_GestAppBarTitleRun.dart",
-        TabIcon:Icon(Icons.touch_app),
-        ToDo:"We Need To Write A Page That Contain An AppBar With Tap Me text Once Text Tapped An Alert Must Pop\n",
-        TxtExplanation:GestureDetector_GestAppBarTitle_Explanation,
-        RunCodeRoute:new GestAppBarTtileRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/GestureDetector_TapCoords": (BuildContext context)               => CmpCodePage(
-        Title:"Tap Coords Detector",
-        BackRoute:"/GestureDetector_AppBarTitle",
-        NextRoute:"/GestureDetector_Body_DoubleTap",
-        ItemList:GestureDetector_TapCoords_list,
-        CodeRoute:"lib/17_GestureDetector/3_Tap_Coords_Run.dart",
-        TabIcon:Icon(Icons.touch_app),
-        ToDo:"We Need To Write A Page That Contain Positioned Containing Text As An Child,Once Used Tap Change The Positined Position According To Tap X And Y\n",
-        TxtExplanation:GestureDetector_TapCoords_Explanation,
-        RunCodeRoute:new TapCoords(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/GestureDetector_Body_DoubleTap": (BuildContext context)               => CmpCodePage(
-        Title:"Body Double Tap Detector",
-        BackRoute:"/GestureDetector_TapCoords",
-        NextRoute:"/ListView_Intro",
-        ItemList:GestureDetector_BodyDoubleTap_list,
-        CodeRoute:"lib/17_GestureDetector/4_Double_Tap.dart",
-        TabIcon:Icon(Icons.touch_app),
-        ToDo:"We Need To Write A Page When User Double Tap The Body,A Dialog Must Pop Up!\n",
-        TxtExplanation:GestureDetector_BodyDoubleTap_Explanation,
-        RunCodeRoute:new BodyDoubleTap(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/ListView_Intro": (BuildContext context)                            =>CmpIntroPage(
-        Title:"ListView Introduction",
-        BackRoute:"/GestureDetector_AppBarTitle",
-        NextRoute:"/ListView_Scroll_Hor",
-        ItemList:ListView_Intro_CompList,
-      ),
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/ListView_Scroll_Hor": (BuildContext context)                       =>CmpCodePage(
-        Title:"Horizontal ListView",
-        BackRoute:"/ListView_Intro",
-        NextRoute:"/ListView_Scroll_Ver",
-        ItemList:ListView_Horizontal_list,
-        CodeRoute:"lib/18_ListView/1_ListView_Horizontal_Run.dart",
-        TabIcon:Icon(Icons.filter_list),
-        ToDo:"We Need To Write A Page That Allow Scroll Multiple Images Horizontaly\n",
-        TxtExplanation:ListView_Horizontal_Explanation,
-        RunCodeRoute:new LVHorRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/ListView_Scroll_Ver": (BuildContext context)                       =>CmpCodePage(
-        Title:"Vertical ListView",
-        BackRoute:"/ListView_Scroll_Hor",
-        NextRoute:"/ListView_ScrollTo",
-        ItemList:ListView_Vertical_list,
-        CodeRoute:"lib/18_ListView/2_ListView_Vertical_Run.dart",
-        TabIcon:Icon(Icons.filter_list),
-        ToDo:"We Need To Write A Page That Allow Scroll Multiple Images Vertically\n",
-        TxtExplanation:ListView_Vertical_Explanation,
-        RunCodeRoute:new LVVertRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/ListView_ScrollTo": (BuildContext context)                       =>CmpCodePage(
-        Title:"ListView Scroll To",
-        BackRoute:"/ListView_Scroll_Ver",
-        NextRoute:"/ListView_Move_To_Top_Bottom",
-        ItemList:ListView_ScrollTo_list,
-        CodeRoute:"lib/18_ListView/3_ListView_ScrollTo.dart",
-        TabIcon:Icon(Icons.filter_list),
-        ToDo:"We Need To Write A Page Containing 2 Buttons < And > And A ListView Taking Items That Can Be Scrolled With Buttons\n",
-        TxtExplanation:ListView_ScrollTo_Explanation,
-        RunCodeRoute:new LVScrollTo(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/ListView_Move_To_Top_Bottom": (BuildContext context)                       =>CmpCodePage(
-        Title:"ListView Move To Top Or Bottom",
-        BackRoute:"/ListView_ScrollTo",
-        NextRoute:"/TextField_Simple",
-        ItemList:ListView_MoveTo_list,
-        CodeRoute:"lib/18_ListView/4_Move_To_Top_Bottom.dart",
-        TabIcon:Icon(Icons.filter_list),
-        ToDo:"We Need To Write A Page That Has A Floating Buttons That Scroll List To Top And Other To Bottom\n",
-        TxtExplanation:ListView_MoveTo_Explanation,
-        RunCodeRoute:new LVMoveTo(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/TextField_Simple": (BuildContext context)                          =>CmpCodePage(
-        Title:"Simple TextField",
-        BackRoute:"/ListView_Scroll_Ver",
-        NextRoute:"/TextField_WithoutBorder",
-        ItemList:TextField_Simple_list,
-        CodeRoute:"lib/19_TextField/1_TextField_Simple_Run.dart",
-        TabIcon:Icon(Icons.input),
-        ToDo:"We Need To Create a Page That Show A Simple TextField With A Controller\n",
-        TxtExplanation:TextField_Simple_Explanation,
-        RunCodeRoute:new SimpleTFRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/TextField_WithoutBorder": (BuildContext context)                   =>CmpCodePage(
-        Title:"TextField Without Border",
-        BackRoute:"/TextField_Simple",
-        NextRoute:"/TextField_MultiLine",
-        ItemList:TextField_NoBorder_list,
-        CodeRoute:"lib/19_TextField/2_TextField_NoBorder_Run.dart",
-        TabIcon:Icon(Icons.input),
-        ToDo:"We Need To Create a Page That Show A Simple TextField With A Controller Without Borders\n",
-        TxtExplanation:TextField_NoBorder_Explanation,
-        RunCodeRoute:new TFNoBordRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/TextField_MultiLine": (BuildContext context)                       =>CmpCodePage(
-        Title:"MultiLine TextField",
-        BackRoute:"/TextField_WithoutBorder",
-        NextRoute:"/TextField_Icon",
-        ItemList:TextField_MultiLine_list,
-        CodeRoute:"lib/19_TextField/3_TextField_MultiLine_Run.dart",
-        TabIcon:Icon(Icons.input),
-        ToDo:"We Need To Create a Page That Show A Simple TextField With A Controller That Take 6 Lines\n",
-        TxtExplanation:TextField_MultiLine_Explanation,
-        RunCodeRoute:new MultiTFRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/TextField_Icon": (BuildContext context)                            =>CmpCodePage(
-        Title:"TextField Icon",
-        BackRoute:"/TextField_MultiLine",
-        NextRoute:"/TextField_Styling",
-        ItemList:TextField_Icon_list,
-        CodeRoute:"lib/19_TextField/4_TextField_Icon_Run.dart",
-        TabIcon:Icon(Icons.input),
-        ToDo:"We Need To Create a Page That Show A Simple TextField With A Controller And Icon\n",
-        TxtExplanation:TextField_Icon_Explanation,
-        RunCodeRoute:new IconTFRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/TextField_Styling": (BuildContext context)                          =>CmpCodePage(
-        Title:"TextField Style",
-        BackRoute:"/TextField_Icon",
-        NextRoute:"/TextField_Pass",
-        ItemList:TextField_Style_list,
-        CodeRoute:"lib/19_TextField/5_TextField_Style_Run.dart",
-        TabIcon:Icon(Icons.input),
-        ToDo:"We Need To Create a Page That Show A Simple TextField With A Controller Having Red Hint Text And Blue Text Color Input\n",
-        TxtExplanation:TextField_Style_Explanation,
-        RunCodeRoute:new TFStyleRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/TextField_Pass": (BuildContext context)                             =>CmpCodePage(
-        Title:"Password TextField",
-        BackRoute:"/TextField_Styling",
-        NextRoute:"/TextField_LoginForm",
-        ItemList:TextField_Pass_list,
-        CodeRoute:"lib/19_TextField/6_TextField_Password_Run.dart",
-        TabIcon:Icon(Icons.input),
-        ToDo:"We Need To Create a Password TextField With A Controller \n",
-        TxtExplanation:TextField_Pass_Explanation,
-        RunCodeRoute:new PassTFRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/TextField_LoginForm": (BuildContext context)                         =>CmpCodePage(
-        Title:"Login TextField Form",
-        BackRoute:"/TextField_Pass",
-        NextRoute:"/TextField_FormValidation",
-        ItemList:TextField_LoginForm_list,
-        CodeRoute:"lib/19_TextField/7_TextField_Login_Form_Run.dart",
-        TabIcon:Icon(Icons.input),
-        ToDo:"Create A Simple Login Form Design\n",
-        TxtExplanation:TextField_LoginForm_Explanation,
-        RunCodeRoute:new LoginFormRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/TextField_FormValidation": (BuildContext context)                    =>CmpCodePage(
-        Title:"TextForm Validation",
-        BackRoute:"/TextField_LoginForm",
-        NextRoute:"/FooterAppbar_Simple",
-        ItemList:TextField_FormValidation_list,
-        CodeRoute:"lib/19_TextField/8_TextForm_Form_Validation_Run.dart",
-        TabIcon:Icon(Icons.input),
-        ToDo:"We Need To Write A Page That Take A Login Form Design,Validate Info When Button Is Clicked,Use SnackBar To Show Result If Succeed!\n",
-        TxtExplanation:TextField_FormValidation_Explanation,
-        RunCodeRoute:new ValidTFRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/FooterAppbar_Simple": (BuildContext context)                         =>CmpCodePage(
-        Title:"Simple Footer AppBar",
-        BackRoute:"/TextField_FormValidation",
-        NextRoute:"/FooterAppbar_NavBar",
-        ItemList:Footer_AppBar_Simple_list,
-        CodeRoute:"lib/20_Footer/1_Simple_Footer_Run.dart",
-        TabIcon:Icon(Icons.input),
-        ToDo:"We Need To Write A Page That Show A Footer Containing 2 Images:\n"
-            "-Logo App + Text That Take The User To The App\n"
-            "-Logo Fb  + Text That Take The User To Fb \n",
-        TxtExplanation:Footer_AppBar_Simple_Explanation,
-        RunCodeRoute:new SimpleFooterRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/FooterAppbar_NavBar": (BuildContext context)                         =>CmpCodePage(
-        Title:"NavBar Footer AppBar",
-        BackRoute:"/FooterAppbar_Simple",
-        NextRoute:"/ImageSlider_Intro",
-        ItemList:Footer_AppBar_NavBar_list,
-        CodeRoute:"lib/20_Footer/2_Bottom_NavBar_Run.dart",
-        TabIcon:Icon(Icons.input),
-        ToDo:"Create A Page Taking A Navigation Bar Footer Taking 3 Different Pages",
-        TxtExplanation:Footer_AppBar_NavBar_Explanation,
-        RunCodeRoute:new NavBarFooterRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/ImageSlider_Intro": (BuildContext context)                           =>CmpIntroPage(
-        Title:"Image Slider Intro",
-        BackRoute:"/FooterAppbar_NavBar",
-        NextRoute:"/ImageSlider_StartImage",
-        ItemList:IS_Intro_list,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/ImageSlider_StartImage": (BuildContext context)                      =>CmpCodePage(
-        Title:"Image Slider Initial Page Index",
-        BackRoute:"/ImageSlider_Intro",
-        NextRoute:"/ImageSlider_EnlargeCenterPage",
-        ItemList:IS_InitialPage_list,
-        CodeRoute:"lib/21_ImageSlider/1_IS_InitialPage_Run.dart",
-        TabIcon:Icon(Icons.slideshow),
-        ToDo: "We Need To Write A Page That Show 2 Slider:\n"
-            "-First Slider Start With The Image Index 0\n"
-            "-Second Slider Start With The Image Index 1\n",
-        TxtExplanation:IS_InitialPage_Explanation,
-        RunCodeRoute:new CarouselInitialPageRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/ImageSlider_EnlargeCenterPage": (BuildContext context)               =>CmpCodePage(
-        Title:"Image Slider Enlarge Center Page",
-        BackRoute:"/ImageSlider_StartImage",
-        NextRoute:"/ImageSlider_AutoPlay",
-        ItemList:IS_EnlargeCenterPage_list,
-        CodeRoute:"lib/21_ImageSlider/2_IS_EnlargeCenterPage_Run.dart",
-        TabIcon:Icon(Icons.slideshow),
-        ToDo: "We Need To Write A Page That Show 2 Slider:\n"
-            "-First Slider Center Page Enlarged\n"
-            "-Second Slider Center Page Not Enlarged\n",
-        TxtExplanation:IS_EnlargeCenterPage_Explanation,
-        RunCodeRoute:new CarouselEnlargeCenterPageRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/ImageSlider_AutoPlay": (BuildContext context)                        =>CmpCodePage(
-        Title:"Image Slider Auto Play",
-        BackRoute:"/ImageSlider_EnlargeCenterPage",
-        NextRoute:"/ImageSlider_InfiniteScroll",
-        ItemList:IS_AutoPlay_list,
-        CodeRoute:"lib/21_ImageSlider/3_IS_AutoPlay_Run.dart",
-        TabIcon:Icon(Icons.slideshow),
-        ToDo: "We Need To Write A Page That Show 2 Slider:\n"
-            "-First Slider Auto Play Set To True\n"
-            "-Second Slider Auto Play Set To False\n",
-        TxtExplanation:IS_AutoPlay_Explanation,
-        RunCodeRoute:new CarouselAutoPlayRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/ImageSlider_InfiniteScroll": (BuildContext context)                  =>CmpCodePage(
-        Title:"Image Slider Infinite Scroll",
-        BackRoute:"/ImageSlider_AutoPlay",
-        NextRoute:"/ImageSlider_AutoPlayInterval",
-        ItemList:IS_InfiniteScroll_list,
-        CodeRoute:"lib/21_ImageSlider/4_IS_Enable_Infinite_Scroll_Run.dart",
-        TabIcon:Icon(Icons.slideshow),
-        ToDo: "We Need To Write A Page That Show 2 Slider:\n"
-            "-First Slider Infinite Scroll Set To True\n"
-            "-Second Slider Infinite Scroll Set To False\n",
-        TxtExplanation:IS_InfiniteScroll_Explanation,
-        RunCodeRoute:new CarouselEnableInifiniteScrollRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/ImageSlider_AutoPlayInterval": (BuildContext context)                =>CmpCodePage(
-        Title:"Image Slider Auto Play Interval",
-        BackRoute:"/ImageSlider_InfiniteScroll",
-        NextRoute:"/ImageSlider_PauseAutoPlayOnTouch",
-        ItemList:IS_AutoPlayInterval_list,
-        CodeRoute:"lib/21_ImageSlider/5_IS_AutoPlayInterval_Run.dart",
-        TabIcon:Icon(Icons.slideshow),
-        ToDo: "We Need To Write A Page That Show 2 Slider:\n"
-            "-First Slider autoPlayInterval Set To 1sec\n"
-            "-Second Slider autoPlayInterval Set To 2sec\n",
-        TxtExplanation:IS_AutoPlayInterval_Explanation,
-        RunCodeRoute:new CarouselAutoPlayIntervRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/ImageSlider_PauseAutoPlayOnTouch": (BuildContext context)            =>CmpCodePage(
-        Title:"Image Slider Pause Auto Play On Touch",
-        BackRoute:"/ImageSlider_AutoPlayInterval",
-        NextRoute:"/ImageSlider_ScrollDirection",
-        ItemList:IS_PauseAutoPlayOnTouch_list,
-        CodeRoute:"lib/21_ImageSlider/6_IS_Pause_AutoPlay_OnTouch_Run.dart",
-        TabIcon:Icon(Icons.slideshow),
-        ToDo: "We Need To Write A Page That Show 2 Slider:\n"
-            "-First Slider PauseAutoPlayOnTouch Set To 2sec\n"
-            "-Second Slider PauseAutoPlayOnTouch Set To 5sec\n",
-        TxtExplanation:IS_PauseAutoPlayOnTouch_Explanation,
-        RunCodeRoute:new CarouselPauseAutoPlayOnTouchRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/ImageSlider_ScrollDirection": (BuildContext context)                 =>CmpCodePage(
-        Title:"Image Slider Scroll Direction",
-        BackRoute:"/ImageSlider_PauseAutoPlayOnTouch",
-        NextRoute:"/ImageSlider_WithButton",
-        ItemList:IS_ScrollDirection_list,
-        CodeRoute:"lib/21_ImageSlider/7_IS_ScrollDirection_Run.dart",
-        TabIcon:Icon(Icons.slideshow),
-        ToDo: "We Need To Write A Page That Show 2 Slider:\n"
-            "-First Slider Scrolled Horizontally\n"
-            "-Second Slider Scrolled Vertically\n",
-        TxtExplanation:IS_ScrollDirection_Explanation,
-        RunCodeRoute:new CarouselScrollDirectionRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/ImageSlider_WithButton": (BuildContext context)                      =>CmpCodePage(
-        Title:"Image Slider With Buttons",
-        BackRoute:"/ImageSlider_ScrollDirection",
-        NextRoute:"/ImageSlider_WithCaption",
-        ItemList:IS_WithButton_list,
-        CodeRoute:"lib/21_ImageSlider/8_Slider_WIth_Button_Run.dart",
-        TabIcon:Icon(Icons.slideshow),
-        ToDo: "We Need To Write A Page That Show A Slider Taking Buttons To Navigate",
-        TxtExplanation:IS_WithButton_Explanation,
-        RunCodeRoute:new SliderWithButton(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/ImageSlider_WithCaption": (BuildContext context)                     =>CmpCodePage(
-        Title:"Image Slider With Caption",
-        BackRoute:"/ImageSlider_WithButton",
-        NextRoute:"/ImageSlider_WithDots",
-        ItemList:IS_WithCaption_list,
-        CodeRoute:"lib/21_ImageSlider/9_Slider_With_Caption_Run.dart",
-        TabIcon:Icon(Icons.slideshow),
-        ToDo: "We Need To Write A Page That Show A Slider Taking Caption",
-        TxtExplanation:IS_WithCaption_Explanation,
-        RunCodeRoute:new SliderCaption(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/ImageSlider_WithDots": (BuildContext context)                        =>CmpCodePage(
-        Title:"Image Slider With Dots",
-        BackRoute:"/ImageSlider_WithCaption",
-        NextRoute:"/Notification_WithoutSound",
-        ItemList:IS_WithDots_list,
-        CodeRoute:"lib/21_ImageSlider/10_Dots_Slider_Run.dart",
-        TabIcon:Icon(Icons.slideshow),
-        ToDo: "We Need To Write A Page That Show A Slider Taking Dots",
-        TxtExplanation:IS_WithDots_Explanation,
-        RunCodeRoute:new DotsSliderRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Notification_WithoutSound": (BuildContext context)                   =>CmpCodePage(
-        Title:"Notification Without Sound",
-        BackRoute:"/ImageSlider_WithDots",
-        NextRoute:"/Notification_DefaultSound",
-        ItemList:Notification_WithoutSound_list,
-        CodeRoute:"lib/22_Notification/1_Notification_Without_Sound_Run.dart",
-        TabIcon:Icon(Icons.notifications_active),
-        ToDo:"Create A Simple Page That Take A Button,Once Clicked It Gonna Send A Notification Without A Sound\n",
-        TxtExplanation:Notification_WithoutSound_Explanation,
-        RunCodeRoute:new NotifNoSound(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Notification_DefaultSound": (BuildContext context)                   =>CmpCodePage(
-        Title:"Notification Default Sound",
-        BackRoute:"/Notification_WithoutSound",
-        NextRoute:"/Notification_CustomSound",
-        ItemList:Notification_DefaultSound_list,
-        CodeRoute:"lib/22_Notification/2_Notification_Default_Sound_Run.dart",
-        TabIcon:Icon(Icons.notifications_active),
-        ToDo:"Create A Simple Page That Take A Button,Once Clicked It Gonna Send A Notification With Default Sound\n",
-        TxtExplanation:Notification_DefaultSound_Explanation,
-        RunCodeRoute:new NotifDefSound(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Notification_CustomSound": (BuildContext context)                   =>CmpCodePage(
-        Title:"Notification Custom Sound",
-        BackRoute:"/Notification_DefaultSound",
-        NextRoute:"/Notification_CustomIcon",
-        ItemList:Notification_CustomSound_list,
-        CodeRoute:"lib/22_Notification/3_Notification_Custom_Sound_Run.dart",
-        TabIcon:Icon(Icons.notifications_active),
-        ToDo:"Create A Simple Page That Take A Button,Once Clicked It Gonna Send A Notification Without A Custom Sound\n",
-        TxtExplanation:Notification_CustomSound_Explanation,
-        RunCodeRoute:new NotifCustSound(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Notification_CustomIcon": (BuildContext context)                   =>CmpCodePage(
-        Title:"Notification Custom Icon",
-        BackRoute:"/Notification_CustomSound",
-        NextRoute:"/Notification_Daily",
-        ItemList:Notification_CustomIcon_list,
-        CodeRoute:"lib/22_Notification/4_Notification_Custom_Icon_Run.dart",
-        TabIcon:Icon(Icons.notifications_active),
-        ToDo:"Create A Simple Page That Take A Button,Once Clicked It Gonna Send A Notification With A Custom Icon\n",
-        TxtExplanation:Notification_CustomIcon_Explanation,
-        RunCodeRoute:new NotifCustIcon(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Notification_Daily": (BuildContext context)                   =>CmpCodePage(
-        Title:"Notification Custom Icon",
-        BackRoute:"/Notification_CustomSound",
-        NextRoute:"/Switch_Simple",
-        ItemList:Notification_CustomIcon_list,
-        CodeRoute:"lib/22_Notification/4_Notification_Custom_Icon_Run.dart",
-        TabIcon:Icon(Icons.notifications_active),
-        ToDo:"Create A Simple Page That Take A Button,Once Clicked It Gonna Send A Notification With A Custom Icon\n",
-        TxtExplanation:Notification_CustomIcon_Explanation,
-        RunCodeRoute:new DailyNotif(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Switch_Simple": (BuildContext context)                              =>CmpCodePage(
-        Title:"Simple Switch",
-        BackRoute:"/Notification_CustomIcon",
-        NextRoute:"/Switch_AppBarTheme",
-        ItemList:Switch_Simple_list,
-        CodeRoute:"lib/23_Switch/1_Simple_Switch_Run.dart",
-        TabIcon:Icon(Icons.switch_camera),
-        ToDo:
-        "Create A Simple Page That Take A Switch With A Text That Show Its State (On |Off),If The Switch Is:\n"
-            "-On : Set Its Color To Green\n"
-            "-Off: Set Its Color To Red\n",
-        TxtExplanation:Switch_Simple_Explanation,
-        RunCodeRoute:new SimpleSwitch(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Switch_AppBarTheme": (BuildContext context)                          =>CmpCodePage(
-        Title:"Switch AppBar Theme",
-        BackRoute:"/Switch_Simple",
-        NextRoute:"/Switch_ThemeMode",
-        ItemList:Switch_AppBarTheme_list,
-        CodeRoute:"lib/23_Switch/2_Switch_AppBar_Theme_Run.dart",
-        TabIcon:Icon(Icons.switch_camera),
-        ToDo:
-        "Create A Simple Page That Take A Switch When Its State Is:\n"
-            "-On : Set The Background Color Of The AppBar To Red\n"
-            "-Off: Set The Background Color Of The AppBar To Blue\n",
-        TxtExplanation:Switch_AppBarTheme_Explanation,
-        RunCodeRoute:new AppBarThemeSwitchRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Switch_ThemeMode": (BuildContext context)                          =>CmpCodePage(
-        Title:"Switch Theme Mode",
-        BackRoute:"/Switch_AppBarTheme",
-        NextRoute:"/Audio_Btn_Sound",
-        ItemList:Switch_ThemeMode_list,
-        CodeRoute:"lib/23_Switch/3_Switch_Light_Dark_Mode_Run.dart",
-        TabIcon:Icon(Icons.switch_camera),
-        ToDo:
-        "Create A Simple Page That Take Images When:\n"
-            "-On : Dark With Dark Theme\n"
-            "-Off: Sun With Light Theme\n",
-        TxtExplanation:Switch_ThemeMode_Explanation,
-        RunCodeRoute:new LightDarkModeRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Audio_Btn_Sound": (BuildContext context)                             =>CmpCodePage(
-        Title:"Audio Play On Press",
-        BackRoute:"/Switch_ThemeMode",
-        NextRoute:"/Audio_Player",
-        ItemList:Audio_Button_Sound_list,
-        CodeRoute:"lib/24_Audio/1_Audio_Button_Sound_Run.dart",
-        TabIcon:Icon(Icons.music_note),
-        ToDo:"Create A Simple Page That Take A Button,When Clicked Must Play A Sound\n",
-        TxtExplanation:Audio_Button_Sound_Explanation,
-        RunCodeRoute:new TapSoundBtnRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Audio_Player": (BuildContext context)                               =>CmpCodePage(
-        Title:"Audio Player",
-        BackRoute:"/Audio_Btn_Sound",
-        NextRoute:"/Video_File",
-        ItemList:Audio_Music_Player_list,
-        CodeRoute:"lib/24_Audio/2_Audio_Music_Player_Run.dart",
-        TabIcon:Icon(Icons.music_note),
-        ToDo:"Create A Simple Page That Take 2 Music,With Play,Pause And Stop...Show The Song Progress Into Slider And Durations\n",
-        TxtExplanation:Audio_Music_Player_Explanation,
-        RunCodeRoute:new AudioRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-
-      "/Video_File": (BuildContext context)                                  =>CmpCodePage(
-        Title:"Video From File",
-        BackRoute:"/Audio_Player",
-        NextRoute:"/Video_Url",
-        ItemList:Video_From_File_list,
-        CodeRoute:"lib/25_VideoPlayer/1_Video_From_File_Run.dart",
-        TabIcon:Icon(Icons.videocam),
-        ToDo:"Create A Simple Page That Take 2 Videos Loaded From File Inside 2 Cards With Some Text\n",
-        TxtExplanation:Video_From_File_Explanation,
-        RunCodeRoute:new VideoFromFile(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Video_Url": (BuildContext context)                                  =>CmpCodePage(
-        Title:"Video From Url",
-        BackRoute:"/Video_File",
-        NextRoute:"/Simple_Loaders",
-        ItemList:Video_From_Url_list,
-        CodeRoute:"lib/25_VideoPlayer/2_Video_From_Url_Run.dart",
-        TabIcon:Icon(Icons.videocam),
-        ToDo:"Create A Simple Page That Take 2 Videos Loaded From Url Inside 2 Cards With Some Text\n",
-        TxtExplanation:Video_From_Url_Explanation,
-        RunCodeRoute:new VideoFromUrl(),
-      ),
-
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Simple_Loaders": (BuildContext context)                             =>Simple_Loader(),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/SLD1": (BuildContext context)                                          =>CmpCodePage(
-        Title:"Linear Progress Indicator",
-        BackRoute:"/Simple_Loaders",
-        NextRoute:"/SLD2",
-        ItemList:SLD1_list,
-        CodeRoute:"lib/26_SimpleLoader/1_SLD1_Run.dart",
-        TabIcon:Icon(Icons.timelapse),
-        ToDo:"We Need To Write A Page That Show A Centered LinearProgressIndicator\n",
-        TxtExplanation:SLD1_Explanation,
-        RunCodeRoute:new SLD1Run(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/SLD2": (BuildContext context)                                          =>CmpCodePage(
-        Title:"Circular Progress Indicator",
-        BackRoute:"/SLD1",
-        NextRoute:"/Advanced_Loaders",
-        ItemList:SLD2_list,
-        CodeRoute:"lib/26_SimpleLoader/2_SLD2_Run.dart",
-        TabIcon:Icon(Icons.timelapse),
-        ToDo:"We Need To Write A Page That Show A Centered CircularProgressIndicator\n",
-        TxtExplanation:SLD2_Explanation,
-        RunCodeRoute:new SLD2Run(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Advanced_Loaders": (BuildContext context)                            =>Advanced_Loader(),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Animation_Intro": (BuildContext context)                              =>CmpIntroPage(
-        Title:"Animation Intro",
-        BackRoute:"/Advanced_Loaders",
-        NextRoute:"/Animation_Opacity",
-        ItemList:Animation_Intro_list,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Animation_Opacity": (BuildContext context)                            =>CmpCodePage(
-        Title:"Opacity Animation",
-        BackRoute:"/Animation_Intro",
-        NextRoute:"/Animation_Fade",
-        ItemList:Animation_Opacity_list,
-        CodeRoute:"lib/28_Animation/1_Animation_Opacity_Run.dart",
-        TabIcon:Icon(Icons.video_label),
-        ToDo:"We Need To Write A Page That Show An Image That PLay Opacity Animation\n",
-        TxtExplanation:Animation_Opacity_Explanation,
-        RunCodeRoute:new AnimOpacityRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Animation_Fade": (BuildContext context)                               =>CmpCodePage(
-        Title:"Fade Animation",
-        BackRoute:"/Animation_Opacity",
-        NextRoute:"/Animation_Tween_LTR",
-        ItemList:Animation_Fade_list,
-        CodeRoute:"lib/28_Animation/2_Animation_Fade_Run.dart",
-        TabIcon:Icon(Icons.video_label),
-        ToDo:"We Need To Write A Page That Show 2 Images That PLay Fade Animation\n",
-        TxtExplanation:Animation_Fade_Explanation,
-        RunCodeRoute:new FadeRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Animation_Tween_LTR": (BuildContext context)                          =>CmpCodePage(
-        Title:"Tween Animation Left To Right",
-        BackRoute:"/Animation_Fade",
-        NextRoute:"/Animation_Tween_RTL",
-        ItemList:Animation_TweenLtR_list,
-        CodeRoute:"lib/28_Animation/3_Animation_Tween_LtR_Run.dart",
-        TabIcon:Icon(Icons.video_label),
-        ToDo:"We Need To Write A Page That Show 2 Cards Having Different Widgets That Tween From Left To Right\n",
-        TxtExplanation:Animation_TweenLtR_Explanation,
-        RunCodeRoute:new TweenLtR_Run(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Animation_Tween_RTL": (BuildContext context)                          =>CmpCodePage(
-        Title:"Tween Animation Right To Left",
-        BackRoute:"/Animation_Tween_LTR",
-        NextRoute:"/Animation_Rotate",
-        ItemList:Animation_TweenRtL_list,
-        CodeRoute:"lib/28_Animation/4_Animation_Tween_RtL_Run.dart",
-        TabIcon:Icon(Icons.video_label),
-        ToDo:"We Need To Write A Page That Show A Card That Contain Image That Tween From Right To Left With Some Widgets\n",
-        TxtExplanation:Animation_TweenRtL_Explanation,
-        RunCodeRoute:new TweenRtL_Run(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Animation_Rotate": (BuildContext context)                             =>CmpCodePage(
-        Title:"Rotate Animation",
-        BackRoute:"/Animation_Tween_RTL",
-        NextRoute:"/Animation_Matrix4_RotateZ",
-        ItemList:Animation_Rotate_list,
-        CodeRoute:"lib/28_Animation/5_Animation_Rotate_Run.dart",
-        TabIcon:Icon(Icons.video_label),
-        ToDo:"We Need To Write A Page That Show An Image That PLay Rotate Animation\n",
-        TxtExplanation:Animation_Rotate_Explanation,
-        RunCodeRoute:new AnimRotateRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Animation_Matrix4_RotateZ": (BuildContext context)                    =>CmpCodePage(
-        Title:"Rotate Matrix4 RotateZ",
-        BackRoute:"/Animation_Rotate",
-        NextRoute:"/Animation_Matrix4_RotateY",
-        ItemList:Animation_Matrix4_RotateZ_list,
-        CodeRoute:"lib/28_Animation/6_Animation_Matrix4_RotZ_Run.dart",
-        TabIcon:Icon(Icons.video_label),
-        ToDo: "We Need To Write A Page That Show An Image That PLay Matrix4.rotationZ Animation\n",
-        TxtExplanation:Animation_Matrix4_RotateZ_Explanation,
-        RunCodeRoute:new AnimM4RZRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Animation_Matrix4_RotateY": (BuildContext context)                    =>CmpCodePage(
-        Title:"Rotate Matrix4 RotateY",
-        BackRoute:"/Animation_Matrix4_RotateZ",
-        NextRoute:"/Animation_Rotation_Transition",
-        ItemList:Animation_Matrix4_RotateY_list,
-        CodeRoute:"lib/28_Animation/7_Animation_Matrix4_RotY_Run.dart",
-        TabIcon:Icon(Icons.video_label),
-        ToDo: "We Need To Write A Page That Show An Image That PLay Matrix4.rotationY Animation\n",
-        TxtExplanation:Animation_Matrix4_RotateY_Explanation,
-        RunCodeRoute:new AnimM4RYRun(),
-      ),
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Animation_Rotation_Transition": (BuildContext context)                =>CmpCodePage(
-        Title:"Animation Rotation Transition",
-        BackRoute:"/Animation_Matrix4_RotateY",
-        NextRoute:"/Animation_ElasticOut",
-        ItemList:Animation_Rotation_Transition_list,
-        CodeRoute:"lib/28_Animation/8_Animation_Rotation_Transition_Run.dart",
-        TabIcon:Icon(Icons.video_label),
-        ToDo:"We Need To Write A Page That Show An Image That PLay Rotate Transition\n",
-        TxtExplanation:Animation_Rotation_Transition_Explanation,
-        RunCodeRoute:new AnimRotTransRun(),
-      ),
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Animation_ElasticOut": (BuildContext context)                         =>CmpCodePage(
-        Title:"Animation Elastic Out",
-        BackRoute:"/Animation_Rotation_Transition",
-        NextRoute:"/Animation_ElasticIn",
-        ItemList:Animation_ElasticOut_list,
-        CodeRoute:"lib/28_Animation/9_Animation_ElasticOut_Run.dart",
-        TabIcon:Icon(Icons.video_label),
-        ToDo:"We Need To Write A Page That Show An Image That PLay Elastic Out Animation\n",
-        TxtExplanation:Animation_ElasticOut_Explanation,
-        RunCodeRoute:new AnimElasticOutRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Animation_ElasticIn": (BuildContext context)                          =>CmpCodePage(
-        Title:"Animation Elastic In",
-        BackRoute:"/Animation_ElasticOut",
-        NextRoute:"/Animation_BounceIn",
-        ItemList:Animation_ElasticIn_list,
-        CodeRoute:"lib/28_Animation/10_Animation_ElasticIn_Run.dart",
-        TabIcon:Icon(Icons.video_label),
-        ToDo:"We Need To Write A Page That Show An Image That PLay Elastic In Animation\n",
-        TxtExplanation:Animation_ElasticIn_Explanation,
-        RunCodeRoute:new AnimElasticInRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Animation_BounceIn": (BuildContext context)                          =>CmpCodePage(
-        Title:"Animation Bounce In",
-        BackRoute:"/Animation_ElasticIn",
-        NextRoute:"/Radio_Simple",
-        ItemList:Animation_BounceIn_list,
-        CodeRoute:"lib/28_Animation/11_Animation_BounceIn_Run.dart",
-        TabIcon:Icon(Icons.video_label),
-        ToDo:"We Need To Write A Page That Show An Image That PLay BounceIn Animation\n",
-        TxtExplanation:Animation_BounceIn_Explanation,
-        RunCodeRoute:new AnimBounceInRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Radio_Simple": (BuildContext context)                                =>CmpCodePage(
-        Title:"Simple Radio",
-        BackRoute:"/Animation_BounceIn",
-        NextRoute:"/Radio_AppbarBgChange",
-        ItemList:Radio_Simple_list,
-        CodeRoute:"lib/29_Radio/1_Simple_Radio_Run.dart",
-        TabIcon:Icon(Icons.radio_button_checked),
-        ToDo:"We Need To Write A Page That Take A Text Question With 3 Radios,User Must Know The Answer.A Dialog Is Displayed To Let The User Know The Result\n",
-        TxtExplanation:Radio_Simple_Explanation,
-        RunCodeRoute:new SimpleRadio(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Radio_AppbarBgChange": (BuildContext context)                        =>CmpCodePage(
-        Title:"AppBar BackgroundColor Changer",
-        BackRoute:"/Radio_Simple",
-        NextRoute:"/Radio_ThemeChanger",
-        ItemList:Radio_App_BackgroundColorChanger_list,
-        CodeRoute:"lib/29_Radio/2_Radio_AppBar_BackgroungColor_Changer_Run.dart",
-        TabIcon:Icon(Icons.radio_button_checked),
-        ToDo:"We Need To Write A Page That Take RadioListTile Having 2 Options Teal And Grey,Once A Tile Is Checked It Change The AppBar BackgroundColor To The Selected Color\n",
-        TxtExplanation:Radio_App_BackgroundColorChanger_Explanation,
-        RunCodeRoute:new RadioAppBarChangerRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Radio_ThemeChanger": (BuildContext context)                          =>CmpCodePage(
-        Title:"Main BackgroundColor Changer",
-        BackRoute:"/Radio_AppbarBgChange",
-        NextRoute:"/CheckBox_Simple",
-        ItemList:Radio_ThemeChanger_list,
-        CodeRoute:"lib/29_Radio/3_Radio_MainBg_Theme_Changer_Run.dart",
-        TabIcon:Icon(Icons.radio_button_checked),
-        ToDo:"Write A Page That Take 2 RadioListTile That Change Main Background Color Orange Or Yellow Depend On User Selection Of The Radio\n",
-        TxtExplanation:Radio_ThemeChanger_Explanation,
-        RunCodeRoute:new RadioTilesRun(),
-      ),
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/CheckBox_Simple": (BuildContext context)                             =>CmpCodePage(
-        Title:"Simple CheckBox",
-        BackRoute:"/Radio_ThemeChanger",
-        NextRoute:"/CheckBox_Tile",
-        ItemList:CheckBox_Simple_list,
-        CodeRoute:"lib/30_CheckBox/1_Simple_CheckBox_Run.dart",
-        TabIcon:Icon(Icons.check_box),
-        ToDo:"We Need To Write A Page That Contain Simple CheckBoxs Followed By Button That Alert The Selected CheckBoxes\n",
-        TxtExplanation:CheckBox_Simple_Explanation,
-        RunCodeRoute:new SimpleCheckBox(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/CheckBox_Tile": (BuildContext context)                                =>CmpCodePage(
-        Title:"CheckBox Tile",
-        BackRoute:"/CheckBox_Simple",
-        NextRoute:"/Chip_Simple",
-        ItemList:CheckBox_Tile_list,
-        CodeRoute:"lib/30_CheckBox/2_CheckBox_Tile_Run.dart",
-        TabIcon:Icon(Icons.check_box),
-        ToDo:"We Need To Write A Page That Contain CheckBoxs Tile\n",
-        TxtExplanation:CheckBox_Tile_Explanation,
-        RunCodeRoute:new CBTilesRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Chip_Simple": (BuildContext context)                                  =>CmpCodePage(
-        Title:"Simple Chip",
-        BackRoute:"/CheckBox_Tile",
-        NextRoute:"/Chip_OnDelete",
-        ItemList:Chip_Simple_list,
-        CodeRoute:"lib/31_Chip/1_SimpleChip_Run.dart",
-        TabIcon:Icon(Icons.blur_circular),
-        ToDo:"We Need To Write A Page That Contain Chips\n",
-        TxtExplanation:Chip_OnDelete_Explanation,
-        RunCodeRoute:new SimpleChipRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Chip_OnDelete": (BuildContext context)                                =>CmpCodePage(
-        Title:"Chip OnDelete",
-        BackRoute:"/Chip_Simple",
-        NextRoute:"/TabBar_Top",
-        ItemList:Chip_OnDelete_list,
-        CodeRoute:"lib/31_Chip/2_Chip_OnDeleted_Run.dart",
-        TabIcon:Icon(Icons.blur_circular),
-        ToDo:"We Need To Write A Page That Contain Chips That Can Be Deleted\n",
-        TxtExplanation:Chip_OnDelete_Explanation,
-        RunCodeRoute:new ChipOnDel(),
-      ),
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/TabBar_Top": (BuildContext context)                                   =>CmpCodePage(
-        Title:"Top TabBar",
-        BackRoute:"/Chip_OnDelete",
-        NextRoute:"/TabBar_Bottom",
-        ItemList:TabBar_Top_list,
-        CodeRoute:"lib/32_TabBar/1_TopTabBar_Run.dart",
-        TabIcon:Icon(Icons.navigation),
-        ToDo:"We Need To Write A Page That Show A Top TabBar\n",
-        TxtExplanation:TabBar_Top_Explanation,
-        RunCodeRoute:new TopTabBar(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/TabBar_Bottom": (BuildContext context)                                =>CmpCodePage(
-        Title:"Bottom TabBar",
-        BackRoute:"/TabBar_Top",
-        NextRoute:"/PageSelector_Simple",
-        ItemList:TabBar_Bottom_list,
-        CodeRoute:"lib/32_TabBar/2_BottomTabBar_Run.dart",
-        TabIcon:Icon(Icons.navigation),
-        ToDo:"We Need To Write A Page That Show A Bottom TabBar\n",
-        TxtExplanation:TabBar_Bottom_Explanation,
-        RunCodeRoute:new BottomTabBar(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/PageSelector_Simple": (BuildContext context)                          =>CmpCodePage(
-        Title:"Simple Page Selector",
-        BackRoute:"/TabBar_Bottom",
-        NextRoute:"/PageSelector_Buttons",
-        ItemList:PageSelector_Simple_list,
-        CodeRoute:"lib/33_PageSelector/1_PageSelector_Simple_Run.dart",
-        TabIcon:Icon(Icons.threesixty),
-        ToDo:"We Need To Write A Page That Show A 3 Slidable Page Selector\n",
-        TxtExplanation:PageSelector_Simple_Explanation,
-        RunCodeRoute:new SimplePageSelector(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/PageSelector_Buttons": (BuildContext context)                         =>CmpCodePage(
-        Title:"Page Selector With Buttons",
-        BackRoute:"/PageSelector_Simple",
-        NextRoute:"/Flex_Image",
-        ItemList:PageSelector_Buttons_list,
-        CodeRoute:"lib/33_PageSelector/2_PageSelector_Btn_Run.dart",
-        TabIcon:Icon(Icons.threesixty),
-        ToDo:"We Need To Write A Page That Show A 3 Slidable Page Selector With Next,Prev And Skip button\n",
-        TxtExplanation:PageSelector_Buttons_Explanation,
-        RunCodeRoute:new SimplePageSelectorBtn(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Flex_Image": (BuildContext context)                                   =>CmpCodePage(
-        Title:"Image Flex",
-        BackRoute:"/PageSelector_Buttons",
-        NextRoute:"/Flex_RaisedButton",
-        ItemList:Flex_Image_list,
-        CodeRoute:"lib/34_Flex/1_Image_Flex_Run.dart",
-        TabIcon:Icon(Icons.compare_arrows),
-        ToDo:"Write A Page Comporting Some Images Where You Have To Flex One Of Them\n",
-        TxtExplanation:Flex_Image_Explanation,
-        RunCodeRoute:new ImageFlexRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Flex_RaisedButton": (BuildContext context)                            =>CmpCodePage(
-        Title:"Button Flex",
-        BackRoute:"/Flex_Image",
-        NextRoute:"/Flex_Advanced",
-        ItemList:Flex_Button_list,
-        CodeRoute:"lib/34_Flex/2_Button_Flex_Run.dart",
-        TabIcon:Icon(Icons.compare_arrows),
-        ToDo:"Write A Page Comporting Some Buttons Where You Have To Flex One Of Them\n",
-        TxtExplanation:Flex_Button_Explanation,
-        RunCodeRoute:new RaisedButtonFlexRun(),
-      ),
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Flex_Advanced": (BuildContext context)                                =>CmpCodePage(
-        Title:"Advanced Flex",
-        BackRoute:"/Flex_RaisedButton",
-        NextRoute:"/ComboBox_Simple",
-        ItemList:Flex_Advanced_list,
-        CodeRoute:"lib/34_Flex/3_Advanced_Flex_Run.dart",
-        TabIcon:Icon(Icons.compare_arrows),
-        ToDo:"Write A Page Comporting 3 Containers,When One Clicked Must Flex\n",
-        TxtExplanation:Flex_Advanced_Explanation,
-        RunCodeRoute:new AdvancedFlexRun(),
-      ),
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/ComboBox_Simple": (BuildContext context)                              =>CmpCodePage(
-        Title:"Select ComboBox",
-        BackRoute:"/Flex_Advanced",
-        NextRoute:"/ExpandableList_Simple",
-        ItemList:SelectCombo_list,
-        CodeRoute:"lib/35_SelectComboBox/1_SelectComboBox_Run.dart",
-        TabIcon:Icon(Icons.arrow_drop_down),
-        ToDo:"We Need To Write A Page That Show A Centered Selectable Letters A->G\n",
-        TxtExplanation:SelectCombo_Explanation,
-        RunCodeRoute:new SelectComboBoxRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/ExpandableList_Simple": (BuildContext context)                        =>CmpCodePage(
-        Title:"Simple Expandable List",
-        BackRoute:"/ComboBox_Simple",
-        NextRoute:"/ExpandableList_Trail",
-        ItemList:ExpandableList_Simple_list,
-        CodeRoute:"lib/36_ExpandableList/1_Simple_Expandable_List_Run.dart",
-        TabIcon:Icon(Icons.tune),
-        ToDo:"We Need To Write A Page That Show A Simple Expandable List\n",
-        TxtExplanation:ExpandableList_Simple_Explanation,
-        RunCodeRoute:new SimpleExpandableListRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/ExpandableList_Trail": (BuildContext context)                        =>CmpCodePage(
-        Title:"Expandable List Trail",
-        BackRoute:"/ExpandableList_Simple",
-        NextRoute:"/ExpandableList_BackColor",
-        ItemList:ExpandableList_Trail_list,
-        CodeRoute:"lib/36_ExpandableList/2_Expandable_List_Trail_Run.dart",
-        TabIcon:Icon(Icons.tune),
-        ToDo:"We Need To Write A Page That Show A Expandable List Having ListTiles,each Having Icon Arrow As A Trail\n",
-        TxtExplanation:ExpandableList_Trail_Explanation,
-        RunCodeRoute:new ExpandableListTrail(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/ExpandableList_BackColor": (BuildContext context)                     =>CmpCodePage(
-        Title:"Expandable List BackColor",
-        BackRoute:"/ExpandableList_Trail",
-        NextRoute:"/ExpandableList_CardsIcons",
-        ItemList:ExpandableList_BackColor_list,
-        CodeRoute:"lib/36_ExpandableList/3_Expandable_List_BackColor_Run.dart",
-        TabIcon:Icon(Icons.tune),
-        ToDo:"We Need To Write A Page That Show A Expandable List That Change Its Background Color When Opened\n",
-        TxtExplanation:ExpandableList_BackColor_Explanation,
-        RunCodeRoute:new ExpandableListBackColor(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/ExpandableList_CardsIcons": (BuildContext context)                    =>CmpCodePage(
-        Title:"Expandable List With Cards And Icons",
-        BackRoute:"/ExpandableList_BackColor",
-        NextRoute:"/ExpandableList_Customized",
-        ItemList:ExpandableList_Cards_Icon_list,
-        CodeRoute:"lib/36_ExpandableList/4_Expandable_List_With_Card_And_Icon_Run.dart",
-        TabIcon:Icon(Icons.tune),
-        ToDo:"We Need To Write A Page That Show A Expandable List That Each List Tile Globbed By A Card And Havin Icon\n",
-        TxtExplanation:ExpandableList_Cards_Icon_Explanation,
-        RunCodeRoute:new ExpandableListCardsIcons(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/ExpandableList_Customized": (BuildContext context)                    =>CmpCodePage(
-        Title:"Customized Expandable List",
-        BackRoute:"/ExpandableList_CardsIcons",
-        NextRoute:"/ExpandableList_Sound",
-        ItemList:ExpandableList_Customized_list,
-        CodeRoute:"lib/36_ExpandableList/5_Expandable_List_Customized.dart",
-        TabIcon:Icon(Icons.tune),
-        ToDo:"We Need To Write A Page That Show A Customized Expandable List\n",
-        TxtExplanation:ExpandableList_Customized_Explanation,
-        RunCodeRoute:new ExpandableListCustomizedRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/ExpandableList_Sound": (BuildContext context)                         =>CmpCodePage(
-        Title:"Expandable List Tap Sound",
-        BackRoute:"/ExpandableList_Customized",
-        NextRoute:"/ExpandableList_Anim",
-        ItemList:ExpandableList_Sound_list,
-        CodeRoute:"lib/36_ExpandableList/6_Expandable_List_Sound_Run.dart",
-        TabIcon:Icon(Icons.tune),
-        ToDo:"We Need To Write A Page That Show A Expandable List When Tapped A Sound Must Be Played\n",
-        TxtExplanation:ExpandableList_Sound_Explanation,
-        RunCodeRoute:new ExpandableListTapSoundRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/ExpandableList_Anim": (BuildContext context)                          =>CmpCodePage(
-        Title:"Expandable List Animating ",
-        BackRoute:"/ExpandableList_Sound",
-        NextRoute:"/Slider_Simple",
-        ItemList:ExpandableList_Anim_list,
-        CodeRoute:"lib/36_ExpandableList/7_Expandable_List_Anim_Run.dart",
-        TabIcon:Icon(Icons.tune),
-        ToDo:"We Need To Write A Page That Show A Expandable List Having Animated Quizz Image\n",
-        TxtExplanation:ExpandableList_Anim_Explanation,
-        RunCodeRoute:new ExpandableListAnimationRun(),
-      ),
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Slider_Simple": (BuildContext context)                                =>CmpCodePage(
-        Title:"Simple Slider",
-        BackRoute:"/ExpandableList_Anim",
-        NextRoute:"/Slider_Color",
-        ItemList:Slider_Simple_list,
-        CodeRoute:"lib/37_Slider/1_SimpleSliderRun.dart",
-        TabIcon:Icon(Icons.tune),
-        ToDo:"We Need To Write A Page That Show A Centered Simple Slider\n",
-        TxtExplanation:Slider_Simple_Explanation,
-        RunCodeRoute:new SimpSliderRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Slider_Color": (BuildContext context)                                =>CmpCodePage(
-        Title:"Simple Color",
-        BackRoute:"/Slider_Simple",
-        NextRoute:"/Slider_MaxMinDiv",
-        ItemList:Slider_Color_list,
-        CodeRoute:"lib/37_Slider/2_SliderColorRun.dart",
-        TabIcon:Icon(Icons.tune),
-        ToDo:"We Need To Write A Page That Show A Centered Simple Slider Where Active Color Is Green And Inactive In Red\n",
-        TxtExplanation:Slider_Color_Explanation,
-        RunCodeRoute:new SliderColorRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Slider_MaxMinDiv": (BuildContext context)                             =>CmpCodePage(
-        Title:"Slider Max Min Division",
-        BackRoute:"/Slider_Color",
-        NextRoute:"/Drawer_Left",
-        ItemList:Slider_MaxMinDiv_list,
-        CodeRoute:"lib/37_Slider/3_SliderMinMaxDivRun.dart",
-        TabIcon:Icon(Icons.tune),
-        ToDo:"We Need To Write A Page That Show A Centered Simple Slider Where Value Go Between 0 And 1000,Each Division 100\n",
-        TxtExplanation:Slider_MaxMinDiv_Explanation,
-        RunCodeRoute:new SliderMinMaxDivRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Drawer_Left": (BuildContext context)                                  =>CmpCodePage(
-        Title:"Left Drawer",
-        BackRoute:"/Slider_MaxMinDiv",
-        NextRoute:"/Drawer_Right",
-        ItemList:Drawer_Left_list,
-        CodeRoute:"lib/38_Drawer/1_Drawer_Left_Run.dart",
-        TabIcon:Icon(Icons.menu),
-        ToDo:"We Need To Write A Page That Show A Left Side Drawer\n",
-        TxtExplanation:Drawer_Left_Explanation,
-        RunCodeRoute:new LeftDrawerRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Drawer_Right": (BuildContext context)                                 =>CmpCodePage(
-        Title:"Right Drawer",
-        BackRoute:"/Drawer_Left",
-        NextRoute:"/MainSplashScreen_Simple",
-        ItemList:Drawer_Right_list,
-        CodeRoute:"lib/38_Drawer/2_Drawer_Right_Run.dart",
-        TabIcon:Icon(Icons.menu),
-        ToDo:"We Need To Write A Page That Show A Right Side Drawer\n",
-        TxtExplanation:Drawer_Right_Explanation,
-        RunCodeRoute:new RightDrawerRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/MainSplashScreen_Simple": (BuildContext context)                      =>CmpCodePage(
-        Title:"Main Splash Screen",
-        BackRoute:"/Drawer_Right",
-        NextRoute:"/Admob_Intro",
-        ItemList:MainSplashScreen_list,
-        CodeRoute:"lib/39_SplashScreenLoading/MainSplashScreenRun.dart",
-        TabIcon:Icon(Icons.adb),
-        ToDo: "We Need To Show A Page Having Centered Text,But Before Showing That Page We Need A Loader That Last For 5 Seconds\n",
-        TxtExplanation:MainSplashScreen_Explanation,
-        RunCodeRoute:new MainSplashScreenRun(),
-      ),
-
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-
-      "/Admob_Intro": (BuildContext context)                                  =>CmpIntroPage(
-        Title:"Admob Intro",
-        BackRoute:"/MainSplashScreen_Simple",
-        NextRoute:"/Admob_Banner",
-        ItemList:Admob_Intro_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Admob_Banner": (BuildContext context)                                 =>CmpCodePage(
-        Title:"Admob Banner",
-        BackRoute:"/Main",
-        NextRoute:"/Admob_Interstitial",
-        ItemList:Admob_Banner_list,
-        CodeRoute:"lib/40_Admob/2_AdmobBanner_Run.dart",
-        TabIcon:Icon(Icons.adb),
-        ToDo: "Write A Page That Show Banner",
-        TxtExplanation:Admob_Banner_Explanation,
-        RunCodeRoute:new AdmobBannerRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Admob_Interstitial": (BuildContext context)                           =>CmpCodePage(
-        Title:"Admob Interstitial",
-        BackRoute:"/Admob_Banner",
-        NextRoute:"/FlipCard_Intro",
-        ItemList:Admob_Interstitial_list,
-        CodeRoute:"lib/40_Admob/3_AdmobInterstitial_Run.dart",
-        TabIcon:Icon(Icons.adb),
-        ToDo: "Write A Page That Show Interstitial When:\n1-Loaded\n2-Button Clicked",
-        TxtExplanation:Admob_Interstitial_Explanation,
-        RunCodeRoute:new AdmobInterstitialRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/FlipCard_Intro": (BuildContext context)                               =>CmpIntroPage(
-        Title:"FlipCard Intro",
-        BackRoute:"/Admob_Interstitial",
-        NextRoute:"/FlipCard_Hor",
-        ItemList:FlipCard_Intro_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/FlipCard_Hor": (BuildContext context)                                 =>CmpCodePage(
-        Title:"Horizontal Flip Card",
-        BackRoute:"/FlipCard_Intro",
-        NextRoute:"/FlipCard_Ver",
-        ItemList:FlipCard_Hor_list,
-        CodeRoute:"lib/41_FlipCard/2_FlipCardHor_Run.dart",
-        TabIcon:Icon(Icons.flip_to_back),
-        ToDo:"Write a Page That Display A Flip Card That Flip Horizontally\n",
-        TxtExplanation:FlipCard_Hor_Explanation,
-        RunCodeRoute:new FlipCardHorRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/FlipCard_Ver": (BuildContext context)                                 =>CmpCodePage(
-        Title:"Vertical Flip Card",
-        BackRoute:"/FlipCard_Hor",
-        NextRoute:"/FlipView_Intro",
-        ItemList:FlipCard_Ver_list,
-        CodeRoute:"lib/41_FlipCard/3_FlipCardVert_Run.dart",
-        TabIcon:Icon(Icons.flip_to_back),
-        ToDo:"Write a Page That Display A Flip Card That Flip Vertically\n",
-        TxtExplanation:FlipCard_Ver_Explanation,
-        RunCodeRoute:new FlipCardVertRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/FlipView_Intro": (BuildContext context)                               =>CmpIntroPage(
-        Title:"FlipView Intro",
-        BackRoute:"/FlipCard_Ver",
-        NextRoute:"/FlipView_Simple",
-        ItemList:FlipView_Intro_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/FlipView_Simple": (BuildContext context)                              =>CmpCodePage(
-        Title:"Simple FlipView",
-        BackRoute:"/FlipView_Intro",
-        NextRoute:"/Stepper_Intro",
-        ItemList:FlipView_Simple_list,
-        CodeRoute:"lib/42_FlipView/2_SimpleFlipView.dart",
-        TabIcon:Icon(Icons.flip),
-        ToDo:"Write a Page That Display A Flip Card Using Flip View\n",
-        TxtExplanation:FlipView_Simple_Explanation,
-        RunCodeRoute:new SimpleFlipViewRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Stepper_Intro": (BuildContext context)                                =>CmpIntroPage(
-        Title:"Stepper Intro",
-        BackRoute:"/FlipView_Simple",
-        NextRoute:"/Stepper_Hor",
-        ItemList:SPI_Intro_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Stepper_Hor": (BuildContext context)                                  =>CmpCodePage(
-        Title:"Horizontal Stepper",
-        BackRoute:"/Stepper_Intro",
-        NextRoute:"/Stepper_Ver",
-        ItemList:Stepper_Hor_list,
-        CodeRoute:"lib/43_Stepper/2_StepperHor_Run.dart",
-        TabIcon:Icon(Icons.format_line_spacing),
-        ToDo:"Write a Page That Display Simple Stepper That Step Horizontally\n",
-        TxtExplanation:Stepper_Hor_Explanation,
-        RunCodeRoute:new StepperHorRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Stepper_Ver": (BuildContext context)                                  =>CmpCodePage(
-        Title:"Vertical Stepper",
-        BackRoute:"/Stepper_Hor",
-        NextRoute:"/BottomSheet_Simple",
-        ItemList:Stepper_Ver_list,
-        CodeRoute:"lib/43_Stepper/3_StepperVer_Run.dart",
-        TabIcon:Icon(Icons.format_line_spacing),
-        ToDo:"Write a Page That Display Simple Stepper That Step Vertically\n",
-        TxtExplanation:Stepper_Ver_Explanation,
-        RunCodeRoute:new StepperVerRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/BottomSheet_Simple": (BuildContext context)                           =>CmpCodePage(
-        Title:"Simple Bottom Sheet",
-        BackRoute:"/Stepper_Ver",
-        NextRoute:"/SPI_Intro",
-        ItemList:BottomSheet_Simple_CompList,
-        CodeRoute:"lib/44_BottomSheet/SimpleBottomSheetRun.dart",
-        TabIcon:Icon(Icons.dashboard),
-        ToDo:"Write a Page That Display A Floating Action Button That Open A Bottom Sheet When Clicked\n",
-        TxtExplanation:BottomSheet_Simple_Explanation,
-        RunCodeRoute:new BottomSheetRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/SPI_Intro": (BuildContext context)                                    =>CmpIntroPage(
-        Title:"Smooth Page Indicator Intro",
-        BackRoute:"/BottomSheet_Simple",
-        NextRoute:"/SPI_Worm",
-        ItemList:SPI_Intro_CompList,
-      ),
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/SPI_Worm": (BuildContext context)                                     =>CmpCodePage(
-        Title:"SPI Worm Effect",
-        BackRoute:"/SPI_Intro",
-        NextRoute:"/SPI_ExpDots",
-        ItemList:SPI_Worm_list,
-        CodeRoute:"lib/45_SmoothPageIndicator/2_SPI_Worm_Run.dart",
-        TabIcon:Icon(Icons.slideshow),
-        ToDo:"Write a Page That Display Simple PageView With Worm Smooth Page Indicator Effect\n",
-        TxtExplanation:SPI_Worm_Explanation,
-        RunCodeRoute:new SPIWormRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/SPI_ExpDots": (BuildContext context)                                  =>CmpCodePage(
-        Title:"SPI Expanding Dots Effect",
-        BackRoute:"/SPI_Worm",
-        NextRoute:"/SPI_JmpDots",
-        ItemList:SPI_ExpDots_list,
-        CodeRoute:"lib/45_SmoothPageIndicator/3_SPI_ExpDots_Run.dart",
-        TabIcon:Icon(Icons.slideshow),
-        ToDo:"Write a Page That Display Simple PageView With Expanding Dots Page Indicator Effect\n",
-        TxtExplanation:SPI_ExpDots_Explanation,
-        RunCodeRoute:new SPIExpDotsRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/SPI_JmpDots": (BuildContext context)                                  =>CmpCodePage(
-        Title:"SPI Jumping Dots Effect",
-        BackRoute:"/SPI_ExpDots",
-        NextRoute:"/SPI_ScrollDots",
-        ItemList:SPI_JmpDots_list,
-        CodeRoute:"lib/45_SmoothPageIndicator/4_SPI_JumpDots_Run.dart",
-        TabIcon:Icon(Icons.slideshow),
-        ToDo:"Write a Page That Display Simple PageView With Jumping Dots Page Indicator Effect\n",
-        TxtExplanation:SPI_JmpDots_Explanation,
-        RunCodeRoute:new SPIJmpDotsRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/SPI_ScrollDots": (BuildContext context)                               =>CmpCodePage(
-        Title:"SPI Scroll Dots Effect",
-        BackRoute:"/SPI_JmpDots",
-        NextRoute:"/SPI_Scale",
-        ItemList:SPI_ScrollDots_list,
-        CodeRoute:"lib/45_SmoothPageIndicator/5_SPI_ScrollDots_Run.dart",
-        TabIcon:Icon(Icons.slideshow),
-        ToDo:"Write a Page That Display Simple PageView With Scroll Dots Page Indicator Effect\n",
-        TxtExplanation:SPI_ScrollDots_Explanation,
-        RunCodeRoute:new SPIScrollDotsRun(),
-      ),
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/SPI_Scale": (BuildContext context)                                    =>CmpCodePage(
-        Title:"SPI Scale Effect",
-        BackRoute:"/SPI_ScrollDots",
-        NextRoute:"/SPI_Slider",
-        ItemList:SPI_Scale_list,
-        CodeRoute:"lib/45_SmoothPageIndicator/6_SPI_Scale_Run.dart",
-        TabIcon:Icon(Icons.slideshow),
-        ToDo:"Write a Page That Display Simple PageView With Scale Page Indicator Effect\n",
-        TxtExplanation:SPI_Scale_Explanation,
-        RunCodeRoute:new SPIScaleRun(),
-      ),
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/SPI_Slider": (BuildContext context)                                   =>CmpCodePage(
-        Title:"SPI Slider Effect",
-        BackRoute:"/SPI_Scale",
-        NextRoute:"/Expandable_Intro",
-        ItemList:SPI_Slide_list,
-        CodeRoute:"lib/45_SmoothPageIndicator/7_SPI_Slide_Run.dart",
-        TabIcon:Icon(Icons.slideshow),
-        ToDo:"Write a Page That Display Simple PageView With Slide Page Indicator Effect\n",
-        TxtExplanation:SPI_Slide_Explanation,
-        RunCodeRoute:new SPISlideRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-
-      "/Expandable_Intro": (BuildContext context)                     => CmpIntroPage(
-        Title:"Expandable Intro",
-        BackRoute:"/SPI_Slider",
-        NextRoute:"/Simple_Expandable",
-        ItemList:Expandable_Intro_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Simple_Expandable": (BuildContext context)              => CmpCodePage(
-        Title:"Simple Expandable",
-        BackRoute:"/Expandable_Intro",
-        NextRoute:"/Marquee_Intro",
-        ItemList:SimpleExpandable_list,
-        CodeRoute:"lib/46_Expandable/Simple_Expandable_Run.dart",
-        TabIcon:Icon(Icons.expand_less),
-        ToDo:"We Need To Write A Page That Show An Centered Expandable Having Texts As An Body",
-        TxtExplanation:SimpleExpandable_Explanation,
-        RunCodeRoute:new SimpleExpandableRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Marquee_Intro": (BuildContext context)                     => CmpIntroPage(
-        Title:"Marquee Intro",
-        BackRoute:"/Simple_Expandable",
-        NextRoute:"/Marquee_Simple",
-        ItemList:Marquee_Intro_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Marquee_Simple": (BuildContext context)                   => CmpCodePage(
-        Title:"Simple Marquee",
-        BackRoute:"/Marquee_Intro",
-        NextRoute:"/Marquee_ScrollAxis",
-        ItemList:SimpleMarquee_list,
-        CodeRoute:"lib/47_Marquee/1_SimpleMarquee_Run.dart",
-        TabIcon:Icon(Icons.forward),
-        ToDo:"We Need To Write A Page That Show An AppBar Having Marquee Title,Centered Marquee Inside A Card.",
-        TxtExplanation:SimpleMarquee_Explanation,
-        RunCodeRoute:new SimpleMarquee(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Marquee_ScrollAxis": (BuildContext context)           => CmpCodePage(
-        Title:"Marquee ScrollAxis",
-        BackRoute:"/Marquee_Simple",
-        NextRoute:"/Marquee_CrossAxis",
-        ItemList:MarqueeScrollAxis_list,
-        CodeRoute:"lib/47_Marquee/2_Marquee_ScrollAxis_Run.dart",
-        TabIcon:Icon(Icons.forward),
-        ToDo:"We Need To Write A Page Taking 2 Marquee,First Scroll Horizontally,Second vertically",
-        TxtExplanation:SimpleMarquee_Explanation,
-        RunCodeRoute:new MarqueeScrollAxis(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Marquee_CrossAxis": (BuildContext context)           => CmpCodePage(
-        Title:"Marquee CrossAxis",
-        BackRoute:"/Marquee_ScrollAxis",
-        NextRoute:"/Marquee_PauseAfterRound",
-        ItemList:MarqueeCrossAxis_list,
-        CodeRoute:"lib/47_Marquee/3_Marquee_CrossAxisAlignement_Run.dart",
-        TabIcon:Icon(Icons.forward),
-        ToDo:"We Need To Write A Page Taking Marquees,Show All Options Horizontally And Vertically",
-        TxtExplanation:MarqueeCrossAxis_Explanation,
-        RunCodeRoute:new MarqueeCrossAxis(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Marquee_PauseAfterRound": (BuildContext context)           => CmpCodePage(
-        Title:"Marquee Pause After Round ",
-        BackRoute:"/Marquee_CrossAxis",
-        NextRoute:"/Marquee_AccelerationDuration",
-        ItemList:MarqueePauseAfterRound_list,
-        CodeRoute:"lib/47_Marquee/4_Marquee_PauseAfterRound_Run.dart",
-        TabIcon:Icon(Icons.forward),
-        ToDo:"We Need To Write A Page Taking 2 Marquee,First Pause After Round Duration Take 2secs The Second Take 5secs",
-        TxtExplanation:MarqueePauseAfterRound_Explanation,
-        RunCodeRoute:new MarqueePauseAfterRound(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Marquee_AccelerationDuration": (BuildContext context)           => CmpCodePage(
-        Title:"Marquee Acceleration Duration",
-        BackRoute:"/Marquee_PauseAfterRound",
-        NextRoute:"/ContainerWaves_Intro",
-        ItemList:MarqueeAccelerationDuration_list,
-        CodeRoute:"lib/47_Marquee/5_Marquee_AccelerationDuration_Run.dart",
-        TabIcon:Icon(Icons.forward),
-        ToDo:"We Need To Write A Page Taking 2 Marquee,First Acceleration Duration Take 2secs The Second Take 5secs",
-        TxtExplanation:MarqueeAccelerationDuration_Explanation,
-        RunCodeRoute:new MarqueeAccelerationDur(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/ContainerWaves_Intro": (BuildContext context)                     => CmpIntroPage(
-        Title:"Marquee Intro",
-        BackRoute:"/Marquee_AccelerationDuration",
-        NextRoute:"/ContainerWaves_Simple",
-        ItemList:ContainerWaves_Intro_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/ContainerWaves_Simple": (BuildContext context)           => CmpCodePage(
-        Title:"Container Waves",
-        BackRoute:"/ContainerWaves_Intro",
-        NextRoute:"/RouteTransition_Intro",
-        ItemList:ContainerWaves_list,
-        CodeRoute:"lib/48_ContainerWaves/ContainerWaves_Simple_Run.dart",
-        TabIcon:Icon(Icons.exposure),
-        ToDo:"We Need To Write A Page That Container A Card Having Waves",
-        TxtExplanation:ContainerWaves_Explanation,
-        RunCodeRoute:new ContainerWaveRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/RouteTransition_Intro": (BuildContext context)                     => CmpIntroPage(
-        Title:"Route Transition Introduction",
-        BackRoute:"/ContainerWaves_Simple",
-        NextRoute:"/RouteTransition_SlideRight",
-        ItemList:RouteTransition_Intro_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/RouteTransition_SlideRight": (BuildContext context)           => CmpCodePage(
-        Title:"Route Transition Slide Right",
-        BackRoute:"/RouteTransition_Intro",
-        NextRoute:"/RouteTransition_SlideLeft",
-        ItemList:RouteTransition_SlideRight_list,
-        CodeRoute:"lib/49_RouteTransition/1_RouteTransition_SlideRight.dart",
-        TabIcon:Icon(Icons.keyboard_arrow_right),
-        ToDo:"We Need To Write A Page1 Containing A Button That Take The User To Page2 Using Slide Right Transition",
-        TxtExplanation:RouteTransition_SlideRight_Explanation,
-        RunCodeRoute:new SlideRightMain(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/RouteTransition_SlideLeft": (BuildContext context)           => CmpCodePage(
-        Title:"Route Transition Slide Left",
-        BackRoute:"/RouteTransition_SlideRight",
-        NextRoute:"/RouteTransition_SlideUp",
-        ItemList:RouteTransition_SlideLeft_list,
-        CodeRoute:"lib/49_RouteTransition/2_RouteTransition_SlideLeft.dart",
-        TabIcon:Icon(Icons.keyboard_arrow_right),
-        ToDo:"We Need To Write A Page1 Containing A Button That Take The User To Page2 Using Slide Left Transition",
-        TxtExplanation:RouteTransition_SlideLeft_Explanation,
-        RunCodeRoute:new SlideLeftMain(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/RouteTransition_SlideUp": (BuildContext context)           => CmpCodePage(
-        Title:"Route Transition Slide Up",
-        BackRoute:"/RouteTransition_SlideLeft",
-        NextRoute:"/RouteTransition_SlideDown",
-        ItemList:RouteTransition_SlideUp_list,
-        CodeRoute:"lib/49_RouteTransition/3_RouteTransition_SlideUp.dart",
-        TabIcon:Icon(Icons.keyboard_arrow_right),
-        ToDo:"We Need To Write A Page1 Containing A Button That Take The User To Page2 Using Slide Up Transition",
-        TxtExplanation:RouteTransition_SlideUp_Explanation,
-        RunCodeRoute:new SlideUpMain(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/RouteTransition_SlideDown": (BuildContext context)           => CmpCodePage(
-        Title:"Route Transition Slide Down",
-        BackRoute:"/RouteTransition_SlideUp",
-        NextRoute:"/RouteTransition_Scale",
-        ItemList:RouteTransition_SlideDown_list,
-        CodeRoute:"lib/49_RouteTransition/4_RouteTransition_SlideDown.dart",
-        TabIcon:Icon(Icons.keyboard_arrow_right),
-        ToDo:"We Need To Write A Page1 Containing A Button That Take The User To Page2 Using Slide Down Transition",
-        TxtExplanation:RouteTransition_SlideDown_Explanation,
-        RunCodeRoute:new SlideDownMain(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/RouteTransition_Scale": (BuildContext context)            => CmpCodePage(
-        Title:"Route Transition Scale",
-        BackRoute:"/RouteTransition_SlideDown",
-        NextRoute:"/RouteTransition_Rotate",
-        ItemList:RouteTransition_Scale_list,
-        CodeRoute:"lib/49_RouteTransition/5_RouteTransition_Scale.dart",
-        TabIcon:Icon(Icons.keyboard_arrow_right),
-        ToDo:"We Need To Write A Page1 Containing A Button That Take The User To Page2 Using Scale Transition",
-        TxtExplanation:RouteTransition_Scale_Explanation,
-        RunCodeRoute:new ScaleMain(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/RouteTransition_Rotate": (BuildContext context)            => CmpCodePage(
-        Title:"Route Transition Rotate",
-        BackRoute:"/RouteTransition_Scale",
-        NextRoute:"/RouteTransition_Size",
-        ItemList:RouteTransition_Rotate_list,
-        CodeRoute:"lib/49_RouteTransition/6_RouteTransition_Rotate.dart",
-        TabIcon:Icon(Icons.keyboard_arrow_right),
-        ToDo:"We Need To Write A Page1 Containing A Button That Take The User To Page2 Using Rotate Transition",
-        TxtExplanation:RouteTransition_Rotate_Explanation,
-        RunCodeRoute:new RotateMain(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/RouteTransition_Size": (BuildContext context)            => CmpCodePage(
-        Title:"Route Transition Size",
-        BackRoute:"/RouteTransition_Rotate",
-        NextRoute:"/RouteTransition_Fade",
-        ItemList:RouteTransition_Size_list,
-        CodeRoute:"lib/49_RouteTransition/7_RouteTransition_Size.dart",
-        TabIcon:Icon(Icons.keyboard_arrow_right),
-        ToDo:"We Need To Write A Page1 Containing A Button That Take The User To Page2 Using Size Transition",
-        TxtExplanation:RouteTransition_Size_Explanation,
-        RunCodeRoute:new SizeTransMain(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/RouteTransition_Fade": (BuildContext context)            => CmpCodePage(
-        Title:"Route Transition Fade",
-        BackRoute:"/RouteTransition_Size",
-        NextRoute:"/FlutterSyntaxe_Intro",
-        ItemList:RouteTransition_Fade_list,
-        CodeRoute:"lib/49_RouteTransition/8_RouteTransition_Fade.dart",
-        TabIcon:Icon(Icons.keyboard_arrow_right),
-        ToDo:"We Need To Write A Page1 Containing A Button That Take The User To Page2 Using Fade Transition",
-        TxtExplanation:RouteTransition_Fade_Explanation,
-        RunCodeRoute:new FadeTransMain(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/FlutterSyntaxe_Intro": (BuildContext context)                   => CmpIntroPage(
-        Title:"Flutter Syntaxe Introduction",
-        BackRoute:"/RouteTransition_Fade",
-        NextRoute:"/FlutterSyntaxe_CodeView",
-        ItemList:DartSyntaxeHighlight_Intro_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/FlutterSyntaxe_CodeView": (BuildContext context)           => CmpCodePage(
-        Title:"Flutter Syntaxe Code View",
-        BackRoute:"/FlutterSyntaxe_Intro",
-        NextRoute:"/FlutterSyntaxe_CodeAndSourceView",
-        ItemList:FlutterSyntaxe_CodeView_list,
-        CodeRoute:"lib/50_Flutter_Syntaxe/1_FlutterSyntaxe_CodeView_Run.dart",
-        TabIcon:Icon(Icons.highlight),
-        ToDo:"We Need To Write A Page That Show Code Highlited Using Dart",
-        TxtExplanation:FlutterSyntaxe_CodeView_Explanation,
-        RunCodeRoute:new FlutterSyntaxeCodeView(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/FlutterSyntaxe_CodeAndSourceView": (BuildContext context)           => CmpCodePage(
-        Title:"Flutter Syntaxe Code And Source View",
-        BackRoute:"/FlutterSyntaxe_CodeView",
-        NextRoute:"/SlidingUpPanel_Intro",
-        ItemList:FlutterSyntaxe_CodeAndSourceView_list,
-        CodeRoute:"lib/50_Flutter_Syntaxe/2_FlutterSyntaxe_CodeAndSourceView_Run.dart",
-        TabIcon:Icon(Icons.highlight),
-        ToDo:"We Need To Write A Page That Show Code Highlited Using Dart",
-        TxtExplanation:FlutterSyntaxe_CodeAndSourceView_Explanation,
-        RunCodeRoute:new FlutterSyntaxeCodeAndSourceView(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/SlidingUpPanel_Intro": (BuildContext context)                   => CmpIntroPage(
-        Title:"Sliding Up Panel Introduction",
-        BackRoute:"/FlutterSyntaxe_CodeAndSourceView",
-        NextRoute:"/SlidingUpPanel_Simple",
-        ItemList:SlidingUpPanel_Intro_CompList,
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/SlidingUpPanel_Simple": (BuildContext context)                        => CmpCodePage(
-        Title:"Simple Sliding Up Panel",
-        BackRoute:"/SlidingUpPanel_Intro",
-        NextRoute:"/PopupMenuButton_AppBar",
-        ItemList:SlidingUpPanel_Simple_list,
-        CodeRoute:"lib/51_SlidingUpPanel/1_Simple_Sliding_Up_Panel_Run.dart",
-        TabIcon:Icon(Icons.open_in_browser),
-        ToDo:"Create A Page Containing A Simple Sliding Up Panel",
-        TxtExplanation:SlidingUpPanel_Simple_Explanation,
-        RunCodeRoute:new SimpleSlidingUpPanel(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/PopupMenuButton_AppBar": (BuildContext context)                        => CmpCodePage(
-        Title:"AppBar Popup Menu Button",
-        BackRoute:"/SlidingUpPanel_Simple",
-        NextRoute:"/PopupMenuButton_ListTile",
-        ItemList:PopupMenuButton_AppBar_list,
-        CodeRoute:"lib/52_Popup_Menu_Button/1_Simple_AppBar_Popup_Menu_Button.dart",
-        TabIcon:Icon(Icons.more_vert),
-        ToDo:"Create A Page Containing A PopupMenu In The AppBar",
-        TxtExplanation:PopupMenuButton_AppBar_Explanation,
-        RunCodeRoute:new SimpleAppBarPopupMenuButton(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-
-      "/PopupMenuButton_ListTile": (BuildContext context)                        => CmpCodePage(
-        Title:"ListTile Popup Menu Button",
-        BackRoute:"/PopupMenuButton_AppBar",
-        NextRoute:"/Hero_Simple",
-        ItemList:PopupMenuButton_ListTile_list,
-        CodeRoute:"lib/52_Popup_Menu_Button/2_ListTile_Popup_Menu_Button.dart",
-        TabIcon:Icon(Icons.more_vert),
-        ToDo:"Create A Page Containing A PopupMenu In ListTile",
-        TxtExplanation:PopupMenuButton_ListTile_Explanation,
-        RunCodeRoute:new ListTilePopupMenuButton(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/Hero_Simple": (BuildContext context)                        => CmpCodePage(
-        Title:"Simple Hero Animation",
-        BackRoute:"/PopupMenuButton_ListTile",
-        NextRoute:"/Hero_Advanced",
-        ItemList:Hero_Simple_list,
-        CodeRoute:"lib/53_Hero_Animation/1_Simple_Hero.dart",
-        TabIcon:Icon(Icons.wallpaper),
-        ToDo:"Create A Page Containing A Simple ListTiles Having Images As Leading,Playing Hero Animation When Tapped",
-        TxtExplanation:Hero_Simple_Explanation,
-        RunCodeRoute:new SimpleHero(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/Hero_Advanced": (BuildContext context)                        => CmpCodePage(
-        Title:"Advanced Hero Animation",
-        BackRoute:"/Hero_Simple",
-        NextRoute:"/AvatarGlow_Intro",
-        ItemList:Hero_Advanced_list,
-        CodeRoute:"lib/53_Hero_Animation/2_Advanced_Hero.dart",
-        TabIcon:Icon(Icons.wallpaper),
-        ToDo:"Create A Page Containing A PageView Taking Images,Once Tapped hero Animation Must Be Played",
-        TxtExplanation:Hero_Advanced_Explanation,
-        RunCodeRoute:new AdvancedHeroRun(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/AvatarGlow_Intro": (BuildContext context)                        => CmpIntroPage(
-        Title:"Avatar Glow Intro",
-        BackRoute:"/Hero_Advanced",
-        NextRoute:"/AvatarGlow_1Glow",
-        ItemList:AvatarGlow_Intro_CompList,
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/AvatarGlow_1Glow": (BuildContext context)                        => CmpCodePage(
-        Title:"Avatar Glow 1 Glow",
-        BackRoute:"/AvatarGlow_Intro",
-        NextRoute:"/AvatarGlow_2Glow",
-        ItemList:AvatarGlow_1Glow_list,
-        CodeRoute:"lib/54_AvatarGlow/1_AvatarGlow_1Glow.dart",
-        TabIcon:Icon(Icons.wifi_tethering),
-        ToDo:"Create A Page Containing In A Center Layout AvatarGlow Taking An Circle Image With 1 Glow",
-        TxtExplanation:AvatarGlow_1Glow_Explanation,
-        RunCodeRoute:new Avatar1Glow(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/AvatarGlow_2Glow": (BuildContext context)                        => CmpCodePage(
-        Title:"Avatar Glow 2 Glow",
-        BackRoute:"/AvatarGlow_1Glow",
-        NextRoute:"/AvatarGlow_More",
-        ItemList:AvatarGlow_2Glow_list,
-        CodeRoute:"lib/54_AvatarGlow/2_AvatarGlow_2Glow.dart",
-        TabIcon:Icon(Icons.wifi_tethering),
-        ToDo:"Create A Page Containing In A Center Layout AvatarGlow Taking An Circle Image With 2 Glow",
-        TxtExplanation:AvatarGlow_2Glow_Explanation,
-        RunCodeRoute:new Avatar2Glow(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/AvatarGlow_More": (BuildContext context)                        => CmpCodePage(
-        Title:"Avatar Glow More",
-        BackRoute:"/AvatarGlow_2Glow",
-        NextRoute:"/DataTable_Simple",
-        ItemList:AvatarGlow_More_list,
-        CodeRoute:"lib/54_AvatarGlow/3_AvatarGlow_More.dart",
-        TabIcon:Icon(Icons.wifi_tethering),
-        ToDo:"Create A Page Containing Avatar Glows With Different EndRadius And Glow\n\n",
-        TxtExplanation:AvatarGlow_More_Explanation,
-        RunCodeRoute:new AvatarGlowMore(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/DataTable_Simple": (BuildContext context)                        => CmpCodePage(
-        Title:"Simple Data Table",
-        BackRoute:"/AvatarGlow_More",
-        NextRoute:"/DataTable_Sort",
-        ItemList:DataTable_Simple_list,
-        CodeRoute:"lib/55_DataTable/1_DataTable_Simple.dart",
-        TabIcon:Icon(Icons.table_chart),
-        ToDo:"Create A Page Containing A Simple DataTable With Fixed Data",
-        TxtExplanation:DataTable_Simple_Explanation,
-        RunCodeRoute:new SimpleDataTable(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/DataTable_Sort": (BuildContext context)                        => CmpCodePage(
-        Title:"Data Table Sort",
-        BackRoute:"/DataTable_Simple",
-        NextRoute:"/DataTable_Insert",
-        ItemList:DataTable_Sort_list,
-        CodeRoute:"lib/55_DataTable/2_DataTable_Sort.dart",
-        TabIcon:Icon(Icons.table_chart),
-        ToDo:"Create A Page Containing A Simple DataTable With Fixed Data,Allow Sorting By Columns",
-        TxtExplanation:DataTable_Sort_Explanation,
-        RunCodeRoute:new SortDataTable(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/DataTable_Insert": (BuildContext context)                        => CmpCodePage(
-        Title:"Data Table Insert",
-        BackRoute:"/DataTable_Sort",
-        NextRoute:"/DataTable_Update",
-        ItemList:DataTable_Insert_list,
-        CodeRoute:"lib/55_DataTable/3_DataTable_Insert.dart",
-        TabIcon:Icon(Icons.table_chart),
-        ToDo:"Create A Page Containing A Simple DataTable Where User Can Insert New Data To The DataTable",
-        TxtExplanation:DataTable_Insert_Explanation,
-        RunCodeRoute:new InsertDataTable(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/DataTable_Update": (BuildContext context)                        => CmpCodePage(
-        Title:"Data Table Update",
-        BackRoute:"/DataTable_Insert",
-        NextRoute:"/DataTable_Delete",
-        ItemList:DataTable_Update_list,
-        CodeRoute:"lib/55_DataTable/4_DataTable_Update.dart",
-        TabIcon:Icon(Icons.table_chart),
-        ToDo:"Create A Page Containing A Simple DataTable Where User Can Update Data From The DataTable",
-        TxtExplanation:DataTable_Update_Explanation,
-        RunCodeRoute:new UpdateDataTable(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/DataTable_Delete": (BuildContext context)                        => CmpCodePage(
-        Title:"Data Table Delete",
-        BackRoute:"/DataTable_Update",
-        NextRoute:"/DataTable_DeleteAll",
-        ItemList:DataTable_Delete_list,
-        CodeRoute:"lib/55_DataTable/5_DataTable_Delete.dart",
-        TabIcon:Icon(Icons.table_chart),
-        ToDo:"Create A Page Containing A Simple DataTable Where User Can Delete Data From The DataTable",
-        TxtExplanation:DataTable_Delete_Explanation,
-        RunCodeRoute:new DeleteDataTable(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/DataTable_DeleteAll": (BuildContext context)                        => CmpCodePage(
-        Title:"Data Table DeleteAll",
-        BackRoute:"/DataTable_Delete",
-        NextRoute:"/WebView_Intro",
-        ItemList:DataTable_DeleteAll_list,
-        CodeRoute:"lib/55_DataTable/6_DataTable_DeleteAll.dart",
-        TabIcon:Icon(Icons.table_chart),
-        ToDo:"Create A Page Containing A Simple DataTable With DeleteAll Button,Once Clicked All Data Must Be Cleared From DataTable",
-        TxtExplanation:DataTable_DeleteAll_Explanation,
-        RunCodeRoute:new DeleteAllDataTable(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/WebView_Intro": (BuildContext context)                        => CmpIntroPage(
-        Title:"WebView Intro",
-        BackRoute:"/DataTable_DeleteAll",
-        NextRoute:"/WebView_Simple",
-        ItemList:WebView_Intro_CompList,
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/WebView_Simple": (BuildContext context)                        => CmpCodePage(
-        Title:"Simple WebView",
-        BackRoute:"/WebView_Intro",
-        NextRoute:"/BackDrop_Intro",
-        ItemList:WebView_Simple_list,
-        CodeRoute:"lib/56_WebView/1_WebView_Simple.dart",
-        TabIcon:Icon(Icons.web_asset),
-        ToDo:"Create A Page Containing Icon And A Button,Once Button Is Clicked Load Any Web Page",
-        TxtExplanation:WebView_Simple_Explanation,
-        RunCodeRoute:new SimpleWebView(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/BackDrop_Intro": (BuildContext context)                        => CmpIntroPage(
-        Title:"BackDrop Intro",
-        BackRoute:"/WebView_Simple",
-        NextRoute:"/BackDrop_Left",
-        ItemList:BackDrop_Intro_CompList,
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-      "/BackDrop_Left": (BuildContext context)                        => CmpCodePage(
-        Title:"Left BackDrop",
-        BackRoute:"/BackDrop_Intro",
-        NextRoute:"/BackDrop_Right",
-        ItemList:BackDrop_Left_List,
-        CodeRoute:"lib/57_BackDrop/1_BackDrop_Left.dart",
-        TabIcon:Icon(Icons.menu),
-        ToDo:"Create A Page Containing Taking A Left Icon BackDrop",
-        TxtExplanation:BackDrop_Left_Explanation,
-        RunCodeRoute:new SimpleLeftBackDrop(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/BackDrop_Right": (BuildContext context)                        => CmpCodePage(
-        Title:"Right BackDrop",
-        BackRoute:"/BackDrop_Left",
-        NextRoute:"/BackDrop_Custom",
-        ItemList:BackDrop_Right_List,
-        CodeRoute:"lib/57_BackDrop/2_BackDrop_Right.dart",
-        TabIcon:Icon(Icons.menu),
-        ToDo:"Create A Page Containing Taking A Right Icon BackDrop",
-        TxtExplanation:BackDrop_Right_Explanation,
-        RunCodeRoute:new SimpleRightBackDrop(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/BackDrop_Custom": (BuildContext context)                        => CmpCodePage(
-        Title:"Custiom BackDrop",
-        BackRoute:"/BackDrop_Right",
-        NextRoute:"/Animated_Icons",
-        ItemList:BackDrop_Custom_List,
-        CodeRoute:"lib/57_BackDrop/3_BackDrop_Custom.dart",
-        TabIcon:Icon(Icons.menu),
-        ToDo:"Create A Page Containing Taking Teal Background Color Backdrop,Customizable Icon.Set 2 ListTile That Each Change FrontLayer Page",
-        TxtExplanation:BackDrop_Custom_Explanation,
-        RunCodeRoute:new CustomBackDrop(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-
-      "/Animated_Icons": (BuildContext context)                             =>Animated_Icons(),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Tinder_Swipe": (BuildContext context)                        => CmpCodePage(
-        Title:"Tinder Swipe",
-        BackRoute:"/Animated_Icons",
-        NextRoute:"/Advanced1",
-        ItemList:TinderSwipe_List,
-        CodeRoute:"lib/59_TinderSwipe/1_Tinder_Swipe.dart",
-        TabIcon:Icon(Icons.wrap_text),
-        ToDo:"Soon",
-        TxtExplanation:TinderSwipe_Explanation,
-        RunCodeRoute:new TinderSwipe(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/Image_Picker": (BuildContext context)                        => CmpCodePage(
-        Title:"Image Picker",
-        BackRoute:"/Tinder_Swipe",
-        NextRoute:"/Multiple_Image_Picker",
-        ItemList:ImagePicker_List,
-        CodeRoute:"lib/60_ImagePicker/ImagePicker.dart",
-        TabIcon:Icon(Icons.image),
-        ToDo:"Create A Page That Allow User To Select Image From Gallery Or From Camera",
-        TxtExplanation:ImagePicker_Explanation,
-        RunCodeRoute:new ImagePickerRun(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/Multiple_Image_Picker": (BuildContext context)                        => CmpCodePage(
-        Title:"Multiple Image Picker",
-        BackRoute:"/Image_Picker",
-        NextRoute:"/Advance_Pdf_Viewer_Asset",
-        ItemList:MultipleImagePicker_List,
-        CodeRoute:"lib/61_MultipleImagePicker/MultipleImagePicker.dart",
-        TabIcon:Icon(Icons.image),
-        ToDo:"Create A Page That Allow User To Select Multiple Image From Gallery Or From Camera",
-        TxtExplanation:MultipleImagePicker_Explanation,
-        RunCodeRoute:new MutipleImagePickerRun(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/Advance_Pdf_Viewer_Asset": (BuildContext context)                        => CmpCodePage(
-        Title:"Advance Pdf Viewer Asset",
-        BackRoute:"/Multiple_Image_Picker",
-        NextRoute:"/Advance_Pdf_Viewer_Url",
-        ItemList:AdvancePdfViewer_Asset_List,
-        CodeRoute:"lib/62_Advance_Pdf_Viewer/1_Advance_Pdf_Viewer_Asset.dart",
-        TabIcon:Icon(Icons.attachment),
-        ToDo:"Create A Page That Load PDF Document From Assets Once Page Loaded",
-        TxtExplanation:AdvancePdfViewer_Asset_Explanation,
-        RunCodeRoute:new AdvancePdfViewerAsset(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/Advance_Pdf_Viewer_Url": (BuildContext context)                        => CmpCodePage(
-        Title:"Advance Pdf Viewer Url",
-        BackRoute:"/Advance_Pdf_Viewer_Asset",
-        NextRoute:"/Google_NavBar",
-        ItemList:AdvancePdfViewer_Url_List,
-        CodeRoute:"lib/62_Advance_Pdf_Viewer/2_Advance_Pdf_Viewer_Url.dart",
-        TabIcon:Icon(Icons.attachment),
-        ToDo:"Create A Page That Load PDF Document From Url Once Page Loaded",
-        TxtExplanation:AdvancePdfViewer_Url_Explanation,
-        RunCodeRoute:new AdvancePdfViewerUrl(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/Google_NavBar": (BuildContext context)                        => CmpCodePage(
-        Title:"Google NavBar",
-        BackRoute:"/Advance_Pdf_Viewer_Url",
-        NextRoute:"/Clippy_Triangle",
-        ItemList:GoogleNavBar_List,
-        CodeRoute:"lib/63_Google_NavBar/1_Google_NavBar.dart",
-        TabIcon:Icon(Icons.edit_attributes),
-        ToDo:"Create A Page That Show A Bottom Google NavBar",
-        TxtExplanation:GoogleNavBar_Explanation,
-        RunCodeRoute:new GoogleNavBar(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/Clippy_Triangle": (BuildContext context)                        => CmpCodePage(
-        Title:"Clippy Triangle",
-        BackRoute:"/Google_NavBar",
-        NextRoute:"/Clippy_Chevron",
-        ItemList:Clippy_Triangle_List,
-        CodeRoute:"lib/64_Clippy/1_Clippy_Triangle.dart",
-        TabIcon:Icon(Icons.format_shapes),
-        ToDo:"Create A Page That Clip An Image As Triangle",
-        TxtExplanation:Clippy_Triangle_Explanation,
-        RunCodeRoute:new ClippyTriangle(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/Clippy_Chevron": (BuildContext context)                        => CmpCodePage(
-        Title:"Clippy Chevron",
-        BackRoute:"/Clippy_Triangle",
-        NextRoute:"/Clippy_Arc",
-        ItemList:Clippy_Chevron_List,
-        CodeRoute:"lib/64_Clippy/2_Clippy_Chevron.dart",
-        TabIcon:Icon(Icons.format_shapes),
-        ToDo:"Create A Page That Clip An Image As Chevron",
-        TxtExplanation:Clippy_Chevron_Explanation,
-        RunCodeRoute:new ClippyChevron(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/Clippy_Arc": (BuildContext context)                        => CmpCodePage(
-        Title:"Clippy Arc",
-        BackRoute:"/Clippy_Chevron",
-        NextRoute:"/Clippy_Diagonal",
-        ItemList:Clippy_Arc_List,
-        CodeRoute:"lib/64_Clippy/3_Clippy_Arc.dart",
-        TabIcon:Icon(Icons.format_shapes),
-        ToDo:"Create A Page That Clip An Image As Arc",
-        TxtExplanation:Clippy_Arc_Explanation,
-        RunCodeRoute:new ClippyArc(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/Clippy_Diagonal": (BuildContext context)                        => CmpCodePage(
-        Title:"Clippy Diagonal",
-        BackRoute:"/Clippy_Arc",
-        NextRoute:"/Clippy_Bevel",
-        ItemList:Clippy_Diagonal_List,
-        CodeRoute:"lib/64_Clippy/4_Clippy_Diagonal.dart",
-        TabIcon:Icon(Icons.format_shapes),
-        ToDo:"Create A Page That Clip An Image As Diagonal",
-        TxtExplanation:Clippy_Diagonal_Explanation,
-        RunCodeRoute:new ClippyDiagonal(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/Clippy_Bevel": (BuildContext context)                        => CmpCodePage(
-        Title:"Clippy Bevel",
-        BackRoute:"/Clippy_Diagonal",
-        NextRoute:"/Clippy_ButtCheek",
-        ItemList:Clippy_Bevel_List,
-        CodeRoute:"lib/64_Clippy/5_Clippy_Bevel.dart",
-        TabIcon:Icon(Icons.format_shapes),
-        ToDo:"Create A Page That Clip An Image As Bevel",
-        TxtExplanation:Clippy_Bevel_Explanation,
-        RunCodeRoute:new ClippyBevel(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/Clippy_ButtCheek": (BuildContext context)                        => CmpCodePage(
-        Title:"Clippy ButtCheek",
-        BackRoute:"/Clippy_Bevel",
-        NextRoute:"/Water_Drop",
-        ItemList:Clippy_ButtCheek_List,
-        CodeRoute:"lib/64_Clippy/6_ButtCheek.dart",
-        TabIcon:Icon(Icons.format_shapes),
-        ToDo:"Create A Page That Clip An Image As ButtCheek",
-        TxtExplanation:Clippy_ButtCheek_Explanation,
-        RunCodeRoute:new ClippyButtcheek(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/Water_Drop": (BuildContext context)                        => CmpCodePage(
-        Title:"Water Drop",
-        BackRoute:"/Clippy_ButtCheek",
-        NextRoute:"/Day_Night_Picker",
-        ItemList:WaterDrop_List,
-        CodeRoute:"lib/65_Water_Drop/1_Water_Drop.dart",
-        TabIcon:Icon(Icons.grain),
-        ToDo:"Create A Page That Show A Card Having Simple Text With Water Drops",
-        TxtExplanation:WaterDrop_Explanation,
-        RunCodeRoute:new WaterDropRun(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/Day_Night_Picker": (BuildContext context)                        => CmpCodePage(
-        Title:"Day Night Picker",
-        BackRoute:"/Water_Drop",
-        NextRoute:"/GrafPix_Icons",
-        ItemList:Day_Night_Picker_List,
-        CodeRoute:"lib/66_DayNightPicker/1_DayNightPicker.dart",
-        TabIcon:Icon(Icons.timer),
-        ToDo:"Create A Page That Show A Day Night Time Picker",
-        TxtExplanation:Day_Night_Picker_Explanation,
-        RunCodeRoute:new DayNightPicker(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/GrafPix_Icons": (BuildContext context)                        => CmpCodePage(
-        Title:"GrafPix Icons",
-        BackRoute:"/Day_Night_Picker",
-        NextRoute:"/GrafPix_Loaders",
-        ItemList:GrafPix_Icons_List,
-        CodeRoute:"lib/67_GrafPix/1_GrafPix_Icons.dart",
-        TabIcon:Icon(Icons.import_contacts),
-        ToDo:"Create A Page That Show Some Of GrafPix Icons",
-        TxtExplanation:GrafPix_Icons_Explanation,
-        RunCodeRoute:new GrafPixIcon(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/GrafPix_Loaders": (BuildContext context)                        => CmpCodePage(
-        Title:"GrafPix Loaders",
-        BackRoute:"/GrafPix_Icons",
-        NextRoute:"/GrafPix_Button",
-        ItemList:GrafPix_Loaders_List,
-        CodeRoute:"lib/67_GrafPix/2_GrafPix_Loaders.dart",
-        TabIcon:Icon(Icons.import_contacts),
-        ToDo:"Create A Page That Show Some GrafPix Loaders",
-        TxtExplanation:GrafPix_Loaders_Explanation,
-        RunCodeRoute:new GrafPixLoaders(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/GrafPix_Button": (BuildContext context)                        => CmpCodePage(
-        Title:"GrafPix Button",
-        BackRoute:"/GrafPix_Loaders",
-        NextRoute:"/GrafPix_Medal",
-        ItemList:GrafPix_Buttons_List,
-        CodeRoute:"lib/67_GrafPix/3_GrafPix_Button.dart",
-        TabIcon:Icon(Icons.import_contacts),
-        ToDo:"Create A Page That Show GrafPix Button",
-        TxtExplanation:GrafPix_Buttons_Explanation,
-        RunCodeRoute:new GrafPixButtons(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/GrafPix_Medal": (BuildContext context)                        => CmpCodePage(
-        Title:"GrafPix Medal",
-        BackRoute:"/GrafPix_Button",
-        NextRoute:"/SimpleListScrollWheel",
-        ItemList:GrafPix_Medals_List,
-        CodeRoute:"lib/67_GrafPix/4_GrafPix_Medal.dart",
-        TabIcon:Icon(Icons.import_contacts),
-        ToDo:"Create A Page That Show GrafPix Medal",
-        TxtExplanation:GrafPix_Medals_Explanation,
-        RunCodeRoute:new GrafPixMedals(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/SimpleListScrollWheel": (BuildContext context)                        => CmpCodePage(
-        Title:"Simple List Scroll Wheel",
-        BackRoute:"/GrafPix_Medal",
-        NextRoute:"/ListScrollWheel_ItemExtent",
-        ItemList:SimpleListScrollWheelView_List,
-        CodeRoute:"lib/68_ListScrollWheel/1_Simple_ListScrollWheel.dart",
-        TabIcon:Icon(Icons.wb_iridescent),
-        ToDo:"Create A Page That Show A List Scroll Wheel ,Show The Selected Index!",
-        TxtExplanation:SimpleListScrollWheelView_Explanation,
-        RunCodeRoute:new SimpleListScrollWheelRun(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/ListScrollWheel_ItemExtent": (BuildContext context)                        => CmpCodePage(
-        Title:"List Scroll Wheel Item Extent",
-        BackRoute:"/SimpleListScrollWheel",
-        NextRoute:"/ListScrollWheel_OffAxis",
-        ItemList:ListScrollWheelViewItemExtent_List,
-        CodeRoute:"lib/68_ListScrollWheel/2_ListScrollWheel_ItemExtent.dart",
-        TabIcon:Icon(Icons.wb_iridescent),
-        ToDo:"Create A Page That Show A List Scroll Wheel ,Set A Slider That Set Extent Value",
-        TxtExplanation:ListScrollWheelViewItemExtent_Explanation,
-        RunCodeRoute:new ListScrollWheelUseExtentRun(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/ListScrollWheel_OffAxis": (BuildContext context)                        => CmpCodePage(
-        Title:"List Scroll Wheel OffAxis",
-        BackRoute:"/GrafPix_Icons",
-        NextRoute:"/ListScrollWheel_UseMagnifier",
-        ItemList:ListScrollWheelViewOffAxis_List,
-        CodeRoute:"lib/68_ListScrollWheel/3_ListScrollWheel_OffAxis.dart",
-        TabIcon:Icon(Icons.wb_iridescent),
-        ToDo:"Create A Page That Show A List Scroll Wheel ,Set A Slider That Set OfAxis Value",
-        TxtExplanation:ListScrollWheelViewOffAxis_Explanation,
-        RunCodeRoute:new ListScrollWheelOffAxisRun(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/ListScrollWheel_UseMagnifier": (BuildContext context)                        => CmpCodePage(
-        Title:"List Scroll Wheel UseMagnifier",
-        BackRoute:"/ListScrollWheel_OffAxis",
-        NextRoute:"/AnimatedDialog_LTR",
-        ItemList:ListScrollWheelUseMagnifier_List,
-        CodeRoute:"lib/68_ListScrollWheel/4_ListScrollWheel_UseMagnifier.dart",
-        TabIcon:Icon(Icons.wb_iridescent),
-        ToDo:"Create A Page That Show A List Scroll Wheel ,Set A Slider That Set UseMagnifier Value",
-        TxtExplanation:ListScrollWheelViewUseMagnifier_Explanation,
-        RunCodeRoute:new ListScrollWheelUseMagnifierRun(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/AnimatedDialog_LTR": (BuildContext context)                        => CmpCodePage(
-        Title:"Animated Dialog From Left To Right",
-        BackRoute:"/ListScrollWheel_UseMagnifier",
-        NextRoute:"/AnimatedDialog_RTL",
-        ItemList:AnimatedDialog_LTR_List,
-        CodeRoute:"lib/69_Dialog_Transition/1_Dialog_Transition_LTR.dart",
-        TabIcon:Icon(Icons.warning),
-        ToDo:"Create A Page That Show A RaisedButton Once Clicked A Dialog Must Show From Left To Right",
-        TxtExplanation:AnimatedDialog_LTR_Explanation,
-        RunCodeRoute:new DialogTransition_LTR(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/AnimatedDialog_RTL": (BuildContext context)                        => CmpCodePage(
-        Title:"Animated Dialog From Right To Left",
-        BackRoute:"/AnimatedDialog_LTR",
-        NextRoute:"/AnimatedDialog_TTB",
-        ItemList:AnimatedDialog_RTL_List,
-        CodeRoute:"lib/69_Dialog_Transition/2_Dialog_Transition_RTL.dart",
-        TabIcon:Icon(Icons.warning),
-        ToDo:"Create A Page That Show A RaisedButton Once Clicked A Dialog Must Show From Right To Left",
-        TxtExplanation:AnimatedDialog_RTL_Explanation,
-        RunCodeRoute:new DialogTransition_RTL(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/AnimatedDialog_TTB": (BuildContext context)                        => CmpCodePage(
-        Title:"Animated Dialog From Top To Bottom",
-        BackRoute:"/AnimatedDialog_RTL",
-        NextRoute:"/AnimatedDialog_BTT",
-        ItemList:AnimatedDialog_TTB_List,
-        CodeRoute:"lib/68_ListScrollWheel/4_ListScrollWheel_UseMagnifier.dart",
-        TabIcon:Icon(Icons.warning),
-        ToDo:"Create A Page That Show A RaisedButton Once Clicked A Dialog Must Show From Top To Bottom",
-        TxtExplanation:AnimatedDialog_TTB_Explanation,
-        RunCodeRoute:new DialogTransition_TTB(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/AnimatedDialog_BTT": (BuildContext context)                        => CmpCodePage(
-        Title:"Animated Dialog From Bottom To Top",
-        BackRoute:"/AnimatedDialog_TTB",
-        NextRoute:"/Toggle_Buttons",
-        ItemList:AnimatedDialog_BTT_List,
-        CodeRoute:"lib/68_ListScrollWheel/4_ListScrollWheel_UseMagnifier.dart",
-        TabIcon:Icon(Icons.web),
-        ToDo:"Create A Page That Show A RaisedButton Once Clicked A Dialog Must Show From Bottom To Top",
-        TxtExplanation:AnimatedDialog_BTT_Explanation,
-        RunCodeRoute:new DialogTransition_BTT(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/Toggle_Buttons": (BuildContext context)                        => CmpCodePage(
-        Title:"Toggle Buttons",
-        BackRoute:"/AnimatedDialog_BTT",
-        NextRoute:"/Advanced1",
-        ItemList:ToggleButtons_List,
-        CodeRoute:"lib/70_Toggle_Button/1_Toggle_Button.dart",
-        TabIcon:Icon(Icons.repeat),
-        ToDo:"Create A Page That Show ToggleButtons Bold Italic And Underline Where It Take Effect On A Text",
-        TxtExplanation:ToggleButtons_Explanation,
-        RunCodeRoute:new ToggleButtonRun(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/Selectable_Text": (BuildContext context)                        => CmpCodePage(
-        Title:"Selectable Text",
-        BackRoute:"/Toggle_Buttons",
-        NextRoute:"/Advanced1",
-        ItemList:SelectableText_List,
-        CodeRoute:"lib/71_Selectable_Text/1_Selectable_Text.dart",
-        TabIcon:Icon(Icons.repeat),
-        ToDo:"Create A Page That Show Centered Selectable Text",
-        TxtExplanation:SelectableText_Explanation,
-        RunCodeRoute:new SelectableTextRun(),
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/GridView_Count": (BuildContext context)                                   => CmpCodePage(
-        Title:"GridView.Count",
-        BackRoute:"/Selectable_Text",
-        NextRoute:"/GridView_Builder",
-        ItemList:GridView_Count_list,
-        CodeRoute:"lib/72_GridView/1_GridView_Count.dart",
-        TabIcon:Icon(Icons.grid_on),
-        ToDo:"Create A Page That Show A GridView.count Use Slider To Apply Effect On!",
-        TxtExplanation:GridView_Count_Explanation,
-        RunCodeRoute:new GridView_Count_Run(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/GridView_Builder": (BuildContext context)                                   => CmpCodePage(
-        Title:"GridView.builder",
-        BackRoute:"/GridView_Count",
-        NextRoute:"/GridView_Custom",
-        ItemList:GridView_Builder_list,
-        CodeRoute:"lib/72_GridView/2_GridView_Builder.dart",
-        TabIcon:Icon(Icons.grid_on),
-        ToDo:"Create A Page That Show A GridView.builder Use Slider To Apply Effect On!",
-        TxtExplanation:GridView_Builder_Explanation,
-        RunCodeRoute:new GridView__Builder_Run(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/GridView_Custom": (BuildContext context)                                   => CmpCodePage(
-        Title:"GridView.custom",
-        BackRoute:"/GridView_Builder",
-        NextRoute:"/GridView_Extent",
-        ItemList:GridView_Custom_list,
-        CodeRoute:"lib/72_GridView/3_GridView_Custom.dart",
-        TabIcon:Icon(Icons.grid_on),
-        ToDo:"Create A Page That Show A GridView.custom Use Slider To Apply Effect On CrossAxisCount!",
-        TxtExplanation:GridView_Custom_Explanation,
-        RunCodeRoute:new GridView_Custom(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/GridView_Extent": (BuildContext context)                                   => CmpCodePage(
-        Title:"GridView.extent",
-        BackRoute:"/GridView_Custom",
-        NextRoute:"/Curved_Navigation_Bar",
-        ItemList:GridView_Extent_list,
-        CodeRoute:"lib/72_GridView/4_GridView_Extent.dart",
-        TabIcon:Icon(Icons.grid_on),
-        ToDo:"Create A Page That Show A GridView.extent Use Slider To Apply Effect On CrossAxisCount!",
-        TxtExplanation:GridView_Extent_Explanation,
-        RunCodeRoute:new GridView_Extent(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Curved_Navigation_Bar": (BuildContext context)                                   => CmpCodePage(
-        Title:"Curved Navigation Bar",
-        BackRoute:"/GridView_Extent",
-        NextRoute:"/Floating_Button_Simple",
-        ItemList:CurvedNavBar_list,
-        CodeRoute:"lib/73_Curved_Navigation_Bar/1_Curved_Navigation_Bar.dart",
-        TabIcon:Icon(Icons.navigation),
-        ToDo:"Create A Page Displaying Curved Navigation Bar.",
-        TxtExplanation:CurvedNavBar_Explanation,
-        RunCodeRoute:new CurvedNavBar(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Floating_Button_Simple": (BuildContext context)                                   => CmpCodePage(
-        Title:"Simple Floating Button",
-        BackRoute:"/Curved_Navigation_Bar",
-        NextRoute:"/Floating_Button_Animated",
-        ItemList:Floating_Button_Simple_list,
-        CodeRoute:"lib/74_Floating_Action_Button/1_Floating_Button_Simple.dart",
-        TabIcon:Icon(Icons.swap_vertical_circle),
-        ToDo:"Create A Page Showing A Floating Action Button With Centered Text 0,Once Button Pressed Increment Number By 1",
-        TxtExplanation:Floating_Button_Simple_Explanation,
-        RunCodeRoute:new SimpleFloatingButton(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Floating_Button_Animated": (BuildContext context)                                   => CmpCodePage(
-        Title:"Animated Floating Button",
-        BackRoute:"/Floating_Button_Simple",
-        NextRoute:"/Floating_Button_Circular",
-        ItemList:Floating_Button_Animated_list,
-        CodeRoute:"lib/74_Floating_Action_Button/2_Floating_Button_Animated.dart",
-        TabIcon:Icon(Icons.swap_vertical_circle),
-        ToDo:"Create A Page Showing A Floating Action Button With Centered Text 0,Once Button Pressed Must Animate 2 Buttons,First Increment The Centered Number And The Last Decrement That Number",
-        TxtExplanation:Floating_Button_Animated_Explanation,
-        RunCodeRoute:new AnimatedFloatingActionButton(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Floating_Button_Circular": (BuildContext context)                                   => CmpCodePage(
-        Title:"Circular Animated Floating Button",
-        BackRoute:"/Floating_Button_Animated",
-        NextRoute:"/ToolTip",
-        ItemList:Floating_Button_Circular_list,
-        CodeRoute:"lib/74_Floating_Action_Button/3_Floating_Button_Circular.dart",
-        TabIcon:Icon(Icons.swap_vertical_circle),
-        ToDo:"Create A Page Showing A Floating Action Button With Centered Text 0,Once Button Pressed Must Animate 4 Buttons Circular And Each Take Effect On Counter!",
-        TxtExplanation:Floating_Button_Circular_Explanation,
-        RunCodeRoute:new CircularFAB(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/ToolTip": (BuildContext context)                                   => CmpCodePage(
-        Title:"ToolTip",
-        BackRoute:"/Floating_Button_Circular",
-        NextRoute:"/Back_Detector",
-        ItemList:Tooltip_list,
-        CodeRoute:"lib/75_ToolTip/1_ToolTip.dart",
-        TabIcon:Icon(Icons.info),
-        ToDo:"Create A Page That Show A Tooltip When Icon Is LongPressed!",
-        TxtExplanation:Tooltip_Explanation,
-        RunCodeRoute:new ToolTipRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Back_Detector": (BuildContext context)                                   => CmpCodePage(
-        Title:"Back Detector",
-        BackRoute:"/ToolTip",
-        NextRoute:"/Clipping_ClipOval",
-        ItemList:BackDetector_list,
-        CodeRoute:"lib/76_Back_Detector/1_Back_Detector.dart",
-        TabIcon:Icon(Icons.arrow_back),
-        ToDo:"Create A Page That Ask User To Go Back When Back Button Is Pressed!",
-        TxtExplanation:BackDetector_Explanation,
-        RunCodeRoute:new BackDetectorRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Clipping_ClipOval": (BuildContext context)                                   => CmpCodePage(
-        Title:"Clipping ClipOval",
-        BackRoute:"/Back_Detector",
-        NextRoute:"/Clipping_ClipRRect",
-        ItemList:Clipping_ClipOval_list,
-        CodeRoute:"lib/77_Clipping/1_Clipping_Clip_Oval.dart",
-        TabIcon:Icon(Icons.content_cut),
-        ToDo:"Write A Page That Display A Clipped Container Using ClipOval",
-        TxtExplanation:Clipping_ClipOval_Explanation,
-        RunCodeRoute:new ClippingClipOval(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Clipping_ClipRRect": (BuildContext context)                                   => CmpCodePage(
-        Title:"Clipping ClipRRect",
-        BackRoute:"/Clipping_ClipOval",
-        NextRoute:"/NavigationBar_Rail",
-        ItemList:Clipping_ClipRRect_list,
-        CodeRoute:"lib/77_Clipping/2_Clipping_ClipRRect.dart",
-        TabIcon:Icon(Icons.content_cut),
-        ToDo:"Write A Page That Display A Clipped Container Using ClipRRect",
-        TxtExplanation:Clipping_ClipOval_Explanation,
-        RunCodeRoute:new ClippingClipRRect(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/NavigationBar_Rail": (BuildContext context)                                   => CmpCodePage(
-        Title:"NavigationBar Rail",
-        BackRoute:"/Clipping_ClipRRect",
-        NextRoute:"/Fancy_Bottom_NavBar",
-        ItemList:NavBarRail_list,
-        CodeRoute:"lib/78_Navigation_Rail/1_NavigationBar_Rail.dart",
-        TabIcon:Icon(Icons.navigation),
-        ToDo:"Write A Page That Display A Navigation Rail Bar ",
-        TxtExplanation:NavBarRail_Explanation,
-        RunCodeRoute:new RailNavBar(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Fancy_Bottom_NavBar": (BuildContext context)                                   => CmpCodePage(
-        Title:"Fancy Bottom NavBar",
-        BackRoute:"/NavigationBar_Rail",
-        NextRoute:"/Color_Picker",
-        ItemList:Fancy_Bottom_NavBar_list,
-        CodeRoute:"lib/79_Fancy_Bottom_NavBar/1_Fancy_Bottom_NavBar.dart",
-        TabIcon:Icon(Icons.navigation),
-        ToDo:"Write A Page That Display A Fancy Bottom Navigation Bar",
-        TxtExplanation:Fancy_Bottom_NavBar_Explanation,
-        RunCodeRoute:new FancyBottomNavBarRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Color_Picker": (BuildContext context)                                   => CmpCodePage(
-        Title:"Color Picker",
-        BackRoute:"/Fancy_Bottom_NavBar",
-        NextRoute:"/Like_Button",
-        ItemList:Color_Picker_list,
-        CodeRoute:"lib/80_Color_Picker/1_Color_Picker.dart",
-        TabIcon:Icon(Icons.color_lens),
-        ToDo:"Soon.",
-        TxtExplanation:Color_Picker_Explanation,
-        RunCodeRoute:new ColorPickerRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Like_Button": (BuildContext context)                                   => CmpCodePage(
-        Title:"Like Button",
-        BackRoute:"/Color_Picker",
-        NextRoute:"/Sliver_AppBar",
-        ItemList:Like_Button_list,
-        CodeRoute:"lib/81_Like_Button/1_Like_Button.dart",
-        TabIcon:Icon(Icons.favorite),
-        ToDo:"Write A Page That Display An Animated Like Buttons.",
-        TxtExplanation:Like_Button_Explanation,
-        RunCodeRoute:new LikeButtonDemo(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Sliver_AppBar": (BuildContext context)                                   => CmpCodePage(
-        Title:"Sliver AppBar",
-        BackRoute:"/Like_Button",
-        NextRoute:"/Advanced1",
-        ItemList:Sliver_AppBar_list,
-        CodeRoute:"lib/82_Sliver_AppBar/1_Sliver_AppBar.dart",
-        TabIcon:Icon(Icons.fiber_dvr),
-        ToDo:"Soon!",
-        TxtExplanation:Sliver_AppBar_Explanation,
-        RunCodeRoute:new SliverAppBarRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/Advanced1": (BuildContext context)                                   => CmpCodePage(
-        Title:"Navigating Through Image Tap",
-        BackRoute:"/Selectable_Text",
-        NextRoute:"/Advanced2",
-        ItemList:A1_list,
-        CodeRoute:"lib/Advanced/A1Run.dart",
-        TabIcon:Icon(Icons.more_horiz),
-        ToDo:"Create A Page That Show List Of Images When Tapped Take You The The Following Page.",
-        TxtExplanation:A1_Explanation,
-        RunCodeRoute:new A1Run(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Advanced2": (BuildContext context)                                   => CmpCodePage(
-        Title:"Simple GetStarted Page",
-        BackRoute:"/Advanced1",
-        NextRoute:"/Advanced3",
-        ItemList:A2_list,
-        CodeRoute:"lib/Advanced/A2Run.dart",
-        TabIcon:Icon(Icons.more_horiz),
-        ToDo:"Create A Get Started Page.",
-        TxtExplanation:A2_Explanation,
-        RunCodeRoute:new A2Run(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Advanced3": (BuildContext context)                                   => CmpCodePage(
-        Title:"Advanced Dialog",
-        BackRoute:"/Advanced2",
-        NextRoute:"/Advanced4",
-        ItemList:A3_list,
-        CodeRoute:"lib/Advanced/A3Run.dart",
-        TabIcon:Icon(Icons.more_horiz),
-        ToDo:"Create A Page Having Centered RaisedButton,Once Clicked Show A Dialog.Create Dialog Class Wich You Can Use It Multiple Of Times By Passing Data As Parameters\n\n",
-        TxtExplanation:A3_Explanation,
-        RunCodeRoute:new A3Run(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Advanced4": (BuildContext context)                                   => CmpCodePage(
-        Title:"Dynamic List",
-        BackRoute:"/Advanced3",
-        NextRoute:"/Advanced5_Row_Layout",
-        ItemList:A4_list,
-        CodeRoute:"lib/Advanced/A4Run.dart",
-        TabIcon:Icon(Icons.more_horiz),
-        ToDo:"Create A Page Taking A Button Once Clicked Add Image To A List,Show Updated List Image After Each Action!\n",
-        TxtExplanation:A4_Explanation,
-        RunCodeRoute:new A4Run(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Advanced5_Row_Layout": (BuildContext context)                                   => CmpCodePage(
-        Title:"Axis Row Layout",
-        BackRoute:"/Advanced4",
-        NextRoute:"/Advanced6_Col_Layout",
-        ItemList:A5_list,
-        CodeRoute:"lib/Advanced/A5_Row_Layout.dart",
-        TabIcon:Icon(Icons.more_horiz),
-        ToDo:"Write A Page That Take A Row Layout And Change Its Axis Depend On User Selection",
-        TxtExplanation:A5_Explanation,
-        RunCodeRoute:new A5_Row_Layout_Run(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Advanced6_Col_Layout": (BuildContext context)                                   => CmpCodePage(
-        Title:"Axis Col Layout",
-        BackRoute:"/Advanced5_Row_Layout",
-        NextRoute:"/SQLFlite_Intro",
-        ItemList:A6_list,
-        CodeRoute:"lib/Advanced/A6_Column_Layout.dart",
-        TabIcon:Icon(Icons.more_horiz),
-        ToDo:"Write A Page That Take A Col Layout And Change Its Axis Depend On User Selection",
-        TxtExplanation:A6_Explanation,
-        RunCodeRoute:new A6_Col_Layout_Run(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Advanced7": (BuildContext context)                                   => CmpCodePage(
-        Title:"Advanced Animation",
-        BackRoute:"/Advanced6_Col_Layout",
-        NextRoute:"/Advanced8",
-        ItemList:A7_list,
-        CodeRoute:"lib/Advanced/A7Run.dart",
-        TabIcon:Icon(Icons.more_horiz),
-        ToDo:"Write A Page That Take 7 Balls,Tap On Any Ball Will Animate Them To Be Translated,Once 7 Ball Moved User Win!",
-        TxtExplanation:A7_Explanation,
-        RunCodeRoute:new A7Run(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Advanced8": (BuildContext context)                                   => CmpCodePage(
-        Title:"Bounce Sound Button",
-        BackRoute:"/Advanced7",
-        NextRoute:"/SQLFlite_Intro",
-        ItemList:A8_list,
-        CodeRoute:"lib/Advanced/A8Run.dart",
-        TabIcon:Icon(Icons.more_horiz),
-        ToDo:"Write A Page That Scale A Button On Clicked And Play Tap Sound!",
-        TxtExplanation:A8_Explanation,
-        RunCodeRoute:new TapSoundBounceBtnRun(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/SQLFlite_Intro": (BuildContext context)                   => CmpIntroPage(
-        Title:"SQLFlite Introduction",
-        BackRoute:"/Main",
-        NextRoute:"/SQLFlite_CreateClass",
-        ItemList:SQLFlite_Intro_CompList,
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/SQLFlite_CreateClass": (BuildContext context)                   => CmpIntroPage(
-        Title:"Create Class",
-        BackRoute:"/SQLFlite_Intro",
-        NextRoute:"/SQLFlite_CreateTable",
-        ItemList:SQLFlite_CreateClass_CompList,
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/SQLFlite_CreateTable": (BuildContext context)                   => CmpIntroPage(
-        Title:"SQLFlite Create Table",
-        BackRoute:"/SQLFlite_CreateClass",
-        NextRoute:"/SQLFlite_Print",
-        ItemList:SQLFlite_CreateTable_CompList,
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/SQLFlite_Print": (BuildContext context)                   => CmpIntroPage(
-        Title:"SQLFlite Print Data",
-        BackRoute:"/SQLFlite_CreateTable",
-        NextRoute:"/SQLFlite_Insert",
-        ItemList:SQLFlite_Print_CompList,
-      ),
-
-      //----------------------------------------------------------------------------------
-      //----------------------------------------------------------------------------------
-
-      "/SQLFlite_Insert": (BuildContext context)                   => CmpCodePage(
-        Title:"SQLFlite Insert Data",
-        BackRoute:"/SQLFlite_Print",
-        NextRoute:"/SQLFlite_Update",
-        ItemList:SQLFlite_Insert_CompList,
-        CodeRoute:"lib/Backend_1_SQFlite/1_SQFlite_Insert.dart",
-        TabIcon:Icon(Icons.more_horiz),
-        ToDo:"Create A Page Insert Data Into SQFlite Database",
-        TxtExplanation:A3_Explanation,
-        RunCodeRoute:new SQFlite_Insert(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/SQLFlite_Update": (BuildContext context)                   => CmpCodePage(
-        Title:"SQLFlite Update Data",
-        BackRoute:"/SQLFlite_Insert",
-        NextRoute:"/SQLFlite_Delete",
-        ItemList:SQLFlite_Update_CompList,
-        CodeRoute:"lib/Backend_1_SQFlite/2_SQFlite_Update.dart",
-        TabIcon:Icon(Icons.more_horiz),
-        ToDo:"Create A Page That Update Specified Data Contained In SQFlite",
-        TxtExplanation:A3_Explanation,
-        RunCodeRoute:new SQFlite_Update(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/SQLFlite_Delete": (BuildContext context)                   => CmpCodePage(
-        Title:"SQLFlite Delete Data",
-        BackRoute:"/SQLFlite_Update",
-        NextRoute:"/SQLFlite_DeleteAll",
-        ItemList:SQLFlite_Delete_CompList,
-        CodeRoute:"lib/Backend_1_SQFlite/3_SQFlite_Delete.dart",
-        TabIcon:Icon(Icons.more_horiz),
-        ToDo:"Create A Page Delete Specified Data Contained In SQFlite",
-        TxtExplanation:A3_Explanation,
-        RunCodeRoute:new SQFlite_Delete(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/SQLFlite_DeleteAll": (BuildContext context)                   => CmpCodePage(
-        Title:"SQLFlite Delete All  Data",
-        BackRoute:"/SQLFlite_Update",
-        NextRoute:"/HTTP_PHP_GettingStarted",
-        ItemList:SQLFlite_DeleteAll_CompList,
-        CodeRoute:"lib/Backend_1_SQFlite/4_SQFlite_DeleteAll.dart",
-        TabIcon:Icon(Icons.more_horiz),
-        ToDo:"Create A Page Deleting All Data Contained In SQFlite",
-        TxtExplanation:A3_Explanation,
-        RunCodeRoute:new SQFlite_DeleteAll(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/HTTP_PHP_GettingStarted": (BuildContext context)                   => CmpIntroPage(
-        Title:"HTTP PHP Getting Started",
-        BackRoute:"/SQLFlite_DeleteAll",
-        NextRoute:"/HTTP_PHP_DBConnection",
-        ItemList:PHP_HTTP_Intro_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/HTTP_PHP_DBConnection": (BuildContext context)                   => CmpIntroPage(
-        Title:"HTTP PHP Database Connection",
-        BackRoute:"/HTTP_PHP_GettingStarted",
-        NextRoute:"/HTTP_PHP_CreateClass",
-        ItemList:PHP_HTTP_DbConnection_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/HTTP_PHP_CreateClass": (BuildContext context)                   => CmpIntroPage(
-        Title:"HTTP PHP Database Connection",
-        BackRoute:"/HTTP_PHP_DBConnection",
-        NextRoute:"/HTTP_PHP_GetData",
-        ItemList:PHP_HTTP_CreateClass_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/HTTP_PHP_GetData": (BuildContext context)                   => CmpCodePage(
-        Title:"HTTP PHP Get Data",
-        BackRoute:"/HTTP_PHP_CreateClass",
-        NextRoute:"/HTTP_PHP_InsertData",
-        ItemList:PHP_HTTP_GetData_CompList,
-        CodeRoute:"lib/Backend_2_PHP_Http/1_PHP_GetData.dart",
-        TabIcon:Icon(Icons.data_usage),
-        ToDo:"Create A Page That Get Data Returned From Server",
-        TxtExplanation:PHP_HTTP_GetData_Explanation,
-        RunCodeRoute:new PHP_GetData(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/HTTP_PHP_InsertData": (BuildContext context)                   => CmpCodePage(
-        Title:"HTTP PHP Insert Data",
-        BackRoute:"/HTTP_PHP_GetData",
-        NextRoute:"/HTTP_PHP_UpdateData",
-        ItemList:PHP_HTTP_Insert_CompList,
-        CodeRoute:"lib/Backend_2_PHP_Http/2_PHP_InsertData.dart",
-        TabIcon:Icon(Icons.data_usage),
-        ToDo:"Create A Page That Insert And Get Data Returned From Server",
-        TxtExplanation:PHP_HTTP_Insert_Explanation,
-        RunCodeRoute:new PHP_InsData(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/HTTP_PHP_UpdateData": (BuildContext context)                   => CmpCodePage(
-        Title:"HTTP PHP Update Data",
-        BackRoute:"/HTTP_PHP_InsertData",
-        NextRoute:"/HTTP_PHP_DeleteData",
-        ItemList:PHP_HTTP_Update_CompList,
-        CodeRoute:"lib/Backend_2_PHP_Http/3_PHP_Update.dart",
-        TabIcon:Icon(Icons.data_usage),
-        ToDo:"Create A Page That Update And Get New Data Returned From Server",
-        TxtExplanation:PHP_HTTP_Insert_Explanation,
-        RunCodeRoute:new PHP_UpdateData(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/HTTP_PHP_DeleteData": (BuildContext context)                   => CmpCodePage(
-        Title:"HTTP PHP Delete Data",
-        BackRoute:"/HTTP_PHP_UpdateData",
-        NextRoute:"/HTTP_PHP_DeleteAllData",
-        ItemList:PHP_HTTP_Delete_CompList,
-        CodeRoute:"lib/Backend_2_PHP_Http/4_PHP_Delete.dart",
-        TabIcon:Icon(Icons.data_usage),
-        ToDo:"Create A Page Deleting All Data Contained In SQFlite",
-        TxtExplanation:PHP_HTTP_Delete_Explanation,
-        RunCodeRoute:new PHP_DelData(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/HTTP_PHP_DeleteAllData": (BuildContext context)                   => CmpCodePage(
-        Title:"HTTP PHP Delete All Data",
-        BackRoute:"/HTTP_PHP_DeleteData",
-        NextRoute:"/Firebase_Setup",
-        ItemList:PHP_HTTP_DeleteAll_CompList,
-        CodeRoute:"lib/Backend_2_PHP_Http/5_PHP_DeleteAll.dart",
-        TabIcon:Icon(Icons.data_usage),
-        ToDo:"Create A Page Deleting All Data Contained In SQFlite",
-        TxtExplanation:PHP_HTTP_DeleteAll_Explanation,
-        RunCodeRoute:new PHP_DelData(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Firebase_Setup": (BuildContext context)                   => CmpIntroPage(
-        Title:"Firebase Setup",
-        BackRoute:"/HTTP_PHP_DeleteAllData",
-        NextRoute:"/Firebase_SetupSHA1",
-        ItemList:FireBase_Setup_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Firebase_SetupSHA1": (BuildContext context)                => CmpIntroPage(
-        Title:"Firebase SHA",
-        BackRoute:"/Firebase_Setup",
-        NextRoute:"/Firebase_SetupEmail",
-        ItemList:FireBase_SetupSHA1_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Firebase_SetupEmail": (BuildContext context)                => CmpIntroPage(
-        Title:"Firebase Setup Email",
-        BackRoute:"/Firebase_SetupSHA1",
-        NextRoute:"/Firebase_SetupGoogle",
-        ItemList:FireBase_Setup_Email_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Firebase_SetupGoogle": (BuildContext context)                => CmpIntroPage(
-        Title:"Firebase Setup Google",
-        BackRoute:"/Firebase_SetupEmail",
-        NextRoute:"/Firebase_SetupFacebook",
-        ItemList:FireBase_Setup_Google_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Firebase_SetupFacebook": (BuildContext context)                => CmpIntroPage(
-        Title:"Firebase Setup Facebook",
-        BackRoute:"/Firebase_SetupGoogle",
-        NextRoute:"/Firebase_Auth_Email_FB_Google",
-        ItemList:FireBase_Setup_Facebook_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Firebase_Auth_Email_FB_Google": (BuildContext context)                   => CmpCodePage(
-        Title:"Firebase Email FB Google Authentication",
-        BackRoute:"/Firebase_SetupFacebook",
-        NextRoute:"/FireStore_Intro",
-        ItemList:Firebase_Auth_Email_FB_Google_CompList,
-        CodeRoute:"lib/Backend_3_FireBase/1_FireBase_Auth_Email_FB_Google.dart",
-        TabIcon:Icon(Icons.data_usage),
-        ToDo:"Create A Page That Use Firebase Email  To SignIn,SignUp And Recover An Account Or Continue With Facebook Or Google With Logout.",
-        TxtExplanation:"Soon",
-        RunCodeRoute:new FireBaseEmail_Google_FB_Authentication(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/FireStore_Intro": (BuildContext context)                => CmpIntroPage(
-        Title:"FireStore Introduction",
-        BackRoute:"/Firebase_Auth_Email_FB_Google",
-        NextRoute:"/FireStore_View",
-        ItemList:FireStore_Intro_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/FireStore_View": (BuildContext context)                => CmpIntroPage(
-        Title:"FireStore View",
-        BackRoute:"/FireStore_Intro",
-        NextRoute:"/FireStore_Insert",
-        ItemList:FireStore_View_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/FireStore_Insert": (BuildContext context)                => CmpIntroPage(
-        Title:"FireStore Insert",
-        BackRoute:"/FireStore_View",
-        NextRoute:"/FireStore_Update",
-        ItemList:FireStore_Insert_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/FireStore_Update": (BuildContext context)                => CmpIntroPage(
-        Title:"FireStore Update",
-        BackRoute:"/FireStore_Insert",
-        NextRoute:"/FireStore_Delete",
-        ItemList:FireStore_Update_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/FireStore_Delete": (BuildContext context)                => CmpIntroPage(
-        Title:"FireStore Delete",
-        BackRoute:"/FireStore_Update",
-        NextRoute:"/FireStore_All",
-        ItemList:FireStore_Delete_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-      "/FireStore_All": (BuildContext context)                   => CmpCodePage(
-        Title:"FireStore Add,Update,Delete And View Data",
-        BackRoute:"/FireStore_Delete",
-        NextRoute:"/FireBase_Admob_Intro",
-        ItemList:Firebase_Auth_Email_FB_Google_CompList,
-        CodeRoute:"lib/Backend_4_FireStore/1_FireStore.dart",
-        TabIcon:Icon(Icons.data_usage),
-        ToDo:"Create A Page That Show Products Fetched From FireStore With Insert Update And Delete Action.",
-        TxtExplanation:"Soon",
-        RunCodeRoute:new FireStoreProduct(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/FireBase_Admob_Intro": (BuildContext context)             => CmpIntroPage(
-        Title:"FireStore Delete",
-        BackRoute:"/FireStore_All",
-        NextRoute:"/FireBase_Admob_Banner",
-        ItemList:FireBase_Admob_Intro_CompList,
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/FireBase_Admob_Banner": (BuildContext context)                   => CmpCodePage(
-        Title:"FireBase Admob Banner",
-        BackRoute:"/FireBase_Admob_Intro",
-        NextRoute:"/FireBase_Admob_Interstitial",
-        ItemList:FireBase_Admob_Banner_list,
-        CodeRoute:"lib/Backend_5_FireBase_Admob/1_FireBase_Admob_Banner.dart",
-        TabIcon:Icon(Icons.data_usage),
-        ToDo:"Create A Page That Show And Remove A Banner",
-        TxtExplanation:FireBase_Admob_Banner_Explanation,
-        RunCodeRoute:new FireBaseAdmob_Banner(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/FireBase_Admob_Interstitial": (BuildContext context)                   => CmpCodePage(
-        Title:"FireBase Admob Interstitial",
-        BackRoute:"/FireBase_Admob_Banner",
-        NextRoute:"/FireBase_Push_Notification",
-        ItemList:FireBase_Admob_Interstitial_list,
-        CodeRoute:"lib/Backend_5_FireBase_Admob/2_FireBase_Admob_Interstitial.dart",
-        TabIcon:Icon(Icons.data_usage),
-        ToDo:"Create A Page That Show An Interstitial",
-        TxtExplanation:FireBase_Admob_Interstitial_Explanation,
-        RunCodeRoute:new FireBaseAdmob_Interstitial(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/FireBase_Push_Notification": (BuildContext context)                   => CmpCodePage(
-        Title:"FireBase Push Notification",
-        BackRoute:"/FireBase_Admob_Interstitial",
-        NextRoute:"/Main",
-        ItemList:FireBase_Push_Notification_list,
-        CodeRoute:"lib/Backend_6_FireBase_Push_Notification/FireBasePushNotification.dart",
-        TabIcon:Icon(Icons.data_usage),
-        ToDo:"Create A Code That Recieve Notification Sent From FireBase Cloud Messaging",
-        TxtExplanation:FireBase_Push_Notification_Explanation,
-        RunCodeRoute:new NoCodePage(),
-      ),
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-      "/Davi_ContactList": (BuildContext context)                   => CmpCodePage(
-        Title:"Contact List By Davi",
-        BackRoute:"/Main",
-        NextRoute:"/Main",
-        ItemList:Davi_ContactList_List,
-        CodeRoute:"lib/UsersCode/1_Davi_Contact_List/ContactList.dart",
-        TabIcon:Icon(Icons.contacts),
-        ToDo:"Create A Page That Show Allow Saving Contacts Using SQFLite",
-        TxtExplanation:Davi_ContactList_Explanation,
-        RunCodeRoute:new Davi_ContactList(),
-      ),
-
-
-      //---------------------------------------------------------------------------------
-      //---------------------------------------------------------------------------------
-
-
-
-      "/Generate_Intro_Quizz": (BuildContext context)           => cl_IntroQuizz(),
-      "/Generate_Keywords_Quizz": (BuildContext context)        => cl_KeywordsQuizz(),
-      "/Generate_Text_Quizz": (BuildContext context)            => cl_TextQuizz(),
-      "/Generate_HeaderAppBar_Quizz": (BuildContext context)    => cl_HeaderAppBarQuizz(),
-      "/Generate_MainBg_Quizz": (BuildContext context)          => SoonAlert(),
-      "/Generate_Image_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Button_Quizz": (BuildContext context)          => SoonAlert(),
-      "/Generate_Toast_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Layouts_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Dialogs_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Divider_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Navigator_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_SnackBar_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_FlushBar_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Card_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_TextOverFlow_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_GestureDetector_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_ListView_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_TextField_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_FooterAppBar_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_ImageSlider_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Notification_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Switch_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Audio_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Video_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_SimpleLoader_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_AdvancedLoader_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Animation_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Radio_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_CheckBox_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Chip_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_TabBar_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Selector_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Flex_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_ComboBox_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_ExpandableList_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Slider_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Drawer_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_MainSplashScreen_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Admob_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_FlipCard_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_FlipView_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Stepper_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_BottomSheet_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_SPI_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Expandable_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Marquee_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_ContainerWaves_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_RouteTransition_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_FlutterSyntaxe_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Advanced_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_SlidingUpPanel_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_PopupMenuButton_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_SQLFlite_Quizz": (BuildContext context)           => SoonAlert(),
-      "/Generate_Hero_Quizz": (BuildContext context)              => SoonAlert(),
-      "/Generate_AvatarGlow_Quizz": (BuildContext context)              => SoonAlert(),
-      "/Generate_DataTable_Quizz": (BuildContext context)              => SoonAlert(),
-      "/Generate_WebView_Quizz": (BuildContext context)              => SoonAlert(),
-      "/Generate_AnimatedIcons_Quizz": (BuildContext context)              => SoonAlert(),
-      "/Generate_BackDrop_Quizz": (BuildContext context)              => SoonAlert(),
-      "/Generate_FireBase_Quizz": (BuildContext context)              => SoonAlert(),
-      "/Generate_TinderSwipe_Quizz": (BuildContext context)              => SoonAlert(),
-      "/Generate_FireBaseAdmob_Quizz": (BuildContext context)              => SoonAlert(),
-
-    },
-  ));
+  InAppPurchaseConnection.enablePendingPurchases();
+
+  runApp(
+    GetMaterialApp(
+      debugShowCheckedModeBanner:false,
+      title:"Flutter:Tutorials & Quizzes",
+      initialRoute: '/',
+      routes: {
+
+        '/': (context) => MainSplashScreen(),
+
+        "/Main": (BuildContext context)                           => AuthCheck(),
+
+        "/Intro_Flutter": (BuildContext context)                  => CmpIntroPage(
+          Title:"Flutter Intro",
+          BackRoute:"/Main",
+          NextRoute:"/Intro_Dart",
+          ItemList:FlutterIntroCompList,
+        ),
+
+        "/Intro_Dart": (BuildContext context)                     => CmpIntroPage(
+          Title:"Dart Intro",
+          BackRoute:"/Intro_Flutter",
+          NextRoute:"/Intro_Use",
+          ItemList:DartIntroCompList,
+        ),
+
+
+        "/Intro_Use": (BuildContext context)                      => CmpIntroPage(
+          Title:"Flutter Use",
+          BackRoute:"/Intro_Dart",
+          NextRoute:"/Keywords_Widget",
+          ItemList:FlutterUseIntroCompList,
+        ),
+
+
+        "/Keywords_Widget": (BuildContext context)                => CmpIntroPage(
+          Title:"Widget Intro",
+          BackRoute:"/Main",
+          NextRoute:"/Keywords_Stateless",
+          ItemList:WidgetKeywordsCompList,
+        ),
+
+
+        "/Keywords_Stateless": (BuildContext context)             => CmpIntroPage(
+          Title:"Stateless Widget",
+          BackRoute:"/Keywords_Widget",
+          NextRoute:"/Keywords_Statefull",
+          ItemList:StatelessKeywordsCompList,
+        ),
+
+
+        "/Keywords_Statefull": (BuildContext context)             => CmpIntroPage(
+          Title:"Statefull Widget",
+          BackRoute:"/Keywords_Stateless",
+          NextRoute:"/Keywords_Navigator",
+          ItemList:StatefullKeywordsCompList,
+        ),
+
+
+        "/Keywords_Navigator": (BuildContext context)             => CmpIntroPage(
+          Title:"Navigator",
+          BackRoute:"/Keywords_Statefull",
+          NextRoute:"/Keywords_Scaffold",
+          ItemList:NavigatorKeywordsCompList,
+        ),
+
+
+        "/Keywords_Scaffold": (BuildContext context)              => CmpIntroPage(
+          Title:"Scaffold",
+          BackRoute:"/Keywords_Navigator",
+          NextRoute:"/Scaffold_AvoidBottom_false",
+          ItemList:ScaffoldKeywordsCompList,
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Scaffold_AvoidBottom_false": (BuildContext context)              => CmpCodePage(
+          Title:"Scaffold resizeToAvoidBottomPadding false",
+          BackRoute:"/Keywords_Scaffold",
+          NextRoute:"/Scaffold_AvoidBottom_true",
+          ItemList:Scaffold_AvoidBottom_false_list,
+          CodeRoute:"lib/Codes_FrontEnd/2_Keywords/1_Scaffold_AvoidBottom_false.dart",
+          TabIcon:Icon(Icons.vpn_key),
+          ToDo:"We Need To Write A Page Taking Scaffold Where Resize Avoid Bottom Set To False",
+          TxtExplanation:Scaffold_AvoidBottom_false_Explanation,
+          RunCodeRoute:new Scaffold_resizeToAvoidBottomPadding_false(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Scaffold_AvoidBottom_true": (BuildContext context)              => CmpCodePage(
+          Title:"Scaffold resizeToAvoidBottomPadding true",
+          BackRoute:"/Scaffold_AvoidBottom_false",
+          NextRoute:"/Keywords_AppBar",
+          ItemList:Scaffold_AvoidBottom_true_list,
+          CodeRoute:"lib/Codes_FrontEnd/2_Keywords/2_Scaffold_AvoidBottom_true.dart",
+          TabIcon:Icon(Icons.vpn_key),
+          ToDo:"We Need To Write A Page Taking Scaffold Where Resize Avoid Bottom Set To True",
+          TxtExplanation:Scaffold_AvoidBottom_true_Explanation,
+          RunCodeRoute:new Scaffold_resizeToAvoidBottomPadding_true(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+
+        "/Keywords_AppBar": (BuildContext context)                => CmpIntroPage(
+          Title:"AppBar",
+          BackRoute:"/Keywords_Scaffold",
+          NextRoute:"/Keywords_MaterialApp",
+          ItemList:AppBarKeywordsCompList,
+        ),
+
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+
+        "/Keywords_MaterialApp": (BuildContext context)           => CmpIntroPage(
+          Title:"Material App",
+          BackRoute:"/Keywords_AppBar",
+          NextRoute:"/Keywords_MaterialApp_Title_Theme",
+          ItemList:MaterialAppKeywordsCompList,
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Keywords_MaterialApp_Title_Theme": (BuildContext context)                       => CmpCodePage(
+          Title:"MaterialApp Title Theme",
+          BackRoute:"/Keywords_MaterialApp",
+          NextRoute:"/Text_ltr",
+          ItemList:MaterialApp_Title_Theme_list,
+          CodeRoute:"lib/Codes_FrontEnd/3_Text/1_TextDirection_ltr_Run.dart",
+          TabIcon:Icon(Icons.vpn_key),
+          ToDo:"We Need To Write A Page Where Theme Set To Teal, Title to Demo",
+          TxtExplanation:MaterialApp_Title_Theme_Explanation,
+          RunCodeRoute:new MaterialAppTitleTheme(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+
+
+        "/Text_ltr": (BuildContext context)                       => CmpCodePage(
+          Title:"TextDirection ltr",
+          BackRoute:"/Keywords_MaterialApp",
+          NextRoute:"/Text_rtl",
+          ItemList:TextDirection_ltr_list,
+          CodeRoute:"lib/Codes_FrontEnd/3_Text/1_TextDirection_ltr_Run.dart",
+          TabIcon:Icon(Icons.format_textdirection_l_to_r),
+          ToDo:ToDoText1,
+          TxtExplanation:TextDirection_ltr_Explanation,
+          RunCodeRoute:new TextDirection_ltr_Run(),
+          OffDocList:Text_OffDoc_TextDirection,
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+
+        "/Text_rtl": (BuildContext context)                       => CmpCodePage(
+          Title:"TextDirection rtl",
+          BackRoute:"/Text_ltr",
+          NextRoute:"/Text_Color",
+          ItemList:TextDirection_rtl_list,
+          CodeRoute:"lib/Codes_FrontEnd/3_Text/2_TextDirection_rtl_Run.dart",
+          TabIcon:Icon(Icons.format_textdirection_r_to_l),
+          ToDo:ToDoText2,
+          TxtExplanation:TextDirection_rtl_Explanation,
+          RunCodeRoute:new TextDirection_rtl_Run(),
+          OffDocList:Text_OffDoc_TextDirection,
+        ),
+
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+
+        "/Text_Color": (BuildContext context)                     => CmpCodePage(
+          Title:"Text Color",
+          BackRoute:"/Text_rtl",
+          NextRoute:"/Text_Bold",
+          ItemList:TextColor_list,
+          CodeRoute:"lib/Codes_FrontEnd/3_Text/3_TextColorRun.dart",
+          TabIcon:Icon(Icons.color_lens),
+          ToDo:"We Need To Write A Simple Red Text That Appear in The Center Of The Body",
+          TxtExplanation:TextColor_Explanation,
+          RunCodeRoute:new TextColorRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+
+        "/Text_Bold": (BuildContext context)                      => CmpCodePage(
+          Title:"Bold Text",
+          BackRoute:"/Text_Color",
+          NextRoute:"/Text_Italic",
+          ItemList:TextBold_list,
+          CodeRoute:"lib/Codes_FrontEnd/3_Text/4_TextBoldRun.dart",
+          TabIcon:Icon(Icons.format_bold),
+          ToDo:"We Need To Write A Simple Bold Text That Appear in The Center Of The Body",
+          TxtExplanation:TextBold_Explanation,
+          RunCodeRoute:new TextBoldRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+
+        "/Text_Italic": (BuildContext context)                    => CmpCodePage(
+          Title:"Italic Text",
+          BackRoute:"/Text_Bold",
+          NextRoute:"/Text_Underline",
+          ItemList:TextItalic_list,
+          CodeRoute:"lib/Codes_FrontEnd/3_Text/5_TextItalicRun.dart",
+          TabIcon:Icon(Icons.format_italic),
+          ToDo:"We Need To Write A Simple Italic Text That Appear in The Center Of The Body",
+          TxtExplanation:TextItalic_Explanation,
+          RunCodeRoute:new TextItalicRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+
+        "/Text_Underline": (BuildContext context)                 => CmpCodePage(
+          Title:"Underline Text",
+          BackRoute:"/Text_Italic",
+          NextRoute:"/Text_LineThrough",
+          ItemList:TextUnderline_list,
+          CodeRoute:"lib/Codes_FrontEnd/3_Text/6_TextUnderlineRun.dart",
+          TabIcon:Icon(Icons.format_underlined),
+          ToDo:"We Need To Write A Simple Underline Text That Appear in The Center Of The Body",
+          TxtExplanation:TextUnderline_Explanation,
+          RunCodeRoute:new TextUnderlineRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+
+        "/Text_LineThrough": (BuildContext context)               => CmpCodePage(
+          Title:"Text Line Through",
+          BackRoute:"/Text_Underline",
+          NextRoute:"/Text_OverLine",
+          ItemList:TextLineThrough_list,
+          CodeRoute:"lib/Codes_FrontEnd/3_Text/7_TextLineTroughRun.dart",
+          TabIcon:Icon(Icons.line_weight),
+          ToDo:"We Need To Write A Simple Line Through Text That Appear in The Center Of The Body",
+          TxtExplanation:TextLineThrough_Explanation,
+          RunCodeRoute:new TextThroughRun(),
+        ),
+
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+
+        "/Text_OverLine": (BuildContext context)                  => CmpCodePage(
+          Title:"Text OverLine",
+          BackRoute:"/Text_LineThrough",
+          NextRoute:"/Text_FontSize",
+          ItemList:TextOverLine_list,
+          CodeRoute:"lib/Codes_FrontEnd/3_Text/8_TextOverlineRun.dart",
+          TabIcon:Icon(Icons.line_weight),
+          ToDo:"We Need To Write A Simple Overline Text That Appear in The Center Of The Body",
+          TxtExplanation:TextOverLine_Explanation,
+          RunCodeRoute:new TextOverlineRun(),
+        ),
+
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Text_FontSize": (BuildContext context)                  => CmpCodePage(
+          Title:"Text Font Size",
+          BackRoute:"/Text_OverLine",
+          NextRoute:"/Text_Shadow",
+          ItemList:TextFontSize_list,
+          CodeRoute:"lib/Codes_FrontEnd/3_Text/9_TextFontSizeRun.dart",
+          TabIcon:Icon(Icons.text_fields),
+          ToDo:"We Need To Write A Simple Text With 20 As a Size That Appear in The Center Of The Body",
+          TxtExplanation:TextFontSize_Explanation,
+          RunCodeRoute:new TextFontSizeRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+
+        "/Text_Shadow": (BuildContext context)                    => CmpCodePage(
+          Title:"Text Shadow",
+          BackRoute:"/Text_FontSize",
+          NextRoute:"/Text_FontFamily",
+          ItemList:TextShadow_list,
+          CodeRoute:"lib/Codes_FrontEnd/3_Text/10_TextShadowRun.dart",
+          TabIcon:Icon(Icons.texture),
+          ToDo:"We Need To Write A Simple Text That Has An Shodow With An Blur 10 And 5 Offset With Color Blue That Appear in The Center Of The Body",
+          TxtExplanation:TextShadow_Explanation,
+          RunCodeRoute:new TextShadowRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Text_FontFamily": (BuildContext context)                => CmpCodePage(
+          Title:"Text Font Family",
+          BackRoute:"/Text_Shadow",
+          NextRoute:"/Text_BgColor",
+          ItemList:TextFontFamily_list,
+          CodeRoute:"lib/Codes_FrontEnd/3_Text/11_TextFontFamilyRun.dart",
+          TabIcon:Icon(Icons.font_download),
+          ToDo:"We Need To Write A Simple Text With Raleway Family Font That Appear in The Center Of The Body",
+          TxtExplanation:TextFontFamily_Explanation,
+          RunCodeRoute:new TextFontFamilyRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Text_BgColor": (BuildContext context)                   => CmpCodePage(
+          Title:"Text Bg Color",
+          BackRoute:"/Text_FontFamily",
+          NextRoute:"/Text_RichText",
+          ItemList:TextBgColor_list,
+          CodeRoute:"lib/Codes_FrontEnd/3_Text/12_TextBackgroundColorRun.dart",
+          TabIcon:Icon(Icons.format_color_fill),
+          ToDo:"We Need To Write A Simple Text That Has A Blue Background Color in The Center Of The Body",
+          TxtExplanation:TextBgColor_Explanation,
+          RunCodeRoute:new TextBgColorRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Text_RichText": (BuildContext context)                 => CmpCodePage(
+          Title:"Rich Text",
+          BackRoute:"/Text_BgColor",
+          NextRoute:"/Text_AlignCenter",
+          ItemList:TextRich_list,
+          CodeRoute:"lib/Codes_FrontEnd/3_Text/13_RichTextRun.dart",
+          TabIcon:Icon(Icons.title),
+          ToDo:"We Need To Write A Simple Centered Text HelloWorld That Appear In The Center Of The Body Noting That :\nHello Must Appear In Red\nWorld in Blue\n",
+          TxtExplanation:TextRich_Explanation,
+          RunCodeRoute:new RichTextRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Text_AlignCenter": (BuildContext context)               => CmpCodePage(
+          Title:"Text Align Center",
+          BackRoute:"/Text_RichText",
+          NextRoute:"/Text_AlignLeft",
+          ItemList:TextAlignCenter_list,
+          CodeRoute:"lib/Codes_FrontEnd/3_Text/14_TextAlignCenterRun.dart",
+          TabIcon:Icon(Icons.format_align_center),
+          ToDo:"We Need To Write A Simple Text That Appear In The Center Of Container\n",
+          TxtExplanation:TextAlignCenter_Explanation,
+          RunCodeRoute:new TextAlignCenterRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Text_AlignLeft": (BuildContext context)                 => CmpCodePage(
+          Title:"Text Align Left",
+          BackRoute:"/Text_AlignCenter",
+          NextRoute:"/Text_AlignRight",
+          ItemList:TextAlignLeft_list,
+          CodeRoute:"lib/Codes_FrontEnd/3_Text/15_TextAlignLeftRun.dart",
+          TabIcon:Icon(Icons.format_align_left),
+          ToDo:"We Need To Write A Simple Text That Appear In The Left Of Container\n\n",
+          TxtExplanation:TextAlignLeft_Explanation,
+          RunCodeRoute:new TextAlignLeftRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Text_AlignRight": (BuildContext context)               => CmpCodePage(
+          Title:"Text Align Right",
+          BackRoute:"/Text_AlignLeft",
+          NextRoute:"/AppBar_Light",
+          ItemList:TextAlignRight_list,
+          CodeRoute:"lib/Codes_FrontEnd/3_Text/16_TextAlignRightRun.dart",
+          TabIcon:Icon(Icons.format_align_right),
+          ToDo:"We Need To Write A Simple Text That Appear In The Right Of Container\n\n",
+          TxtExplanation:TextAlignRight_Explanation,
+          RunCodeRoute:new TextAlignRightRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+
+        "/AppBar_Light": (BuildContext context)                   => CmpCodePage(
+          Title:"Light AppBar",
+          BackRoute:"/Text_AlignRight",
+          NextRoute:"/AppBar_Dark",
+          ItemList:AppBar_Light_list,
+          CodeRoute:"lib/Codes_FrontEnd/4_AppBar/1_SimpleAppBarLightRun.dart",
+          TabIcon:Icon(Icons.fiber_dvr),
+          ToDo:"Write a Code That Create A Simple Light Theme AppBar Having App Bar As An Title\n",
+          TxtExplanation:AppBar_Light_Explanation,
+          RunCodeRoute:new SimpleAppBarLightRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/AppBar_Dark": (BuildContext context)                      => CmpCodePage(
+          Title:"Dark AppBar",
+          BackRoute:"/AppBar_Light",
+          NextRoute:"/AppBar_YBG_RTXT",
+          ItemList:AppBar_Dark_list,
+          CodeRoute:"lib/Codes_FrontEnd/4_AppBar/2_SimpleAppBarDarkRun.dart",
+          TabIcon:Icon(Icons.fiber_dvr),
+          ToDo:"Write a Code That Create A Simple Dark Theme AppBar Having App Bar As An Title\n",
+          TxtExplanation:AppBar_Dark_Explanation,
+          RunCodeRoute:new SimpleAppBarDarkRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/AppBar_YBG_RTXT": (BuildContext context)                => CmpCodePage(
+          Title:"Yellow Bg Red Text",
+          BackRoute:"/AppBar_Dark",
+          NextRoute:"/AppBar_Gradient",
+          ItemList:AppBar_YBG_RTXT_list,
+          CodeRoute:"lib/Codes_FrontEnd/4_AppBar/3_SimpleAppBar_YellowBg_RedColorRun.dart",
+          TabIcon:Icon(Icons.fiber_dvr),
+          ToDo:"Create An AppBar Having Dark Theme Where You Have To Style The AppBar To:\n-Background Color -> Yellow\n-TextColor -> Red\n-Title:Yellow Bg - Red Text",
+          TxtExplanation:AppBar_YBG_RTXT_Explanation,
+          RunCodeRoute:new SimpleAppBarYBG_RTXT_Run(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/AppBar_Gradient": (BuildContext context)                => CmpCodePage(
+          Title:"Gradient AppBar",
+          BackRoute:"/AppBar_YBG_RTXT",
+          NextRoute:"/AppBar_LeftIcon",
+          ItemList:AppBar_Gradient_list,
+          CodeRoute:"lib/Codes_FrontEnd/4_AppBar/4_AppBarGradient_Run.dart",
+          TabIcon:Icon(Icons.fiber_dvr),
+          ToDo:"Create A Gradient App Bar Having Gradiant AppBar! As An Title\n",
+          TxtExplanation:AppBar_Gradient_Explanation,
+          RunCodeRoute:new GradientAppBarRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/AppBar_LeftIcon": (BuildContext context)                => CmpCodePage(
+          Title:"AppBar Left Icon",
+          BackRoute:"/AppBar_Gradient",
+          NextRoute:"/AppBar_LeftRightIcon",
+          ItemList:AppBar_LeftIcon_list,
+          CodeRoute:"lib/Codes_FrontEnd/4_AppBar/5_AppBarGreyBgTextCenteredIndigoLeftIconRun.dart",
+          TabIcon:Icon(Icons.fiber_dvr),
+          ToDo:"Create A AppBar Having Grey BackgroundColor,Title LeftIcon Set To Indigo Color Aligned To The Center,Leaded By a Left Icon.\n",
+          TxtExplanation:AppBar_LeftIcon_Explanation,
+          RunCodeRoute:new AppBarLeftIconRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/AppBar_LeftRightIcon": (BuildContext context)           => CmpCodePage(
+          Title:"AppBar Left & Right Icon",
+          BackRoute:"/AppBar_LeftIcon",
+          NextRoute:"/AppBar_DoubleSideIcon",
+          ItemList:AppBar_LeftRightIcon_list,
+          CodeRoute:"lib/Codes_FrontEnd/4_AppBar/6_AppBarLeftRightIconRun.dart",
+          TabIcon:Icon(Icons.fiber_dvr),
+          ToDo:"Create An AppBar Having <-- Icons --> As A Title And Has Balance Icon From Left And Right\n",
+          TxtExplanation:AppBar_LeftRightIcon_Explanation,
+          RunCodeRoute:new AppBarLeftRightIconRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/AppBar_DoubleSideIcon": (BuildContext context)          => CmpCodePage(
+          Title:"AppBar Double Side Icons",
+          BackRoute:"/AppBar_LeftRightIcon",
+          NextRoute:"/AppBar_PreferredSize",
+          ItemList:AppBar_DoubleSideIcon_list,
+          CodeRoute:"lib/Codes_FrontEnd/4_AppBar/7_AppBarDoubleSideIconsRun.dart",
+          TabIcon:Icon(Icons.fiber_dvr),
+          ToDo:"Write an AppBar That Hold 2 Icons Left And Right Side With An Centered Title\n",
+          TxtExplanation:AppBar_DoubleSideIcon_Explanation,
+          RunCodeRoute:new AppBarDoubleSideIconsRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/AppBar_PreferredSize": (BuildContext context)          => CmpCodePage(
+          Title:"AppBar PrefferedSize",
+          BackRoute:"/AppBar_DoubleSideIcon",
+          NextRoute:"/MainBg_BgColor",
+          ItemList:AppBar_PrefferedSize_list,
+          CodeRoute:"lib/Codes_FrontEnd/4_AppBar/8_PreferredSize_AppBar.dart",
+          TabIcon:Icon(Icons.fiber_dvr),
+          ToDo:"Write an AppBar That Hold Has Height Size 150\n",
+          TxtExplanation:AppBar_PrefferedSize_Explanation,
+          RunCodeRoute:new AppBarSize(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/MainBg_BgColor": (BuildContext context)                 => CmpCodePage(
+          Title:"Custom Background Color",
+          BackRoute:"/AppBar_DoubleSideIcon",
+          NextRoute:"/MainBg_GradientBgColor",
+          ItemList:MainBg_MainBg_list,
+          CodeRoute:"lib/Codes_FrontEnd/5_MainBg/1_MainBgCustomColorRun.dart",
+          TabIcon:Icon(Icons.format_paint),
+          ToDo:"Create A Simple Body That Has An Blue Background Color\n",
+          TxtExplanation:MainBg_MainBg_Explanation,
+          RunCodeRoute:new MainBgCustomColorRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/MainBg_GradientBgColor": (BuildContext context)         => CmpCodePage(
+          Title:"Gradient Background Color",
+          BackRoute:"/MainBg_BgColor",
+          NextRoute:"/MainBg_GradientBgColorAppBar",
+          ItemList:MainBg_GradientBgColor_list,
+          CodeRoute:"lib/Codes_FrontEnd/5_MainBg/2_MainBgGradientRun.dart",
+          TabIcon:Icon(Icons.format_paint),
+          ToDo:"Create A Simple Body That Has An Gradient Background Color\n",
+          TxtExplanation:MainBg_GradientBgColor_Explanation,
+          RunCodeRoute:new MainBgGradientRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/MainBg_GradientBgColorAppBar": (BuildContext context)   => CmpCodePage(
+          Title:"Gradient Background With AppBar",
+          BackRoute:"/MainBg_GradientBgColor",
+          NextRoute:"/MainBg_BgDarkGAppBar",
+          ItemList:MainBg_GradientBgColorAppBar_list,
+          CodeRoute:"lib/Codes_FrontEnd/5_MainBg/3_MainBgGradientAppBarRun.dart",
+          TabIcon:Icon(Icons.format_paint),
+          ToDo:"Create A Simple Body That Has An Gradient Background Color Having An AppBar\n",
+          TxtExplanation:MainBg_GradientBgColorAppBar_Explanation,
+          RunCodeRoute:new MainBgGradientAppBarRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/MainBg_BgDarkGAppBar": (BuildContext context)           => CmpCodePage(
+          Title:"Dark Background Grey AppBar",
+          BackRoute:"/MainBg_GradientBgColorAppBar",
+          NextRoute:"/MainBg_BgLightRAppBar",
+          ItemList:MainBg_BgDarkGAppBar_list,
+          CodeRoute:"lib/Codes_FrontEnd/5_MainBg/4_MainBgDarkGAppBarRun.dart",
+          TabIcon:Icon(Icons.format_paint),
+          ToDo:"Create A Simple Page That Has Dark Theme With Grey AppBar Background Color\n\n",
+          TxtExplanation:MainBg_BgDarkGAppBar_Explanation,
+          RunCodeRoute:new MainBgDarkGAppBarRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/MainBg_BgLightRAppBar": (BuildContext context)           => CmpCodePage(
+          Title:"Light Background Red AppBar",
+          BackRoute:"/MainBg_BgDarkGAppBar",
+          NextRoute:"/Image_Insert",
+          ItemList:MainBg_BgLightRAppBar_list,
+          CodeRoute:"lib/Codes_FrontEnd/5_MainBg/5_MainBgLightRAppBarRun.dart",
+          TabIcon:Icon(Icons.format_paint),
+          ToDo:"Create A Simple Page That Has Light Theme With Red AppBar Background Color\n\n",
+          TxtExplanation:MainBg_BgLightRAppBar_Explanation,
+          RunCodeRoute:new MainBgLightRAppBarRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+
+        "/Image_Insert": (BuildContext context)                   => CmpCodePage(
+          Title:"Image Insert",
+          BackRoute:"/MainBg_BgLightRAppBar",
+          NextRoute:"/Image_WidthHeight",
+          ItemList:ImageInsert_list,
+          CodeRoute:"lib/Codes_FrontEnd/6_Image/ImgInsImgRun.dart",
+          TabIcon:Icon(Icons.image),
+          ToDo:"We Need To Write A Page That Show An Image in The Center Of The Body",
+          TxtExplanation:ImageInsert_Explanation,
+          RunCodeRoute:new ImgInsRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+
+        "/Image_WidthHeight": (BuildContext context)              => CmpCodePage(
+          Title:"Image Width & Height",
+          BackRoute:"/Image_Insert",
+          NextRoute:"/Button_SimpleRaisedBtn",
+          ItemList:ImageWidthHeight_list,
+          CodeRoute:"lib/Codes_FrontEnd/6_Image/ImgWidthHeightRun.dart",
+          TabIcon:Icon(Icons.image),
+          ToDo:"We Need To Write A Page That Show An Image in The Center Of The Body With An Width & Height 40",
+          TxtExplanation:ImageWidthHeight_Explanation,
+          RunCodeRoute:new ImgInsWHRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Image_Network": (BuildContext context)              => CmpCodePage(
+          Title:"Image From Network",
+          BackRoute:"/Image_WidthHeight",
+          NextRoute:"/Image_Fit_Contain",
+          ItemList:ImageNetwork_list,
+          CodeRoute:"lib/Codes_FrontEnd/6_Image/ImgNetworkRun.dart",
+          TabIcon:Icon(Icons.image),
+          ToDo:"We Need To Write A Page That Show An Image Loaded From Url",
+          TxtExplanation:ImageNetwork_Explanation,
+          RunCodeRoute:new ImgNetworkRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Image_Fit_Contain": (BuildContext context)              => CmpCodePage(
+          Title:"Image Fit Contain",
+          BackRoute:"/Image_Network",
+          NextRoute:"/Image_Fit_Cover",
+          ItemList:Image_Fit_Contain_list,
+          CodeRoute:"lib/Codes_FrontEnd/6_Image/4_Img_Fit_Contain.dart",
+          TabIcon:Icon(Icons.image),
+          ToDo:"We Need To Write A Page That Show An Image That BoxFit Contain",
+          TxtExplanation:Image_Fit_Contain_Explanation,
+          RunCodeRoute:new ImgFitContain(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Image_Fit_Cover": (BuildContext context)              => CmpCodePage(
+          Title:"Image Fit Cover",
+          BackRoute:"/Image_Fit_Contain",
+          NextRoute:"/Image_Fit_Fill",
+          ItemList:Image_Fit_Cover_list,
+          CodeRoute:"lib/Codes_FrontEnd/6_Image/5_Img_Fit_Cover.dart",
+          TabIcon:Icon(Icons.image),
+          ToDo:"We Need To Write A Page That Show An Image That BoxFit Cover",
+          TxtExplanation:Image_Fit_Cover_Explanation,
+          RunCodeRoute:new ImgFitCover(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Image_Fit_Fill": (BuildContext context)              => CmpCodePage(
+            Title:"Image Fit Fill",
+            BackRoute:"/Image_Fit_Cover",
+            NextRoute:"/Button_SimpleRaisedBtn",
+            ItemList:Image_Fit_Fill_list,
+            CodeRoute:"lib/Codes_FrontEnd/6_Image/6_Img_Fit_Fill.dart",
+            TabIcon:Icon(Icons.image),
+            ToDo:"We Need To Write A Page That Show An Image That BoxFit Fill",
+            TxtExplanation:Image_Fit_Fill_Explanation,
+            RunCodeRoute:new ImgFitFill()
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+
+        "/Button_SimpleRaisedBtn": (BuildContext context)         => CmpCodePage(
+          Title:"Raised Button",
+          BackRoute:"/Main",
+          NextRoute:"/Button_MatchParent",
+          ItemList:SimpleRaisedBtn_list,
+          CodeRoute:"lib/Codes_FrontEnd/7_Buttons/1_BtnSimpleRaisedBtnRun.dart",
+          TabIcon:Icon(Icons.check_box_outline_blank),
+          ToDo:"We Need To Write A Page That Show A Raised Button in The Center Of The Body Having Value Click Me\n",
+          TxtExplanation:Btn_SimpleRaisedBtn_Explanation,
+          RunCodeRoute:new BtnSimpleRaisedBtnRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Button_MatchParent": (BuildContext context)              => CmpCodePage(
+          Title:"Raised Button Full Width",
+          BackRoute:"/Button_SimpleRaisedBtn",
+          NextRoute:"/Button_RaisedRoundedBtn",
+          ItemList:ButtonMatchParent_list,
+          CodeRoute:"lib/Codes_FrontEnd/7_Buttons/2_BtnSimpleRaisedBtnFullWidthRun.dart",
+          TabIcon:Icon(Icons.check_box_outline_blank),
+          ToDo:"We Need To Write A Page That Show A Raised Button in The Center Of The Body Having Value Click Me And Has The Full Width Of The Screen\n",
+          TxtExplanation:ButtonMatchParent_Explanation,
+          RunCodeRoute:new BtnSimpleRaisedBtnFullWidthRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Button_RaisedRoundedBtn": (BuildContext context)        => CmpCodePage(
+          Title:"Rounded Raised Button",
+          BackRoute:"/Button_MatchParent",
+          NextRoute:"/Button_RaisedStyledBtn",
+          ItemList:Btn_RaisedRoundedBtn_list,
+          CodeRoute:"lib/Codes_FrontEnd/7_Buttons/3_BtnSimpleRaisedRoundedBtnRun.dart",
+          TabIcon:Icon(Icons.check_box_outline_blank),
+          ToDo:"We Need To Write A Page That Show A Rounded Raised Button in The Center Of The Body Having Value Click Me",
+          TxtExplanation:Btn_RaisedRounded_Explanation,
+          RunCodeRoute:new BtnSimpleRaisedRoundedBtnRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Button_RaisedStyledBtn": (BuildContext context)         => CmpCodePage(
+          Title:"Rounded Red Background Button With With White Text",
+          BackRoute:"/Button_RaisedRoundedBtn",
+          NextRoute:"/Button_RaisedGradientBtn",
+          ItemList:Btn_RaisedStyled_list,
+          CodeRoute:"lib/Codes_FrontEnd/7_Buttons/4_BtnRaisedRoundedRedBgWTxtRun.dart",
+          TabIcon:Icon(Icons.check_box_outline_blank),
+          ToDo:"We Need To Write A Page That Show A Raised Button in The Center Of The Body Having Value Click Me With Red Background Color And White Text",
+          TxtExplanation:Btn_RaisedStyled_Explanation,
+          RunCodeRoute:new BtnRaisedRoundedRedBgWTxtRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Button_RaisedGradientBtn": (BuildContext context)       => CmpCodePage(
+          Title:"Rounded Raised Gradient Button",
+          BackRoute:"/Button_RaisedStyledBtn",
+          NextRoute:"/Button_RoundedIconBtn",
+          ItemList:Btn_RaisedRoundedGradient_list,
+          CodeRoute:"lib/Codes_FrontEnd/7_Buttons/5_BtnRaisedRoundedGradientRun.dart",
+          TabIcon:Icon(Icons.check_box_outline_blank),
+          ToDo:"We Need To Write A Page That Show A Rounded Gradient Raised Button in The Center Of The Body Having Value Gradient Button",
+          TxtExplanation:Btn_RaisedRoundedGradient_Explanation,
+          RunCodeRoute:new BtnRoundedRaisedGradientBtnRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Button_RoundedIconBtn": (BuildContext context)          => CmpCodePage(
+          Title:"Rounded Icon Button",
+          BackRoute:"/Button_RaisedGradientBtn",
+          NextRoute:"/Button_FlatBtn",
+          ItemList:Btn_RoundedIconButton_list,
+          CodeRoute:"lib/Codes_FrontEnd/7_Buttons/6_BtnRoundedIconButtonRun.dart",
+          TabIcon:Icon(Icons.check_box_outline_blank),
+          ToDo:"We Need To Write A Page That Show A Rounded Icon Button in The Center Of The Body Having Android Icon That Appear In Yellow With a Blue Background Color",
+          TxtExplanation:Btn_RoundedIconButton_Explanation,
+          RunCodeRoute:new BtnLittleRoundedIconBtnRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Button_FlatBtn": (BuildContext context)                 => CmpCodePage(
+          Title:"Simple Flat Button",
+          BackRoute:"/Button_RoundedIconBtn",
+          NextRoute:"/Button_FlatIconBtn",
+          ItemList:Btn_FlatButton_list,
+          CodeRoute:"lib/Codes_FrontEnd/7_Buttons/7_BtnSimpleFlatBtnRun.dart",
+          TabIcon:Icon(Icons.check_box_outline_blank),
+          ToDo:"We Need To Write A Page That Show A Flat Button in The Center Of The Body Having Value Login",
+          TxtExplanation:Btn_FlatButton_Explanation,
+          RunCodeRoute:new BtnSimpleFlatBtnRun(),
+        ),
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+        "/Button_FlatIconBtn": (BuildContext context)             => CmpCodePage(
+          Title:"Flat Button Icon",
+          BackRoute:"/Button_FlatBtn",
+          NextRoute:"/Button_SimpleOutline",
+          ItemList:Btn_FlatIconButton_list,
+          CodeRoute:"lib/Codes_FrontEnd/7_Buttons/8_BtnFlatIconGreyBgBtnRun.dart",
+          TabIcon:Icon(Icons.check_box_outline_blank),
+          ToDo:"We Need To Write A Page That Show A Raised Button in The Center Of The Body Having label Add With An AddIcon(+) ",
+          TxtExplanation:Btn_FlatIconButton_Explanation,
+          RunCodeRoute:new BtnFlatIconGreyBgBtnRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Button_SimpleOutline": (BuildContext context)             => CmpCodePage(
+          Title:"Simple Outline Button",
+          BackRoute:"/Button_FlatIconBtn",
+          NextRoute:"/Button_StyledOutline",
+          ItemList:Btn_SimpleOutlineButton_list,
+          CodeRoute:"lib/Codes_FrontEnd/7_Buttons/9_Simple_Outline_Button.dart",
+          TabIcon:Icon(Icons.check_box_outline_blank),
+          ToDo:"We Need To Write A Page That Show A Simple Outline Button in The Center Of The Body",
+          TxtExplanation:Btn_SimpleOutlineButton_Explanation,
+          RunCodeRoute:new SimpleOutlineBtn(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Button_StyledOutline": (BuildContext context)             => CmpCodePage(
+          Title:"Styled Outline Button",
+          BackRoute:"/Button_SimpleOutline",
+          NextRoute:"/Button_RoundedOutline",
+          ItemList:Btn_StyledOutlineButton_list,
+          CodeRoute:"lib/Codes_FrontEnd/7_Buttons/10_Style_Outline_Button.dart",
+          TabIcon:Icon(Icons.check_box_outline_blank),
+          ToDo:"We Need To Write A Page That Show A Outline Button Having Color blueAccent When Tapped,TextColor And Border Color Set To Teal in The Center Of The Body",
+          TxtExplanation:Btn_StyledOutlineButton_Explanation,
+          RunCodeRoute:new SimpleStyledOutlineBtn(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Button_RoundedOutline": (BuildContext context)             => CmpCodePage(
+          Title:"Rounded Outline Button",
+          BackRoute:"/Button_StyledOutline",
+          NextRoute:"/Toast_Intro",
+          ItemList:Btn_RoundedOutlineButton_list,
+          CodeRoute:"lib/Codes_FrontEnd/7_Buttons/11_Round_Outline_Button.dart",
+          TabIcon:Icon(Icons.check_box_outline_blank),
+          ToDo:"We Need To Write A Page That Show An Rounded Outline Button In The Center Of The Body",
+          TxtExplanation:Btn_RoundedOutlineButton_Explanation,
+          RunCodeRoute:new RoundOutlineBtn(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+
+        "/Toast_Intro": (BuildContext context)                    => CmpIntroPage(
+          Title:"Toast Introduction",
+          BackRoute:"/Button_FlatIconBtn",
+          NextRoute:"/Toast_Top_Short",
+          ItemList:Toast_Intro_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Toast_Top_Short": (BuildContext context)                 => CmpCodePage(
+          Title:"Short Top Toast",
+          BackRoute:"/Toast_Intro",
+          NextRoute:"/Toast_Center_Fast",
+          ItemList:Toast_TopToast_list,
+          CodeRoute:"lib/Codes_FrontEnd/8_Toast/1_ToastTopRun.dart",
+          TabIcon:Icon(Icons.album),
+          ToDo:"We Need To Create a Raised Button Having Value ShowToast That Appear In The Center Of The Body, Once The Button Is Clicked A Toast Message Must Appear\nToast Must Have:\n-Short Duration\n-Appear At The Top\n",
+          TxtExplanation:Toast_TopToast_Explanation,
+          RunCodeRoute:new ToastTopRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Toast_Center_Fast": (BuildContext context)               => CmpCodePage(
+          Title:"Fast Centered Toast With Red Background",
+          BackRoute:"/Toast_Top_Short",
+          NextRoute:"/Toast_Bottom_Short",
+          ItemList:Toast_CenterToast_list,
+          CodeRoute:"lib/Codes_FrontEnd/8_Toast/2_ToastCenterRun.dart",
+          TabIcon:Icon(Icons.album),
+          ToDo:"We Need To Create a Raised Button Having Value ShowToast That Appear In The Center Of The Body, Once The Button Is Clicked A Toast Message Must Appear\nToast Must Have:\n-Long Duration\n-Appear At The Center\n-Having Red Background Color\n",
+          TxtExplanation:Toast_CenterToast_Explanation,
+          RunCodeRoute:new ToastCenterRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Toast_Bottom_Short": (BuildContext context)               => CmpCodePage(
+          Title:"Short Bottom Toast With Blue Text",
+          BackRoute:"/Toast_Center_Fast",
+          NextRoute:"/Layout_Intro",
+          ItemList:Toast_BottomToast_list,
+          CodeRoute:"lib/Codes_FrontEnd/8_Toast/3_ToastBottomRun.dart",
+          TabIcon:Icon(Icons.album),
+          ToDo:"We Need To Create a Raised Button Having Value ShowToast That Appear In The Center Of The Body, Once The Button Is Clicked A Toast Message Must Appear\nToast Must Have:\n-Short Duration\n-Appear At The Bottom\n-Having Blue Text Color\n",
+          TxtExplanation:Toast_BottomToast_Explanation,
+          RunCodeRoute:new ToastBottomRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Layout_Intro": (BuildContext context)                     => CmpIntroPage(
+          Title:"Layout Introduction",
+          BackRoute:"/Toast_Bottom_Short",
+          NextRoute:"/Layout_Col_MAC",
+          ItemList:Layout_Intro_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Layout_Col_MAC": (BuildContext context)                     => CmpCodePage(
+          Title:"Column Main Align Center",
+          BackRoute:"/Layout_Intro",
+          NextRoute:"/Layout_Col_MAS",
+          ItemList:Layout_Col_MAC_list,
+          CodeRoute:"lib/Codes_FrontEnd/9_Layouts/1_Layout_Col_MainAlign_Center_Run.dart",
+          TabIcon:Icon(Icons.grid_on),
+          ToDo:"Write Simple Page That Contain 2 Images Globbed By A Container Having Red Border With Width 2 px where Each Image Display On A Row,Note:Use MainAxisAlignment.center\n",
+          TxtExplanation:Layout_Col_MAC_Explanation,
+          RunCodeRoute:new Col_MA_CenterRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Layout_Col_MAS": (BuildContext context)                     => CmpCodePage(
+          Title:"Column Main Align Start",
+          BackRoute:"/Layout_Col_MAC",
+          NextRoute:"/Layout_Col_MAE",
+          ItemList:Layout_Col_MAS_list,
+          CodeRoute:"lib/Codes_FrontEnd/9_Layouts/2_Layout_Col_MainAlign_Start_Run.dart",
+          TabIcon:Icon(Icons.grid_on),
+          ToDo:"Write Simple Page That Contain 2 Texts Globbed By A Container Having Red Border With Width 2 px where Each Text Display On A Row,Note:Use MainAxisAlignment.start (Must Use Column)\n",
+          TxtExplanation:Layout_Col_MAS_Explanation,
+          RunCodeRoute:new Col_MA_StartRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Layout_Col_MAE": (BuildContext context)                     => CmpCodePage(
+          Title:"Column Main Align End",
+          BackRoute:"/Layout_Col_MAS",
+          NextRoute:"/Layout_Row_MAC",
+          ItemList:Layout_Col_MAE_list,
+          CodeRoute:"lib/Codes_FrontEnd/9_Layouts/3_Layout_Col_MainAlign_End_Run.dart",
+          TabIcon:Icon(Icons.grid_on),
+          ToDo:"Write Simple Page That Contain IconButtton(Android) And Text(Android) Globbed By A Container Having Red Border With Width 2 px where Each Display On A Row,Note:Use MainAxisAlignment.end\n",
+          TxtExplanation:Layout_Col_MAE_Explanation,
+          RunCodeRoute:new Col_MA_EndRun(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Layout_Row_MAC": (BuildContext context)                     => CmpCodePage(
+          Title:"Row Main Align Center",
+          BackRoute:"/Layout_Col_MAE",
+          NextRoute:"/Layout_Row_MAS",
+          ItemList:Layout_Row_MAC_list,
+          CodeRoute:"lib/Codes_FrontEnd/9_Layouts/4_Layout_Row_MainAlign_Center_Run.dart",
+          TabIcon:Icon(Icons.grid_on),
+          ToDo:"Write Simple Page That Contain 2 RaisedButton where Buttons Display On One Row ,Note:Use MainAxisAlignment.center\n",
+          TxtExplanation:Layout_Row_MAC_Explanation,
+          RunCodeRoute:new Row_MA_CenterRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Layout_Row_MAS": (BuildContext context)                     => CmpCodePage(
+          Title:"Row Main Align Start",
+          BackRoute:"/Layout_Row_MAC",
+          NextRoute:"/Layout_Row_MAE",
+          ItemList:Layout_Row_MAS_list,
+          CodeRoute:"lib/Codes_FrontEnd/9_Layouts/5_Layout_Row_MainAlign_Start_Run.dart",
+          TabIcon:Icon(Icons.grid_on),
+          ToDo:"Write Simple Page That Contain 2 RaisedButton where Buttons Display On One Row ,Note:Use MainAxisAlignment.start\n",
+          TxtExplanation:Layout_Row_MAS_Explanation,
+          RunCodeRoute:new Row_MA_StartRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Layout_Row_MAE": (BuildContext context)                     => CmpCodePage(
+          Title:"Row Main Align End",
+          BackRoute:"/Layout_Row_MAS",
+          NextRoute:"/Layout_ContactListRun",
+          ItemList:Layout_Row_MAE_list,
+          CodeRoute:"lib/Codes_FrontEnd/9_Layouts/6_Layout_Row_MainAlign_End_Run.dart",
+          TabIcon:Icon(Icons.grid_on),
+          ToDo:"Write Simple Page That Contain 2 RaisedButton where Buttons Display On One Row ,Note:Use MainAxisAlignment.end\n",
+          TxtExplanation:Layout_Row_MAE_Explanation,
+          RunCodeRoute:new Row_MA_EndRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Layout_ContactListRun": (BuildContext context)                => CmpCodePage(
+          Title:"Contact List Using Column Rows",
+          BackRoute:"/Layout_Row_MAE",
+          NextRoute:"/Dialog_Simple",
+          ItemList:Layout_Contact_List_list,
+          CodeRoute:"lib/Codes_FrontEnd/9_Layouts/7_Contact_List_Run.dart",
+          TabIcon:Icon(Icons.grid_on),
+          ToDo:"Write Simple Page That Display Contact List Using Columns And Rows Layouts\n",
+          TxtExplanation:Layout_Contact_List_Explanation,
+          RunCodeRoute:new CListRun(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Dialog_Simple": (BuildContext context)                        => CmpCodePage(
+          Title:"Simple Dialog",
+          BackRoute:"/Layout_ContactListRun",
+          NextRoute:"/Dialog_Customized",
+          ItemList:Dialogs_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/10_Dialogs/1_Simple_Dialog_Run.dart",
+          TabIcon:Icon(Icons.chrome_reader_mode),
+          ToDo:"We Need To Write A Page That Show A Raised Button Centered In The Body,Once Button Is Pressed An Alert Dialog Must Pop\n",
+          TxtExplanation:Dialogs_Simple_Explanation,
+          RunCodeRoute:new SimpleDialogRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Dialog_Customized": (BuildContext context)                     => CmpCodePage(
+          Title:"Customized Dialog",
+          BackRoute:"/Dialog_Simple",
+          NextRoute:"/Dialog_BarrierDismissible",
+          ItemList:Dialogs_Customized_list,
+          CodeRoute:"lib/Codes_FrontEnd/10_Dialogs/2_Custumized_Dialog_Run.dart",
+          TabIcon:Icon(Icons.chrome_reader_mode),
+          ToDo:"We Need To Write A Page That Show An Raised Button Once Pressed Show A Custumizable Dialog(Title,Content:text+Button)\n",
+          TxtExplanation:Dialogs_Customized_Explanation,
+          RunCodeRoute:new SimpleCustumizedDialogRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Dialog_BarrierDismissible": (BuildContext context)                     => CmpCodePage(
+          Title:"Dialog BarrierDismissible",
+          BackRoute:"/Dialog_Customized",
+          NextRoute:"/Dialog_WillPopScope",
+          ItemList:Dialogs_BarrierDissmissble_list,
+          CodeRoute:"lib/Codes_FrontEnd/10_Dialogs/3_Dialog_BarrierDismissible.dart",
+          TabIcon:Icon(Icons.chrome_reader_mode),
+          ToDo:"We Need To Write A Page That Show An Raised Button Once Pressed Show A Dialog Where Clicking Outside Will Not Close It!\n",
+          TxtExplanation:Dialogs_BarrierDissmissble_Explanation,
+          RunCodeRoute:new DialogBarrierDismissibleRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Dialog_WillPopScope": (BuildContext context)                     => CmpCodePage(
+          Title:"Dialog WillPopScope",
+          BackRoute:"/Dialog_BarrierDismissible",
+          NextRoute:"/Divider_Intro",
+          ItemList:Dialogs_WillPopScope_list,
+          CodeRoute:"lib/Codes_FrontEnd/10_Dialogs/4_Dialog_WillPopScope.dart",
+          TabIcon:Icon(Icons.chrome_reader_mode),
+          ToDo:"We Need To Write A Page That Show An Raised Button Once Pressed Show A Dialog Where Clicking Outside Will Not Close It Even Pressing Back!\n",
+          TxtExplanation:Dialogs_WillPopScope_Explanation,
+          RunCodeRoute:new DialogWillPopRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Divider_Intro": (BuildContext context)                         => CmpIntroPage(
+          Title:"Divider Introduction",
+          BackRoute:"/Dialog_Customized",
+          NextRoute:"/Divider_Simple",
+          ItemList:Divider_Intro_list,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Divider_Simple": (BuildContext context)                         => CmpCodePage(
+          Title:"Simple Divider",
+          BackRoute:"/Divider_Intro",
+          NextRoute:"/Divider_Color",
+          ItemList:Divider_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/11_Divider/1_Simple_Divider_Run.dart",
+          TabIcon:Icon(Icons.linear_scale),
+          ToDo:"We Need To Write A Page That Show A Divider At The center Of The Body\n",
+          TxtExplanation:Divider_Simple_Explanation,
+          RunCodeRoute:new SimpleDividerRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Divider_Color": (BuildContext context)                         => CmpCodePage(
+          Title:"Divider Color",
+          BackRoute:"/Divider_Simple",
+          NextRoute:"/Divider_WH",
+          ItemList:Divider_Color_list,
+          CodeRoute:"lib/Codes_FrontEnd/11_Divider/2_Divider_Color_Run.dart",
+          TabIcon:Icon(Icons.linear_scale),
+          ToDo:"We Need To Write A Page That Show A Divider With Blue Color At The center Of The Body\n",
+          TxtExplanation:Divider_Color_Explanation,
+          RunCodeRoute:new DividerColorRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Divider_WH": (BuildContext context)                             => CmpCodePage(
+          Title:"Custom Divider Width & Height",
+          BackRoute:"/Divider_Color",
+          NextRoute:"/Navigation_Page",
+          ItemList:Divider_WH_list,
+          CodeRoute:"lib/Codes_FrontEnd/11_Divider/3_Divider_WH_Run.dart",
+          TabIcon:Icon(Icons.linear_scale),
+          ToDo:"We Need To Write A Page That Show A Divider With red Color At The center Of The Body , The Divider Has Width 250 , Height 10\n",
+          TxtExplanation:Divider_WH_Explanation,
+          RunCodeRoute:new DividerWHRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Navigation_Page": (BuildContext context)                         => CmpCodePage(
+          Title:"Navigations Through Pages",
+          BackRoute:"/Divider_WH",
+          NextRoute:"/Navigation_Link",
+          ItemList:Navigator_Page_list,
+          CodeRoute:"lib/Codes_FrontEnd/12_Navigation/1_Navigator_Pages_Run.dart",
+          TabIcon:Icon(Icons.navigation),
+          ToDo:"Write 2 Pages :\n\n"
+              "Main Page:\n"
+              "-Contain A Raised Button That Take Us To Page1\n\n"
+              "Page1:\n"
+              "Contain An AppBar Leaded With a Left Icon That Take Us Back To Main Page",
+          TxtExplanation:Navigator_Page_Explanation,
+          RunCodeRoute:new NavPagesRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Navigation_Link": (BuildContext context)                         =>  CmpCodePage(
+          Title:"Navigations Through Links",
+          BackRoute:"/Navigation_Page",
+          NextRoute:"/Navigation_Dialer",
+          ItemList:Navigator_Links_list,
+          CodeRoute:"lib/Codes_FrontEnd/12_Navigation/2_Navigator_Links_Run.dart",
+          TabIcon:Icon(Icons.navigation),
+          ToDo:"Write A Page That Contain An Raised button When Clicked It Take The User To A PlayStore App Link ",
+          TxtExplanation:Navigator_Links_Explanation,
+          RunCodeRoute:new NavLinksRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Navigation_Dialer": (BuildContext context)                        => CmpCodePage(
+          Title:"Navigations Through Tel",
+          BackRoute:"/Navigation_Link",
+          NextRoute:"/Navigation_SMS",
+          ItemList:Navigator_Tel_list,
+          CodeRoute:"lib/Codes_FrontEnd/12_Navigation/3_Navigator_Tel_Run.dart",
+          TabIcon:Icon(Icons.navigation),
+          ToDo:"Write A Page That Contain An Raised button When Clicked It Take The User To Call +96176404762\n\n",
+          TxtExplanation:Navigator_Tel_Explanation,
+          RunCodeRoute:new NavTelRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Navigation_SMS": (BuildContext context)                           => CmpCodePage(
+          Title:"Navigations Through SMS",
+          BackRoute:"/Navigation_Dialer",
+          NextRoute:"/Navigation_Email",
+          ItemList:Navigator_SMS_list,
+          CodeRoute:"lib/Codes_FrontEnd/12_Navigation/4_Navigator_Sms_Run.dart",
+          TabIcon:Icon(Icons.navigation),
+          ToDo:"Write A Page That Contain An Raised button When Clicked It Take The User To Send A SMS To +96176404762\n\n",
+          TxtExplanation:Navigator_SMS_Explanation,
+          RunCodeRoute:new NavSMSRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Navigation_Email": (BuildContext context)                         => CmpCodePage(
+          Title:"Navigations Through Email",
+          BackRoute:"/Navigation_SMS",
+          NextRoute:"/SnackBar_Intro",
+          ItemList:Navigator_Email_list,
+          CodeRoute:"lib/Codes_FrontEnd/12_Navigation/5_Navigator_Email_Run.dart",
+          TabIcon:Icon(Icons.navigation),
+          ToDo:"Write A Page That Contain An Raised button When Clicked It Take The User To Send An Email To edapps.contact@gmail.com\n\n",
+          TxtExplanation:Navigator_Email_Explanation,
+          RunCodeRoute:new NavEmailRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/SnackBar_Intro": (BuildContext context)                           => CmpIntroPage(
+          Title:"SnackBar Introduction",
+          BackRoute:"/Navigation_Email",
+          NextRoute:"/SnackBar_Simple",
+          ItemList:SnackBar_Intro_list,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/SnackBar_Simple": (BuildContext context)                          =>CmpCodePage(
+          Title:"Simple SnackBar",
+          BackRoute:"/SnackBar_Intro",
+          NextRoute:"/SnackBar_Red_Simple",
+          ItemList:Snackbar_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/13_SnBar/1_Simple_SnackBar_Run.dart",
+          TabIcon:Icon(Icons.blur_linear),
+          ToDo:"We Need To Create a Page That Show A Flat Button Centered In The Body,Once The Button Clicked A SnackBar Must Appear \n",
+          TxtExplanation:SnackBar_Simple_Explanation,
+          RunCodeRoute:new SimpleSnBarRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/SnackBar_Red_Simple": (BuildContext context)                       =>CmpCodePage(
+          Title:"Simple Red SnackBar",
+          BackRoute:"/SnackBar_Simple",
+          NextRoute:"/SnackBar_Duration",
+          ItemList:Snackbar_Red_list,
+          CodeRoute:"lib/Codes_FrontEnd/13_SnBar/2_Simple_Red_SnackBar_Run.dart",
+          TabIcon:Icon(Icons.blur_linear),
+          ToDo:"We Need To Create a Page That Show A Flat Button Centered In The Body,Once The Button Clicked A Red Background color SnackBar Must Appear \n",
+          TxtExplanation:SnackBar_Red_Explanation,
+          RunCodeRoute:new SnBarBgRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/SnackBar_Duration": (BuildContext context)                        =>CmpCodePage(
+          Title:"SnackBar Duration",
+          BackRoute:"/SnackBar_Red_Simple",
+          NextRoute:"/SnackBar_Shape",
+          ItemList:Snackbar_Duration_list,
+          CodeRoute:"lib/Codes_FrontEnd/13_SnBar/3_SnackBar_Duration_Run.dart",
+          TabIcon:Icon(Icons.blur_linear),
+          ToDo:"We Need To Create a Page That Show A Flat Button Centered In The Body,Once The Button Clicked A SnackBar Must Appear for 10 Sec \n",
+          TxtExplanation:SnackBar_Duration_Explanation,
+          RunCodeRoute:new SnBarDurRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/SnackBar_Shape": (BuildContext context)                           =>CmpCodePage(
+          Title:"SnackBar Shape",
+          BackRoute:"/SnackBar_Duration",
+          NextRoute:"/SnackBar_Action",
+          ItemList:Snackbar_Shape_list,
+          CodeRoute:"lib/Codes_FrontEnd/13_SnBar/4_SnackBar_Shape_Run.dart",
+          TabIcon:Icon(Icons.blur_linear),
+          ToDo:"We Need To Create a Page That Show A Flat Button Centered In The Body,Once The Button Clicked A SnackBar Must Appear , The Snackbar Must Have Radius Border Shape Set to 30Deg\n",
+          TxtExplanation:SnackBar_Shape_Explanation,
+          RunCodeRoute:new SnBarShapeRun(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/SnackBar_Action": (BuildContext context)                           =>CmpCodePage(
+          Title:"SnackBar Action Button",
+          BackRoute:"/SnackBar_Shape",
+          NextRoute:"/FlushBar_Simple",
+          ItemList:Snackbar_Action_list,
+          CodeRoute:"lib/Codes_FrontEnd/13_SnBar/5_SnackBar_Action_Run.dart",
+          TabIcon:Icon(Icons.blur_linear),
+          ToDo:"We Need To Create a Page That Show A Flat Button Centered In The Body,Once The Button Clicked A SnackBar Must Appear With GetIt Now Text And A Download Label That Take The User To Play Store!\n",
+          TxtExplanation:SnackBar_Action_Explanation,
+          RunCodeRoute:new SnBarActRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/FlushBar_Simple": (BuildContext context)                          =>CmpCodePage(
+          Title:"Simple FlushBar",
+          BackRoute:"/SnackBar_Action",
+          NextRoute:"/Flushbar_RedBg",
+          ItemList:FlushBar_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/14_FlushBar/1_Simple_FlushBar_Run.dart",
+          TabIcon:Icon(Icons.space_bar),
+          ToDo:"We Need To Write A Page That Show A Raised Button Centered In The Body,Once Button Is Pressed A FlushhBar Must Be Shown\n",
+          TxtExplanation:FlushBar_Simple_Explanation,
+          RunCodeRoute:new SimpleFlushBarRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Flushbar_RedBg": (BuildContext context)                          =>CmpCodePage(
+          Title:"FlushBar With Red Background Color",
+          BackRoute:"/FlushBar_Simple",
+          NextRoute:"/Flushbar_YwText",
+          ItemList:FlushBar_RedBg_list,
+          CodeRoute:"lib/Codes_FrontEnd/14_FlushBar/2_FlushBar_Red_BackgroundColor_Run.dart",
+          TabIcon:Icon(Icons.space_bar),
+          ToDo:"We Need To Write A Page That Show A Raised Button Centered In The Body,Once Button Is Pressed A Red FlushhBar Must Be Shown\n",
+          TxtExplanation:FlushBar_RedBg_Explanation,
+          RunCodeRoute:new FlushBarBGRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Flushbar_YwText": (BuildContext context)                         =>CmpCodePage(
+          Title:"FlushBar Yellow Text",
+          BackRoute:"/Flushbar_RedBg",
+          NextRoute:"/Flushbar_Icon",
+          ItemList:FlushBar_Yellow_Text_list,
+          CodeRoute:"lib/Codes_FrontEnd/14_FlushBar/3_FlushBar_Yellow_Text_Run.dart",
+          TabIcon:Icon(Icons.space_bar),
+          ToDo:"We Need To Write A Page That Show A Raised Button Centered In The Body,Once Button Is Pressed A FlushhBar With Yellow Text Must Be Shown\n",
+          TxtExplanation:FlushBar_Yellow_Text_Explanation,
+          RunCodeRoute:new FlushBarYWTxtRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Flushbar_Icon": (BuildContext context)                           =>CmpCodePage(
+          Title:"FlushBar Icon",
+          BackRoute:"/Flushbar_YwText",
+          NextRoute:"/Flushbar_ActionButton",
+          ItemList:FlushBar_Icon_list,
+          CodeRoute:"lib/Codes_FrontEnd/14_FlushBar/4_FlushBar_Icon_Run.dart",
+          TabIcon:Icon(Icons.space_bar),
+          ToDo:"We Need To Write A Page That Show A Raised Button Centered In The Body,Once Button Is Pressed A FlushhBar With Leading Icon Must Be Shown\n",
+          TxtExplanation:FlushBar_Icon_Explanation,
+          RunCodeRoute:new FlushBarIconRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Flushbar_ActionButton": (BuildContext context)                    =>CmpCodePage(
+          Title:"FlushBar Main Action Button",
+          BackRoute:"/Flushbar_Icon",
+          NextRoute:"/Flushbar_Position",
+          ItemList:FlushBar_MainButton_list,
+          CodeRoute:"lib/Codes_FrontEnd/14_FlushBar/5_FlushBar_Main_Action_Button_Run.dart",
+          TabIcon:Icon(Icons.space_bar),
+          ToDo:"We Need To Write A Page That Show A Raised Button Centered In The Body,Once Button Is Pressed A FlushBar Must Be Shown That Display A Title,Message And A Main Button That Do An Action\n",
+          TxtExplanation:FlushBar_MainButton_Explanation,
+          RunCodeRoute:new FlushBarMainBtnRun(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Flushbar_Position": (BuildContext context)                        =>CmpCodePage(
+          Title:"FlushBar Position",
+          BackRoute:"/Flushbar_ActionButton",
+          NextRoute:"/Flushbar_Duration",
+          ItemList:FlushBar_Position_list,
+          CodeRoute:"lib/Codes_FrontEnd/14_FlushBar/6_FlushBar_Position_Run.dart",
+          TabIcon:Icon(Icons.space_bar),
+          ToDo:"We Need To Write A Page That Show A Raised Button Centered In The Body,Once Button Is Pressed It Show A Top And A Bottom FlushBar!\n",
+          TxtExplanation:FlushBar_Position_Explanation,
+          RunCodeRoute:new FlushBarPosRun(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Flushbar_Duration": (BuildContext context)                        =>CmpCodePage(
+          Title:"FlushBar Duration",
+          BackRoute:"/Flushbar_Position",
+          NextRoute:"/Card_Intro",
+          ItemList:FlushBar_Duration_list,
+          CodeRoute:"lib/Codes_FrontEnd/14_FlushBar/7_FlushBar_Duration_Run.dart",
+          TabIcon:Icon(Icons.space_bar),
+          ToDo:"We Need To Write A Page That Show A Raised Button Centered In The Body,Once Button Is Pressed It Has To Show FlushBar For 2 Seconds!\n",
+          TxtExplanation:FlushBar_Position_Explanation,
+          RunCodeRoute:new FlushBarDuration(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Card_Intro": (BuildContext context)                                   =>CmpIntroPage(
+          Title:"Card Introduction",
+          BackRoute:"/Flushbar_Duration",
+          NextRoute:"/Card_Simple",
+          ItemList:Card_Intro_list,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Card_Simple": (BuildContext context)                              =>CmpCodePage(
+          Title:"Simple Card",
+          BackRoute:"/Card_Intro",
+          NextRoute:"/Card_WH",
+          ItemList:Card_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/15_Card/1_Simple_Card_Run.dart",
+          TabIcon:Icon(Icons.four_k),
+          ToDo:"We Need To Create 2 Simple Card Having Just Text In The Body\n",
+          TxtExplanation:Card_Simple_Explanation,
+          RunCodeRoute:new SimpleCardRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Card_WH": (BuildContext context)                                 =>CmpCodePage(
+          Title:"Card Width & Height",
+          BackRoute:"/Card_Simple",
+          NextRoute:"/Card_Red_WH",
+          ItemList:Card_WH_list,
+          CodeRoute:"lib/Codes_FrontEnd/15_Card/2_Card_WH_Run.dart",
+          TabIcon:Icon(Icons.four_k),
+          ToDo:"We Need To Create a Page That Show A Card Centered In The Body Having Maximum Width,Height 200\n",
+          TxtExplanation:Card_WH_Explanation,
+          RunCodeRoute:new SimpleCardWHRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Card_Red_WH": (BuildContext context)                              =>CmpCodePage(
+          Title:"Red Card Width & Height",
+          BackRoute:"/Card_WH",
+          NextRoute:"/Card_Customized",
+          ItemList:Card_Red_WH_list,
+          CodeRoute:"lib/Codes_FrontEnd/15_Card/3_Card_Bg_Run.dart",
+          TabIcon:Icon(Icons.four_k),
+          ToDo:"We Need To Create a Page That Show A Card Centered In The Body Having Maximum Width,Height 200 , Red Background Color\n",
+          TxtExplanation:Card_Red_WH_Explanation,
+          RunCodeRoute:new SimpleBgCardWHRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Card_Customized": (BuildContext context)                          =>CmpCodePage(
+          Title:"Customized Card",
+          BackRoute:"/Card_Red_WH",
+          NextRoute:"/Card_Elevator",
+          ItemList:Card_Cust_list,
+          CodeRoute:"lib/Codes_FrontEnd/15_Card/4_Card_Cust_Run.dart",
+          TabIcon:Icon(Icons.four_k),
+          ToDo:"We Need To Create a Customized Card That Take As First Row Image+Text , Second Row Text\n",
+          TxtExplanation:Card_Cust_Explanation,
+          RunCodeRoute:new CustCardRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Card_Elevator": (BuildContext context)                            =>CmpCodePage(
+          Title:"Card Elevator",
+          BackRoute:"/Card_Customized",
+          NextRoute:"/TextOverFlow_Clip",
+          ItemList:Card_Elavator_list,
+          CodeRoute:"lib/Codes_FrontEnd/15_Card/5_Card_Elevator_Run.dart",
+          TabIcon:Icon(Icons.four_k),
+          ToDo:"We Need To Create a Menu Page That Contain 2 Cards Containing Liste Tiles That Take Users To Pages,Use Elevation 20\n",
+          TxtExplanation:Card_Elevator_Explanation,
+          RunCodeRoute:new CardElevatorRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/TextOverFlow_Clip": (BuildContext context)                        =>CmpCodePage(
+          Title:"TextOverFlow Clip",
+          BackRoute:"/Card_Elevator",
+          NextRoute:"/TextOverFlow_Ellipsis",
+          ItemList:TextOverFlow_Clip_list,
+          CodeRoute:"lib/Codes_FrontEnd/16_TextOverflow/1_TxtF_ClipRun.dart",
+          TabIcon:Icon(Icons.title),
+          ToDo:"We Need To Write A Page That Show A Container Having Clipped OverFlowed Text\n",
+          TxtExplanation:TextOverFlow_Clip_Explanation,
+          RunCodeRoute:new TxtFClipRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/TextOverFlow_Ellipsis": (BuildContext context)                     =>CmpCodePage(
+          Title:"TextOverFlow Ellipsis",
+          BackRoute:"/TextOverFlow_Clip",
+          NextRoute:"/TextOverFlow_Fade",
+          ItemList:TextOverFlow_Ellipsis_list,
+          CodeRoute:"lib/Codes_FrontEnd/16_TextOverflow/2_TxtF_EllipsisRun.dart",
+          TabIcon:Icon(Icons.title),
+          ToDo:"We Need To Write A Page That Show A Container That Show Ellipsis When Text Is Overflowed\n",
+          TxtExplanation:TextOverFlow_Ellipsis_Explanation,
+          RunCodeRoute:new TxtFEllipsisRun(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/TextOverFlow_Fade": (BuildContext context)                         =>CmpCodePage(
+          Title:"TextOverFlow Fade",
+          BackRoute:"/TextOverFlow_Ellipsis",
+          NextRoute:"/TextOverFlow_Visible",
+          ItemList:TextOverFlow_Fade_list,
+          CodeRoute:"lib/Codes_FrontEnd/16_TextOverflow/3_TxtF_FadeRun.dart",
+          TabIcon:Icon(Icons.title),
+          ToDo:"We Need To Write A Page That Show A Container Having Faded OverFlowed Text\n",
+          TxtExplanation:TextOverFlow_Fade_Explanation,
+          RunCodeRoute:new TxtFFadeRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/TextOverFlow_Visible": (BuildContext context)                      =>CmpCodePage(
+          Title:"TextOverFlow Visible",
+          BackRoute:"/TextOverFlow_Fade",
+          NextRoute:"/GestureDetector_Intro",
+          ItemList:TextOverFlow_Visible_list,
+          CodeRoute:"lib/Codes_FrontEnd/16_TextOverflow/4_TxtF_VisibleRun.dart",
+          TabIcon:Icon(Icons.title),
+          ToDo:"We Need To Write A Page That Show A Container Having Visible OverFlowed Text\n",
+          TxtExplanation:TextOverFlow_Visible_Explanation,
+          RunCodeRoute:new TxtFVisibleRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/GestureDetector_Intro": (BuildContext context)                     =>CmpIntroPage(
+          Title:"Gesture Detector Introduction",
+          BackRoute:"/TextOverFlow_Visible",
+          NextRoute:"/GestureDetector_Image",
+          ItemList:GestureDetector_Intro_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/GestureDetector_Image": (BuildContext context)                     => CmpCodePage(
+          Title:"Image Gesture Detector",
+          BackRoute:"/GestureDetector_Intro",
+          NextRoute:"/GestureDetector_AppBarTitle",
+          ItemList:GestureDetector_GestImg_list,
+          CodeRoute:"lib/Codes_FrontEnd/17_GestureDetector/1_GestImg_Run.dart",
+          TabIcon:Icon(Icons.touch_app),
+          ToDo:"We Need To Write A Page That Show A Image Centered Into The Body,Once The Image Is Tapped An Alert Must Pop\n",
+          TxtExplanation:GestureDetector_GestImg_Explanation,
+          RunCodeRoute:new GestImgRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/GestureDetector_AppBarTitle": (BuildContext context)               => CmpCodePage(
+          Title:"AppBar Title Gesture Detector",
+          BackRoute:"/GestureDetector_Image",
+          NextRoute:"/GestureDetector_TapCoords",
+          ItemList:GestureDetector_GestAppBarTitle_list,
+          CodeRoute:"lib/Codes_FrontEnd/17_GestureDetector/2_GestAppBarTitleRun.dart",
+          TabIcon:Icon(Icons.touch_app),
+          ToDo:"We Need To Write A Page That Contain An AppBar With Tap Me text Once Text Tapped An Alert Must Pop\n",
+          TxtExplanation:GestureDetector_GestAppBarTitle_Explanation,
+          RunCodeRoute:new GestAppBarTtileRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/GestureDetector_TapCoords": (BuildContext context)               => CmpCodePage(
+          Title:"Tap Coords Detector",
+          BackRoute:"/GestureDetector_AppBarTitle",
+          NextRoute:"/GestureDetector_Body_DoubleTap",
+          ItemList:GestureDetector_TapCoords_list,
+          CodeRoute:"lib/Codes_FrontEnd/17_GestureDetector/3_Tap_Coords_Run.dart",
+          TabIcon:Icon(Icons.touch_app),
+          ToDo:"We Need To Write A Page That Contain Positioned Containing Text As An Child,Once Used Tap Change The Positined Position According To Tap X And Y\n",
+          TxtExplanation:GestureDetector_TapCoords_Explanation,
+          RunCodeRoute:new TapCoords(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/GestureDetector_Body_DoubleTap": (BuildContext context)               => CmpCodePage(
+          Title:"Body Double Tap Detector",
+          BackRoute:"/GestureDetector_TapCoords",
+          NextRoute:"/ListView_Intro",
+          ItemList:GestureDetector_BodyDoubleTap_list,
+          CodeRoute:"lib/Codes_FrontEnd/17_GestureDetector/4_Double_Tap.dart",
+          TabIcon:Icon(Icons.touch_app),
+          ToDo:"We Need To Write A Page When User Double Tap The Body,A Dialog Must Pop Up!\n",
+          TxtExplanation:GestureDetector_BodyDoubleTap_Explanation,
+          RunCodeRoute:new BodyDoubleTap(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/ListView_Intro": (BuildContext context)                            =>CmpIntroPage(
+          Title:"ListView Introduction",
+          BackRoute:"/GestureDetector_AppBarTitle",
+          NextRoute:"/ListView_Scroll_Hor",
+          ItemList:ListView_Intro_CompList,
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/ListView_Scroll_Hor": (BuildContext context)                       =>CmpCodePage(
+          Title:"Horizontal ListView",
+          BackRoute:"/ListView_Intro",
+          NextRoute:"/ListView_Scroll_Ver",
+          ItemList:ListView_Horizontal_list,
+          CodeRoute:"lib/Codes_FrontEnd/18_ListView/1_ListView_Horizontal_Run.dart",
+          TabIcon:Icon(Icons.filter_list),
+          ToDo:"We Need To Write A Page That Allow Scroll Multiple Images Horizontaly\n",
+          TxtExplanation:ListView_Horizontal_Explanation,
+          RunCodeRoute:new LVHorRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/ListView_Scroll_Ver": (BuildContext context)                       =>CmpCodePage(
+          Title:"Vertical ListView",
+          BackRoute:"/ListView_Scroll_Hor",
+          NextRoute:"/ListView_ScrollTo",
+          ItemList:ListView_Vertical_list,
+          CodeRoute:"lib/Codes_FrontEnd/18_ListView/2_ListView_Vertical_Run.dart",
+          TabIcon:Icon(Icons.filter_list),
+          ToDo:"We Need To Write A Page That Allow Scroll Multiple Images Vertically\n",
+          TxtExplanation:ListView_Vertical_Explanation,
+          RunCodeRoute:new LVVertRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/ListView_ScrollTo": (BuildContext context)                       =>CmpCodePage(
+          Title:"ListView Scroll To",
+          BackRoute:"/ListView_Scroll_Ver",
+          NextRoute:"/ListView_Move_To_Top_Bottom",
+          ItemList:ListView_ScrollTo_list,
+          CodeRoute:"lib/Codes_FrontEnd/18_ListView/3_ListView_ScrollTo.dart",
+          TabIcon:Icon(Icons.filter_list),
+          ToDo:"We Need To Write A Page Containing 2 Buttons < And > And A ListView Taking Items That Can Be Scrolled With Buttons\n",
+          TxtExplanation:ListView_ScrollTo_Explanation,
+          RunCodeRoute:new LVScrollTo(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/ListView_Move_To_Top_Bottom": (BuildContext context)                       =>CmpCodePage(
+          Title:"ListView Move To Top Or Bottom",
+          BackRoute:"/ListView_ScrollTo",
+          NextRoute:"/TextField_Simple",
+          ItemList:ListView_MoveTo_list,
+          CodeRoute:"lib/Codes_FrontEnd/18_ListView/4_Move_To_Top_Bottom.dart",
+          TabIcon:Icon(Icons.filter_list),
+          ToDo:"We Need To Write A Page That Has A Floating Buttons That Scroll List To Top And Other To Bottom\n",
+          TxtExplanation:ListView_MoveTo_Explanation,
+          RunCodeRoute:new LVMoveTo(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/TextField_Simple": (BuildContext context)                          =>CmpCodePage(
+          Title:"Simple TextField",
+          BackRoute:"/ListView_Scroll_Ver",
+          NextRoute:"/TextField_WithoutBorder",
+          ItemList:TextField_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/19_TextField/1_TextField_Simple_Run.dart",
+          TabIcon:Icon(Icons.input),
+          ToDo:"We Need To Create a Page That Show A Simple TextField With A Controller\n",
+          TxtExplanation:TextField_Simple_Explanation,
+          RunCodeRoute:new SimpleTFRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/TextField_WithoutBorder": (BuildContext context)                   =>CmpCodePage(
+          Title:"TextField Without Border",
+          BackRoute:"/TextField_Simple",
+          NextRoute:"/TextField_MultiLine",
+          ItemList:TextField_NoBorder_list,
+          CodeRoute:"lib/Codes_FrontEnd/19_TextField/2_TextField_NoBorder_Run.dart",
+          TabIcon:Icon(Icons.input),
+          ToDo:"We Need To Create a Page That Show A Simple TextField With A Controller Without Borders\n",
+          TxtExplanation:TextField_NoBorder_Explanation,
+          RunCodeRoute:new TFNoBordRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/TextField_MultiLine": (BuildContext context)                       =>CmpCodePage(
+          Title:"MultiLine TextField",
+          BackRoute:"/TextField_WithoutBorder",
+          NextRoute:"/TextField_Icon",
+          ItemList:TextField_MultiLine_list,
+          CodeRoute:"lib/Codes_FrontEnd/19_TextField/3_TextField_MultiLine_Run.dart",
+          TabIcon:Icon(Icons.input),
+          ToDo:"We Need To Create a Page That Show A Simple TextField With A Controller That Take 6 Lines\n",
+          TxtExplanation:TextField_MultiLine_Explanation,
+          RunCodeRoute:new MultiTFRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/TextField_Icon": (BuildContext context)                            =>CmpCodePage(
+          Title:"TextField Icon",
+          BackRoute:"/TextField_MultiLine",
+          NextRoute:"/TextField_Styling",
+          ItemList:TextField_Icon_list,
+          CodeRoute:"lib/Codes_FrontEnd/19_TextField/4_TextField_Icon_Run.dart",
+          TabIcon:Icon(Icons.input),
+          ToDo:"We Need To Create a Page That Show A Simple TextField With A Controller And Icon\n",
+          TxtExplanation:TextField_Icon_Explanation,
+          RunCodeRoute:new IconTFRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/TextField_Styling": (BuildContext context)                          =>CmpCodePage(
+          Title:"TextField Style",
+          BackRoute:"/TextField_Icon",
+          NextRoute:"/TextField_Pass",
+          ItemList:TextField_Style_list,
+          CodeRoute:"lib/Codes_FrontEnd/19_TextField/5_TextField_Style_Run.dart",
+          TabIcon:Icon(Icons.input),
+          ToDo:"We Need To Create a Page That Show A Simple TextField With A Controller Having Red Hint Text And Blue Text Color Input\n",
+          TxtExplanation:TextField_Style_Explanation,
+          RunCodeRoute:new TFStyleRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/TextField_Pass": (BuildContext context)                             =>CmpCodePage(
+          Title:"Password TextField",
+          BackRoute:"/TextField_Styling",
+          NextRoute:"/TextField_LoginForm",
+          ItemList:TextField_Pass_list,
+          CodeRoute:"lib/Codes_FrontEnd/19_TextField/6_TextField_Password_Run.dart",
+          TabIcon:Icon(Icons.input),
+          ToDo:"We Need To Create a Password TextField With A Controller \n",
+          TxtExplanation:TextField_Pass_Explanation,
+          RunCodeRoute:new PassTFRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/TextField_LoginForm": (BuildContext context)                         =>CmpCodePage(
+          Title:"Login TextField Form",
+          BackRoute:"/TextField_Pass",
+          NextRoute:"/TextField_FormValidation",
+          ItemList:TextField_LoginForm_list,
+          CodeRoute:"lib/Codes_FrontEnd/19_TextField/7_TextField_Login_Form_Run.dart",
+          TabIcon:Icon(Icons.input),
+          ToDo:"Create A Simple Login Form Design\n",
+          TxtExplanation:TextField_LoginForm_Explanation,
+          RunCodeRoute:new LoginFormRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/TextField_FormValidation": (BuildContext context)                    =>CmpCodePage(
+          Title:"TextForm Validation",
+          BackRoute:"/TextField_LoginForm",
+          NextRoute:"/FooterAppbar_Simple",
+          ItemList:TextField_FormValidation_list,
+          CodeRoute:"lib/Codes_FrontEnd/19_TextField/8_TextForm_Form_Validation_Run.dart",
+          TabIcon:Icon(Icons.input),
+          ToDo:"We Need To Write A Page That Take A Login Form Design,Validate Info When Button Is Clicked,Use SnackBar To Show Result If Succeed!\n",
+          TxtExplanation:TextField_FormValidation_Explanation,
+          RunCodeRoute:new ValidTFRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/FooterAppbar_Simple": (BuildContext context)                         =>CmpCodePage(
+          Title:"Simple Footer AppBar",
+          BackRoute:"/TextField_FormValidation",
+          NextRoute:"/FooterAppbar_NavBar",
+          ItemList:Footer_AppBar_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/20_Footer/1_Simple_Footer_Run.dart",
+          TabIcon:Icon(Icons.input),
+          ToDo:"We Need To Write A Page That Show A Footer Containing 2 Images:\n"
+              "-Logo App + Text That Take The User To The App\n"
+              "-Logo Fb  + Text That Take The User To Fb \n",
+          TxtExplanation:Footer_AppBar_Simple_Explanation,
+          RunCodeRoute:new SimpleFooterRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/FooterAppbar_NavBar": (BuildContext context)                         =>CmpCodePage(
+          Title:"NavBar Footer AppBar",
+          BackRoute:"/FooterAppbar_Simple",
+          NextRoute:"/ImageSlider_Intro",
+          ItemList:Footer_AppBar_NavBar_list,
+          CodeRoute:"lib/Codes_FrontEnd/20_Footer/2_Bottom_NavBar_Run.dart",
+          TabIcon:Icon(Icons.input),
+          ToDo:"Create A Page Taking A Navigation Bar Footer Taking 3 Different Pages",
+          TxtExplanation:Footer_AppBar_NavBar_Explanation,
+          RunCodeRoute:new NavBarFooterRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/ImageSlider_Intro": (BuildContext context)                           =>CmpIntroPage(
+          Title:"Image Slider Intro",
+          BackRoute:"/FooterAppbar_NavBar",
+          NextRoute:"/ImageSlider_StartImage",
+          ItemList:IS_Intro_list,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/ImageSlider_StartImage": (BuildContext context)                      =>CmpCodePage(
+          Title:"Image Slider Initial Page Index",
+          BackRoute:"/ImageSlider_Intro",
+          NextRoute:"/ImageSlider_EnlargeCenterPage",
+          ItemList:IS_InitialPage_list,
+          CodeRoute:"lib/Codes_FrontEnd/21_ImageSlider/1_IS_InitialPage_Run.dart",
+          TabIcon:Icon(Icons.slideshow),
+          ToDo: "We Need To Write A Page That Show 2 Slider:\n"
+              "-First Slider Start With The Image Index 0\n"
+              "-Second Slider Start With The Image Index 1\n",
+          TxtExplanation:IS_InitialPage_Explanation,
+          RunCodeRoute:new CarouselInitialPageRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/ImageSlider_EnlargeCenterPage": (BuildContext context)               =>CmpCodePage(
+          Title:"Image Slider Enlarge Center Page",
+          BackRoute:"/ImageSlider_StartImage",
+          NextRoute:"/ImageSlider_AutoPlay",
+          ItemList:IS_EnlargeCenterPage_list,
+          CodeRoute:"lib/Codes_FrontEnd/21_ImageSlider/2_IS_EnlargeCenterPage_Run.dart",
+          TabIcon:Icon(Icons.slideshow),
+          ToDo: "We Need To Write A Page That Show 2 Slider:\n"
+              "-First Slider Center Page Enlarged\n"
+              "-Second Slider Center Page Not Enlarged\n",
+          TxtExplanation:IS_EnlargeCenterPage_Explanation,
+          RunCodeRoute:new CarouselEnlargeCenterPageRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/ImageSlider_AutoPlay": (BuildContext context)                        =>CmpCodePage(
+          Title:"Image Slider Auto Play",
+          BackRoute:"/ImageSlider_EnlargeCenterPage",
+          NextRoute:"/ImageSlider_InfiniteScroll",
+          ItemList:IS_AutoPlay_list,
+          CodeRoute:"lib/Codes_FrontEnd/21_ImageSlider/3_IS_AutoPlay_Run.dart",
+          TabIcon:Icon(Icons.slideshow),
+          ToDo: "We Need To Write A Page That Show 2 Slider:\n"
+              "-First Slider Auto Play Set To True\n"
+              "-Second Slider Auto Play Set To False\n",
+          TxtExplanation:IS_AutoPlay_Explanation,
+          RunCodeRoute:new CarouselAutoPlayRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/ImageSlider_InfiniteScroll": (BuildContext context)                  =>CmpCodePage(
+          Title:"Image Slider Infinite Scroll",
+          BackRoute:"/ImageSlider_AutoPlay",
+          NextRoute:"/ImageSlider_AutoPlayInterval",
+          ItemList:IS_InfiniteScroll_list,
+          CodeRoute:"lib/Codes_FrontEnd/21_ImageSlider/4_IS_Enable_Infinite_Scroll_Run.dart",
+          TabIcon:Icon(Icons.slideshow),
+          ToDo: "We Need To Write A Page That Show 2 Slider:\n"
+              "-First Slider Infinite Scroll Set To True\n"
+              "-Second Slider Infinite Scroll Set To False\n",
+          TxtExplanation:IS_InfiniteScroll_Explanation,
+          RunCodeRoute:new CarouselEnableInifiniteScrollRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/ImageSlider_AutoPlayInterval": (BuildContext context)                =>CmpCodePage(
+          Title:"Image Slider Auto Play Interval",
+          BackRoute:"/ImageSlider_InfiniteScroll",
+          NextRoute:"/ImageSlider_PauseAutoPlayOnTouch",
+          ItemList:IS_AutoPlayInterval_list,
+          CodeRoute:"lib/Codes_FrontEnd/21_ImageSlider/5_IS_AutoPlayInterval_Run.dart",
+          TabIcon:Icon(Icons.slideshow),
+          ToDo: "We Need To Write A Page That Show 2 Slider:\n"
+              "-First Slider autoPlayInterval Set To 1sec\n"
+              "-Second Slider autoPlayInterval Set To 2sec\n",
+          TxtExplanation:IS_AutoPlayInterval_Explanation,
+          RunCodeRoute:new CarouselAutoPlayIntervRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/ImageSlider_PauseAutoPlayOnTouch": (BuildContext context)            =>CmpCodePage(
+          Title:"Image Slider Pause Auto Play On Touch",
+          BackRoute:"/ImageSlider_AutoPlayInterval",
+          NextRoute:"/ImageSlider_ScrollDirection",
+          ItemList:IS_PauseAutoPlayOnTouch_list,
+          CodeRoute:"lib/Codes_FrontEnd/21_ImageSlider/6_IS_Pause_AutoPlay_OnTouch_Run.dart",
+          TabIcon:Icon(Icons.slideshow),
+          ToDo: "We Need To Write A Page That Show 2 Slider:\n"
+              "-First Slider PauseAutoPlayOnTouch Set To 2sec\n"
+              "-Second Slider PauseAutoPlayOnTouch Set To 5sec\n",
+          TxtExplanation:IS_PauseAutoPlayOnTouch_Explanation,
+          RunCodeRoute:new CarouselPauseAutoPlayOnTouchRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/ImageSlider_ScrollDirection": (BuildContext context)                 =>CmpCodePage(
+          Title:"Image Slider Scroll Direction",
+          BackRoute:"/ImageSlider_PauseAutoPlayOnTouch",
+          NextRoute:"/ImageSlider_WithButton",
+          ItemList:IS_ScrollDirection_list,
+          CodeRoute:"lib/Codes_FrontEnd/21_ImageSlider/7_IS_ScrollDirection_Run.dart",
+          TabIcon:Icon(Icons.slideshow),
+          ToDo: "We Need To Write A Page That Show 2 Slider:\n"
+              "-First Slider Scrolled Horizontally\n"
+              "-Second Slider Scrolled Vertically\n",
+          TxtExplanation:IS_ScrollDirection_Explanation,
+          RunCodeRoute:new CarouselScrollDirectionRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/ImageSlider_WithButton": (BuildContext context)                      =>CmpCodePage(
+          Title:"Image Slider With Buttons",
+          BackRoute:"/ImageSlider_ScrollDirection",
+          NextRoute:"/ImageSlider_WithCaption",
+          ItemList:IS_WithButton_list,
+          CodeRoute:"lib/Codes_FrontEnd/21_ImageSlider/8_Slider_WIth_Button_Run.dart",
+          TabIcon:Icon(Icons.slideshow),
+          ToDo: "We Need To Write A Page That Show A Slider Taking Buttons To Navigate",
+          TxtExplanation:IS_WithButton_Explanation,
+          RunCodeRoute:new SliderWithButton(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/ImageSlider_WithCaption": (BuildContext context)                     =>CmpCodePage(
+          Title:"Image Slider With Caption",
+          BackRoute:"/ImageSlider_WithButton",
+          NextRoute:"/ImageSlider_WithDots",
+          ItemList:IS_WithCaption_list,
+          CodeRoute:"lib/Codes_FrontEnd/21_ImageSlider/9_Slider_With_Caption_Run.dart",
+          TabIcon:Icon(Icons.slideshow),
+          ToDo: "We Need To Write A Page That Show A Slider Taking Caption",
+          TxtExplanation:IS_WithCaption_Explanation,
+          RunCodeRoute:new SliderCaption(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/ImageSlider_WithDots": (BuildContext context)                        =>CmpCodePage(
+          Title:"Image Slider With Dots",
+          BackRoute:"/ImageSlider_WithCaption",
+          NextRoute:"/Notification_WithoutSound",
+          ItemList:IS_WithDots_list,
+          CodeRoute:"lib/Codes_FrontEnd/21_ImageSlider/10_Dots_Slider_Run.dart",
+          TabIcon:Icon(Icons.slideshow),
+          ToDo: "We Need To Write A Page That Show A Slider Taking Dots",
+          TxtExplanation:IS_WithDots_Explanation,
+          RunCodeRoute:new DotsSliderRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Notification_WithoutSound": (BuildContext context)                   =>CmpCodePage(
+          Title:"Notification Without Sound",
+          BackRoute:"/ImageSlider_WithDots",
+          NextRoute:"/Notification_DefaultSound",
+          ItemList:Notification_WithoutSound_list,
+          CodeRoute:"lib/Codes_FrontEnd/22_Notification/1_Notification_Without_Sound_Run.dart",
+          TabIcon:Icon(Icons.notifications_active),
+          ToDo:"Create A Simple Page That Take A Button,Once Clicked It Gonna Send A Notification Without A Sound\n",
+          TxtExplanation:Notification_WithoutSound_Explanation,
+          RunCodeRoute:new NotifNoSound(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Notification_DefaultSound": (BuildContext context)                   =>CmpCodePage(
+          Title:"Notification Default Sound",
+          BackRoute:"/Notification_WithoutSound",
+          NextRoute:"/Notification_CustomSound",
+          ItemList:Notification_DefaultSound_list,
+          CodeRoute:"lib/Codes_FrontEnd/22_Notification/2_Notification_Default_Sound_Run.dart",
+          TabIcon:Icon(Icons.notifications_active),
+          ToDo:"Create A Simple Page That Take A Button,Once Clicked It Gonna Send A Notification With Default Sound\n",
+          TxtExplanation:Notification_DefaultSound_Explanation,
+          RunCodeRoute:new NotifDefSound(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Notification_CustomSound": (BuildContext context)                   =>CmpCodePage(
+          Title:"Notification Custom Sound",
+          BackRoute:"/Notification_DefaultSound",
+          NextRoute:"/Notification_CustomIcon",
+          ItemList:Notification_CustomSound_list,
+          CodeRoute:"lib/Codes_FrontEnd/22_Notification/3_Notification_Custom_Sound_Run.dart",
+          TabIcon:Icon(Icons.notifications_active),
+          ToDo:"Create A Simple Page That Take A Button,Once Clicked It Gonna Send A Notification Without A Custom Sound\n",
+          TxtExplanation:Notification_CustomSound_Explanation,
+          RunCodeRoute:new NotifCustSound(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Notification_CustomIcon": (BuildContext context)                   =>CmpCodePage(
+          Title:"Notification Custom Icon",
+          BackRoute:"/Notification_CustomSound",
+          NextRoute:"/Notification_Daily",
+          ItemList:Notification_CustomIcon_list,
+          CodeRoute:"lib/Codes_FrontEnd/22_Notification/4_Notification_Custom_Icon_Run.dart",
+          TabIcon:Icon(Icons.notifications_active),
+          ToDo:"Create A Simple Page That Take A Button,Once Clicked It Gonna Send A Notification With A Custom Icon\n",
+          TxtExplanation:Notification_CustomIcon_Explanation,
+          RunCodeRoute:new NotifCustIcon(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Notification_Daily": (BuildContext context)                   =>CmpCodePage(
+          Title:"Notification Custom Icon",
+          BackRoute:"/Notification_CustomSound",
+          NextRoute:"/Switch_Simple",
+          ItemList:Notification_CustomIcon_list,
+          CodeRoute:"lib/Codes_FrontEnd/22_Notification/4_Notification_Custom_Icon_Run.dart",
+          TabIcon:Icon(Icons.notifications_active),
+          ToDo:"Create A Simple Page That Take A Button,Once Clicked It Gonna Send A Notification With A Custom Icon\n",
+          TxtExplanation:Notification_CustomIcon_Explanation,
+          RunCodeRoute:new DailyNotif(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Switch_Simple": (BuildContext context)                              =>CmpCodePage(
+          Title:"Simple Switch",
+          BackRoute:"/Notification_CustomIcon",
+          NextRoute:"/Switch_AppBarTheme",
+          ItemList:Switch_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/23_Switch/1_Simple_Switch_Run.dart",
+          TabIcon:Icon(Icons.switch_camera),
+          ToDo:
+          "Create A Simple Page That Take A Switch With A Text That Show Its State (On |Off),If The Switch Is:\n"
+              "-On : Set Its Color To Green\n"
+              "-Off: Set Its Color To Red\n",
+          TxtExplanation:Switch_Simple_Explanation,
+          RunCodeRoute:new SimpleSwitch(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Switch_AppBarTheme": (BuildContext context)                          =>CmpCodePage(
+          Title:"Switch AppBar Theme",
+          BackRoute:"/Switch_Simple",
+          NextRoute:"/Switch_ThemeMode",
+          ItemList:Switch_AppBarTheme_list,
+          CodeRoute:"lib/Codes_FrontEnd/23_Switch/2_Switch_AppBar_Theme_Run.dart",
+          TabIcon:Icon(Icons.switch_camera),
+          ToDo:
+          "Create A Simple Page That Take A Switch When Its State Is:\n"
+              "-On : Set The Background Color Of The AppBar To Red\n"
+              "-Off: Set The Background Color Of The AppBar To Blue\n",
+          TxtExplanation:Switch_AppBarTheme_Explanation,
+          RunCodeRoute:new AppBarThemeSwitchRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Switch_ThemeMode": (BuildContext context)                          =>CmpCodePage(
+          Title:"Switch Theme Mode",
+          BackRoute:"/Switch_AppBarTheme",
+          NextRoute:"/Audio_Btn_Sound",
+          ItemList:Switch_ThemeMode_list,
+          CodeRoute:"lib/Codes_FrontEnd/23_Switch/3_Switch_Light_Dark_Mode_Run.dart",
+          TabIcon:Icon(Icons.switch_camera),
+          ToDo:
+          "Create A Simple Page That Take Images When:\n"
+              "-On : Dark With Dark Theme\n"
+              "-Off: Sun With Light Theme\n",
+          TxtExplanation:Switch_ThemeMode_Explanation,
+          RunCodeRoute:new LightDarkModeRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Audio_Btn_Sound": (BuildContext context)                             =>CmpCodePage(
+          Title:"Audio Play On Press",
+          BackRoute:"/Switch_ThemeMode",
+          NextRoute:"/Audio_Player",
+          ItemList:Audio_Button_Sound_list,
+          CodeRoute:"lib/Codes_FrontEnd/24_Audio/1_Audio_Button_Sound_Run.dart",
+          TabIcon:Icon(Icons.music_note),
+          ToDo:"Create A Simple Page That Take A Button,When Clicked Must Play A Sound\n",
+          TxtExplanation:Audio_Button_Sound_Explanation,
+          RunCodeRoute:new TapSoundBtnRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Audio_Player": (BuildContext context)                               =>CmpCodePage(
+          Title:"Audio Player",
+          BackRoute:"/Audio_Btn_Sound",
+          NextRoute:"/Video_File",
+          ItemList:Audio_Music_Player_list,
+          CodeRoute:"lib/Codes_FrontEnd/24_Audio/2_Audio_Music_Player_Run.dart",
+          TabIcon:Icon(Icons.music_note),
+          ToDo:"Create A Simple Page That Take 2 Music,With Play,Pause And Stop...Show The Song Progress Into Slider And Durations\n",
+          TxtExplanation:Audio_Music_Player_Explanation,
+          RunCodeRoute:new AudioRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+
+        "/Video_File": (BuildContext context)                                  =>CmpCodePage(
+          Title:"Video From File",
+          BackRoute:"/Audio_Player",
+          NextRoute:"/Video_Url",
+          ItemList:Video_From_File_list,
+          CodeRoute:"lib/Codes_FrontEnd/25_VideoPlayer/1_Video_From_File_Run.dart",
+          TabIcon:Icon(Icons.videocam),
+          ToDo:"Create A Simple Page That Take 2 Videos Loaded From File Inside 2 Cards With Some Text\n",
+          TxtExplanation:Video_From_File_Explanation,
+          RunCodeRoute:new VideoFromFile(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Video_Url": (BuildContext context)                                  =>CmpCodePage(
+          Title:"Video From Url",
+          BackRoute:"/Video_File",
+          NextRoute:"/Simple_Loaders",
+          ItemList:Video_From_Url_list,
+          CodeRoute:"lib/Codes_FrontEnd/25_VideoPlayer/2_Video_From_Url_Run.dart",
+          TabIcon:Icon(Icons.videocam),
+          ToDo:"Create A Simple Page That Take 2 Videos Loaded From Url Inside 2 Cards With Some Text\n",
+          TxtExplanation:Video_From_Url_Explanation,
+          RunCodeRoute:new VideoFromUrl(),
+        ),
+
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Simple_Loaders": (BuildContext context)                             =>Simple_Loader(),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/SLD1": (BuildContext context)                                          =>CmpCodePage(
+          Title:"Linear Progress Indicator",
+          BackRoute:"/Simple_Loaders",
+          NextRoute:"/SLD2",
+          ItemList:SLD1_list,
+          CodeRoute:"lib/Codes_FrontEnd/26_SimpleLoader/1_SLD1_Run.dart",
+          TabIcon:Icon(Icons.timelapse),
+          ToDo:"We Need To Write A Page That Show A Centered LinearProgressIndicator\n",
+          TxtExplanation:SLD1_Explanation,
+          RunCodeRoute:new SLD1Run(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/SLD2": (BuildContext context)                                          =>CmpCodePage(
+          Title:"Circular Progress Indicator",
+          BackRoute:"/SLD1",
+          NextRoute:"/Advanced_Loaders",
+          ItemList:SLD2_list,
+          CodeRoute:"lib/Codes_FrontEnd/26_SimpleLoader/2_SLD2_Run.dart",
+          TabIcon:Icon(Icons.timelapse),
+          ToDo:"We Need To Write A Page That Show A Centered CircularProgressIndicator\n",
+          TxtExplanation:SLD2_Explanation,
+          RunCodeRoute:new SLD2Run(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Advanced_Loaders": (BuildContext context)                            =>Advanced_Loader(),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Animation_Intro": (BuildContext context)                              =>CmpIntroPage(
+          Title:"Animation Intro",
+          BackRoute:"/Advanced_Loaders",
+          NextRoute:"/Animation_Opacity",
+          ItemList:Animation_Intro_list,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Animation_Opacity": (BuildContext context)                            =>CmpCodePage(
+          Title:"Opacity Animation",
+          BackRoute:"/Animation_Intro",
+          NextRoute:"/Animation_Fade",
+          ItemList:Animation_Opacity_list,
+          CodeRoute:"lib/Codes_FrontEnd/28_Animation/1_Animation_Opacity_Run.dart",
+          TabIcon:Icon(Icons.video_label),
+          ToDo:"We Need To Write A Page That Show An Image That PLay Opacity Animation\n",
+          TxtExplanation:Animation_Opacity_Explanation,
+          RunCodeRoute:new AnimOpacityRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Animation_Fade": (BuildContext context)                               =>CmpCodePage(
+          Title:"Fade Animation",
+          BackRoute:"/Animation_Opacity",
+          NextRoute:"/Animation_Tween_LTR",
+          ItemList:Animation_Fade_list,
+          CodeRoute:"lib/Codes_FrontEnd/28_Animation/2_Animation_Fade_Run.dart",
+          TabIcon:Icon(Icons.video_label),
+          ToDo:"We Need To Write A Page That Show 2 Images That PLay Fade Animation\n",
+          TxtExplanation:Animation_Fade_Explanation,
+          RunCodeRoute:new FadeRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Animation_Tween_LTR": (BuildContext context)                          =>CmpCodePage(
+          Title:"Tween Animation Left To Right",
+          BackRoute:"/Animation_Fade",
+          NextRoute:"/Animation_Tween_RTL",
+          ItemList:Animation_TweenLtR_list,
+          CodeRoute:"lib/Codes_FrontEnd/28_Animation/3_Animation_Tween_LtR_Run.dart",
+          TabIcon:Icon(Icons.video_label),
+          ToDo:"We Need To Write A Page That Show 2 Cards Having Different Widgets That Tween From Left To Right\n",
+          TxtExplanation:Animation_TweenLtR_Explanation,
+          RunCodeRoute:new TweenLtR_Run(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Animation_Tween_RTL": (BuildContext context)                          =>CmpCodePage(
+          Title:"Tween Animation Right To Left",
+          BackRoute:"/Animation_Tween_LTR",
+          NextRoute:"/Animation_Rotate",
+          ItemList:Animation_TweenRtL_list,
+          CodeRoute:"lib/Codes_FrontEnd/28_Animation/4_Animation_Tween_RtL_Run.dart",
+          TabIcon:Icon(Icons.video_label),
+          ToDo:"We Need To Write A Page That Show A Card That Contain Image That Tween From Right To Left With Some Widgets\n",
+          TxtExplanation:Animation_TweenRtL_Explanation,
+          RunCodeRoute:new TweenRtL_Run(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Animation_Rotate": (BuildContext context)                             =>CmpCodePage(
+          Title:"Rotate Animation",
+          BackRoute:"/Animation_Tween_RTL",
+          NextRoute:"/Animation_Matrix4_RotateZ",
+          ItemList:Animation_Rotate_list,
+          CodeRoute:"lib/Codes_FrontEnd/28_Animation/5_Animation_Rotate_Run.dart",
+          TabIcon:Icon(Icons.video_label),
+          ToDo:"We Need To Write A Page That Show An Image That PLay Rotate Animation\n",
+          TxtExplanation:Animation_Rotate_Explanation,
+          RunCodeRoute:new AnimRotateRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Animation_Matrix4_RotateZ": (BuildContext context)                    =>CmpCodePage(
+          Title:"Rotate Matrix4 RotateZ",
+          BackRoute:"/Animation_Rotate",
+          NextRoute:"/Animation_Matrix4_RotateY",
+          ItemList:Animation_Matrix4_RotateZ_list,
+          CodeRoute:"lib/Codes_FrontEnd/28_Animation/6_Animation_Matrix4_RotZ_Run.dart",
+          TabIcon:Icon(Icons.video_label),
+          ToDo: "We Need To Write A Page That Show An Image That PLay Matrix4.rotationZ Animation\n",
+          TxtExplanation:Animation_Matrix4_RotateZ_Explanation,
+          RunCodeRoute:new AnimM4RZRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Animation_Matrix4_RotateY": (BuildContext context)                    =>CmpCodePage(
+          Title:"Rotate Matrix4 RotateY",
+          BackRoute:"/Animation_Matrix4_RotateZ",
+          NextRoute:"/Animation_Rotation_Transition",
+          ItemList:Animation_Matrix4_RotateY_list,
+          CodeRoute:"lib/Codes_FrontEnd/28_Animation/7_Animation_Matrix4_RotY_Run.dart",
+          TabIcon:Icon(Icons.video_label),
+          ToDo: "We Need To Write A Page That Show An Image That PLay Matrix4.rotationY Animation\n",
+          TxtExplanation:Animation_Matrix4_RotateY_Explanation,
+          RunCodeRoute:new AnimM4RYRun(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Animation_Rotation_Transition": (BuildContext context)                =>CmpCodePage(
+          Title:"Animation Rotation Transition",
+          BackRoute:"/Animation_Matrix4_RotateY",
+          NextRoute:"/Animation_ElasticOut",
+          ItemList:Animation_Rotation_Transition_list,
+          CodeRoute:"lib/Codes_FrontEnd/28_Animation/8_Animation_Rotation_Transition_Run.dart",
+          TabIcon:Icon(Icons.video_label),
+          ToDo:"We Need To Write A Page That Show An Image That PLay Rotate Transition\n",
+          TxtExplanation:Animation_Rotation_Transition_Explanation,
+          RunCodeRoute:new AnimRotTransRun(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Animation_ElasticOut": (BuildContext context)                         =>CmpCodePage(
+          Title:"Animation Elastic Out",
+          BackRoute:"/Animation_Rotation_Transition",
+          NextRoute:"/Animation_ElasticIn",
+          ItemList:Animation_ElasticOut_list,
+          CodeRoute:"lib/Codes_FrontEnd/28_Animation/9_Animation_ElasticOut_Run.dart",
+          TabIcon:Icon(Icons.video_label),
+          ToDo:"We Need To Write A Page That Show An Image That PLay Elastic Out Animation\n",
+          TxtExplanation:Animation_ElasticOut_Explanation,
+          RunCodeRoute:new AnimElasticOutRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Animation_ElasticIn": (BuildContext context)                          =>CmpCodePage(
+          Title:"Animation Elastic In",
+          BackRoute:"/Animation_ElasticOut",
+          NextRoute:"/Animation_BounceIn",
+          ItemList:Animation_ElasticIn_list,
+          CodeRoute:"lib/Codes_FrontEnd/28_Animation/10_Animation_ElasticIn_Run.dart",
+          TabIcon:Icon(Icons.video_label),
+          ToDo:"We Need To Write A Page That Show An Image That PLay Elastic In Animation\n",
+          TxtExplanation:Animation_ElasticIn_Explanation,
+          RunCodeRoute:new AnimElasticInRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Animation_BounceIn": (BuildContext context)                          =>CmpCodePage(
+          Title:"Animation Bounce In",
+          BackRoute:"/Animation_ElasticIn",
+          NextRoute:"/Radio_Simple",
+          ItemList:Animation_BounceIn_list,
+          CodeRoute:"lib/Codes_FrontEnd/28_Animation/11_Animation_BounceIn_Run.dart",
+          TabIcon:Icon(Icons.video_label),
+          ToDo:"We Need To Write A Page That Show An Image That PLay BounceIn Animation\n",
+          TxtExplanation:Animation_BounceIn_Explanation,
+          RunCodeRoute:new AnimBounceInRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Radio_Simple": (BuildContext context)                                =>CmpCodePage(
+          Title:"Simple Radio",
+          BackRoute:"/Animation_BounceIn",
+          NextRoute:"/Radio_AppbarBgChange",
+          ItemList:Radio_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/29_Radio/1_Simple_Radio_Run.dart",
+          TabIcon:Icon(Icons.radio_button_checked),
+          ToDo:"We Need To Write A Page That Take A Text Question With 3 Radios,User Must Know The Answer.A Dialog Is Displayed To Let The User Know The Result\n",
+          TxtExplanation:Radio_Simple_Explanation,
+          RunCodeRoute:new SimpleRadio(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Radio_AppbarBgChange": (BuildContext context)                        =>CmpCodePage(
+          Title:"AppBar BackgroundColor Changer",
+          BackRoute:"/Radio_Simple",
+          NextRoute:"/Radio_ThemeChanger",
+          ItemList:Radio_App_BackgroundColorChanger_list,
+          CodeRoute:"lib/Codes_FrontEnd/29_Radio/2_Radio_AppBar_BackgroungColor_Changer_Run.dart",
+          TabIcon:Icon(Icons.radio_button_checked),
+          ToDo:"We Need To Write A Page That Take RadioListTile Having 2 Options Teal And Grey,Once A Tile Is Checked It Change The AppBar BackgroundColor To The Selected Color\n",
+          TxtExplanation:Radio_App_BackgroundColorChanger_Explanation,
+          RunCodeRoute:new RadioAppBarChangerRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Radio_ThemeChanger": (BuildContext context)                          =>CmpCodePage(
+          Title:"Main BackgroundColor Changer",
+          BackRoute:"/Radio_AppbarBgChange",
+          NextRoute:"/CheckBox_Simple",
+          ItemList:Radio_ThemeChanger_list,
+          CodeRoute:"lib/Codes_FrontEnd/29_Radio/3_Radio_MainBg_Theme_Changer_Run.dart",
+          TabIcon:Icon(Icons.radio_button_checked),
+          ToDo:"Write A Page That Take 2 RadioListTile That Change Main Background Color Orange Or Yellow Depend On User Selection Of The Radio\n",
+          TxtExplanation:Radio_ThemeChanger_Explanation,
+          RunCodeRoute:new RadioTilesRun(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/CheckBox_Simple": (BuildContext context)                             =>CmpCodePage(
+          Title:"Simple CheckBox",
+          BackRoute:"/Radio_ThemeChanger",
+          NextRoute:"/CheckBox_Tile",
+          ItemList:CheckBox_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/30_CheckBox/1_Simple_CheckBox_Run.dart",
+          TabIcon:Icon(Icons.check_box),
+          ToDo:"We Need To Write A Page That Contain Simple CheckBoxs Followed By Button That Alert The Selected CheckBoxes\n",
+          TxtExplanation:CheckBox_Simple_Explanation,
+          RunCodeRoute:new SimpleCheckBox(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/CheckBox_Tile": (BuildContext context)                                =>CmpCodePage(
+          Title:"CheckBox Tile",
+          BackRoute:"/CheckBox_Simple",
+          NextRoute:"/Chip_Simple",
+          ItemList:CheckBox_Tile_list,
+          CodeRoute:"lib/Codes_FrontEnd/30_CheckBox/2_CheckBox_Tile_Run.dart",
+          TabIcon:Icon(Icons.check_box),
+          ToDo:"We Need To Write A Page That Contain CheckBoxs Tile\n",
+          TxtExplanation:CheckBox_Tile_Explanation,
+          RunCodeRoute:new CBTilesRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Chip_Simple": (BuildContext context)                                  =>CmpCodePage(
+          Title:"Simple Chip",
+          BackRoute:"/CheckBox_Tile",
+          NextRoute:"/Chip_OnDelete",
+          ItemList:Chip_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/31_Chip/1_SimpleChip_Run.dart",
+          TabIcon:Icon(Icons.blur_circular),
+          ToDo:"We Need To Write A Page That Contain Chips\n",
+          TxtExplanation:Chip_OnDelete_Explanation,
+          RunCodeRoute:new SimpleChipRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Chip_OnDelete": (BuildContext context)                                =>CmpCodePage(
+          Title:"Chip OnDelete",
+          BackRoute:"/Chip_Simple",
+          NextRoute:"/TabBar_Top",
+          ItemList:Chip_OnDelete_list,
+          CodeRoute:"lib/Codes_FrontEnd/31_Chip/2_Chip_OnDeleted_Run.dart",
+          TabIcon:Icon(Icons.blur_circular),
+          ToDo:"We Need To Write A Page That Contain Chips That Can Be Deleted\n",
+          TxtExplanation:Chip_OnDelete_Explanation,
+          RunCodeRoute:new ChipOnDel(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/TabBar_Top": (BuildContext context)                                   =>CmpCodePage(
+          Title:"Top TabBar",
+          BackRoute:"/Chip_OnDelete",
+          NextRoute:"/TabBar_Bottom",
+          ItemList:TabBar_Top_list,
+          CodeRoute:"lib/Codes_FrontEnd/32_TabBar/1_TopTabBar_Run.dart",
+          TabIcon:Icon(Icons.navigation),
+          ToDo:"We Need To Write A Page That Show A Top TabBar\n",
+          TxtExplanation:TabBar_Top_Explanation,
+          RunCodeRoute:new TopTabBar(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/TabBar_Bottom": (BuildContext context)                                =>CmpCodePage(
+          Title:"Bottom TabBar",
+          BackRoute:"/TabBar_Top",
+          NextRoute:"/TabBar_Top_Hidden",
+          ItemList:TabBar_Bottom_list,
+          CodeRoute:"lib/Codes_FrontEnd/32_TabBar/2_BottomTabBar_Run.dart",
+          TabIcon:Icon(Icons.navigation),
+          ToDo:"We Need To Write A Page That Show A Bottom TabBar\n",
+          TxtExplanation:TabBar_Bottom_Explanation,
+          RunCodeRoute:new BottomTabBar(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/TabBar_Top_Hidden": (BuildContext context)                                =>CmpCodePage(
+          Title:"Hidden Top TabBar",
+          BackRoute:"/TabBar_Bottom",
+          NextRoute:"/TabBar_Bottom_Hidden",
+          ItemList:TabBar_Top_Hidden_list,
+          CodeRoute:"lib/Codes_FrontEnd/32_TabBar/3_Top_TabBar_Hidden_Run.dart",
+          TabIcon:Icon(Icons.navigation),
+          ToDo:"We Need To Write A Page That Show A Bottom TabBar\n",
+          TxtExplanation:TabBar_Top_Hidden_Explanation,
+          RunCodeRoute:new TopTabBarHidden(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/TabBar_Bottom_Hidden": (BuildContext context)                                =>CmpCodePage(
+          Title:"Hidden Bottom TabBar",
+          BackRoute:"/TabBar_Top_Hidden",
+          NextRoute:"/PageSelector_Simple",
+          ItemList:TabBar_Bottom_Hidden_list,
+          CodeRoute:"lib/Codes_FrontEnd/32_TabBar/4_Bottom_TabBar_Hidden_Run.dart",
+          TabIcon:Icon(Icons.navigation),
+          ToDo:"We Need To Write A Page That Show A Bottom TabBar\n",
+          TxtExplanation:TabBar_Bottom_Hidden_Explanation,
+          RunCodeRoute:new BottomTabBarHidden(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/PageSelector_Simple": (BuildContext context)                          =>CmpCodePage(
+          Title:"Simple Page Selector",
+          BackRoute:"/TabBar_Bottom",
+          NextRoute:"/PageSelector_Buttons",
+          ItemList:PageSelector_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/33_PageSelector/1_PageSelector_Simple_Run.dart",
+          TabIcon:Icon(Icons.threesixty),
+          ToDo:"We Need To Write A Page That Show A 3 Slidable Page Selector\n",
+          TxtExplanation:PageSelector_Simple_Explanation,
+          RunCodeRoute:new SimplePageSelector(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/PageSelector_Buttons": (BuildContext context)                         =>CmpCodePage(
+          Title:"Page Selector With Buttons",
+          BackRoute:"/PageSelector_Simple",
+          NextRoute:"/Flex_Image",
+          ItemList:PageSelector_Buttons_list,
+          CodeRoute:"lib/Codes_FrontEnd/33_PageSelector/2_PageSelector_Btn_Run.dart",
+          TabIcon:Icon(Icons.threesixty),
+          ToDo:"We Need To Write A Page That Show A 3 Slidable Page Selector With Next,Prev And Skip button\n",
+          TxtExplanation:PageSelector_Buttons_Explanation,
+          RunCodeRoute:new SimplePageSelectorBtn(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Flex_Image": (BuildContext context)                                   =>CmpCodePage(
+          Title:"Image Flex",
+          BackRoute:"/PageSelector_Buttons",
+          NextRoute:"/Flex_RaisedButton",
+          ItemList:Flex_Image_list,
+          CodeRoute:"lib/Codes_FrontEnd/34_Flex/1_Image_Flex_Run.dart",
+          TabIcon:Icon(Icons.compare_arrows),
+          ToDo:"Write A Page Comporting Some Images Where You Have To Flex One Of Them\n",
+          TxtExplanation:Flex_Image_Explanation,
+          RunCodeRoute:new ImageFlexRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Flex_RaisedButton": (BuildContext context)                            =>CmpCodePage(
+          Title:"Button Flex",
+          BackRoute:"/Flex_Image",
+          NextRoute:"/Flex_Advanced",
+          ItemList:Flex_Button_list,
+          CodeRoute:"lib/Codes_FrontEnd/34_Flex/2_Button_Flex_Run.dart",
+          TabIcon:Icon(Icons.compare_arrows),
+          ToDo:"Write A Page Comporting Some Buttons Where You Have To Flex One Of Them\n",
+          TxtExplanation:Flex_Button_Explanation,
+          RunCodeRoute:new RaisedButtonFlexRun(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Flex_Advanced": (BuildContext context)                                =>CmpCodePage(
+          Title:"Advanced Flex",
+          BackRoute:"/Flex_RaisedButton",
+          NextRoute:"/ComboBox_Simple",
+          ItemList:Flex_Advanced_list,
+          CodeRoute:"lib/Codes_FrontEnd/34_Flex/3_Advanced_Flex_Run.dart",
+          TabIcon:Icon(Icons.compare_arrows),
+          ToDo:"Write A Page Comporting 3 Containers,When One Clicked Must Flex\n",
+          TxtExplanation:Flex_Advanced_Explanation,
+          RunCodeRoute:new AdvancedFlexRun(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/ComboBox_Simple": (BuildContext context)                              =>CmpCodePage(
+          Title:"Select ComboBox",
+          BackRoute:"/Flex_Advanced",
+          NextRoute:"/ExpandableList_Simple",
+          ItemList:SelectCombo_list,
+          CodeRoute:"lib/Codes_FrontEnd/35_SelectComboBox/1_SelectComboBox_Run.dart",
+          TabIcon:Icon(Icons.arrow_drop_down),
+          ToDo:"We Need To Write A Page That Show A Centered Selectable Letters A->G\n",
+          TxtExplanation:SelectCombo_Explanation,
+          RunCodeRoute:new SelectComboBoxRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/ExpandableList_Simple": (BuildContext context)                        =>CmpCodePage(
+          Title:"Simple Expandable List",
+          BackRoute:"/ComboBox_Simple",
+          NextRoute:"/ExpandableList_Trail",
+          ItemList:ExpandableList_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/36_ExpandableList/1_Simple_Expandable_List_Run.dart",
+          TabIcon:Icon(Icons.tune),
+          ToDo:"We Need To Write A Page That Show A Simple Expandable List\n",
+          TxtExplanation:ExpandableList_Simple_Explanation,
+          RunCodeRoute:new SimpleExpandableListRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/ExpandableList_Trail": (BuildContext context)                        =>CmpCodePage(
+          Title:"Expandable List Trail",
+          BackRoute:"/ExpandableList_Simple",
+          NextRoute:"/ExpandableList_BackColor",
+          ItemList:ExpandableList_Trail_list,
+          CodeRoute:"lib/Codes_FrontEnd/36_ExpandableList/2_Expandable_List_Trail_Run.dart",
+          TabIcon:Icon(Icons.tune),
+          ToDo:"We Need To Write A Page That Show A Expandable List Having ListTiles,each Having Icon Arrow As A Trail\n",
+          TxtExplanation:ExpandableList_Trail_Explanation,
+          RunCodeRoute:new ExpandableListTrail(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/ExpandableList_BackColor": (BuildContext context)                     =>CmpCodePage(
+          Title:"Expandable List BackColor",
+          BackRoute:"/ExpandableList_Trail",
+          NextRoute:"/ExpandableList_CardsIcons",
+          ItemList:ExpandableList_BackColor_list,
+          CodeRoute:"lib/Codes_FrontEnd/36_ExpandableList/3_Expandable_List_BackColor_Run.dart",
+          TabIcon:Icon(Icons.tune),
+          ToDo:"We Need To Write A Page That Show A Expandable List That Change Its Background Color When Opened\n",
+          TxtExplanation:ExpandableList_BackColor_Explanation,
+          RunCodeRoute:new ExpandableListBackColor(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/ExpandableList_CardsIcons": (BuildContext context)                    =>CmpCodePage(
+          Title:"Expandable List With Cards And Icons",
+          BackRoute:"/ExpandableList_BackColor",
+          NextRoute:"/ExpandableList_Customized",
+          ItemList:ExpandableList_Cards_Icon_list,
+          CodeRoute:"lib/Codes_FrontEnd/36_ExpandableList/4_Expandable_List_With_Card_And_Icon_Run.dart",
+          TabIcon:Icon(Icons.tune),
+          ToDo:"We Need To Write A Page That Show A Expandable List That Each List Tile Globbed By A Card And Havin Icon\n",
+          TxtExplanation:ExpandableList_Cards_Icon_Explanation,
+          RunCodeRoute:new ExpandableListCardsIcons(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/ExpandableList_Customized": (BuildContext context)                    =>CmpCodePage(
+          Title:"Customized Expandable List",
+          BackRoute:"/ExpandableList_CardsIcons",
+          NextRoute:"/ExpandableList_Sound",
+          ItemList:ExpandableList_Customized_list,
+          CodeRoute:"lib/Codes_FrontEnd/36_ExpandableList/5_Expandable_List_Customized.dart",
+          TabIcon:Icon(Icons.tune),
+          ToDo:"We Need To Write A Page That Show A Customized Expandable List\n",
+          TxtExplanation:ExpandableList_Customized_Explanation,
+          RunCodeRoute:new ExpandableListCustomizedRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/ExpandableList_Sound": (BuildContext context)                         =>CmpCodePage(
+          Title:"Expandable List Tap Sound",
+          BackRoute:"/ExpandableList_Customized",
+          NextRoute:"/ExpandableList_Anim",
+          ItemList:ExpandableList_Sound_list,
+          CodeRoute:"lib/Codes_FrontEnd/36_ExpandableList/6_Expandable_List_Sound_Run.dart",
+          TabIcon:Icon(Icons.tune),
+          ToDo:"We Need To Write A Page That Show A Expandable List When Tapped A Sound Must Be Played\n",
+          TxtExplanation:ExpandableList_Sound_Explanation,
+          RunCodeRoute:new ExpandableListTapSoundRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/ExpandableList_Anim": (BuildContext context)                          =>CmpCodePage(
+          Title:"Expandable List Animating ",
+          BackRoute:"/ExpandableList_Sound",
+          NextRoute:"/Slider_Simple",
+          ItemList:ExpandableList_Anim_list,
+          CodeRoute:"lib/Codes_FrontEnd/36_ExpandableList/7_Expandable_List_Anim_Run.dart",
+          TabIcon:Icon(Icons.tune),
+          ToDo:"We Need To Write A Page That Show A Expandable List Having Animated Quizz Image\n",
+          TxtExplanation:ExpandableList_Anim_Explanation,
+          RunCodeRoute:new ExpandableListAnimationRun(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Slider_Simple": (BuildContext context)                                =>CmpCodePage(
+          Title:"Simple Slider",
+          BackRoute:"/ExpandableList_Anim",
+          NextRoute:"/Slider_Color",
+          ItemList:Slider_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/37_Slider/1_SimpleSliderRun.dart",
+          TabIcon:Icon(Icons.tune),
+          ToDo:"We Need To Write A Page That Show A Centered Simple Slider\n",
+          TxtExplanation:Slider_Simple_Explanation,
+          RunCodeRoute:new SimpSliderRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Slider_Color": (BuildContext context)                                =>CmpCodePage(
+          Title:"Simple Color",
+          BackRoute:"/Slider_Simple",
+          NextRoute:"/Slider_MaxMinDiv",
+          ItemList:Slider_Color_list,
+          CodeRoute:"lib/Codes_FrontEnd/37_Slider/2_SliderColorRun.dart",
+          TabIcon:Icon(Icons.tune),
+          ToDo:"We Need To Write A Page That Show A Centered Simple Slider Where Active Color Is Green And Inactive In Red\n",
+          TxtExplanation:Slider_Color_Explanation,
+          RunCodeRoute:new SliderColorRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Slider_MaxMinDiv": (BuildContext context)                             =>CmpCodePage(
+          Title:"Slider Max Min Division",
+          BackRoute:"/Slider_Color",
+          NextRoute:"/Drawer_Left",
+          ItemList:Slider_MaxMinDiv_list,
+          CodeRoute:"lib/Codes_FrontEnd/37_Slider/3_SliderMinMaxDivRun.dart",
+          TabIcon:Icon(Icons.tune),
+          ToDo:"We Need To Write A Page That Show A Centered Simple Slider Where Value Go Between 0 And 1000,Each Division 100\n",
+          TxtExplanation:Slider_MaxMinDiv_Explanation,
+          RunCodeRoute:new SliderMinMaxDivRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Drawer_Left": (BuildContext context)                                  =>CmpCodePage(
+          Title:"Left Drawer",
+          BackRoute:"/Slider_MaxMinDiv",
+          NextRoute:"/Drawer_Right",
+          ItemList:Drawer_Left_list,
+          CodeRoute:"lib/Codes_FrontEnd/38_Drawer/1_Drawer_Left_Run.dart",
+          TabIcon:Icon(Icons.menu),
+          ToDo:"We Need To Write A Page That Show A Left Side Drawer\n",
+          TxtExplanation:Drawer_Left_Explanation,
+          RunCodeRoute:new LeftDrawerRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Drawer_Right": (BuildContext context)                                 =>CmpCodePage(
+          Title:"Right Drawer",
+          BackRoute:"/Drawer_Left",
+          NextRoute:"/MainSplashScreen_Simple",
+          ItemList:Drawer_Right_list,
+          CodeRoute:"lib/Codes_FrontEnd/38_Drawer/2_Drawer_Right_Run.dart",
+          TabIcon:Icon(Icons.menu),
+          ToDo:"We Need To Write A Page That Show A Right Side Drawer\n",
+          TxtExplanation:Drawer_Right_Explanation,
+          RunCodeRoute:new RightDrawerRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/MainSplashScreen_Simple": (BuildContext context)                      =>CmpCodePage(
+          Title:"Main Splash Screen",
+          BackRoute:"/Drawer_Right",
+          NextRoute:"/Admob_Intro",
+          ItemList:MainSplashScreen_list,
+          CodeRoute:"lib/Codes_FrontEnd/39_SplashScreenLoading/MainSplashScreenRun.dart",
+          TabIcon:Icon(Icons.adb),
+          ToDo: "We Need To Show A Page Having Centered Text,But Before Showing That Page We Need A Loader That Last For 5 Seconds\n",
+          TxtExplanation:MainSplashScreen_Explanation,
+          RunCodeRoute:new MainSplashScreenRun(),
+        ),
+
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+
+        "/Admob_Intro": (BuildContext context)                                  =>CmpIntroPage(
+          Title:"Admob Intro",
+          BackRoute:"/MainSplashScreen_Simple",
+          NextRoute:"/Admob_Banner",
+          ItemList:Admob_Intro_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Admob_Banner": (BuildContext context)                                 =>CmpCodePage(
+          Title:"Admob Banner",
+          BackRoute:"/Main",
+          NextRoute:"/Admob_Interstitial",
+          ItemList:Admob_Banner_list,
+          CodeRoute:"lib/Codes_FrontEnd/40_Admob/2_AdmobBanner_Run.dart",
+          TabIcon:Icon(Icons.adb),
+          ToDo: "Write A Page That Show Banner",
+          TxtExplanation:Admob_Banner_Explanation,
+          RunCodeRoute:new AdmobBannerRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Admob_Interstitial": (BuildContext context)                           =>CmpCodePage(
+          Title:"Admob Interstitial",
+          BackRoute:"/Admob_Banner",
+          NextRoute:"/FlipCard_Intro",
+          ItemList:Admob_Interstitial_list,
+          CodeRoute:"lib/Codes_FrontEnd/40_Admob/3_AdmobInterstitial_Run.dart",
+          TabIcon:Icon(Icons.adb),
+          ToDo: "Write A Page That Show Interstitial When:\n1-Loaded\n2-Button Clicked",
+          TxtExplanation:Admob_Interstitial_Explanation,
+          RunCodeRoute:new AdmobInterstitialRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/FlipCard_Intro": (BuildContext context)                               =>CmpIntroPage(
+          Title:"FlipCard Intro",
+          BackRoute:"/Admob_Interstitial",
+          NextRoute:"/FlipCard_Hor",
+          ItemList:FlipCard_Intro_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/FlipCard_Hor": (BuildContext context)                                 =>CmpCodePage(
+          Title:"Horizontal Flip Card",
+          BackRoute:"/FlipCard_Intro",
+          NextRoute:"/FlipCard_Ver",
+          ItemList:FlipCard_Hor_list,
+          CodeRoute:"lib/Codes_FrontEnd/41_FlipCard/2_FlipCardHor_Run.dart",
+          TabIcon:Icon(Icons.flip_to_back),
+          ToDo:"Write a Page That Display A Flip Card That Flip Horizontally\n",
+          TxtExplanation:FlipCard_Hor_Explanation,
+          RunCodeRoute:new FlipCardHorRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/FlipCard_Ver": (BuildContext context)                                 =>CmpCodePage(
+          Title:"Vertical Flip Card",
+          BackRoute:"/FlipCard_Hor",
+          NextRoute:"/FlipView_Intro",
+          ItemList:FlipCard_Ver_list,
+          CodeRoute:"lib/Codes_FrontEnd/41_FlipCard/3_FlipCardVert_Run.dart",
+          TabIcon:Icon(Icons.flip_to_back),
+          ToDo:"Write a Page That Display A Flip Card That Flip Vertically\n",
+          TxtExplanation:FlipCard_Ver_Explanation,
+          RunCodeRoute:new FlipCardVertRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/FlipView_Intro": (BuildContext context)                               =>CmpIntroPage(
+          Title:"FlipView Intro",
+          BackRoute:"/FlipCard_Ver",
+          NextRoute:"/FlipView_Simple",
+          ItemList:FlipView_Intro_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/FlipView_Simple": (BuildContext context)                              =>CmpCodePage(
+          Title:"Simple FlipView",
+          BackRoute:"/FlipView_Intro",
+          NextRoute:"/Stepper_Intro",
+          ItemList:FlipView_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/42_FlipView/2_SimpleFlipView.dart",
+          TabIcon:Icon(Icons.flip),
+          ToDo:"Write a Page That Display A Flip Card Using Flip View\n",
+          TxtExplanation:FlipView_Simple_Explanation,
+          RunCodeRoute:new SimpleFlipViewRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Stepper_Intro": (BuildContext context)                                =>CmpIntroPage(
+          Title:"Stepper Intro",
+          BackRoute:"/FlipView_Simple",
+          NextRoute:"/Stepper_Hor",
+          ItemList:SPI_Intro_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Stepper_Hor": (BuildContext context)                                  =>CmpCodePage(
+          Title:"Horizontal Stepper",
+          BackRoute:"/Stepper_Intro",
+          NextRoute:"/Stepper_Ver",
+          ItemList:Stepper_Hor_list,
+          CodeRoute:"lib/Codes_FrontEnd/43_Stepper/2_StepperHor_Run.dart",
+          TabIcon:Icon(Icons.format_line_spacing),
+          ToDo:"Write a Page That Display Simple Stepper That Step Horizontally\n",
+          TxtExplanation:Stepper_Hor_Explanation,
+          RunCodeRoute:new StepperHorRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Stepper_Ver": (BuildContext context)                                  =>CmpCodePage(
+          Title:"Vertical Stepper",
+          BackRoute:"/Stepper_Hor",
+          NextRoute:"/BottomSheet_Simple",
+          ItemList:Stepper_Ver_list,
+          CodeRoute:"lib/Codes_FrontEnd/43_Stepper/3_StepperVer_Run.dart",
+          TabIcon:Icon(Icons.format_line_spacing),
+          ToDo:"Write a Page That Display Simple Stepper That Step Vertically\n",
+          TxtExplanation:Stepper_Ver_Explanation,
+          RunCodeRoute:new StepperVerRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/BottomSheet_Simple": (BuildContext context)                           =>CmpCodePage(
+          Title:"Simple Bottom Sheet",
+          BackRoute:"/Stepper_Ver",
+          NextRoute:"/SPI_Intro",
+          ItemList:BottomSheet_Simple_CompList,
+          CodeRoute:"lib/Codes_FrontEnd/44_BottomSheet/SimpleBottomSheetRun.dart",
+          TabIcon:Icon(Icons.dashboard),
+          ToDo:"Write a Page That Display A Floating Action Button That Open A Bottom Sheet When Clicked\n",
+          TxtExplanation:BottomSheet_Simple_Explanation,
+          RunCodeRoute:new BottomSheetRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/SPI_Intro": (BuildContext context)                                    =>CmpIntroPage(
+          Title:"Smooth Page Indicator Intro",
+          BackRoute:"/BottomSheet_Simple",
+          NextRoute:"/SPI_Worm",
+          ItemList:SPI_Intro_CompList,
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/SPI_Worm": (BuildContext context)                                     =>CmpCodePage(
+          Title:"SPI Worm Effect",
+          BackRoute:"/SPI_Intro",
+          NextRoute:"/SPI_ExpDots",
+          ItemList:SPI_Worm_list,
+          CodeRoute:"lib/Codes_FrontEnd/45_SmoothPageIndicator/2_SPI_Worm_Run.dart",
+          TabIcon:Icon(Icons.slideshow),
+          ToDo:"Write a Page That Display Simple PageView With Worm Smooth Page Indicator Effect\n",
+          TxtExplanation:SPI_Worm_Explanation,
+          RunCodeRoute:new SPIWormRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/SPI_ExpDots": (BuildContext context)                                  =>CmpCodePage(
+          Title:"SPI Expanding Dots Effect",
+          BackRoute:"/SPI_Worm",
+          NextRoute:"/SPI_JmpDots",
+          ItemList:SPI_ExpDots_list,
+          CodeRoute:"lib/Codes_FrontEnd/45_SmoothPageIndicator/3_SPI_ExpDots_Run.dart",
+          TabIcon:Icon(Icons.slideshow),
+          ToDo:"Write a Page That Display Simple PageView With Expanding Dots Page Indicator Effect\n",
+          TxtExplanation:SPI_ExpDots_Explanation,
+          RunCodeRoute:new SPIExpDotsRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/SPI_JmpDots": (BuildContext context)                                  =>CmpCodePage(
+          Title:"SPI Jumping Dots Effect",
+          BackRoute:"/SPI_ExpDots",
+          NextRoute:"/SPI_ScrollDots",
+          ItemList:SPI_JmpDots_list,
+          CodeRoute:"lib/Codes_FrontEnd/45_SmoothPageIndicator/4_SPI_JumpDots_Run.dart",
+          TabIcon:Icon(Icons.slideshow),
+          ToDo:"Write a Page That Display Simple PageView With Jumping Dots Page Indicator Effect\n",
+          TxtExplanation:SPI_JmpDots_Explanation,
+          RunCodeRoute:new SPIJmpDotsRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/SPI_ScrollDots": (BuildContext context)                               =>CmpCodePage(
+          Title:"SPI Scroll Dots Effect",
+          BackRoute:"/SPI_JmpDots",
+          NextRoute:"/SPI_Scale",
+          ItemList:SPI_ScrollDots_list,
+          CodeRoute:"lib/Codes_FrontEnd/45_SmoothPageIndicator/5_SPI_ScrollDots_Run.dart",
+          TabIcon:Icon(Icons.slideshow),
+          ToDo:"Write a Page That Display Simple PageView With Scroll Dots Page Indicator Effect\n",
+          TxtExplanation:SPI_ScrollDots_Explanation,
+          RunCodeRoute:new SPIScrollDotsRun(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/SPI_Scale": (BuildContext context)                                    =>CmpCodePage(
+          Title:"SPI Scale Effect",
+          BackRoute:"/SPI_ScrollDots",
+          NextRoute:"/SPI_Slider",
+          ItemList:SPI_Scale_list,
+          CodeRoute:"lib/Codes_FrontEnd/45_SmoothPageIndicator/6_SPI_Scale_Run.dart",
+          TabIcon:Icon(Icons.slideshow),
+          ToDo:"Write a Page That Display Simple PageView With Scale Page Indicator Effect\n",
+          TxtExplanation:SPI_Scale_Explanation,
+          RunCodeRoute:new SPIScaleRun(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/SPI_Slider": (BuildContext context)                                   =>CmpCodePage(
+          Title:"SPI Slider Effect",
+          BackRoute:"/SPI_Scale",
+          NextRoute:"/Expandable_Intro",
+          ItemList:SPI_Slide_list,
+          CodeRoute:"lib/Codes_FrontEnd/45_SmoothPageIndicator/7_SPI_Slide_Run.dart",
+          TabIcon:Icon(Icons.slideshow),
+          ToDo:"Write a Page That Display Simple PageView With Slide Page Indicator Effect\n",
+          TxtExplanation:SPI_Slide_Explanation,
+          RunCodeRoute:new SPISlideRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+
+        "/Expandable_Intro": (BuildContext context)                     => CmpIntroPage(
+          Title:"Expandable Intro",
+          BackRoute:"/SPI_Slider",
+          NextRoute:"/Simple_Expandable",
+          ItemList:Expandable_Intro_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Simple_Expandable": (BuildContext context)              => CmpCodePage(
+          Title:"Simple Expandable",
+          BackRoute:"/Expandable_Intro",
+          NextRoute:"/Marquee_Intro",
+          ItemList:SimpleExpandable_list,
+          CodeRoute:"lib/Codes_FrontEnd/46_Expandable/Simple_Expandable_Run.dart",
+          TabIcon:Icon(Icons.expand_less),
+          ToDo:"We Need To Write A Page That Show An Centered Expandable Having Texts As An Body",
+          TxtExplanation:SimpleExpandable_Explanation,
+          RunCodeRoute:new SimpleExpandableRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Marquee_Intro": (BuildContext context)                     => CmpIntroPage(
+          Title:"Marquee Intro",
+          BackRoute:"/Simple_Expandable",
+          NextRoute:"/Marquee_Simple",
+          ItemList:Marquee_Intro_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Marquee_Simple": (BuildContext context)                   => CmpCodePage(
+          Title:"Simple Marquee",
+          BackRoute:"/Marquee_Intro",
+          NextRoute:"/Marquee_ScrollAxis",
+          ItemList:SimpleMarquee_list,
+          CodeRoute:"lib/Codes_FrontEnd/47_Marquee/1_SimpleMarquee_Run.dart",
+          TabIcon:Icon(Icons.forward),
+          ToDo:"We Need To Write A Page That Show An AppBar Having Marquee Title,Centered Marquee Inside A Card.",
+          TxtExplanation:SimpleMarquee_Explanation,
+          RunCodeRoute:new SimpleMarquee(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Marquee_ScrollAxis": (BuildContext context)           => CmpCodePage(
+          Title:"Marquee ScrollAxis",
+          BackRoute:"/Marquee_Simple",
+          NextRoute:"/Marquee_CrossAxis",
+          ItemList:MarqueeScrollAxis_list,
+          CodeRoute:"lib/Codes_FrontEnd/47_Marquee/2_Marquee_ScrollAxis_Run.dart",
+          TabIcon:Icon(Icons.forward),
+          ToDo:"We Need To Write A Page Taking 2 Marquee,First Scroll Horizontally,Second vertically",
+          TxtExplanation:SimpleMarquee_Explanation,
+          RunCodeRoute:new MarqueeScrollAxis(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Marquee_CrossAxis": (BuildContext context)           => CmpCodePage(
+          Title:"Marquee CrossAxis",
+          BackRoute:"/Marquee_ScrollAxis",
+          NextRoute:"/Marquee_PauseAfterRound",
+          ItemList:MarqueeCrossAxis_list,
+          CodeRoute:"lib/Codes_FrontEnd/47_Marquee/3_Marquee_CrossAxisAlignement_Run.dart",
+          TabIcon:Icon(Icons.forward),
+          ToDo:"We Need To Write A Page Taking Marquees,Show All Options Horizontally And Vertically",
+          TxtExplanation:MarqueeCrossAxis_Explanation,
+          RunCodeRoute:new MarqueeCrossAxis(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Marquee_PauseAfterRound": (BuildContext context)           => CmpCodePage(
+          Title:"Marquee Pause After Round ",
+          BackRoute:"/Marquee_CrossAxis",
+          NextRoute:"/Marquee_AccelerationDuration",
+          ItemList:MarqueePauseAfterRound_list,
+          CodeRoute:"lib/Codes_FrontEnd/47_Marquee/4_Marquee_PauseAfterRound_Run.dart",
+          TabIcon:Icon(Icons.forward),
+          ToDo:"We Need To Write A Page Taking 2 Marquee,First Pause After Round Duration Take 2secs The Second Take 5secs",
+          TxtExplanation:MarqueePauseAfterRound_Explanation,
+          RunCodeRoute:new MarqueePauseAfterRound(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Marquee_AccelerationDuration": (BuildContext context)           => CmpCodePage(
+          Title:"Marquee Acceleration Duration",
+          BackRoute:"/Marquee_PauseAfterRound",
+          NextRoute:"/ContainerWaves_Intro",
+          ItemList:MarqueeAccelerationDuration_list,
+          CodeRoute:"lib/Codes_FrontEnd/47_Marquee/5_Marquee_AccelerationDuration_Run.dart",
+          TabIcon:Icon(Icons.forward),
+          ToDo:"We Need To Write A Page Taking 2 Marquee,First Acceleration Duration Take 2secs The Second Take 5secs",
+          TxtExplanation:MarqueeAccelerationDuration_Explanation,
+          RunCodeRoute:new MarqueeAccelerationDur(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/ContainerWaves_Intro": (BuildContext context)                     => CmpIntroPage(
+          Title:"Marquee Intro",
+          BackRoute:"/Marquee_AccelerationDuration",
+          NextRoute:"/ContainerWaves_Simple",
+          ItemList:ContainerWaves_Intro_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/ContainerWaves_Simple": (BuildContext context)           => CmpCodePage(
+          Title:"Container Waves",
+          BackRoute:"/ContainerWaves_Intro",
+          NextRoute:"/RouteTransition_Intro",
+          ItemList:ContainerWaves_list,
+          CodeRoute:"lib/Codes_FrontEnd/48_ContainerWaves/ContainerWaves_Simple_Run.dart",
+          TabIcon:Icon(Icons.exposure),
+          ToDo:"We Need To Write A Page That Container A Card Having Waves",
+          TxtExplanation:ContainerWaves_Explanation,
+          RunCodeRoute:new ContainerWaveRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/RouteTransition_Intro": (BuildContext context)                     => CmpIntroPage(
+          Title:"Route Transition Introduction",
+          BackRoute:"/ContainerWaves_Simple",
+          NextRoute:"/RouteTransition_SlideRight",
+          ItemList:RouteTransition_Intro_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/RouteTransition_SlideRight": (BuildContext context)           => CmpCodePage(
+          Title:"Route Transition Slide Right",
+          BackRoute:"/RouteTransition_Intro",
+          NextRoute:"/RouteTransition_SlideLeft",
+          ItemList:RouteTransition_SlideRight_list,
+          CodeRoute:"lib/Codes_FrontEnd/49_RouteTransition/1_RouteTransition_SlideRight.dart",
+          TabIcon:Icon(Icons.keyboard_arrow_right),
+          ToDo:"We Need To Write A Page1 Containing A Button That Take The User To Page2 Using Slide Right Transition",
+          TxtExplanation:RouteTransition_SlideRight_Explanation,
+          RunCodeRoute:new SlideRightMain(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/RouteTransition_SlideLeft": (BuildContext context)           => CmpCodePage(
+          Title:"Route Transition Slide Left",
+          BackRoute:"/RouteTransition_SlideRight",
+          NextRoute:"/RouteTransition_SlideUp",
+          ItemList:RouteTransition_SlideLeft_list,
+          CodeRoute:"lib/Codes_FrontEnd/49_RouteTransition/2_RouteTransition_SlideLeft.dart",
+          TabIcon:Icon(Icons.keyboard_arrow_right),
+          ToDo:"We Need To Write A Page1 Containing A Button That Take The User To Page2 Using Slide Left Transition",
+          TxtExplanation:RouteTransition_SlideLeft_Explanation,
+          RunCodeRoute:new SlideLeftMain(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/RouteTransition_SlideUp": (BuildContext context)           => CmpCodePage(
+          Title:"Route Transition Slide Up",
+          BackRoute:"/RouteTransition_SlideLeft",
+          NextRoute:"/RouteTransition_SlideDown",
+          ItemList:RouteTransition_SlideUp_list,
+          CodeRoute:"lib/Codes_FrontEnd/49_RouteTransition/3_RouteTransition_SlideUp.dart",
+          TabIcon:Icon(Icons.keyboard_arrow_right),
+          ToDo:"We Need To Write A Page1 Containing A Button That Take The User To Page2 Using Slide Up Transition",
+          TxtExplanation:RouteTransition_SlideUp_Explanation,
+          RunCodeRoute:new SlideUpMain(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/RouteTransition_SlideDown": (BuildContext context)           => CmpCodePage(
+          Title:"Route Transition Slide Down",
+          BackRoute:"/RouteTransition_SlideUp",
+          NextRoute:"/RouteTransition_Scale",
+          ItemList:RouteTransition_SlideDown_list,
+          CodeRoute:"lib/Codes_FrontEnd/49_RouteTransition/4_RouteTransition_SlideDown.dart",
+          TabIcon:Icon(Icons.keyboard_arrow_right),
+          ToDo:"We Need To Write A Page1 Containing A Button That Take The User To Page2 Using Slide Down Transition",
+          TxtExplanation:RouteTransition_SlideDown_Explanation,
+          RunCodeRoute:new SlideDownMain(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/RouteTransition_Scale": (BuildContext context)            => CmpCodePage(
+          Title:"Route Transition Scale",
+          BackRoute:"/RouteTransition_SlideDown",
+          NextRoute:"/RouteTransition_Rotate",
+          ItemList:RouteTransition_Scale_list,
+          CodeRoute:"lib/Codes_FrontEnd/49_RouteTransition/5_RouteTransition_Scale.dart",
+          TabIcon:Icon(Icons.keyboard_arrow_right),
+          ToDo:"We Need To Write A Page1 Containing A Button That Take The User To Page2 Using Scale Transition",
+          TxtExplanation:RouteTransition_Scale_Explanation,
+          RunCodeRoute:new ScaleMain(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/RouteTransition_Rotate": (BuildContext context)            => CmpCodePage(
+          Title:"Route Transition Rotate",
+          BackRoute:"/RouteTransition_Scale",
+          NextRoute:"/RouteTransition_Size",
+          ItemList:RouteTransition_Rotate_list,
+          CodeRoute:"lib/Codes_FrontEnd/49_RouteTransition/6_RouteTransition_Rotate.dart",
+          TabIcon:Icon(Icons.keyboard_arrow_right),
+          ToDo:"We Need To Write A Page1 Containing A Button That Take The User To Page2 Using Rotate Transition",
+          TxtExplanation:RouteTransition_Rotate_Explanation,
+          RunCodeRoute:new RotateMain(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/RouteTransition_Size": (BuildContext context)            => CmpCodePage(
+          Title:"Route Transition Size",
+          BackRoute:"/RouteTransition_Rotate",
+          NextRoute:"/RouteTransition_Fade",
+          ItemList:RouteTransition_Size_list,
+          CodeRoute:"lib/Codes_FrontEnd/49_RouteTransition/7_RouteTransition_Size.dart",
+          TabIcon:Icon(Icons.keyboard_arrow_right),
+          ToDo:"We Need To Write A Page1 Containing A Button That Take The User To Page2 Using Size Transition",
+          TxtExplanation:RouteTransition_Size_Explanation,
+          RunCodeRoute:new SizeTransMain(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/RouteTransition_Fade": (BuildContext context)            => CmpCodePage(
+          Title:"Route Transition Fade",
+          BackRoute:"/RouteTransition_Size",
+          NextRoute:"/FlutterSyntaxe_Intro",
+          ItemList:RouteTransition_Fade_list,
+          CodeRoute:"lib/Codes_FrontEnd/49_RouteTransition/8_RouteTransition_Fade.dart",
+          TabIcon:Icon(Icons.keyboard_arrow_right),
+          ToDo:"We Need To Write A Page1 Containing A Button That Take The User To Page2 Using Fade Transition",
+          TxtExplanation:RouteTransition_Fade_Explanation,
+          RunCodeRoute:new FadeTransMain(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/FlutterSyntaxe_Intro": (BuildContext context)                   => CmpIntroPage(
+          Title:"Flutter Syntaxe Introduction",
+          BackRoute:"/RouteTransition_Fade",
+          NextRoute:"/FlutterSyntaxe_CodeView",
+          ItemList:DartSyntaxeHighlight_Intro_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/FlutterSyntaxe_CodeView": (BuildContext context)           => CmpCodePage(
+          Title:"Flutter Syntaxe Code View",
+          BackRoute:"/FlutterSyntaxe_Intro",
+          NextRoute:"/FlutterSyntaxe_CodeAndSourceView",
+          ItemList:FlutterSyntaxe_CodeView_list,
+          CodeRoute:"lib/Codes_FrontEnd/50_Flutter_Syntaxe/1_FlutterSyntaxe_CodeView_Run.dart",
+          TabIcon:Icon(Icons.highlight),
+          ToDo:"We Need To Write A Page That Show Code Highlited Using Dart",
+          TxtExplanation:FlutterSyntaxe_CodeView_Explanation,
+          RunCodeRoute:new FlutterSyntaxeCodeView(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/FlutterSyntaxe_CodeAndSourceView": (BuildContext context)           => CmpCodePage(
+          Title:"Flutter Syntaxe Code And Source View",
+          BackRoute:"/FlutterSyntaxe_CodeView",
+          NextRoute:"/SlidingUpPanel_Intro",
+          ItemList:FlutterSyntaxe_CodeAndSourceView_list,
+          CodeRoute:"lib/Codes_FrontEnd/50_Flutter_Syntaxe/2_FlutterSyntaxe_CodeAndSourceView_Run.dart",
+          TabIcon:Icon(Icons.highlight),
+          ToDo:"We Need To Write A Page That Show Code Highlited Using Dart",
+          TxtExplanation:FlutterSyntaxe_CodeAndSourceView_Explanation,
+          RunCodeRoute:new FlutterSyntaxeCodeAndSourceView(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/SlidingUpPanel_Intro": (BuildContext context)                   => CmpIntroPage(
+          Title:"Sliding Up Panel Introduction",
+          BackRoute:"/FlutterSyntaxe_CodeAndSourceView",
+          NextRoute:"/SlidingUpPanel_Simple",
+          ItemList:SlidingUpPanel_Intro_CompList,
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/SlidingUpPanel_Simple": (BuildContext context)                        => CmpCodePage(
+          Title:"Simple Sliding Up Panel",
+          BackRoute:"/SlidingUpPanel_Intro",
+          NextRoute:"/PopupMenuButton_AppBar",
+          ItemList:SlidingUpPanel_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/51_SlidingUpPanel/1_Simple_Sliding_Up_Panel_Run.dart",
+          TabIcon:Icon(Icons.open_in_browser),
+          ToDo:"Create A Page Containing A Simple Sliding Up Panel",
+          TxtExplanation:SlidingUpPanel_Simple_Explanation,
+          RunCodeRoute:new SimpleSlidingUpPanel(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/PopupMenuButton_AppBar": (BuildContext context)                        => CmpCodePage(
+          Title:"AppBar Popup Menu Button",
+          BackRoute:"/SlidingUpPanel_Simple",
+          NextRoute:"/PopupMenuButton_ListTile",
+          ItemList:PopupMenuButton_AppBar_list,
+          CodeRoute:"lib/Codes_FrontEnd/52_Popup_Menu_Button/1_Simple_AppBar_Popup_Menu_Button.dart",
+          TabIcon:Icon(Icons.more_vert),
+          ToDo:"Create A Page Containing A PopupMenu In The AppBar",
+          TxtExplanation:PopupMenuButton_AppBar_Explanation,
+          RunCodeRoute:new SimpleAppBarPopupMenuButton(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+
+        "/PopupMenuButton_ListTile": (BuildContext context)                        => CmpCodePage(
+          Title:"ListTile Popup Menu Button",
+          BackRoute:"/PopupMenuButton_AppBar",
+          NextRoute:"/Hero_Simple",
+          ItemList:PopupMenuButton_ListTile_list,
+          CodeRoute:"lib/Codes_FrontEnd/52_Popup_Menu_Button/2_ListTile_Popup_Menu_Button.dart",
+          TabIcon:Icon(Icons.more_vert),
+          ToDo:"Create A Page Containing A PopupMenu In ListTile",
+          TxtExplanation:PopupMenuButton_ListTile_Explanation,
+          RunCodeRoute:new ListTilePopupMenuButton(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/Hero_Simple": (BuildContext context)                        => CmpCodePage(
+          Title:"Simple Hero Animation",
+          BackRoute:"/PopupMenuButton_ListTile",
+          NextRoute:"/Hero_Advanced",
+          ItemList:Hero_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/53_Hero_Animation/1_Simple_Hero.dart",
+          TabIcon:Icon(Icons.wallpaper),
+          ToDo:"Create A Page Containing A Simple ListTiles Having Images As Leading,Playing Hero Animation When Tapped",
+          TxtExplanation:Hero_Simple_Explanation,
+          RunCodeRoute:new SimpleHero(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/Hero_Advanced": (BuildContext context)                        => CmpCodePage(
+          Title:"Advanced Hero Animation",
+          BackRoute:"/Hero_Simple",
+          NextRoute:"/AvatarGlow_Intro",
+          ItemList:Hero_Advanced_list,
+          CodeRoute:"lib/Codes_FrontEnd/53_Hero_Animation/2_Advanced_Hero.dart",
+          TabIcon:Icon(Icons.wallpaper),
+          ToDo:"Create A Page Containing A PageView Taking Images,Once Tapped hero Animation Must Be Played",
+          TxtExplanation:Hero_Advanced_Explanation,
+          RunCodeRoute:new AdvancedHeroRun(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/AvatarGlow_Intro": (BuildContext context)                        => CmpIntroPage(
+          Title:"Avatar Glow Intro",
+          BackRoute:"/Hero_Advanced",
+          NextRoute:"/AvatarGlow_1Glow",
+          ItemList:AvatarGlow_Intro_CompList,
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/AvatarGlow_1Glow": (BuildContext context)                        => CmpCodePage(
+          Title:"Avatar Glow 1 Glow",
+          BackRoute:"/AvatarGlow_Intro",
+          NextRoute:"/AvatarGlow_2Glow",
+          ItemList:AvatarGlow_1Glow_list,
+          CodeRoute:"lib/Codes_FrontEnd/54_AvatarGlow/1_AvatarGlow_1Glow.dart",
+          TabIcon:Icon(Icons.wifi_tethering),
+          ToDo:"Create A Page Containing In A Center Layout AvatarGlow Taking An Circle Image With 1 Glow",
+          TxtExplanation:AvatarGlow_1Glow_Explanation,
+          RunCodeRoute:new Avatar1Glow(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/AvatarGlow_2Glow": (BuildContext context)                        => CmpCodePage(
+          Title:"Avatar Glow 2 Glow",
+          BackRoute:"/AvatarGlow_1Glow",
+          NextRoute:"/AvatarGlow_More",
+          ItemList:AvatarGlow_2Glow_list,
+          CodeRoute:"lib/Codes_FrontEnd/54_AvatarGlow/2_AvatarGlow_2Glow.dart",
+          TabIcon:Icon(Icons.wifi_tethering),
+          ToDo:"Create A Page Containing In A Center Layout AvatarGlow Taking An Circle Image With 2 Glow",
+          TxtExplanation:AvatarGlow_2Glow_Explanation,
+          RunCodeRoute:new Avatar2Glow(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/AvatarGlow_More": (BuildContext context)                        => CmpCodePage(
+          Title:"Avatar Glow More",
+          BackRoute:"/AvatarGlow_2Glow",
+          NextRoute:"/DataTable_Simple",
+          ItemList:AvatarGlow_More_list,
+          CodeRoute:"lib/Codes_FrontEnd/54_AvatarGlow/3_AvatarGlow_More.dart",
+          TabIcon:Icon(Icons.wifi_tethering),
+          ToDo:"Create A Page Containing Avatar Glows With Different EndRadius And Glow\n\n",
+          TxtExplanation:AvatarGlow_More_Explanation,
+          RunCodeRoute:new AvatarGlowMore(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/DataTable_Simple": (BuildContext context)                        => CmpCodePage(
+          Title:"Simple Data Table",
+          BackRoute:"/AvatarGlow_More",
+          NextRoute:"/DataTable_Sort",
+          ItemList:DataTable_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/55_DataTable/1_DataTable_Simple.dart",
+          TabIcon:Icon(Icons.table_chart),
+          ToDo:"Create A Page Containing A Simple DataTable With Fixed Data",
+          TxtExplanation:DataTable_Simple_Explanation,
+          RunCodeRoute:new SimpleDataTable(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/DataTable_Sort": (BuildContext context)                        => CmpCodePage(
+          Title:"Data Table Sort",
+          BackRoute:"/DataTable_Simple",
+          NextRoute:"/DataTable_Insert",
+          ItemList:DataTable_Sort_list,
+          CodeRoute:"lib/Codes_FrontEnd/55_DataTable/2_DataTable_Sort.dart",
+          TabIcon:Icon(Icons.table_chart),
+          ToDo:"Create A Page Containing A Simple DataTable With Fixed Data,Allow Sorting By Columns",
+          TxtExplanation:DataTable_Sort_Explanation,
+          RunCodeRoute:new SortDataTable(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/DataTable_Insert": (BuildContext context)                        => CmpCodePage(
+          Title:"Data Table Insert",
+          BackRoute:"/DataTable_Sort",
+          NextRoute:"/DataTable_Update",
+          ItemList:DataTable_Insert_list,
+          CodeRoute:"lib/Codes_FrontEnd/55_DataTable/3_DataTable_Insert.dart",
+          TabIcon:Icon(Icons.table_chart),
+          ToDo:"Create A Page Containing A Simple DataTable Where User Can Insert New Data To The DataTable",
+          TxtExplanation:DataTable_Insert_Explanation,
+          RunCodeRoute:new InsertDataTable(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/DataTable_Update": (BuildContext context)                        => CmpCodePage(
+          Title:"Data Table Update",
+          BackRoute:"/DataTable_Insert",
+          NextRoute:"/DataTable_Delete",
+          ItemList:DataTable_Update_list,
+          CodeRoute:"lib/Codes_FrontEnd/55_DataTable/4_DataTable_Update.dart",
+          TabIcon:Icon(Icons.table_chart),
+          ToDo:"Create A Page Containing A Simple DataTable Where User Can Update Data From The DataTable",
+          TxtExplanation:DataTable_Update_Explanation,
+          RunCodeRoute:new UpdateDataTable(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/DataTable_Delete": (BuildContext context)                        => CmpCodePage(
+          Title:"Data Table Delete",
+          BackRoute:"/DataTable_Update",
+          NextRoute:"/DataTable_DeleteAll",
+          ItemList:DataTable_Delete_list,
+          CodeRoute:"lib/Codes_FrontEnd/55_DataTable/5_DataTable_Delete.dart",
+          TabIcon:Icon(Icons.table_chart),
+          ToDo:"Create A Page Containing A Simple DataTable Where User Can Delete Data From The DataTable",
+          TxtExplanation:DataTable_Delete_Explanation,
+          RunCodeRoute:new DeleteDataTable(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/DataTable_DeleteAll": (BuildContext context)                        => CmpCodePage(
+          Title:"Data Table DeleteAll",
+          BackRoute:"/DataTable_Delete",
+          NextRoute:"/DataTable_BgColor",
+          ItemList:DataTable_BgColor_list,
+          CodeRoute:"lib/Codes_FrontEnd/55_DataTable/6_DataTable_DeleteAll.dart",
+          TabIcon:Icon(Icons.table_chart),
+          ToDo:"Create A Page Containing A Simple DataTable With DeleteAll Button,Once Clicked All Data Must Be Cleared From DataTable",
+          TxtExplanation:DataTable_BgColor_Explanation,
+          RunCodeRoute:new DataTableBgColor(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/DataTable_BgColor": (BuildContext context)                        => CmpCodePage(
+          Title:"Data Table Background Color",
+          BackRoute:"/DataTable_DeleteAll",
+          NextRoute:"/DataTable_Pagination",
+          ItemList:DataTable_BgColor_list,
+          CodeRoute:"lib/Codes_FrontEnd/55_DataTable/7_DataTable_BgColor.dart",
+          TabIcon:Icon(Icons.table_chart),
+          ToDo:"Create A Page Containing A Simple DataTable With Custom Bg Color",
+          TxtExplanation:DataTable_BgColor_Explanation,
+          RunCodeRoute:new DataTableBgColor(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/DataTable_Pagination": (BuildContext context)                        => CmpCodePage(
+          Title:"Data Table Pagination",
+          BackRoute:"/DataTable_BgColor",
+          NextRoute:"/WebView_Intro",
+          ItemList:DataTable_Pagination_list,
+          CodeRoute:"lib/Codes_FrontEnd/55_DataTable/8_DataTable_Pagination.dart",
+          TabIcon:Icon(Icons.table_chart),
+          ToDo:"Create A Page Containing A Simple DataTable With Custom Bg Color",
+          TxtExplanation:DataTable_Pagination_Explanation,
+          RunCodeRoute:new PaginationDataTable(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+
+        "/WebView_Intro": (BuildContext context)                        => CmpIntroPage(
+          Title:"WebView Intro",
+          BackRoute:"/DataTable_DeleteAll",
+          NextRoute:"/WebView_Simple",
+          ItemList:WebView_Intro_CompList,
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/WebView_Simple": (BuildContext context)                        => CmpCodePage(
+          Title:"Simple WebView",
+          BackRoute:"/WebView_Intro",
+          NextRoute:"/BackDrop_Intro",
+          ItemList:WebView_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/56_WebView/1_WebView_Simple.dart",
+          TabIcon:Icon(Icons.web_asset),
+          ToDo:"Create A Page Containing Icon And A Button,Once Button Is Clicked Load Any Web Page",
+          TxtExplanation:WebView_Simple_Explanation,
+          RunCodeRoute:new SimpleWebView(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/BackDrop_Intro": (BuildContext context)                        => CmpIntroPage(
+          Title:"BackDrop Intro",
+          BackRoute:"/WebView_Simple",
+          NextRoute:"/BackDrop_Left",
+          ItemList:BackDrop_Intro_CompList,
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+        "/BackDrop_Left": (BuildContext context)                        => CmpCodePage(
+          Title:"Left BackDrop",
+          BackRoute:"/BackDrop_Intro",
+          NextRoute:"/BackDrop_Right",
+          ItemList:BackDrop_Left_List,
+          CodeRoute:"lib/Codes_FrontEnd/57_BackDrop/1_BackDrop_Left.dart",
+          TabIcon:Icon(Icons.menu),
+          ToDo:"Create A Page Containing Taking A Left Icon BackDrop",
+          TxtExplanation:BackDrop_Left_Explanation,
+          RunCodeRoute:new SimpleLeftBackDrop(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/BackDrop_Right": (BuildContext context)                        => CmpCodePage(
+          Title:"Right BackDrop",
+          BackRoute:"/BackDrop_Left",
+          NextRoute:"/BackDrop_Custom",
+          ItemList:BackDrop_Right_List,
+          CodeRoute:"lib/Codes_FrontEnd/57_BackDrop/2_BackDrop_Right.dart",
+          TabIcon:Icon(Icons.menu),
+          ToDo:"Create A Page Containing Taking A Right Icon BackDrop",
+          TxtExplanation:BackDrop_Right_Explanation,
+          RunCodeRoute:new SimpleRightBackDrop(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/BackDrop_Custom": (BuildContext context)                        => CmpCodePage(
+          Title:"Custiom BackDrop",
+          BackRoute:"/BackDrop_Right",
+          NextRoute:"/Animated_Icons",
+          ItemList:BackDrop_Custom_List,
+          CodeRoute:"lib/Codes_FrontEnd/57_BackDrop/3_BackDrop_Custom.dart",
+          TabIcon:Icon(Icons.menu),
+          ToDo:"Create A Page Containing Taking Teal Background Color Backdrop,Customizable Icon.Set 2 ListTile That Each Change FrontLayer Page",
+          TxtExplanation:BackDrop_Custom_Explanation,
+          RunCodeRoute:new CustomBackDrop(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+
+        "/Animated_Icons": (BuildContext context)                             =>Animated_Icons(),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Tinder_Swipe": (BuildContext context)                        => CmpCodePage(
+          Title:"Tinder Swipe",
+          BackRoute:"/Animated_Icons",
+          NextRoute:"/Image_Picker",
+          ItemList:TinderSwipe_List,
+          CodeRoute:"lib/Codes_FrontEnd/59_TinderSwipe/1_Tinder_Swipe.dart",
+          TabIcon:Icon(Icons.wrap_text),
+          ToDo:"Soon",
+          TxtExplanation:TinderSwipe_Explanation,
+          RunCodeRoute:new TinderSwipe(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/Image_Picker": (BuildContext context)                        => CmpCodePage(
+          Title:"Image Picker",
+          BackRoute:"/Tinder_Swipe",
+          NextRoute:"/Multiple_Image_Picker",
+          ItemList:ImagePicker_List,
+          CodeRoute:"lib/Codes_FrontEnd/60_ImagePicker/ImagePicker.dart",
+          TabIcon:Icon(Icons.image),
+          ToDo:"Create A Page That Allow User To Select Image From Gallery Or From Camera",
+          TxtExplanation:ImagePicker_Explanation,
+          RunCodeRoute:new ImagePickerRun(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/Multiple_Image_Picker": (BuildContext context)                        => CmpCodePage(
+          Title:"Multiple Image Picker",
+          BackRoute:"/Image_Picker",
+          NextRoute:"/Advance_Pdf_Viewer_Asset",
+          ItemList:MultipleImagePicker_List,
+          CodeRoute:"lib/Codes_FrontEnd/61_MultipleImagePicker/MultipleImagePicker.dart",
+          TabIcon:Icon(Icons.image),
+          ToDo:"Create A Page That Allow User To Select Multiple Image From Gallery Or From Camera",
+          TxtExplanation:MultipleImagePicker_Explanation,
+          RunCodeRoute:new MutipleImagePickerRun(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/Advance_Pdf_Viewer_Asset": (BuildContext context)                        => CmpCodePage(
+          Title:"Advance Pdf Viewer Asset",
+          BackRoute:"/Multiple_Image_Picker",
+          NextRoute:"/Advance_Pdf_Viewer_Url",
+          ItemList:AdvancePdfViewer_Asset_List,
+          CodeRoute:"lib/Codes_FrontEnd/62_Advance_Pdf_Viewer/1_Advance_Pdf_Viewer_Asset.dart",
+          TabIcon:Icon(Icons.attachment),
+          ToDo:"Create A Page That Load PDF Document From Assets Once Page Loaded",
+          TxtExplanation:AdvancePdfViewer_Asset_Explanation,
+          RunCodeRoute:new AdvancePdfViewerAsset(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/Advance_Pdf_Viewer_Url": (BuildContext context)                        => CmpCodePage(
+          Title:"Advance Pdf Viewer Url",
+          BackRoute:"/Advance_Pdf_Viewer_Asset",
+          NextRoute:"/Google_NavBar",
+          ItemList:AdvancePdfViewer_Url_List,
+          CodeRoute:"lib/Codes_FrontEnd/62_Advance_Pdf_Viewer/2_Advance_Pdf_Viewer_Url.dart",
+          TabIcon:Icon(Icons.attachment),
+          ToDo:"Create A Page That Load PDF Document From Url Once Page Loaded",
+          TxtExplanation:AdvancePdfViewer_Url_Explanation,
+          RunCodeRoute:new AdvancePdfViewerUrl(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/Google_NavBar": (BuildContext context)                        => CmpCodePage(
+          Title:"Google NavBar",
+          BackRoute:"/Advance_Pdf_Viewer_Url",
+          NextRoute:"/Clippy_Triangle",
+          ItemList:GoogleNavBar_List,
+          CodeRoute:"lib/Codes_FrontEnd/63_Google_NavBar/1_Google_NavBar.dart",
+          TabIcon:Icon(Icons.edit_attributes),
+          ToDo:"Create A Page That Show A Bottom Google NavBar",
+          TxtExplanation:GoogleNavBar_Explanation,
+          RunCodeRoute:new GoogleNavBar(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/Clippy_Triangle": (BuildContext context)                        => CmpCodePage(
+          Title:"Clippy Triangle",
+          BackRoute:"/Google_NavBar",
+          NextRoute:"/Clippy_Chevron",
+          ItemList:Clippy_Triangle_List,
+          CodeRoute:"lib/Codes_FrontEnd/64_Clippy/1_Clippy_Triangle.dart",
+          TabIcon:Icon(Icons.format_shapes),
+          ToDo:"Create A Page That Clip An Image As Triangle",
+          TxtExplanation:Clippy_Triangle_Explanation,
+          RunCodeRoute:new ClippyTriangle(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/Clippy_Chevron": (BuildContext context)                        => CmpCodePage(
+          Title:"Clippy Chevron",
+          BackRoute:"/Clippy_Triangle",
+          NextRoute:"/Clippy_Arc",
+          ItemList:Clippy_Chevron_List,
+          CodeRoute:"lib/Codes_FrontEnd/64_Clippy/2_Clippy_Chevron.dart",
+          TabIcon:Icon(Icons.format_shapes),
+          ToDo:"Create A Page That Clip An Image As Chevron",
+          TxtExplanation:Clippy_Chevron_Explanation,
+          RunCodeRoute:new ClippyChevron(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/Clippy_Arc": (BuildContext context)                        => CmpCodePage(
+          Title:"Clippy Arc",
+          BackRoute:"/Clippy_Chevron",
+          NextRoute:"/Clippy_Diagonal",
+          ItemList:Clippy_Arc_List,
+          CodeRoute:"lib/Codes_FrontEnd/64_Clippy/3_Clippy_Arc.dart",
+          TabIcon:Icon(Icons.format_shapes),
+          ToDo:"Create A Page That Clip An Image As Arc",
+          TxtExplanation:Clippy_Arc_Explanation,
+          RunCodeRoute:new ClippyArc(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/Clippy_Diagonal": (BuildContext context)                        => CmpCodePage(
+          Title:"Clippy Diagonal",
+          BackRoute:"/Clippy_Arc",
+          NextRoute:"/Clippy_Bevel",
+          ItemList:Clippy_Diagonal_List,
+          CodeRoute:"lib/Codes_FrontEnd/64_Clippy/4_Clippy_Diagonal.dart",
+          TabIcon:Icon(Icons.format_shapes),
+          ToDo:"Create A Page That Clip An Image As Diagonal",
+          TxtExplanation:Clippy_Diagonal_Explanation,
+          RunCodeRoute:new ClippyDiagonal(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/Clippy_Bevel": (BuildContext context)                        => CmpCodePage(
+          Title:"Clippy Bevel",
+          BackRoute:"/Clippy_Diagonal",
+          NextRoute:"/Clippy_ButtCheek",
+          ItemList:Clippy_Bevel_List,
+          CodeRoute:"lib/Codes_FrontEnd/64_Clippy/5_Clippy_Bevel.dart",
+          TabIcon:Icon(Icons.format_shapes),
+          ToDo:"Create A Page That Clip An Image As Bevel",
+          TxtExplanation:Clippy_Bevel_Explanation,
+          RunCodeRoute:new ClippyBevel(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/Clippy_ButtCheek": (BuildContext context)                        => CmpCodePage(
+          Title:"Clippy ButtCheek",
+          BackRoute:"/Clippy_Bevel",
+          NextRoute:"/Water_Drop",
+          ItemList:Clippy_ButtCheek_List,
+          CodeRoute:"lib/Codes_FrontEnd/64_Clippy/6_ButtCheek.dart",
+          TabIcon:Icon(Icons.format_shapes),
+          ToDo:"Create A Page That Clip An Image As ButtCheek",
+          TxtExplanation:Clippy_ButtCheek_Explanation,
+          RunCodeRoute:new ClippyButtcheek(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/Water_Drop": (BuildContext context)                        => CmpCodePage(
+          Title:"Water Drop",
+          BackRoute:"/Clippy_ButtCheek",
+          NextRoute:"/Day_Night_Picker",
+          ItemList:WaterDrop_List,
+          CodeRoute:"lib/Codes_FrontEnd/65_Water_Drop/1_Water_Drop.dart",
+          TabIcon:Icon(Icons.grain),
+          ToDo:"Create A Page That Show A Card Having Simple Text With Water Drops",
+          TxtExplanation:WaterDrop_Explanation,
+          RunCodeRoute:new WaterDropRun(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/Day_Night_Picker": (BuildContext context)                        => CmpCodePage(
+          Title:"Day Night Picker",
+          BackRoute:"/Water_Drop",
+          NextRoute:"/GrafPix_Icons",
+          ItemList:Day_Night_Picker_List,
+          CodeRoute:"lib/Codes_FrontEnd/66_DayNightPicker/1_DayNightPicker.dart",
+          TabIcon:Icon(Icons.timer),
+          ToDo:"Create A Page That Show A Day Night Time Picker",
+          TxtExplanation:Day_Night_Picker_Explanation,
+          RunCodeRoute:new DayNightPicker(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/GrafPix_Icons": (BuildContext context)                        => CmpCodePage(
+          Title:"GrafPix Icons",
+          BackRoute:"/Day_Night_Picker",
+          NextRoute:"/GrafPix_Loaders",
+          ItemList:GrafPix_Icons_List,
+          CodeRoute:"lib/Codes_FrontEnd/67_GrafPix/1_GrafPix_Icons.dart",
+          TabIcon:Icon(Icons.import_contacts),
+          ToDo:"Create A Page That Show Some Of GrafPix Icons",
+          TxtExplanation:GrafPix_Icons_Explanation,
+          RunCodeRoute:new GrafPixIcon(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/GrafPix_Loaders": (BuildContext context)                        => CmpCodePage(
+          Title:"GrafPix Loaders",
+          BackRoute:"/GrafPix_Icons",
+          NextRoute:"/GrafPix_Button",
+          ItemList:GrafPix_Loaders_List,
+          CodeRoute:"lib/Codes_FrontEnd/67_GrafPix/2_GrafPix_Loaders.dart",
+          TabIcon:Icon(Icons.import_contacts),
+          ToDo:"Create A Page That Show Some GrafPix Loaders",
+          TxtExplanation:GrafPix_Loaders_Explanation,
+          RunCodeRoute:new GrafPixLoaders(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/GrafPix_Button": (BuildContext context)                        => CmpCodePage(
+          Title:"GrafPix Button",
+          BackRoute:"/GrafPix_Loaders",
+          NextRoute:"/GrafPix_Medal",
+          ItemList:GrafPix_Buttons_List,
+          CodeRoute:"lib/Codes_FrontEnd/67_GrafPix/3_GrafPix_Button.dart",
+          TabIcon:Icon(Icons.import_contacts),
+          ToDo:"Create A Page That Show GrafPix Button",
+          TxtExplanation:GrafPix_Buttons_Explanation,
+          RunCodeRoute:new GrafPixButtons(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/GrafPix_Medal": (BuildContext context)                        => CmpCodePage(
+          Title:"GrafPix Medal",
+          BackRoute:"/GrafPix_Button",
+          NextRoute:"/SimpleListScrollWheel",
+          ItemList:GrafPix_Medals_List,
+          CodeRoute:"lib/Codes_FrontEnd/67_GrafPix/4_GrafPix_Medal.dart",
+          TabIcon:Icon(Icons.import_contacts),
+          ToDo:"Create A Page That Show GrafPix Medal",
+          TxtExplanation:GrafPix_Medals_Explanation,
+          RunCodeRoute:new GrafPixMedals(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/SimpleListScrollWheel": (BuildContext context)                        => CmpCodePage(
+          Title:"Simple List Scroll Wheel",
+          BackRoute:"/GrafPix_Medal",
+          NextRoute:"/ListScrollWheel_ItemExtent",
+          ItemList:SimpleListScrollWheelView_List,
+          CodeRoute:"lib/Codes_FrontEnd/68_ListScrollWheel/1_Simple_ListScrollWheel.dart",
+          TabIcon:Icon(Icons.wb_iridescent),
+          ToDo:"Create A Page That Show A List Scroll Wheel ,Show The Selected Index!",
+          TxtExplanation:SimpleListScrollWheelView_Explanation,
+          RunCodeRoute:new SimpleListScrollWheelRun(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/ListScrollWheel_ItemExtent": (BuildContext context)                        => CmpCodePage(
+          Title:"List Scroll Wheel Item Extent",
+          BackRoute:"/SimpleListScrollWheel",
+          NextRoute:"/ListScrollWheel_OffAxis",
+          ItemList:ListScrollWheelViewItemExtent_List,
+          CodeRoute:"lib/Codes_FrontEnd/68_ListScrollWheel/2_ListScrollWheel_ItemExtent.dart",
+          TabIcon:Icon(Icons.wb_iridescent),
+          ToDo:"Create A Page That Show A List Scroll Wheel ,Set A Slider That Set Extent Value",
+          TxtExplanation:ListScrollWheelViewItemExtent_Explanation,
+          RunCodeRoute:new ListScrollWheelUseExtentRun(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/ListScrollWheel_OffAxis": (BuildContext context)                        => CmpCodePage(
+          Title:"List Scroll Wheel OffAxis",
+          BackRoute:"/GrafPix_Icons",
+          NextRoute:"/ListScrollWheel_UseMagnifier",
+          ItemList:ListScrollWheelViewOffAxis_List,
+          CodeRoute:"lib/Codes_FrontEnd/68_ListScrollWheel/3_ListScrollWheel_OffAxis.dart",
+          TabIcon:Icon(Icons.wb_iridescent),
+          ToDo:"Create A Page That Show A List Scroll Wheel ,Set A Slider That Set OfAxis Value",
+          TxtExplanation:ListScrollWheelViewOffAxis_Explanation,
+          RunCodeRoute:new ListScrollWheelOffAxisRun(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/ListScrollWheel_UseMagnifier": (BuildContext context)                        => CmpCodePage(
+          Title:"List Scroll Wheel UseMagnifier",
+          BackRoute:"/ListScrollWheel_OffAxis",
+          NextRoute:"/AnimatedDialog_LTR",
+          ItemList:ListScrollWheelUseMagnifier_List,
+          CodeRoute:"lib/Codes_FrontEnd/68_ListScrollWheel/4_ListScrollWheel_UseMagnifier.dart",
+          TabIcon:Icon(Icons.wb_iridescent),
+          ToDo:"Create A Page That Show A List Scroll Wheel ,Set A Slider That Set UseMagnifier Value",
+          TxtExplanation:ListScrollWheelViewUseMagnifier_Explanation,
+          RunCodeRoute:new ListScrollWheelUseMagnifierRun(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/AnimatedDialog_LTR": (BuildContext context)                        => CmpCodePage(
+          Title:"Animated Dialog From Left To Right",
+          BackRoute:"/ListScrollWheel_UseMagnifier",
+          NextRoute:"/AnimatedDialog_RTL",
+          ItemList:AnimatedDialog_LTR_List,
+          CodeRoute:"lib/Codes_FrontEnd/69_Dialog_Transition/1_Dialog_Transition_LTR.dart",
+          TabIcon:Icon(Icons.warning),
+          ToDo:"Create A Page That Show A RaisedButton Once Clicked A Dialog Must Show From Left To Right",
+          TxtExplanation:AnimatedDialog_LTR_Explanation,
+          RunCodeRoute:new DialogTransition_LTR(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/AnimatedDialog_RTL": (BuildContext context)                        => CmpCodePage(
+          Title:"Animated Dialog From Right To Left",
+          BackRoute:"/AnimatedDialog_LTR",
+          NextRoute:"/AnimatedDialog_TTB",
+          ItemList:AnimatedDialog_RTL_List,
+          CodeRoute:"lib/Codes_FrontEnd/69_Dialog_Transition/2_Dialog_Transition_RTL.dart",
+          TabIcon:Icon(Icons.warning),
+          ToDo:"Create A Page That Show A RaisedButton Once Clicked A Dialog Must Show From Right To Left",
+          TxtExplanation:AnimatedDialog_RTL_Explanation,
+          RunCodeRoute:new DialogTransition_RTL(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/AnimatedDialog_TTB": (BuildContext context)                        => CmpCodePage(
+          Title:"Animated Dialog From Top To Bottom",
+          BackRoute:"/AnimatedDialog_RTL",
+          NextRoute:"/AnimatedDialog_BTT",
+          ItemList:AnimatedDialog_TTB_List,
+          CodeRoute:"lib/Codes_FrontEnd/68_ListScrollWheel/4_ListScrollWheel_UseMagnifier.dart",
+          TabIcon:Icon(Icons.warning),
+          ToDo:"Create A Page That Show A RaisedButton Once Clicked A Dialog Must Show From Top To Bottom",
+          TxtExplanation:AnimatedDialog_TTB_Explanation,
+          RunCodeRoute:new DialogTransition_TTB(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/AnimatedDialog_BTT": (BuildContext context)                        => CmpCodePage(
+          Title:"Animated Dialog From Bottom To Top",
+          BackRoute:"/AnimatedDialog_TTB",
+          NextRoute:"/Toggle_Buttons",
+          ItemList:AnimatedDialog_BTT_List,
+          CodeRoute:"lib/Codes_FrontEnd/68_ListScrollWheel/4_ListScrollWheel_UseMagnifier.dart",
+          TabIcon:Icon(Icons.web),
+          ToDo:"Create A Page That Show A RaisedButton Once Clicked A Dialog Must Show From Bottom To Top",
+          TxtExplanation:AnimatedDialog_BTT_Explanation,
+          RunCodeRoute:new DialogTransition_BTT(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/Toggle_Buttons": (BuildContext context)                        => CmpCodePage(
+          Title:"Toggle Buttons",
+          BackRoute:"/AnimatedDialog_BTT",
+          NextRoute:"/Advanced1",
+          ItemList:ToggleButtons_List,
+          CodeRoute:"lib/Codes_FrontEnd/70_Toggle_Button/1_Toggle_Button.dart",
+          TabIcon:Icon(Icons.repeat),
+          ToDo:"Create A Page That Show ToggleButtons Bold Italic And Underline Where It Take Effect On A Text",
+          TxtExplanation:ToggleButtons_Explanation,
+          RunCodeRoute:new ToggleButtonRun(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/Selectable_Text": (BuildContext context)                        => CmpCodePage(
+          Title:"Selectable Text",
+          BackRoute:"/Toggle_Buttons",
+          NextRoute:"/Advanced1",
+          ItemList:SelectableText_List,
+          CodeRoute:"lib/Codes_FrontEnd/71_Selectable_Text/1_Selectable_Text.dart",
+          TabIcon:Icon(Icons.repeat),
+          ToDo:"Create A Page That Show Centered Selectable Text",
+          TxtExplanation:SelectableText_Explanation,
+          RunCodeRoute:new SelectableTextRun(),
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/GridView_Count": (BuildContext context)                                   => CmpCodePage(
+          Title:"GridView.Count",
+          BackRoute:"/Selectable_Text",
+          NextRoute:"/GridView_Builder",
+          ItemList:GridView_Count_list,
+          CodeRoute:"lib/Codes_FrontEnd/72_GridView/1_GridView_Count.dart",
+          TabIcon:Icon(Icons.grid_on),
+          ToDo:"Create A Page That Show A GridView.count Use Slider To Apply Effect On!",
+          TxtExplanation:GridView_Count_Explanation,
+          RunCodeRoute:new GridView_Count_Run(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/GridView_Builder": (BuildContext context)                                   => CmpCodePage(
+          Title:"GridView.builder",
+          BackRoute:"/GridView_Count",
+          NextRoute:"/GridView_Custom",
+          ItemList:GridView_Builder_list,
+          CodeRoute:"lib/Codes_FrontEnd/72_GridView/2_GridView_Builder.dart",
+          TabIcon:Icon(Icons.grid_on),
+          ToDo:"Create A Page That Show A GridView.builder Use Slider To Apply Effect On!",
+          TxtExplanation:GridView_Builder_Explanation,
+          RunCodeRoute:new GridView__Builder_Run(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/GridView_Custom": (BuildContext context)                                   => CmpCodePage(
+          Title:"GridView.custom",
+          BackRoute:"/GridView_Builder",
+          NextRoute:"/GridView_Extent",
+          ItemList:GridView_Custom_list,
+          CodeRoute:"lib/Codes_FrontEnd/72_GridView/3_GridView_Custom.dart",
+          TabIcon:Icon(Icons.grid_on),
+          ToDo:"Create A Page That Show A GridView.custom Use Slider To Apply Effect On CrossAxisCount!",
+          TxtExplanation:GridView_Custom_Explanation,
+          RunCodeRoute:new GridView_Custom(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/GridView_Extent": (BuildContext context)                                   => CmpCodePage(
+          Title:"GridView.extent",
+          BackRoute:"/GridView_Custom",
+          NextRoute:"/Curved_Navigation_Bar",
+          ItemList:GridView_Extent_list,
+          CodeRoute:"lib/Codes_FrontEnd/72_GridView/4_GridView_Extent.dart",
+          TabIcon:Icon(Icons.grid_on),
+          ToDo:"Create A Page That Show A GridView.extent Use Slider To Apply Effect On CrossAxisCount!",
+          TxtExplanation:GridView_Extent_Explanation,
+          RunCodeRoute:new GridView_Extent(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Curved_Navigation_Bar": (BuildContext context)                                   => CmpCodePage(
+          Title:"Curved Navigation Bar",
+          BackRoute:"/GridView_Extent",
+          NextRoute:"/Floating_Button_Simple",
+          ItemList:CurvedNavBar_list,
+          CodeRoute:"lib/Codes_FrontEnd/73_Curved_Navigation_Bar/1_Curved_Navigation_Bar.dart",
+          TabIcon:Icon(Icons.navigation),
+          ToDo:"Create A Page Displaying Curved Navigation Bar.",
+          TxtExplanation:CurvedNavBar_Explanation,
+          RunCodeRoute:new CurvedNavBar(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Floating_Button_Simple": (BuildContext context)                                   => CmpCodePage(
+          Title:"Simple Floating Button",
+          BackRoute:"/Curved_Navigation_Bar",
+          NextRoute:"/Floating_Button_Animated",
+          ItemList:Floating_Button_Simple_list,
+          CodeRoute:"lib/Codes_FrontEnd/74_Floating_Action_Button/1_Floating_Button_Simple.dart",
+          TabIcon:Icon(Icons.swap_vertical_circle),
+          ToDo:"Create A Page Showing A Floating Action Button With Centered Text 0,Once Button Pressed Increment Number By 1",
+          TxtExplanation:Floating_Button_Simple_Explanation,
+          RunCodeRoute:new SimpleFloatingButton(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Floating_Button_Animated": (BuildContext context)                                   => CmpCodePage(
+          Title:"Animated Floating Button",
+          BackRoute:"/Floating_Button_Simple",
+          NextRoute:"/Floating_Button_Circular",
+          ItemList:Floating_Button_Animated_list,
+          CodeRoute:"lib/Codes_FrontEnd/74_Floating_Action_Button/2_Floating_Button_Animated.dart",
+          TabIcon:Icon(Icons.swap_vertical_circle),
+          ToDo:"Create A Page Showing A Floating Action Button With Centered Text 0,Once Button Pressed Must Animate 2 Buttons,First Increment The Centered Number And The Last Decrement That Number",
+          TxtExplanation:Floating_Button_Animated_Explanation,
+          RunCodeRoute:new AnimatedFloatingActionButton(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Floating_Button_Circular": (BuildContext context)                                   => CmpCodePage(
+          Title:"Circular Animated Floating Button",
+          BackRoute:"/Floating_Button_Animated",
+          NextRoute:"/ToolTip",
+          ItemList:Floating_Button_Circular_list,
+          CodeRoute:"lib/Codes_FrontEnd/74_Floating_Action_Button/3_Floating_Button_Circular.dart",
+          TabIcon:Icon(Icons.swap_vertical_circle),
+          ToDo:"Create A Page Showing A Floating Action Button With Centered Text 0,Once Button Pressed Must Animate 4 Buttons Circular And Each Take Effect On Counter!",
+          TxtExplanation:Floating_Button_Circular_Explanation,
+          RunCodeRoute:new CircularFAB(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/ToolTip": (BuildContext context)                                   => CmpCodePage(
+          Title:"ToolTip",
+          BackRoute:"/Floating_Button_Circular",
+          NextRoute:"/Back_Detector",
+          ItemList:Tooltip_list,
+          CodeRoute:"lib/Codes_FrontEnd/75_ToolTip/1_ToolTip.dart",
+          TabIcon:Icon(Icons.info),
+          ToDo:"Create A Page That Show A Tooltip When Icon Is LongPressed!",
+          TxtExplanation:Tooltip_Explanation,
+          RunCodeRoute:new ToolTipRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Back_Detector": (BuildContext context)                                   => CmpCodePage(
+          Title:"Back Detector",
+          BackRoute:"/ToolTip",
+          NextRoute:"/Clipping_ClipOval",
+          ItemList:BackDetector_list,
+          CodeRoute:"lib/Codes_FrontEnd/76_Back_Detector/1_Back_Detector.dart",
+          TabIcon:Icon(Icons.arrow_back),
+          ToDo:"Create A Page That Ask User To Go Back When Back Button Is Pressed!",
+          TxtExplanation:BackDetector_Explanation,
+          RunCodeRoute:new BackDetectorRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Clipping_ClipOval": (BuildContext context)                                   => CmpCodePage(
+          Title:"Clipping ClipOval",
+          BackRoute:"/Back_Detector",
+          NextRoute:"/Clipping_ClipRRect",
+          ItemList:Clipping_ClipOval_list,
+          CodeRoute:"lib/Codes_FrontEnd/77_Clipping/1_Clipping_Clip_Oval.dart",
+          TabIcon:Icon(Icons.content_cut),
+          ToDo:"Write A Page That Display A Clipped Container Using ClipOval",
+          TxtExplanation:Clipping_ClipOval_Explanation,
+          RunCodeRoute:new ClippingClipOval(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Clipping_ClipRRect": (BuildContext context)                                   => CmpCodePage(
+          Title:"Clipping ClipRRect",
+          BackRoute:"/Clipping_ClipOval",
+          NextRoute:"/NavigationBar_Rail",
+          ItemList:Clipping_ClipRRect_list,
+          CodeRoute:"lib/Codes_FrontEnd/77_Clipping/2_Clipping_ClipRRect.dart",
+          TabIcon:Icon(Icons.content_cut),
+          ToDo:"Write A Page That Display A Clipped Container Using ClipRRect",
+          TxtExplanation:Clipping_ClipOval_Explanation,
+          RunCodeRoute:new ClippingClipRRect(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/NavigationBar_Rail": (BuildContext context)                                   => CmpCodePage(
+          Title:"NavigationBar Rail",
+          BackRoute:"/Clipping_ClipRRect",
+          NextRoute:"/Fancy_Bottom_NavBar",
+          ItemList:NavBarRail_list,
+          CodeRoute:"lib/Codes_FrontEnd/78_Navigation_Rail/1_NavigationBar_Rail.dart",
+          TabIcon:Icon(Icons.navigation),
+          ToDo:"Write A Page That Display A Navigation Rail Bar ",
+          TxtExplanation:NavBarRail_Explanation,
+          RunCodeRoute:new RailNavBar(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Fancy_Bottom_NavBar": (BuildContext context)                                   => CmpCodePage(
+          Title:"Fancy Bottom NavBar",
+          BackRoute:"/NavigationBar_Rail",
+          NextRoute:"/Color_Picker",
+          ItemList:Fancy_Bottom_NavBar_list,
+          CodeRoute:"lib/Codes_FrontEnd/79_Fancy_Bottom_NavBar/1_Fancy_Bottom_NavBar.dart",
+          TabIcon:Icon(Icons.navigation),
+          ToDo:"Write A Page That Display A Fancy Bottom Navigation Bar",
+          TxtExplanation:Fancy_Bottom_NavBar_Explanation,
+          RunCodeRoute:new FancyBottomNavBarRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Color_Picker": (BuildContext context)                                   => CmpCodePage(
+          Title:"Color Picker",
+          BackRoute:"/Fancy_Bottom_NavBar",
+          NextRoute:"/Like_Button",
+          ItemList:Color_Picker_list,
+          CodeRoute:"lib/Codes_FrontEnd/80_Color_Picker/1_Color_Picker.dart",
+          TabIcon:Icon(Icons.color_lens),
+          ToDo:"Soon.",
+          TxtExplanation:Color_Picker_Explanation,
+          RunCodeRoute:new ColorPickerRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Like_Button": (BuildContext context)                                   => CmpCodePage(
+          Title:"Like Button",
+          BackRoute:"/Color_Picker",
+          NextRoute:"/Sliver_AppBar",
+          ItemList:Like_Button_list,
+          CodeRoute:"lib/Codes_FrontEnd/81_Like_Button/1_Like_Button.dart",
+          TabIcon:Icon(Icons.favorite),
+          ToDo:"Write A Page That Display An Animated Like Buttons.",
+          TxtExplanation:Like_Button_Explanation,
+          RunCodeRoute:new LikeButtonDemo(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Sliver_AppBar": (BuildContext context)                                   => CmpCodePage(
+          Title:"Sliver AppBar",
+          BackRoute:"/Like_Button",
+          NextRoute:"/AnimatedTextKit_TypewriterAnimatedTextKit",
+          ItemList:Sliver_AppBar_list,
+          CodeRoute:"lib/Codes_FrontEnd/82_Sliver_AppBar/1_Sliver_AppBar.dart",
+          TabIcon:Icon(Icons.fiber_dvr),
+          ToDo:"Soon!",
+          TxtExplanation:Sliver_AppBar_Explanation,
+          RunCodeRoute:new SliverAppBarRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/AnimatedTextKit_TypewriterAnimatedTextKit": (BuildContext context)                                   => CmpCodePage(
+          Title:"TyperWriter Animated TextKit",
+          BackRoute:"/Sliver_AppBar",
+          NextRoute:"/AnimatedTextKit_Rotate",
+          ItemList:AnimatedTextKit_TyperWriter_list,
+          CodeRoute:"lib/Codes_FrontEnd/83_Animated_Text_Kit/1_AnimatedTextKit_TypewriterAnimatedTextKit.dart",
+          TabIcon:Icon(Icons.title),
+          ToDo:"Write A Page Displaying A Center Text That Play Typer Writer Animation!",
+          TxtExplanation:AnimatedTextKit_TyperWriter_Explanation,
+          RunCodeRoute:new TyperWriterAnimatedTextKitRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/AnimatedTextKit_Rotate": (BuildContext context)                                   => CmpCodePage(
+          Title:"Animated TextKit Rotate",
+          BackRoute:"/AnimatedTextKit_TypewriterAnimatedTextKit",
+          NextRoute:"/AnimatedTextKit_Fade",
+          ItemList:AnimatedTextKit_Rotate_list,
+          CodeRoute:"lib/Codes_FrontEnd/83_Animated_Text_Kit/2_AnimatedTextKit_Rotate.dart",
+          TabIcon:Icon(Icons.title),
+          ToDo:"Write A Page Displaying A Center Text That Play Text Rotate Animation!",
+          TxtExplanation:AnimatedTextKit_Rotate_Explanation,
+          RunCodeRoute:new AnimatedTextKitRotateRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/AnimatedTextKit_Fade": (BuildContext context)                                   => CmpCodePage(
+          Title:"Animated TextKit Fade",
+          BackRoute:"/AnimatedTextKit_Rotate",
+          NextRoute:"/AnimatedTextKit_Scale",
+          ItemList:AnimatedTextKit_Fade_list,
+          CodeRoute:"lib/Codes_FrontEnd/83_Animated_Text_Kit/3_AnimatedTextKit_Fade.dart",
+          TabIcon:Icon(Icons.title),
+          ToDo:"Write A Page Displaying A Center Text That Play Text Fade Animation!",
+          TxtExplanation:AnimatedTextKit_Fade_Explanation,
+          RunCodeRoute:new AnimatedTextKitFadeRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/AnimatedTextKit_Scale": (BuildContext context)                                   => CmpCodePage(
+          Title:"Animated TextKit Scale",
+          BackRoute:"/AnimatedTextKit_Fade",
+          NextRoute:"/AnimatedTextKit_Colorize",
+          ItemList:AnimatedTextKit_Scale_list,
+          CodeRoute:"lib/Codes_FrontEnd/83_Animated_Text_Kit/4_AnimatedTextKit_Scale.dart",
+          TabIcon:Icon(Icons.title),
+          ToDo:"Write A Page Displaying A Center Text That Play Text Scale Animation!",
+          TxtExplanation:AnimatedTextKit_Scale_Explanation,
+          RunCodeRoute:new AnimatedTextKitScaleRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/AnimatedTextKit_Colorize": (BuildContext context)                                   => CmpCodePage(
+          Title:"Animated TextKit Colorize",
+          BackRoute:"/AnimatedTextKit_Scale",
+          NextRoute:"/AnimatedTextKit_TextLiquidFill",
+          ItemList:AnimatedTextKit_Colorize_list,
+          CodeRoute:"lib/Codes_FrontEnd/83_Animated_Text_Kit/5_AnimatedTextKit_Colorize.dart",
+          TabIcon:Icon(Icons.title),
+          ToDo:"Write A Page Displaying A Center Text That Play Text Colorize Animation!",
+          TxtExplanation:AnimatedTextKit_Colorize_Explanation,
+          RunCodeRoute:new AnimatedTextKitColorizeRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/AnimatedTextKit_TextLiquidFill": (BuildContext context)                                   => CmpCodePage(
+          Title:"Animated TextKit LiquidFill",
+          BackRoute:"/AnimatedTextKit_Colorize",
+          NextRoute:"/AnimatedTextKit_Typer",
+          ItemList:AnimatedTextKit_TextLiquidFill_list,
+          CodeRoute:"lib/Codes_FrontEnd/83_Animated_Text_Kit/6_AnimatedTextKit_TextLiquidFill.dart",
+          TabIcon:Icon(Icons.title),
+          ToDo:"Write A Page Displaying A Center Text That Play Text LiquidFill Animation!",
+          TxtExplanation:AnimatedTextKit_TextLiquidFill_Explanation,
+          RunCodeRoute:new AnimatedTextKitTextLiquidFillRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/AnimatedTextKit_Typer": (BuildContext context)                                   => CmpCodePage(
+          Title:"Animated TextKit Typer",
+          BackRoute:"/AnimatedTextKit_TextLiquidFill",
+          NextRoute:"/Foldable_SideBar",
+          ItemList:AnimatedTextKit_Typer_list,
+          CodeRoute:"lib/Codes_FrontEnd/83_Animated_Text_Kit/7_AnimatedTextKit_Typer.dart",
+          TabIcon:Icon(Icons.fiber_dvr),
+          ToDo:"Write A Page Displaying A Center Text That Play Text Typer Animation!",
+          TxtExplanation:AnimatedTextKit_Typer_Explanation,
+          RunCodeRoute:new AnimatedTextKitTyperRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Foldable_SideBar": (BuildContext context)                                   => CmpCodePage(
+          Title:"Foldable SideBar",
+          BackRoute:"/AnimatedTextKit_Typer",
+          NextRoute:"/Circular_Percent_Indicator",
+          ItemList:FoldableSideBar_list,
+          CodeRoute:"lib/Codes_FrontEnd/84_Foldable_SideBar/1_Foldable_SideBar.dart",
+          TabIcon:Icon(Icons.navigation),
+          ToDo:"Create A Page Taking A Foldable SideBar!",
+          TxtExplanation:FoldableSideBar_Explanation,
+          RunCodeRoute:new FoldableSideBarRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Circular_Percent_Indicator": (BuildContext context)                                   => CmpCodePage(
+          Title:"Circular Percent Indicator",
+          BackRoute:"/Foldable_SideBar",
+          NextRoute:"/Linear_Percent_Indicator",
+          ItemList:PercentIndicator_Circular_list,
+          CodeRoute:"lib/Codes_FrontEnd/85_Percent_Indicator/1_CircularPercentIndicator.dart",
+          TabIcon:Icon(Icons.access_time),
+          ToDo:"Create A Page Taking A Foldable SideBar!",
+          TxtExplanation:PercentIndicator_Circular_Explanation,
+          RunCodeRoute:new Circular_Percent_Indicator(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Linear_Percent_Indicator": (BuildContext context)                                   => CmpCodePage(
+          Title:"Linear Percent Indicator",
+          BackRoute:"/Circular_Percent_Indicator",
+          NextRoute:"/Advanced_Indicator",
+          ItemList:PercentIndicator_Linear_list,
+          CodeRoute:"lib/Codes_FrontEnd/85_Percent_Indicator/2_LinearPercentIndicator.dart",
+          TabIcon:Icon(Icons.access_time),
+          ToDo:"Create A Page Taking A Foldable SideBar!",
+          TxtExplanation:PercentIndicator_Linear_Explanation,
+          RunCodeRoute:new Linear_Percent_Indicator(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Advanced_Indicator": (BuildContext context)                                   => CmpCodePage(
+          Title:"Advanced Indicator",
+          BackRoute:"/Linear_Percent_Indicator",
+          NextRoute:"/Connectivity",
+          ItemList:PercentIndicator_Advanced_list,
+          CodeRoute:"lib/Codes_FrontEnd/85_Percent_Indicator/3_Advanced_LinearPercentIndicator.dart",
+          TabIcon:Icon(Icons.access_time),
+          ToDo:"Create A Page Taking A Foldable SideBar!",
+          TxtExplanation:PercentIndicator_Advanced_Explanation,
+          RunCodeRoute:new Advanced_Indicator(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Connectivity": (BuildContext context)                                   => CmpCodePage(
+          Title:"Connectivity",
+          BackRoute:"/Advanced_Indicator",
+          NextRoute:"/SpinCircleBottomBar",
+          ItemList:Connectivity_list,
+          CodeRoute:"lib/Codes_FrontEnd/86_Connectivity/1_Connectivity.dart",
+          TabIcon:Icon(Icons.network_check),
+          ToDo:"Create A Page Taking A Button Once Pressed Must Check User Connection",
+          TxtExplanation:Connectivity_Explanation,
+          RunCodeRoute:new ConnectivityRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/SpinCircleBottomBar": (BuildContext context)                                   => CmpCodePage(
+          Title:"Spin Circle Bottom Bar",
+          BackRoute:"/Connectivity",
+          NextRoute:"/Staggered_GridView_1",
+          ItemList:SpinCircleBottomBar_list,
+          CodeRoute:"lib/Codes_FrontEnd/87_SpinCircleBottomBar/1_SpinCircleBottomBar.dart",
+          TabIcon:Icon(Icons.navigation),
+          ToDo:"Soon!",
+          TxtExplanation:SpinCircleBottomBar_Explanation,
+          RunCodeRoute:new SpinCircleBottomBarRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Staggered_GridView_1": (BuildContext context)                                   => CmpCodePage(
+          Title:"Staggered GridView 1",
+          BackRoute:"/SpinCircleBottomBar",
+          NextRoute:"/Staggered_GridView_2",
+          ItemList:Staggered_GridView_1_list,
+          CodeRoute:"lib/Codes_FrontEnd/88_Staggered_GridView/1_Staggered_GridView.dart",
+          TabIcon:Icon(Icons.view_column),
+          ToDo:"Soon!",
+          TxtExplanation:Staggered_GridView_1_Explanation,
+          RunCodeRoute:new Example01(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Staggered_GridView_2": (BuildContext context)                                   => CmpCodePage(
+          Title:"Staggered GridView 2",
+          BackRoute:"/Staggered_GridView_1",
+          NextRoute:"/Staggered_GridView_3",
+          ItemList:Staggered_GridView_2_list,
+          CodeRoute:"lib/Codes_FrontEnd/88_Staggered_GridView/2_Staggered_GridView.dart",
+          TabIcon:Icon(Icons.view_column),
+          ToDo:"Soon!",
+          TxtExplanation:Staggered_GridView_2_Explanation,
+          RunCodeRoute:new Example02(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Staggered_GridView_3": (BuildContext context)                                   => CmpCodePage(
+          Title:"Staggered GridView 3",
+          BackRoute:"/Staggered_GridView_2",
+          NextRoute:"/Advanced1",
+          ItemList:Staggered_GridView_3_list,
+          CodeRoute:"lib/Codes_FrontEnd/88_Staggered_GridView/3_Staggered_GridView.dart",
+          TabIcon:Icon(Icons.view_column),
+          ToDo:"Soon!",
+          TxtExplanation:Staggered_GridView_3_Explanation,
+          RunCodeRoute:new Example03(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/InAppUpdate": (BuildContext context)                                   => CmpCodePage(
+          Title:"InAppUpdate",
+          BackRoute:"/Staggered_GridView_3",
+          NextRoute:"/InAppUpdate2",
+          ItemList:InAppUpdate_list,
+          CodeRoute:"lib/Codes_FrontEnd/89_InAppUpdate/1_InAppUpdate.dart",
+          TabIcon:Icon(Icons.update),
+          ToDo:"Soon!",
+          TxtExplanation:InAppUpdate_Explanation,
+          RunCodeRoute:new InAppUpdateRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/InAppUpdate2": (BuildContext context)                                   => CmpCodePage(
+          Title:"InAppUpdate2",
+          BackRoute:"/InAppUpdate",
+          NextRoute:"/Timer_Countdown",
+          ItemList:InAppUpdate2_list,
+          CodeRoute:"lib/Codes_FrontEnd/89_InAppUpdate/2_InAppUpdate.dart",
+          TabIcon:Icon(Icons.update),
+          ToDo:"Soon!",
+          TxtExplanation:InAppUpdate2_Explanation,
+          RunCodeRoute:new InAppUpdate2Run(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Timer_Countdown": (BuildContext context)                                   => CmpCodePage(
+          Title:"Timer CountDown",
+          BackRoute:"/Staggered_GridView_3",
+          NextRoute:"/Timer_DaysCountdown",
+          ItemList:Timer_CountDown_list,
+          CodeRoute:"lib/Codes_FrontEnd/90_Timer/1_Timer_CountDown.dart",
+          TabIcon:Icon(Icons.timelapse),
+          ToDo:"Create A Timer That Start Counting From 10 Where You Can Restart,Pause And Continue!",
+          TxtExplanation:Timer_CountDown_Explanation,
+          RunCodeRoute:new TimerCountDownRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Timer_DaysCountdown": (BuildContext context)                                   => CmpCodePage(
+          Title:"Timer Days Countdown",
+          BackRoute:"/Timer_Countdown",
+          NextRoute:"/Share_Link",
+          ItemList:Timer_DaysCountDown_list,
+          CodeRoute:"lib/Codes_FrontEnd/90_Timer/2_Timer_DaysCountDown.dart",
+          TabIcon:Icon(Icons.timelapse),
+          ToDo:"Write A Page Showing A CountDown For The Next Wednesday!",
+          TxtExplanation:Timer_DaysCountDown_Explanation,
+          RunCodeRoute:new TimerDaysCountDownRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Share_Link": (BuildContext context)                                   => CmpCodePage(
+          Title:"Share Link",
+          BackRoute:"/Timer_DaysCountdown",
+          NextRoute:"/Share_Content",
+          ItemList:Share_Link_list,
+          CodeRoute:"lib/Codes_FrontEnd/91_Share/1_Share_Link.dart",
+          TabIcon:Icon(Icons.timelapse),
+          ToDo:"Write A Page Showing A Button,Once Pressed Must Share App Link!",
+          TxtExplanation:Share_Link_Explanation,
+          RunCodeRoute:new ShareLinkRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Share_Content": (BuildContext context)                                   => CmpCodePage(
+          Title:"Share Content",
+          BackRoute:"/Share_Link",
+          NextRoute:"/ExitApp",
+          ItemList:Share_Content_list,
+          CodeRoute:"lib/Codes_FrontEnd/91_Share/2_Share_Content.dart",
+          TabIcon:Icon(Icons.timelapse),
+          ToDo:"Write A Page Showing A Button,Once Pressed Must Share Product Info!",
+          TxtExplanation:Share_Content_Explanation,
+          RunCodeRoute:new ShareContentRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/ExitApp": (BuildContext context)                                   => CmpCodePage(
+          Title:"Exit App",
+          BackRoute:"/Share_Content",
+          NextRoute:"/TensorFlow_Phone_Laptop",
+          ItemList:ExitApp_list,
+          CodeRoute:"lib/Codes_FrontEnd/92_ExitApp/1_ExitApp.dart",
+          TabIcon:Icon(Icons.timelapse),
+          ToDo:"Write A Page Showing A Button Once Clicked Must Close The App!",
+          TxtExplanation:ExitApp_Explanation,
+          RunCodeRoute:new ExitAppRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/TensorFlow_Phone_Laptop": (BuildContext context)                                   => CmpCodePage(
+          Title:"TensorFlow Phone Laptop Detector",
+          BackRoute:"/ExitApp",
+          NextRoute:"/DemoParticle",
+          ItemList:TensorFlow_Phone_Laptop_list,
+          CodeRoute:"lib/Codes_FrontEnd/93_TensorFlow/1_TensorFlow_Phone_Laptop_Detector.dart",
+          TabIcon:Icon(Icons.camera_front),
+          ToDo:"Write A Page Showing A Button Once Clicked Must Close The App!",
+          TxtExplanation:TensorFlow_Phone_Laptop_Explanation,
+          RunCodeRoute:new TensorFlowPhoneLaptop(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/DemoParticle": (BuildContext context)                                   => CmpCodePage(
+          Title:"Demo Particle Pimp My Button",
+          BackRoute:"/TensorFlow_Phone_Laptop",
+          NextRoute:"/RectangleDemoParticle",
+          ItemList:PimpMyButton_DemoParticle_list,
+          CodeRoute:"lib/Codes_FrontEnd/94_PimpMyButton/1_DemoParticle.dart",
+          TabIcon:Icon(Icons.all_out),
+          ToDo:"Write A Page Showing PimpButton With DemoParticle Taking Floating Action Button!",
+          TxtExplanation:PimpMyButton_DemoParticle_Explanation,
+          RunCodeRoute:new DemoParticleRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/RectangleDemoParticle": (BuildContext context)                                   => CmpCodePage(
+          Title:"RectangleDemoParticle",
+          BackRoute:"/DemoParticle",
+          NextRoute:"/Rectangle2DemoParticle",
+          ItemList:PimpMyButton_RectangleDemoParticle_list,
+          CodeRoute:"lib/Codes_FrontEnd/94_PimpMyButton/2_RectangleDemoParticle.dart",
+          TabIcon:Icon(Icons.all_out),
+          ToDo:"Write A Page Showing PimpButton With RectangleDemoParticle Taking Raised Button!",
+          TxtExplanation:PimpMyButton_RectangleDemoParticle_Explanation,
+          RunCodeRoute:new RectangleDemoParticleRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Rectangle2DemoParticle": (BuildContext context)                                   => CmpCodePage(
+          Title:"Rectangle2 Demo Particle",
+          BackRoute:"/RectangleDemoParticle",
+          NextRoute:"/Rectangle3DemoParticle",
+          ItemList:PimpMyButton_RectangleDemo2Particle_list,
+          CodeRoute:"lib/Codes_FrontEnd/94_PimpMyButton/3_Rectangle2DemoParticle.dart",
+          TabIcon:Icon(Icons.all_out),
+          ToDo:"Write A Page Showing PimpButton With Rectangle2DemoParticle Taking Raised Button!",
+          TxtExplanation:PimpMyButton_RectangleDemo2Particle_Explanation,
+          RunCodeRoute:new Rectangle2DemoParticleRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Rectangle3DemoParticle": (BuildContext context)                                   => CmpCodePage(
+          Title:"Rectangle3 Demo Particle",
+          BackRoute:"/Rectangle3 Demo Particle",
+          NextRoute:"/AnimatedList_Insert",
+          ItemList:PimpMyButton_RectangleDemo3Particle_list,
+          CodeRoute:"lib/Codes_FrontEnd/94_PimpMyButton/4_Rectangle3DemoParticle.dart",
+          TabIcon:Icon(Icons.all_out),
+          ToDo:"Write A Page Showing PimpButton With Rectangle3DemoParticle Taking Raised Button!",
+          TxtExplanation:PimpMyButton_RectangleDemo3Particle_Explanation,
+          RunCodeRoute:new Rectangle3DemoParticleRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/AnimatedList_Insert": (BuildContext context)                                   => CmpCodePage(
+          Title:"Animated List Insert",
+          BackRoute:"/Rectangle3DemoParticle Demo Particle",
+          NextRoute:"/AnimatedList_Delete",
+          ItemList:AnimatedList_Insert_list,
+          CodeRoute:"lib/Codes_FrontEnd/95_AnimatedList/1_AnimatedList_Insert.dart",
+          TabIcon:Icon(Icons.list),
+          ToDo:"Write A Page Showing Animated List Where User Have To insert Items!",
+          TxtExplanation:AnimatedList_Insert_Explanation,
+          RunCodeRoute:new AnimatedList_Insert_Run(),
+          OffDocList:AnimatedList_OffDoc,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+         "/AnimatedList_Delete": (BuildContext context)                                   => CmpCodePage(
+          Title:"Animated List Delete",
+          BackRoute:"AnimatedList_Insert",
+          NextRoute:"/AnimatedList_DeleteAll",
+          ItemList:AnimatedList_Delete_list,
+          CodeRoute:"lib/Codes_FrontEnd/95_AnimatedList/2_AnimatedList_Delete.dart",
+          TabIcon:Icon(Icons.list),
+          ToDo:"Write A Page Showing Animated List Where User Have To Delete Specific Item!",
+          TxtExplanation:AnimatedList_Delete_Explanation,
+          RunCodeRoute:new AnimatedList_Delete_Run(),
+          OffDocList:AnimatedList_OffDoc,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+         "/AnimatedList_DeleteAll": (BuildContext context)                                   => CmpCodePage(
+          Title:"Animated List DeleteAll",
+          BackRoute:"/AnimatedList_Delete",
+          NextRoute:"/AnimatedList_Update",
+          ItemList:AnimatedList_DeleteAll_list,
+          CodeRoute:"lib/Codes_FrontEnd/95_AnimatedList/3_AnimatedList_DeleteAll.dart",
+          TabIcon:Icon(Icons.list),
+          ToDo:"Write A Page Showing Animated List Where User Have To Delete All Items!",
+          TxtExplanation:AnimatedList_DeleteAll_Explanation,
+          RunCodeRoute:new AnimatedList_DeleteAll_Run(),
+          OffDocList:AnimatedList_OffDoc,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+         "/AnimatedList_Update": (BuildContext context)                                   => CmpCodePage(
+          Title:"Animated List Update",
+          BackRoute:"/AnimatedList_DeleteAll",
+          NextRoute:"/FlutterAppBadger",
+          ItemList:AnimatedList_Update_list,
+          CodeRoute:"lib/Codes_FrontEnd/95_AnimatedList/4_AnimatedList_Update.dart",
+          TabIcon:Icon(Icons.list),
+          ToDo:"Write A Page Showing Animated List Where User Have To Update Spepcific Item!",
+          TxtExplanation:AnimatedList_Update_Explanation,
+          RunCodeRoute:new AnimatedList_Update_Run(),
+          OffDocList:AnimatedList_OffDoc,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+         "/FlutterAppBadger": (BuildContext context)                                   => CmpCodePage(
+          Title:"Flutter App Badger",
+          BackRoute:"/AnimatedList_Update",
+          NextRoute:"/InAppPurchase",
+          ItemList:FlutterAppBadger_list,
+          CodeRoute:"lib/Codes_FrontEnd/96_FlutterAppBadger/1_FlutterAppBadger.dart",
+          TabIcon:Icon(Icons.notification_important),
+          ToDo:"Write A Page Showing 2 Raised Button,The First Add Badge And The Last Remove It!",
+          TxtExplanation:FlutterAppBadger_Explanation,
+          RunCodeRoute:new FlutterAppBadgerRun(),
+          OffDocList:AppBadger_OffDoc,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+         "/InAppPurchase": (BuildContext context)                                   => CmpCodePage(
+          Title:"In App Purchase",
+          BackRoute:"/FlutterAppBadger",
+          NextRoute:"/PageViewAnimation_Transition1",
+          ItemList:InAppPurchase_list,
+          CodeRoute:"lib/Codes_FrontEnd/97_InAppPurchase/1_InAppPurchase.dart",
+          TabIcon:Icon(Icons.notification_important),
+          ToDo:"Write A Page Showing InAppPurchase Product!",
+          TxtExplanation:InAppPurchase_Explanation,
+          RunCodeRoute:new InAppPurchaseRun(),
+          OffDocList:InAppPurchase_OffDoc,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+         "/PageViewAnimation_Transition1": (BuildContext context)                                   => CmpCodePage(
+          Title:"PageViewAnimation Transition1",
+          BackRoute:"/InAppPurchase",
+          NextRoute:"/PageViewAnimation_Transition2",
+          ItemList:PageViewAnimation_Transition1_list,
+          CodeRoute:"lib/Codes_FrontEnd/98_PageView_Animation/1_PageView_Transition1.dart",
+          TabIcon:Icon(Icons.pages),
+          ToDo:"Write A Page Showing PageView Where Each Page RotatedX",
+          TxtExplanation:PageViewAnimation_Transition1_Explanation,
+          RunCodeRoute:new PageViewTransition_1_Run(),
+          OffDocList:PageViewAnimation_OffDoc,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+         "/PageViewAnimation_Transition2": (BuildContext context)                                   => CmpCodePage(
+          Title:"PageViewAnimation Transition1",
+          BackRoute:"/PageViewAnimation_Transition1",
+          NextRoute:"/AnimatedBackground1",
+          ItemList:PageViewAnimation_Transition2_list,
+          CodeRoute:"lib/Codes_FrontEnd/98_PageView_Animation/2_PageView_Transition2.dart",
+          TabIcon:Icon(Icons.pages),
+          ToDo:"Write A Page Showing PageView Where Each Page RotatedZ",
+          TxtExplanation:PageViewAnimation_Transition2_Explanation,
+          RunCodeRoute:new PageViewTransition_2_Run(),
+          OffDocList:PageViewAnimation_OffDoc,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+         "/AnimatedBackground1": (BuildContext context)                                   => CmpCodePage(
+          Title:"Animated Background Random Behavior",
+          BackRoute:"/PageViewAnimation_Transition2",
+          NextRoute:"/AnimatedBackground2",
+          ItemList:AnimatedBackground_1_list,
+          CodeRoute:"lib/Codes_FrontEnd/99_AnimatedBackground/1_AnimatedBackground_1.dart",
+          TabIcon:Icon(Icons.wallpaper),
+          ToDo:"Write A Page Showing Animated Backround With Random Behavior!",
+          TxtExplanation:AnimatedBackground_1_Explanation,
+          RunCodeRoute:new AnimatedBackground1(),
+          OffDocList:AnimatedBackground_OffDoc,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+         "/AnimatedBackground2": (BuildContext context)                                   => CmpCodePage(
+          Title:"PageViewAnimation Transition1",
+          BackRoute:"/AnimatedBackground1",
+          NextRoute:"/Geolocator_Pos",
+          ItemList:AnimatedBackground_2_list,
+          CodeRoute:"lib/Codes_FrontEnd/99_AnimatedBackground/2_AnimatedBackground_2.dart",
+          TabIcon:Icon(Icons.wallpaper),
+          ToDo:"Write A Page Showing Animated Backround With Image Behavior!",
+          TxtExplanation:AnimatedBackground_2_Explanation,
+          RunCodeRoute:new AnimatedBackground2(),
+          OffDocList:AnimatedBackground_OffDoc,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+         "/Geolocator_Pos": (BuildContext context)                                   => CmpCodePage(
+          Title:"Geolocator Posistion",
+          BackRoute:"/AnimatedBackground2",
+          NextRoute:"/GoogleMap",
+          ItemList:Geolocator_list,
+          CodeRoute:"lib/Codes_FrontEnd/100_Geolocator/1_Geolocator_Positions.dart",
+          TabIcon:Icon(Icons.wallpaper),
+          ToDo:"Write A Page That Show User Current Lat Long,Last known Lat Long And OnChange LatLong With Distance Calculator!",
+          TxtExplanation:Geolocator_Explanation,
+          RunCodeRoute:new Geolocator_Position_Run(),
+          OffDocList:Geolocator_OffDoc,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+         "/GoogleMap": (BuildContext context)                                   => CmpCodePage(
+          Title:"Geolocator Posistion",
+          BackRoute:"/Geolocator_Pos",
+          NextRoute:"/Advanced1",
+          ItemList:GoogleMap_list,
+          CodeRoute:"lib/Codes_FrontEnd/101_GoogleMaps/1_GoogleMap.dart",
+          TabIcon:Icon(Icons.wallpaper),
+          ToDo:"Write A Page That Show A Map At A Specified Lat Long Coordinate",
+          TxtExplanation:GoogleMap_Explanation,
+          RunCodeRoute:new GoogleMapRun(),
+          OffDocList:GoogleMap_OffDoc,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/KFDrawer": (BuildContext context)                                   => CmpCodePage(
+          Title:"KFDrawer",
+          BackRoute:"/Geolocator_Pos",
+          NextRoute:"/GoogleTranslator",
+          ItemList:KFDrawer_list,
+          CodeRoute:"lib/Codes_FrontEnd/102_KF_Drawer/1_KF_Drawer.dart",
+          TabIcon:Icon(Icons.navigation),
+          ToDo:"Write A Page That Show A KFDrawer",
+          TxtExplanation:KFDrawer_Explanation,
+          RunCodeRoute:new KFDrawerRun(),
+          OffDocList:KFDrawer_OffDoc,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/GoogleTranslator": (BuildContext context)                                   => CmpCodePage(
+          Title:"Google Translator",
+          BackRoute:"/KFDrawer",
+          NextRoute:"/ApkAdmin",
+          ItemList:GoogleTranslator_list,
+          CodeRoute:"lib/Codes_FrontEnd/103_GoogleTranslator/1_GoogleTranslator.dart",
+          TabIcon:Icon(Icons.adb),
+          ToDo:"Write A Page That Take A Text To Translate",
+          TxtExplanation:GoogleTranslator_Explanation,
+          RunCodeRoute:new GoogleTranslatorRun(),
+          OffDocList:GoogleTranslator_OffDoc,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/ApkAdmin": (BuildContext context)                                   => CmpCodePage(
+          Title:"Apk Admin",
+          BackRoute:"/GoogleTranslator",
+          NextRoute:"/Advanced1",
+          ItemList:ApkAdmin_list,
+          CodeRoute:"lib/Codes_FrontEnd/104_ApkAdmin/1_Apk_Admin.dart",
+          TabIcon:Icon(Icons.adb),
+          ToDo:"Write A Page That Show Installed Apk On Device",
+          TxtExplanation:ApkAdmin_Explanation,
+          RunCodeRoute:new ApkAdminRun(),
+          OffDocList:ApkAdmin_OffDoc,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Advanced1": (BuildContext context)                                   => CmpCodePage(
+          Title:"Navigating Through Image Tap",
+          BackRoute:"/FlutterAppBadger",
+          NextRoute:"/Advanced2",
+          ItemList:A1_list,
+          CodeRoute:"lib/Codes_FrontEnd/Advanced/A1Run.dart",
+          TabIcon:Icon(Icons.more_horiz),
+          ToDo:"Create A Page That Show List Of Images When Tapped Take You The The Following Page.",
+          TxtExplanation:A1_Explanation,
+          RunCodeRoute:new A1Run(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Advanced2": (BuildContext context)                                   => CmpCodePage(
+          Title:"Simple GetStarted Page",
+          BackRoute:"/Advanced1",
+          NextRoute:"/Advanced3",
+          ItemList:A2_list,
+          CodeRoute:"lib/Codes_FrontEnd/Advanced/A2Run.dart",
+          TabIcon:Icon(Icons.more_horiz),
+          ToDo:"Create A Get Started Page.",
+          TxtExplanation:A2_Explanation,
+          RunCodeRoute:new A2Run(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Advanced3": (BuildContext context)                                   => CmpCodePage(
+          Title:"Advanced Dialog",
+          BackRoute:"/Advanced2",
+          NextRoute:"/Advanced4",
+          ItemList:A3_list,
+          CodeRoute:"lib/Codes_FrontEnd/Advanced/A3Run.dart",
+          TabIcon:Icon(Icons.more_horiz),
+          ToDo:"Create A Page Having Centered RaisedButton,Once Clicked Show A Dialog.Create Dialog Class Wich You Can Use It Multiple Of Times By Passing Data As Parameters\n\n",
+          TxtExplanation:A3_Explanation,
+          RunCodeRoute:new A3Run(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Advanced4": (BuildContext context)                                   => CmpCodePage(
+          Title:"Dynamic List",
+          BackRoute:"/Advanced3",
+          NextRoute:"/Advanced5_Row_Layout",
+          ItemList:A4_list,
+          CodeRoute:"lib/Codes_FrontEnd/Advanced/A4Run.dart",
+          TabIcon:Icon(Icons.more_horiz),
+          ToDo:"Create A Page Taking A Button Once Clicked Add Image To A List,Show Updated List Image After Each Action!\n",
+          TxtExplanation:A4_Explanation,
+          RunCodeRoute:new A4Run(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Advanced5_Row_Layout": (BuildContext context)                                   => CmpCodePage(
+          Title:"Axis Row Layout",
+          BackRoute:"/Advanced4",
+          NextRoute:"/Advanced6_Col_Layout",
+          ItemList:A5_list,
+          CodeRoute:"lib/Codes_FrontEnd/Advanced/A5_Row_Layout.dart",
+          TabIcon:Icon(Icons.more_horiz),
+          ToDo:"Write A Page That Take A Row Layout And Change Its Axis Depend On User Selection",
+          TxtExplanation:A5_Explanation,
+          RunCodeRoute:new A5_Row_Layout_Run(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Advanced6_Col_Layout": (BuildContext context)                                   => CmpCodePage(
+          Title:"Axis Col Layout",
+          BackRoute:"/Advanced5_Row_Layout",
+          NextRoute:"/SQLFlite_Intro",
+          ItemList:A6_list,
+          CodeRoute:"lib/Codes_FrontEnd/Advanced/A6_Column_Layout.dart",
+          TabIcon:Icon(Icons.more_horiz),
+          ToDo:"Write A Page That Take A Col Layout And Change Its Axis Depend On User Selection",
+          TxtExplanation:A6_Explanation,
+          RunCodeRoute:new A6_Col_Layout_Run(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Advanced7": (BuildContext context)                                   => CmpCodePage(
+          Title:"Advanced Animation",
+          BackRoute:"/Advanced6_Col_Layout",
+          NextRoute:"/Advanced8",
+          ItemList:A7_list,
+          CodeRoute:"lib/Codes_FrontEnd/Advanced/A7Run.dart",
+          TabIcon:Icon(Icons.more_horiz),
+          ToDo:"Write A Page That Take 7 Balls,Tap On Any Ball Will Animate Them To Be Translated,Once 7 Ball Moved User Win!",
+          TxtExplanation:A7_Explanation,
+          RunCodeRoute:new A7Run(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Advanced8": (BuildContext context)                                   => CmpCodePage(
+          Title:"Bounce Sound Button",
+          BackRoute:"/Advanced7",
+          NextRoute:"/Advanced9",
+          ItemList:A8_list,
+          CodeRoute:"lib/Codes_FrontEnd/Advanced/A8Run.dart",
+          TabIcon:Icon(Icons.more_horiz),
+          ToDo:"Write A Page That Scale A Button On Clicked And Play Tap Sound!",
+          TxtExplanation:A8_Explanation,
+          RunCodeRoute:new TapSoundBounceBtnRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Advanced9": (BuildContext context)                                   => CmpCodePage(
+          Title:"ListView Item Stack",
+          BackRoute:"/Advanced8",
+          NextRoute:"/Production_App_Name",
+          ItemList:A9_list,
+          CodeRoute:"lib/Codes_FrontEnd/Advanced/A9Run.dart",
+          TabIcon:Icon(Icons.more_horiz),
+          ToDo:"Write A Page That Show Stacked ListView Items!",
+          TxtExplanation:A9_Explanation,
+          RunCodeRoute:new ListViewItemStack(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Advanced10": (BuildContext context)                                   => CmpCodePage(
+          Title:"Hidden Top AppBar",
+          BackRoute:"/Advanced9",
+          NextRoute:"/Advanced11",
+          ItemList:A10_list,
+          CodeRoute:"lib/Codes_FrontEnd/Advanced/A10Run.dart",
+          TabIcon:Icon(Icons.more_horiz),
+          ToDo:"Write A Page That Hide Top AppBar!",
+          TxtExplanation:A10_Explanation,
+          RunCodeRoute:new HiddenTopAppBar(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Advanced11": (BuildContext context)                                   => CmpCodePage(
+          Title:"Hidden Bottom AppBar",
+          BackRoute:"/Advanced10",
+          NextRoute:"/Advanced12",
+          ItemList:A11_list,
+          CodeRoute:"lib/Codes_FrontEnd/Advanced/A11Run.dart",
+          TabIcon:Icon(Icons.more_horiz),
+          ToDo:"Write A Page That Hide Bottom AppBar",
+          TxtExplanation:A11_Explanation,
+          RunCodeRoute:new HiddenBottomAppBar(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Advanced12": (BuildContext context)                                   => CmpCodePage(
+          Title:"Bookmarking",
+          BackRoute:"/Advanced11",
+          NextRoute:"/Production_App_Name",
+          ItemList:A12_list,
+          CodeRoute:"lib/Codes_FrontEnd/Advanced/A12Run.dart",
+          TabIcon:Icon(Icons.more_horiz),
+          ToDo:"Write A Page That Show Bookmarked Images!",
+          TxtExplanation:A12_Explanation,
+          RunCodeRoute:new Bookmarking(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+
+
+        "/Production_App_Name": (BuildContext context)                => CmpIntroPage(
+          Title:"Change App Name",
+          BackRoute:"/Advanced9",
+          NextRoute:"/Production_App_Icon",
+          ItemList:Production_AppName_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Production_App_Icon": (BuildContext context)                => CmpIntroPage(
+          Title:"Change App Icon",
+          BackRoute:"/Production_App_Name",
+          NextRoute:"/Production_App_Sign",
+          ItemList:Production_AppIcon_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Production_App_Sign": (BuildContext context)                => CmpIntroPage(
+          Title:"App Sign",
+          BackRoute:"/Advanced8",
+          NextRoute:"/Production_App_Build",
+          ItemList:Production_AppSign_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Production_App_Build": (BuildContext context)                => CmpIntroPage(
+          Title:"App Build",
+          BackRoute:"/Production_App_Sign",
+          NextRoute:"/SQLFlite_Intro",
+          ItemList:Production_AppBuild_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/SQLFlite_Intro": (BuildContext context)                   => CmpIntroPage(
+          Title:"SQLFlite Introduction",
+          BackRoute:"/Main",
+          NextRoute:"/SQLFlite_CreateClass",
+          ItemList:SQLFlite_Intro_CompList,
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/SQLFlite_CreateClass": (BuildContext context)                   => CmpIntroPage(
+          Title:"Create Class",
+          BackRoute:"/SQLFlite_Intro",
+          NextRoute:"/SQLFlite_CreateTable",
+          ItemList:SQLFlite_CreateClass_CompList,
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/SQLFlite_CreateTable": (BuildContext context)                   => CmpIntroPage(
+          Title:"SQLFlite Create Table",
+          BackRoute:"/SQLFlite_CreateClass",
+          NextRoute:"/SQLFlite_Print",
+          ItemList:SQLFlite_CreateTable_CompList,
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/SQLFlite_Print": (BuildContext context)                   => CmpIntroPage(
+          Title:"SQLFlite Print Data",
+          BackRoute:"/SQLFlite_CreateTable",
+          NextRoute:"/SQLFlite_Insert",
+          ItemList:SQLFlite_Print_CompList,
+        ),
+
+        //----------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
+
+        "/SQLFlite_Insert": (BuildContext context)                   => CmpCodePage(
+          Title:"SQLFlite Insert Data",
+          BackRoute:"/SQLFlite_Print",
+          NextRoute:"/SQLFlite_Update",
+          ItemList:SQLFlite_Insert_CompList,
+          CodeRoute:"lib/Codes_BackEnd/Backend_1_SQFlite/1_SQFlite_Insert.dart",
+          TabIcon:Icon(Icons.more_horiz),
+          ToDo:"Create A Page Insert Data Into SQFlite Database",
+          TxtExplanation:A3_Explanation,
+          RunCodeRoute:new SQFlite_Insert(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/SQLFlite_Update": (BuildContext context)                   => CmpCodePage(
+          Title:"SQLFlite Update Data",
+          BackRoute:"/SQLFlite_Insert",
+          NextRoute:"/SQLFlite_Delete",
+          ItemList:SQLFlite_Update_CompList,
+          CodeRoute:"lib/Codes_BackEnd/Backend_1_SQFlite/2_SQFlite_Update.dart",
+          TabIcon:Icon(Icons.more_horiz),
+          ToDo:"Create A Page That Update Specified Data Contained In SQFlite",
+          TxtExplanation:A3_Explanation,
+          RunCodeRoute:new SQFlite_Update(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/SQLFlite_Delete": (BuildContext context)                   => CmpCodePage(
+          Title:"SQLFlite Delete Data",
+          BackRoute:"/SQLFlite_Update",
+          NextRoute:"/SQLFlite_DeleteAll",
+          ItemList:SQLFlite_Delete_CompList,
+          CodeRoute:"lib/Codes_BackEnd/Backend_1_SQFlite/3_SQFlite_Delete.dart",
+          TabIcon:Icon(Icons.more_horiz),
+          ToDo:"Create A Page Delete Specified Data Contained In SQFlite",
+          TxtExplanation:A3_Explanation,
+          RunCodeRoute:new SQFlite_Delete(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/SQLFlite_DeleteAll": (BuildContext context)                   => CmpCodePage(
+          Title:"SQLFlite Delete All  Data",
+          BackRoute:"/SQLFlite_Update",
+          NextRoute:"/HTTP_PHP_GettingStarted",
+          ItemList:SQLFlite_DeleteAll_CompList,
+          CodeRoute:"lib/Codes_BackEnd/Backend_1_SQFlite/4_SQFlite_DeleteAll.dart",
+          TabIcon:Icon(Icons.more_horiz),
+          ToDo:"Create A Page Deleting All Data Contained In SQFlite",
+          TxtExplanation:A3_Explanation,
+          RunCodeRoute:new SQFlite_DeleteAll(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/HTTP_PHP_GettingStarted": (BuildContext context)                   => CmpIntroPage(
+          Title:"HTTP PHP Getting Started",
+          BackRoute:"/SQLFlite_DeleteAll",
+          NextRoute:"/HTTP_PHP_DBConnection",
+          ItemList:PHP_HTTP_Intro_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/HTTP_PHP_DBConnection": (BuildContext context)                   => CmpCodePage(
+          Title:"HTTP PHP Database Connection",
+          BackRoute:"/HTTP_PHP_GettingStarted",
+          NextRoute:"/HTTP_PHP_CreateClass",
+          ItemList:PHP_HTTP_DbConnection_CompList,
+          CodeRoute:"assets/MoreCodes/Backend_2_HTTP_PHP_CreateConnection.txt",
+          TabIcon:Icon(Icons.data_usage),
+          ToDo:"",
+          TxtExplanation:"",
+          RunCodeRoute:new NoCodePage(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/HTTP_PHP_CreateClass": (BuildContext context)                   => CmpIntroPage(
+          Title:"HTTP PHP Database Connection",
+          BackRoute:"/HTTP_PHP_DBConnection",
+          NextRoute:"/HTTP_PHP_GetData",
+          ItemList:PHP_HTTP_CreateClass_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/HTTP_PHP_GetData": (BuildContext context)                   => CmpCodePageMoreTab(
+          Title:"HTTP PHP Get Data",
+          BackRoute:"/HTTP_PHP_CreateClass",
+          NextRoute:"/HTTP_PHP_InsertData",
+          ItemList:PHP_HTTP_GetData_CompList,
+          CodeRoute:"lib/Codes_BackEnd/Backend_2_PHP_Http/1_PHP_GetData.dart",
+          TabIcon:Icon(Icons.data_usage),
+          ToDo:"Create A Page That Get Data Returned From Server",
+          TxtExplanation:PHP_HTTP_GetData_Explanation,
+          RunCodeRoute:new PHP_GetData(),
+          MoreTabCodeRoute:"assets/MoreCodes/Backend_2_HTTP_PHP_GetProducts.txt",
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/HTTP_PHP_InsertData": (BuildContext context)                   => CmpCodePageMoreTab(
+          Title:"HTTP PHP Insert Data",
+          BackRoute:"/HTTP_PHP_GetData",
+          NextRoute:"/HTTP_PHP_UpdateData",
+          ItemList:PHP_HTTP_Insert_CompList,
+          CodeRoute:"lib/Codes_BackEnd/Backend_2_PHP_Http/2_PHP_InsertData.dart",
+          TabIcon:Icon(Icons.data_usage),
+          ToDo:"Create A Page That Insert And Get Data Returned From Server",
+          TxtExplanation:PHP_HTTP_Insert_Explanation,
+          RunCodeRoute:new PHP_InsData(),
+          MoreTabCodeRoute:"assets/MoreCodes/Backend_2_HTTP_PHP_InsertProducts.txt",
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/HTTP_PHP_UpdateData": (BuildContext context)                   => CmpCodePageMoreTab(
+          Title:"HTTP PHP Update Data",
+          BackRoute:"/HTTP_PHP_InsertData",
+          NextRoute:"/HTTP_PHP_DeleteData",
+          ItemList:PHP_HTTP_Update_CompList,
+          CodeRoute:"lib/Codes_BackEnd/Backend_2_PHP_Http/3_PHP_Update.dart",
+          TabIcon:Icon(Icons.data_usage),
+          ToDo:"Create A Page That Update And Get New Data Returned From Server",
+          TxtExplanation:PHP_HTTP_Insert_Explanation,
+          RunCodeRoute:new PHP_UpdateData(),
+          MoreTabCodeRoute:"assets/MoreCodes/Backend_2_HTTP_PHP_UpdateProducts.txt",
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/HTTP_PHP_DeleteData": (BuildContext context)                   => CmpCodePageMoreTab(
+          Title:"HTTP PHP Delete Data",
+          BackRoute:"/HTTP_PHP_UpdateData",
+          NextRoute:"/HTTP_PHP_DeleteAllData",
+          ItemList:PHP_HTTP_Delete_CompList,
+          CodeRoute:"lib/Codes_BackEnd/Backend_2_PHP_Http/4_PHP_Delete.dart",
+          TabIcon:Icon(Icons.data_usage),
+          ToDo:"Create A Page Deleting All Data Contained In SQFlite",
+          TxtExplanation:PHP_HTTP_Delete_Explanation,
+          RunCodeRoute:new PHP_DelData(),
+          MoreTabCodeRoute:"assets/MoreCodes/Backend_2_HTTP_PHP_DeleteProducts.txt",
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/HTTP_PHP_DeleteAllData": (BuildContext context)                   => CmpCodePageMoreTab(
+          Title:"HTTP PHP Delete All Data",
+          BackRoute:"/HTTP_PHP_DeleteData",
+          NextRoute:"/Firebase_Setup",
+          ItemList:PHP_HTTP_DeleteAll_CompList,
+          CodeRoute:"lib/Codes_BackEnd/Backend_2_PHP_Http/5_PHP_DeleteAll.dart",
+          TabIcon:Icon(Icons.data_usage),
+          ToDo:"Create A Page Deleting All Data Contained In SQFlite",
+          TxtExplanation:PHP_HTTP_DeleteAll_Explanation,
+          RunCodeRoute:new PHP_DelData(),
+          MoreTabCodeRoute:"assets/MoreCodes/Backend_2_HTTP_PHP_DeleteAllProducts.txt",
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Firebase_Setup": (BuildContext context)                   => CmpIntroPage(
+          Title:"Firebase Setup",
+          BackRoute:"/HTTP_PHP_DeleteAllData",
+          NextRoute:"/Firebase_SetupSHA1",
+          ItemList:FireBase_Setup_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Firebase_SetupSHA1": (BuildContext context)                => CmpIntroPage(
+          Title:"Firebase SHA",
+          BackRoute:"/Firebase_Setup",
+          NextRoute:"/Firebase_SetupEmail",
+          ItemList:FireBase_SetupSHA1_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Firebase_SetupEmail": (BuildContext context)                => CmpIntroPage(
+          Title:"Firebase Setup Email",
+          BackRoute:"/Firebase_SetupSHA1",
+          NextRoute:"/Firebase_SetupGoogle",
+          ItemList:FireBase_Setup_Email_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Firebase_SetupGoogle": (BuildContext context)                => CmpIntroPage(
+          Title:"Firebase Setup Google",
+          BackRoute:"/Firebase_SetupEmail",
+          NextRoute:"/Firebase_SetupFacebook",
+          ItemList:FireBase_Setup_Google_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Firebase_SetupFacebook": (BuildContext context)                => CmpIntroPage(
+          Title:"Firebase Setup Facebook",
+          BackRoute:"/Firebase_SetupGoogle",
+          NextRoute:"/Firebase_Auth_Email_FB_Google",
+          ItemList:FireBase_Setup_Facebook_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Firebase_Auth_Email_FB_Google": (BuildContext context)                   => CmpCodePage(
+          Title:"Firebase Email FB Google Authentication",
+          BackRoute:"/Firebase_SetupFacebook",
+          NextRoute:"/FireStore_Intro",
+          ItemList:Firebase_Auth_Email_FB_Google_CompList,
+          CodeRoute:"lib/Codes_BackEnd/Backend_3_FireBase/1_FireBase_Auth_Email_FB_Google.dart",
+          TabIcon:Icon(Icons.data_usage),
+          ToDo:"Create A Page That Use Firebase Email  To SignIn,SignUp And Recover An Account Or Continue With Facebook Or Google With Logout.",
+          TxtExplanation:"Soon",
+          RunCodeRoute:new FireBaseEmail_Google_FB_Authentication(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/FireStore_Intro": (BuildContext context)                => CmpIntroPage(
+          Title:"FireStore Introduction",
+          BackRoute:"/Firebase_Auth_Email_FB_Google",
+          NextRoute:"/FireStore_View",
+          ItemList:FireStore_Intro_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/FireStore_View": (BuildContext context)                => CmpIntroPage(
+          Title:"FireStore View",
+          BackRoute:"/FireStore_Intro",
+          NextRoute:"/FireStore_Insert",
+          ItemList:FireStore_View_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/FireStore_Insert": (BuildContext context)                => CmpIntroPage(
+          Title:"FireStore Insert",
+          BackRoute:"/FireStore_View",
+          NextRoute:"/FireStore_Update",
+          ItemList:FireStore_Insert_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/FireStore_Update": (BuildContext context)                => CmpIntroPage(
+          Title:"FireStore Update",
+          BackRoute:"/FireStore_Insert",
+          NextRoute:"/FireStore_Delete",
+          ItemList:FireStore_Update_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/FireStore_Delete": (BuildContext context)                => CmpIntroPage(
+          Title:"FireStore Delete",
+          BackRoute:"/FireStore_Update",
+          NextRoute:"/FireStore_All",
+          ItemList:FireStore_Delete_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/FireStore_All": (BuildContext context)                   => CmpCodePage(
+          Title:"FireStore Add,Update,Delete And View Data",
+          BackRoute:"/FireStore_Delete",
+          NextRoute:"/FireBase_Admob_Intro",
+          ItemList:Firebase_Auth_Email_FB_Google_CompList,
+          CodeRoute:"lib/Codes_BackEnd/Backend_4_FireStore/1_FireStore.dart",
+          TabIcon:Icon(Icons.data_usage),
+          ToDo:"Create A Page That Show Products Fetched From FireStore With Insert Update And Delete Action.",
+          TxtExplanation:"Soon",
+          RunCodeRoute:new FireStoreProduct(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/FireBase_Admob_Intro": (BuildContext context)             => CmpIntroPage(
+          Title:"FireStore Delete",
+          BackRoute:"/FireStore_All",
+          NextRoute:"/FireBase_Admob_Banner",
+          ItemList:FireBase_Admob_Intro_CompList,
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/FireBase_Admob_Banner": (BuildContext context)                   => CmpCodePage(
+          Title:"FireBase Admob Banner",
+          BackRoute:"/FireBase_Admob_Intro",
+          NextRoute:"/FireBase_Admob_Interstitial",
+          ItemList:FireBase_Admob_Banner_list,
+          CodeRoute:"lib/Codes_BackEnd/Backend_5_FireBase_Admob/1_FireBase_Admob_Banner.dart",
+          TabIcon:Icon(Icons.data_usage),
+          ToDo:"Create A Page That Show And Remove A Banner",
+          TxtExplanation:FireBase_Admob_Banner_Explanation,
+          RunCodeRoute:new FireBaseAdmob_Banner(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/FireBase_Admob_Interstitial": (BuildContext context)                   => CmpCodePage(
+          Title:"FireBase Admob Interstitial",
+          BackRoute:"/FireBase_Admob_Banner",
+          NextRoute:"/FireBase_Push_Notification",
+          ItemList:FireBase_Admob_Interstitial_list,
+          CodeRoute:"lib/Codes_BackEnd/Backend_5_FireBase_Admob/2_FireBase_Admob_Interstitial.dart",
+          TabIcon:Icon(Icons.data_usage),
+          ToDo:"Create A Page That Show An Interstitial",
+          TxtExplanation:FireBase_Admob_Interstitial_Explanation,
+          RunCodeRoute:new FireBaseAdmob_Interstitial(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/FireBase_Push_Notification": (BuildContext context)                   => CmpCodePage(
+          Title:"FireBase Push Notification",
+          BackRoute:"/FireBase_Admob_Interstitial",
+          NextRoute:"/Phone_Verification",
+          ItemList:FireBase_Push_Notification_list,
+          CodeRoute:"lib/Codes_BackEnd/Backend_6_FireBase_Push_Notification/FireBasePushNotification.dart",
+          TabIcon:Icon(Icons.data_usage),
+          ToDo:"Create A Code That Recieve Notification Sent From FireBase Cloud Messaging",
+          TxtExplanation:FireBase_Push_Notification_Explanation,
+          RunCodeRoute:new NoCodePage(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Phone_Verification": (BuildContext context)                   => CmpCodePage(
+          Title:"Phone verification",
+          BackRoute:"/FireBase_Push_Notification",
+          NextRoute:"/HTTP_PHP_Auth_GettingStarted",
+          ItemList:PhoneVerification_list,
+          CodeRoute:"lib/Codes_BackEnd/Backend_7_PhoneVerificationCode/1_Phone_Verification_Code.dart",
+          TabIcon:Icon(Icons.data_usage),
+          ToDo:"Create A Code That Recieve Notification Sent From FireBase Cloud Messaging",
+          TxtExplanation:PhoneVerification_Explanation,
+          RunCodeRoute:new PhoneVerificationRun(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/HTTP_PHP_Auth_GettingStarted": (BuildContext context)           => CmpCodePage(
+          Title:"HTTP PHP Auth Getting Started",
+          BackRoute:"/Phone_Verification",
+          NextRoute:"/HTTP_PHP_Auth_SignUp",
+          ItemList:HTTP_PHP_Auth_GettingStarted_list,
+          CodeRoute:"assets/MoreCodes/Backend_8_HTTP_PHP_Auth_DBConnect.txt",
+          TabIcon:Icon(Icons.data_usage),
+          ToDo:"",
+          TxtExplanation:"",
+          RunCodeRoute:NoCodePage(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/HTTP_PHP_Auth_SignUp": (BuildContext context)           => CmpCodePageMoreTab(
+          Title:"HTTP PHP Auth SignUp",
+          BackRoute:"/Phone_Verification",
+          NextRoute:"/HTTP_PHP_Auth_SignIn",
+          ItemList:HTTP_PHP_Auth_SignUp_list,
+          CodeRoute:"lib/Codes_BackEnd/Backend_8_HTTP_PHP_Auth/1_HTTP_PHP_AUTH_SignUp.dart",
+          TabIcon:Icon(Icons.data_usage),
+          ToDo:"Create A Page That Allow User To SignUp An Account Using PHP",
+          TxtExplanation:HTTP_PHP_Auth_SignUp_Explanation,
+          RunCodeRoute:new PHP_HTTP_Auth_SignUp(),
+          MoreTabCodeRoute:"assets/MoreCodes/Backend_8_HTTP_PHP_Auth_InsertUser.txt",
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/HTTP_PHP_Auth_SignIn": (BuildContext context)           => CmpCodePageMoreTab(
+          Title:"HTTP PHP Auth SignIn",
+          BackRoute:"/HTTP_PHP_Auth_SignUp",
+          NextRoute:"/HTTP_PHP_CRUD_Image_GettingStarted",
+          ItemList:HTTP_PHP_Auth_SignIn_list,
+          CodeRoute:"lib/Codes_BackEnd/Backend_8_HTTP_PHP_Auth/1_HTTP_PHP_AUTH_SignIn.dart",
+          TabIcon:Icon(Icons.data_usage),
+          ToDo:"Create A Page That Allow User To SignIn With His Account Using PHP",
+          TxtExplanation:HTTP_PHP_Auth_SignIn_Explanation,
+          RunCodeRoute:new PHP_HTTP_Auth_SignIn(),
+          MoreTabCodeRoute:"assets/MoreCodes/Backend_8_HTTP_PHP_Auth_GetUsers.txt",
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/HTTP_PHP_CRUD_Image_GettingStarted": (BuildContext context)           => CmpCodePage(
+          Title:"HTTP PHP CRUD Image Getting Started",
+          BackRoute:"/HTTP_PHP_Auth_SignIn",
+          NextRoute:"/HTTP_PHP_CRUD_Image_Insert",
+          ItemList:HTTP_PHP_CRUD_Image_GettingStarted_list,
+          CodeRoute:"assets/MoreCodes/Backend_8_HTTP_PHP_Auth_DBConnect.txt",
+          TabIcon:Icon(Icons.data_usage),
+          ToDo:"",
+          TxtExplanation:"",
+          RunCodeRoute:NoCodePage(),
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/HTTP_PHP_CRUD_Image_Insert": (BuildContext context)           => CmpCodePageMoreTab(
+          Title:"HTTP PHP CRUD Image Insert",
+          BackRoute:"/HTTP_PHP_CRUD_Image_GettingStarted",
+          NextRoute:"/HTTP_PHP_CRUD_Image_Get",
+          ItemList:HTTP_PHP_CRUD_Image_Insert_list,
+          CodeRoute:"lib/Codes_BackEnd/Backend_9_HTTP_CRUD_Img/1_HTTP_CRUD_Img_Upload.dart",
+          TabIcon:Icon(Icons.data_usage),
+          ToDo:"Create A Page That Allow User To Upload Image And Description Using PHP",
+          TxtExplanation:HTTP_PHP_CRUD_Image_Insert_Explanation,
+          RunCodeRoute:new PHP_HTTP_CRUD_Insert_GetData(),
+          MoreTabCodeRoute:"assets/MoreCodes/Backend_9_HTTP_PHP_CRUD_IMG_Insert.txt",
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/HTTP_PHP_CRUD_Image_Get": (BuildContext context)           => CmpCodePageMoreTab(
+          Title:"HTTP PHP CRUD Image Get",
+          BackRoute:"/HTTP_PHP_CRUD_Image_Insert",
+          NextRoute:"/HTTP_PHP_CRUD_Image_Delete",
+          ItemList:HTTP_PHP_CRUD_Image_GetData_list,
+          CodeRoute:"lib/Codes_BackEnd/Backend_9_HTTP_CRUD_Img/2_HTTP_CRUD_Img_Get.dart",
+          TabIcon:Icon(Icons.data_usage),
+          ToDo:"Create A Page That Allow User To View Image And Description From PHP Database",
+          TxtExplanation:HTTP_PHP_CRUD_Image_GetData_Explanation,
+          RunCodeRoute:new PHP_HTTP_CRUD_Img_GetData(),
+          MoreTabCodeRoute:"assets/MoreCodes/Backend_9_HTTP_PHP_CRUD_IMG_Get.txt",
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/HTTP_PHP_CRUD_Image_Delete": (BuildContext context)           => CmpCodePageMoreTab(
+          Title:"HTTP PHP CRUD Image Delete",
+          BackRoute:"/HTTP_PHP_CRUD_Image_Get",
+          NextRoute:"/Main",
+          ItemList:HTTP_PHP_CRUD_Image_Delete_list,
+          CodeRoute:"lib/Codes_BackEnd/Backend_9_HTTP_CRUD_Img/3_HTTP_CRUD_Img_Delete.dart",
+          TabIcon:Icon(Icons.data_usage),
+          ToDo:"Create A Page That Allow User To View Image And Description From PHP Database And Allowing User To Delete It",
+          TxtExplanation:HTTP_PHP_CRUD_Image_Delete_Explanation,
+          RunCodeRoute:new PHP_HTTP_CRUD_Img_Delete(),
+          MoreTabCodeRoute:"assets/MoreCodes/Backend_9_HTTP_PHP_CRUD_IMG_Delete.txt",
+        ),
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+
+        "/Davi_ContactList": (BuildContext context)                   => CmpCodePage(
+          Title:"Contact List By Davi",
+          BackRoute:"/Main",
+          NextRoute:"/Main",
+          ItemList:Davi_ContactList_List,
+          CodeRoute:"lib/UsersCode/1_Davi_Contact_List/ContactList.dart",
+          TabIcon:Icon(Icons.contacts),
+          ToDo:"Create A Page That Show Allow Saving Contacts Using SQFLite",
+          TxtExplanation:Davi_ContactList_Explanation,
+          RunCodeRoute:new Davi_ContactList(),
+        ),
+
+
+        "/Sample1": (BuildContext context)                   => CmpCodePage(
+          Title:"Sample 1",
+          BackRoute:"/Main",
+          NextRoute:"/Main",
+          ItemList:Sample1_list,
+          CodeRoute:"lib/_UISamples/UISample_1/UISamples_1.dart",
+          TabIcon:Icon(Icons.receipt),
+          ToDo:"Soon",
+          TxtExplanation:Sample1_Explanation,
+          RunCodeRoute:new UISample1(),
+        ),
+
+
+
+        "/Sample2": (BuildContext context)                   => CmpCodePage(
+          Title:"Sample 2",
+          BackRoute:"/Main",
+          NextRoute:"/Main",
+          ItemList:Sample2_list,
+          CodeRoute:"lib/_UISamples/UISample_2/UISample_2.dart",
+          TabIcon:Icon(Icons.receipt),
+          ToDo:"Soon",
+          TxtExplanation:Sample2_Explanation,
+          RunCodeRoute:new UISample2(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Sample3": (BuildContext context)                   => CmpCodePage(
+          Title:"Sample 3",
+          BackRoute:"/Main",
+          NextRoute:"/Main",
+          ItemList:Sample3_list,
+          CodeRoute:"lib/_UISamples/UISample_3/UISample_3.dart",
+          TabIcon:Icon(Icons.receipt),
+          ToDo:"Soon",
+          TxtExplanation:Sample3_Explanation,
+          RunCodeRoute:new UISample3(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        "/Sample4": (BuildContext context)                   => CmpCodePage(
+          Title:"Sample 4",
+          BackRoute:"/Main",
+          NextRoute:"/Main",
+          ItemList:Sample4_list,
+          CodeRoute:"lib/_UISamples/UISample_4/UISample_4.dart",
+          TabIcon:Icon(Icons.receipt),
+          ToDo:"Write A Page Displaying A Calculator",
+          TxtExplanation:Sample4_Explanation,
+          RunCodeRoute:new UISample4(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+         "/Sample5": (BuildContext context)                   => CmpCodePage(
+          Title:"Sample 5",
+          BackRoute:"/Main",
+          NextRoute:"/Main",
+          ItemList:Sample5_list,
+          CodeRoute:"lib/_UISamples/UISample_5/UISample_5.dart",
+          TabIcon:Icon(Icons.receipt),
+          ToDo:"Soon",
+          TxtExplanation:Sample5_Explanation,
+          RunCodeRoute:new UISample5(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+         "/Sample6": (BuildContext context)                   => CmpCodePage(
+          Title:"Sample 6",
+          BackRoute:"/Main",
+          NextRoute:"/Main",
+          ItemList:Sample6_list,
+          CodeRoute:"lib/_UISamples/UISample_6/UISample_6.dart",
+          TabIcon:Icon(Icons.receipt),
+          ToDo:"Soon",
+          TxtExplanation:Sample6_Explanation,
+          RunCodeRoute:new UISample6(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+        "/Sample7": (BuildContext context)                   => CmpCodePage(
+          Title:"Sample 7",
+          BackRoute:"/Main",
+          NextRoute:"/Main",
+          ItemList:Sample7_list,
+          CodeRoute:"lib/_UISamples/UISample_7/UISample_7.dart",
+          TabIcon:Icon(Icons.receipt),
+          ToDo:"Soon!",
+          TxtExplanation:Sample7_Explanation,
+          RunCodeRoute:new UISample7(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+         "/Sample8": (BuildContext context)                   => CmpCodePage(
+          Title:"Sample 8",
+          BackRoute:"/Main",
+          NextRoute:"/Main",
+          ItemList:Sample8_list,
+          CodeRoute:"lib/_UISamples/UISample_8/UISample_8.dart",
+          TabIcon:Icon(Icons.receipt),
+          ToDo:"Create A Page Displaying SplashScreen Once Loading Done,Redirect User To Another Page!",
+          TxtExplanation:Sample8_Explanation,
+          RunCodeRoute:new UISample8(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+         "/Sample9": (BuildContext context)                   => CmpCodePage(
+          Title:"Sample 9",
+          BackRoute:"/Main",
+          NextRoute:"/Main",
+          ItemList:Sample9_list,
+          CodeRoute:"lib/_UISamples/UISample_9/UISample_9.dart",
+          TabIcon:Icon(Icons.receipt),
+          ToDo:"Soon!",
+          TxtExplanation:Sample9_Explanation,
+          RunCodeRoute:new UISample9(),
+        ),
+
+
+        //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
+
+
+
+        "/Generate_Intro_Quizz": (BuildContext context)             => cl_IntroQuizz(),
+        "/Generate_Keywords_Quizz": (BuildContext context)          => cl_KeywordsQuizz(),
+        "/Generate_Text_Quizz": (BuildContext context)              => cl_TextQuizz(),
+        "/Generate_HeaderAppBar_Quizz": (BuildContext context)      => cl_HeaderAppBarQuizz(),
+        "/Generate_MainBg_Quizz": (BuildContext context)            => cl_MainBgQuizz(),
+        "/Generate_Image_Quizz": (BuildContext context)             => cl_ImageQuizz(),
+        "/Generate_Button_Quizz": (BuildContext context)            => cl_ButtonsQuizz(),
+        "/Generate_Toast_Quizz": (BuildContext context)             => cl_ToastQuizz(),
+        "/Generate_Layouts_Quizz": (BuildContext context)           => cl_LayoutQuizz(),
+        "/Generate_Dialogs_Quizz": (BuildContext context)           => cl_DialogsQuizz(),
+        "/Generate_Divider_Quizz": (BuildContext context)           => cl_DividerQuizz(),
+        "/Generate_Navigator_Quizz": (BuildContext context)         => cl_NavigationQuizz(),
+        "/Generate_SnackBar_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_FlushBar_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_Card_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_TextOverFlow_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_GestureDetector_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_ListView_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_TextField_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_FooterAppBar_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_ImageSlider_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_Notification_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_Switch_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_Audio_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_Video_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_SimpleLoader_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_AdvancedLoader_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_Animation_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_Radio_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_CheckBox_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_Chip_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_TabBar_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_Selector_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_Flex_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_ComboBox_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_ExpandableList_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_Slider_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_Drawer_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_MainSplashScreen_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_Admob_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_FlipCard_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_FlipView_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_Stepper_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_BottomSheet_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_SPI_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_Expandable_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_Marquee_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_ContainerWaves_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_RouteTransition_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_FlutterSyntaxe_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_Advanced_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_SlidingUpPanel_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_PopupMenuButton_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_SQLFlite_Quizz": (BuildContext context)           => SoonAlert(),
+        "/Generate_Hero_Quizz": (BuildContext context)              => SoonAlert(),
+        "/Generate_AvatarGlow_Quizz": (BuildContext context)              => SoonAlert(),
+        "/Generate_DataTable_Quizz": (BuildContext context)              => SoonAlert(),
+        "/Generate_WebView_Quizz": (BuildContext context)              => SoonAlert(),
+        "/Generate_AnimatedIcons_Quizz": (BuildContext context)              => SoonAlert(),
+        "/Generate_BackDrop_Quizz": (BuildContext context)              => SoonAlert(),
+        "/Generate_FireBase_Quizz": (BuildContext context)              => SoonAlert(),
+        "/Generate_TinderSwipe_Quizz": (BuildContext context)              => SoonAlert(),
+        "/Generate_FireBaseAdmob_Quizz": (BuildContext context)              => SoonAlert(),
+
+      },
+    ),
+  );
+}
+
+
+Future<void> UpdateDataFireStore() async {
+  await Firestore.instance.collection('UserData').document(UID).updateData({
+    "UID"         : "$UID",
+    "UserName"    : "$AvatarName",
+    "Tokens"      : "$AvatarTokens",
+    "Xp"          : "$AvatarXp",
+    "AvatarImg"   : "$AvatarImg",
+    "PID"         : "$PID",
+  });
 }
 
 
 
-class Main extends StatefulWidget {
+
+
+class Main extends  KFDrawerContent {
+  AuthCheckState parent;
+  Main(this.parent);
+
   @override
   _MainState createState() => new _MainState();
 }
 
-class _MainState extends State<Main>  {
-  int _page = 0;
-  PageController MainPageController;
+class _MainState extends State<Main> with SingleTickerProviderStateMixin {
+  ScrollController _hideButtonController;
+  var TController;
+  int SelectedPage=0;
+  var _isVisible;
+
+
+
+
 
 
   @override
   void initState() {
+    GetLevelsXp();
+    ShowMyAds();
+    MainPageActive=true;
+    try{
+      bannerAdTutorial?.dispose();
+    }
+    catch(ex){
+      print(ex);
+    }
     super.initState();
+
     Clr=Colors.blue;
-    MyBanner?.dispose();
-    bannerAdTutorial?.dispose();
     initPlayer();
-    MainPageController= new PageController();
+
+    setState(()  {
+      CheckUserConnected();
+    });
+
+    if(IsUserConnected==true){
+      UpdateDataFireStore();
+    }
+
+    TController=new TabController(length: 3, vsync: this);
+    _isVisible = true;
+    _hideButtonController = new ScrollController();
+    _hideButtonController.addListener(() {
+      if (_hideButtonController.position.userScrollDirection ==
+          ScrollDirection.reverse) {
+        setState(() {
+          _isVisible = false;
+        });
+      }
+      if (_hideButtonController.position.userScrollDirection ==
+          ScrollDirection.forward) {
+        setState(() {
+          _isVisible = true;
+        });
+      }
+    });
+
   }
 
   @override
@@ -5385,115 +6836,15 @@ class _MainState extends State<Main>  {
   }
 
   void PlayLuncherSound() async{
-      audioCache.play('Music/Luncher.mp3');
+    audioCache.play('Music/Luncher.mp3');
   }
 
-  void navigationTapped(int page) {
-    MainPageController.animateToPage(
-        page,
-        duration:const Duration(milliseconds: 600),
-        curve: Curves.ease
-    );
-  }
 
-  void onPageChanged(int page) {
-    setState(() {
-      if(page==0){
-        Clr=Colors.blue;
-      }
-      else if(page==1){
-        Clr=Colors.lightBlue;
-      }
-      else if(page==2){
-        Clr=Colors.indigo;
-      }
-      this._page = page;
-    });
-  }
+
+
 
   @override
   Widget build(BuildContext context) {
-
-    InitAd();
-
-    Future<bool> _onBackPressed() {
-        return showDialog(
-          context: context,
-          builder: (context) => new AlertDialog(
-              title: new Text('Closing The App!'),
-              content:Container(
-                height:106,
-                child:Column(
-                  crossAxisAlignment:CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Divider(),
-                    new Text('Are You Sure?'),
-                    SizedBox(height:8),
-                    Row(
-                      children: <Widget>[
-                        RaisedButton (
-                          color: Colors.green,
-                          shape: RoundedRectangleBorder (
-                              borderRadius: BorderRadius.circular (30.0)
-                          ),
-                          child: Padding (
-                              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-                              child:
-                              Row(
-                                children: <Widget>[
-                                  Icon(Icons.exit_to_app),
-                                  Text (
-                                    "Yes",
-                                    textAlign:TextAlign.center,
-                                    maxLines: 1,
-                                    style:TextStyle(
-                                      fontSize:12,
-                                    ),
-                                  ),
-                                ],
-                              )
-                          ),
-                          onPressed: () {
-                            PlayTapSound();
-                            Navigator.of(context).pop(true);
-                          },
-                        ),
-                        RaisedButton (
-                          color: Colors.red,
-                          shape: RoundedRectangleBorder (
-                              borderRadius: BorderRadius.circular (30.0)
-                          ),
-                          child: Padding (
-                              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-                              child:
-                              Row(
-                                children: <Widget>[
-                                  Icon(Icons.close),
-                                  Text (
-                                    "No",
-                                    textAlign:TextAlign.center,
-                                    maxLines: 1,
-                                    style:TextStyle(
-                                      fontSize:12,
-                                    ),
-                                  ),
-                                ],
-                              )
-                          ),
-                          onPressed: () {
-                            PlayTapSound();
-                            Navigator.of(context).pop(false);
-                          },
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              )
-          ),
-        ) ?? false;
-      }
-
 
     Timer.run(() {
       if(PopupResult=="Show") {
@@ -5688,110 +7039,96 @@ class _MainState extends State<Main>  {
       }
     });
 
-    return WillPopScope(
-        onWillPop: _onBackPressed,
-        child: Scaffold(
-      resizeToAvoidBottomPadding: false,
-      appBar: AppBar(
-          backgroundColor: Clr,
-          title:Text(
-            "Flutter: Tutorials & Quizzes",
-            style: TextStyle(
-              fontFamily: "Crimson Text",
-            ),
-          )
+
+
+    return Scaffold(
+      backgroundColor:(ThemeResult=="Light")?Colors.white:Colors.black12, 
+      body: ListView(
+        controller:_hideButtonController,
+        children: <Widget>[
+          (SelectedPage==0)?
+          new FrontEndPage(widget.parent)
+              :(SelectedPage==1)?
+          new BackEndPage()
+              :new UpdatePage(),
+        ],
       ),
-      drawer: new Drawer(
-        child: new ListView(
-          children: <Widget>[
-            Container(
-                color:Colors.teal,
-                width:double.infinity,
-                height:200,
-                child:Center(
-                    child:Column(
-                      children: <Widget>[
-                        Image.asset("Images/160x160_Flutter.png",),
-                        Text(
-                          "Flutter: Tutorials & Quizzes",
-                          style: TextStyle(
-                            fontFamily: "Crimson Text",
-                            fontSize:21,
-                            color:Colors.white,
-                          ),
-                        ),
-                      ],
-                    )
-                )
-            ),
-            Divider(),
-            new ListTile(
-              leading: new Icon(Icons.settings),
-              title: new Text("Settings"),
-              trailing: new Icon(Icons.arrow_forward_ios),
-              onTap:(){
-                if(SoundResult=="NotMuted") {
-                  PlayTapSound();
-                }
-                Navigator.push(context,MaterialPageRoute(builder:(context)=>SettingPage()));
+
+      floatingActionButton:Column(
+        mainAxisAlignment:MainAxisAlignment.end,
+        children: <Widget>[
+          Container(
+            width:39,
+            height:39,
+            child:FloatingActionButton(
+              heroTag:"Main_Up",
+              backgroundColor:Colors.deepOrange,
+              child:Icon(Icons.arrow_drop_up),
+              onPressed:(){
+                _hideButtonController.animateTo(
+                  0,
+                  duration:Duration(milliseconds:500),
+                  curve:Curves.fastOutSlowIn,
+                );
               },
             ),
-            Divider(),
-          ],
+          ),
+          SizedBox(height:2,),
+          Container(
+            width:39,
+            height:39,
+            child:FloatingActionButton(
+              heroTag:"Main_Down",
+              backgroundColor:Colors.deepOrange,
+              child:Icon(Icons.arrow_drop_down),
+              onPressed:(){
+                _hideButtonController.animateTo(
+                  _hideButtonController.position.maxScrollExtent,
+                  duration:Duration(milliseconds:500),
+                  curve:Curves.fastOutSlowIn,
+                );
+              },
+            ),
+          ),
+
+        ],
+      ),
+
+
+
+      bottomNavigationBar: AnimatedContainer(
+        color:ThemeAppBar,
+        duration: Duration(milliseconds: 50),
+        height: _isVisible ? 60.0 : 0.0,
+        child: _isVisible
+            ? AnimatedContainer(
+          duration: Duration(milliseconds: 50),
+          height: _isVisible ? 60.0 : 0.0,
+          child: _isVisible
+              ?  TabBar(
+            indicatorColor:Colors.blueGrey,
+            controller:TController,
+            tabs: [
+              Tab(icon: Icon(Icons.flip_to_front),text:'FrontEnd',),
+              Tab(icon: Icon(Icons.flip_to_back),text:'BackEnd',),
+              Tab(icon: Icon(Icons.update),text:'Update',),
+            ],
+            onTap:(index){
+              setState(() {
+                SelectedPage=index;
+              });
+            },
+          ): Container(
+            color: Colors.blue,
+            width: MediaQuery.of(context).size.width,
+          ),
+        )
+            : Container(
+          color: Colors.transparent,
+          width: MediaQuery.of(context).size.width,
         ),
       ),
-      body: new PageView(
 
-        children: [
-          FrontEndPage(),
-          BackEndPage(),
-          UpdatePage(),
-        ],
-        onPageChanged: onPageChanged,
-        controller: MainPageController,
-      ),
-      bottomNavigationBar: new BottomNavigationBar(
-        backgroundColor: Clr,
-        items: [
-          new BottomNavigationBarItem(
-              icon: new Icon(
-                Icons.flip_to_front,
-                color:Colors.white,
-              ),
-              title: new Text(
-                "FrontEnd",
-                style: new TextStyle(
-                  color:Colors.white,
-                ),
-              )),
-          new BottomNavigationBarItem(
-              icon: new Icon(
-                Icons.flip_to_back,
-                color: Colors.white,
-              ),
-              title: new Text(
-                "Backend",
-                style: new TextStyle(
-                  color: Colors.white,
-                ),
-              )),
-          new BottomNavigationBarItem(
-              icon: new Icon(
-                Icons.update,
-                color: Colors.white,
-              ),
-              title: new Text(
-                "Update",
-                style: new TextStyle(
-                  color: Colors.white,
-                ),
-              )),
-        ],
-        onTap: navigationTapped,
-        currentIndex: _page,
-
-      ),
-        ),
     );
   }
 }
@@ -5811,9 +7148,3 @@ _launchUrl() async{
     throw 'Could Not Launch Url!';
   }
 }
-
-
-
-
-
-

@@ -1,0 +1,9 @@
+<?php
+    
+    require_once('DbConnect.php');
+    $UpdateID=$_GET['UpdateID'];
+    $SetName =$_GET['SetName'];
+    $statement = $conn->prepare('UPDATE Products SET ProductName="'.$SetName.'" WHERE ProductID='.$UpdateID);
+    $statement->execute();
+    
+?>

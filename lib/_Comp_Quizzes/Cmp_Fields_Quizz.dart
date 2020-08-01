@@ -3,8 +3,13 @@ import 'package:flutter_tutorials_and_quizzes/0_Quizzes/0_GenerateRandomQuizzes.
 import 'package:flutter_tutorials_and_quizzes/main.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:toast/toast.dart';
 
+import '../CheckConnection.dart';
+import '../MainSplashScreen.dart';
 import '../SettingPage.dart';
+import '../UserDataInfo.dart';
+import '../LoadFireBaseAdmob.dart';
 
 
 class Cmp_Fields_Quizz extends StatefulWidget {
@@ -47,6 +52,7 @@ class _Cmp_Field_Quizz_State extends State<Cmp_Fields_Quizz> {
   void initState(){
     super.initState();
     initPlayer();
+    ShowMyAds();
   }
 
   void initPlayer(){
@@ -75,6 +81,7 @@ class _Cmp_Field_Quizz_State extends State<Cmp_Fields_Quizz> {
   void CheckAnswer(BuildContext context) {
     String Result;
     Color TxtClr;
+    bool Ans;
 
 
     if(widget.CorrectAns2=="NotSet"){
@@ -111,11 +118,27 @@ class _Cmp_Field_Quizz_State extends State<Cmp_Fields_Quizz> {
         widget.Ans6Txt.text==widget.CorrectAns6 &&
         widget.Ans7Txt.text==widget.CorrectAns7
     ){
+      Ans=true;
       Result="Correct Answer";
       TxtClr=Colors.green;
       PlayWinSound();
+
+      if(RandQuizz==false){
+        AvatarTokens=AvatarTokens+1;
+        AvatarXp    =AvatarXp+10;
+      }
+      else{
+        AvatarTokens=AvatarTokens+2;
+        AvatarXp    =AvatarXp+20;
+      }
+
+      var dbApp = new DBApp();
+      UserData US=new UserData("1",AvatarTokens,AvatarXp,AvatarName,AvatarImg,UID,PID,1);
+      dbApp.updateUserData(US);
+      dbApp.getAvatarInfo();
     }
     else{
+      Ans=false;
       Result="Wrong Answer";
       TxtClr=Colors.red;
       PlayLoseSound();
@@ -131,8 +154,13 @@ class _Cmp_Field_Quizz_State extends State<Cmp_Fields_Quizz> {
         ),
         content:
         Container(
-          height: 440,
-          child: ListView(
+          height: 480,
+          child:Column(
+            children: <Widget>[
+           Container(
+            height:250,
+            child:
+            ListView(
             children: <Widget>[
               Divider(color: Colors.black,),
               Text(
@@ -151,7 +179,82 @@ class _Cmp_Field_Quizz_State extends State<Cmp_Fields_Quizz> {
                   fontFamily:"Lora",
                 ),
               ),
-              SizedBox(height: 20,),
+            ],
+          ),
+          ),
+
+            Divider(color:Colors.grey,),
+
+             (Ans==true && RandQuizz==false)?
+                Container(
+                  color:Colors.transparent,
+                  width:double.infinity,
+                  height:65,
+                  child:Column(
+                    crossAxisAlignment:CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text("Simple Quizz Rewards X1",style: TextStyle(color: Colors.blue,fontFamily:"Lora",),),
+                      Row(
+                      children: <Widget>[
+                      Text("You Earned:",style: TextStyle(color: Colors.teal,fontFamily:"Lora",),),
+                      Image.asset("Images/coin.gif",width:15,height:15),
+                      Text("1"),
+                      SizedBox(width:10,),
+                      Image.asset("Images/Star.gif",width:15,height:15),
+                      Text("10"),
+                    ],
+                  ),
+
+                    ],
+                  )
+                 )
+                :(Ans==true && RandQuizz==true)?
+                Container(
+                  color:Colors.transparent,
+                  width:double.infinity,
+                  height:65,
+                  child:Column(
+                    crossAxisAlignment:CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text("Random Quizz Rewards X2",style: TextStyle(color: Colors.blue,fontFamily:"Lora",),),
+                      Row(
+                      children: <Widget>[
+                      Text("You Earned:",style: TextStyle(color: Colors.teal,fontFamily:"Lora",),),
+                      Image.asset("Images/coin.gif",width:15,height:15),
+                      Text("2"),
+                      SizedBox(width:10,),
+                      Image.asset("Images/Star.gif",width:15,height:15),
+                      Text("20"),
+                    ],
+                  ),
+
+                    ],
+                  )
+                 ):
+                 Container(
+                  color:Colors.transparent,
+                  width:double.infinity,
+                  height:65,
+                  child:Column(
+                    children: <Widget>[
+                      Text("",style: TextStyle(color: Colors.blue,fontFamily:"Lora",),),
+                      Row(
+                      children: <Widget>[
+                      Text("You Earned:",style: TextStyle(color: Colors.teal,fontFamily:"Lora",),),
+                      Image.asset("Images/coin.gif",width:15,height:15),
+                      Text("0"),
+                      SizedBox(width:10,),
+                      Image.asset("Images/Star.gif",width:15,height:15),
+                      Text("0"),
+                    ],
+                  ),
+
+                    ],
+                  )
+                 ),
+
+                
+
               SizedBox(
                   width: double.infinity,
                   child:
@@ -163,7 +266,7 @@ class _Cmp_Field_Quizz_State extends State<Cmp_Fields_Quizz> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        "Great! Load Another Quizz ",
+                        "Load Another Quizz",
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily:"PT Mono",
@@ -171,8 +274,20 @@ class _Cmp_Field_Quizz_State extends State<Cmp_Fields_Quizz> {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    onPressed: (){
+                    onPressed: () async {
+                      loadIntertitialAd++;
                       PlayTapSound();
+                       CheckUserConnected();
+                      if(IsUserConnected==true){
+                        Toast.show (
+                          "Updating Data...",
+                          context,
+                          duration: Toast.LENGTH_SHORT,
+                          gravity: Toast.BOTTOM,
+                          textColor: Colors.white,
+                        );
+                        await UpdateDataFireStore();
+                      }
                       Navigator.of(context,rootNavigator: true).pop('dialog');
                       if(RandQuizz==false){
                         Navigator.of(context).pushReplacementNamed(widget.GoRoute);
@@ -183,7 +298,7 @@ class _Cmp_Field_Quizz_State extends State<Cmp_Fields_Quizz> {
                     },
                   )
               ),
-              SizedBox(height: 7,),
+              SizedBox(height:2,),
               SizedBox(
                   width: double.infinity,
                   child:
@@ -195,7 +310,7 @@ class _Cmp_Field_Quizz_State extends State<Cmp_Fields_Quizz> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        "Thanks! Get Me Back To Menu ",
+                        "Get Me Back To Menu",
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily:"PT Mono",
@@ -203,24 +318,37 @@ class _Cmp_Field_Quizz_State extends State<Cmp_Fields_Quizz> {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    onPressed: (){
+                    onPressed: () async {
+                      loadIntertitialAd++;
                       PlayTapSound();
+                       CheckUserConnected();
+                      if(IsUserConnected==true){
+                        Toast.show (
+                          "Updating Data...",
+                          context,
+                          duration: Toast.LENGTH_SHORT,
+                          gravity: Toast.BOTTOM,
+                          textColor: Colors.white,
+                        );
+                        await UpdateDataFireStore();
+                      }
                       Navigator.of(context,rootNavigator: true).pop('dialog');
-                      Navigator.push(context,MaterialPageRoute(builder:(context)=>Main()));
+                      Navigator.push(context,MaterialPageRoute(builder:(context)=>MainSplashScreen()));
                     },
                   )
               ),
+           
             ],
-          ),
-
         )
+        ),
 
     );
 
     showDialog(
+        barrierDismissible:false,
         context: context,
         builder: (BuildContext context) {
-          return alert;
+          return WillPopScope(child:alert,onWillPop:() async => false,);
         });
 
     widget.Ans1Txt.text="";
@@ -235,16 +363,18 @@ class _Cmp_Field_Quizz_State extends State<Cmp_Fields_Quizz> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title:widget.AppBarTitle,
-      home: Scaffold(
+    return WillPopScope(
+      onWillPop:() async => false,
+      child:Scaffold(
+        backgroundColor:(ThemeResult=="Light")?Colors.white:CardBg.withBlue(255).withGreen(255).withRed(255),
+        resizeToAvoidBottomPadding:false,
         appBar: AppBar(
+          backgroundColor:ThemeAppBar,
           leading: IconButton(
             icon: new Icon(Icons.arrow_back),
             onPressed: (){
               PlayTapSound();
-              Navigator.push(context,MaterialPageRoute(builder:(context)=>Main()));
+              Navigator.push(context,MaterialPageRoute(builder:(context)=>MainSplashScreen()));
             },
           ),
           title:Text(widget.AppBarTitle),
@@ -267,33 +397,35 @@ class _Cmp_Field_Quizz_State extends State<Cmp_Fields_Quizz> {
              ),
           ],
         ),
-        body:
-         ListView(
-            scrollDirection:Axis.vertical,
-            children: <Widget>[
-              SizedBox(height:10,),
-              Padding(
+        body:Column(
+          children: <Widget>[
+            Container(
+              color:Colors.grey.withOpacity(0.5),
+              width:MediaQuery.of(context).size.width,
+              height:105,
+              child:SingleChildScrollView(
+                child:Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Text(
                   widget.Question,
                   style:TextStyle(
-                    fontSize:17,
+                    fontSize:15,
                     color:Colors.teal,
-                    fontWeight:FontWeight.bold,
+                    fontWeight:FontWeight.bold, 
                   )
                 ),
+               ),       
               ),
-              SizedBox(height:8,),
-
+              ),
+            Expanded(
+              child:ListView(
+            scrollDirection:Axis.vertical,
+            children: <Widget>[
+              SizedBox(height:10,),
+              
               SingleChildScrollView(
                 scrollDirection:Axis.horizontal,
-                child:Row(
-                  crossAxisAlignment:CrossAxisAlignment.start,
-                  mainAxisAlignment:MainAxisAlignment.start,
-                  children: <Widget>[
-
-
-                        Column(
+                child:Column(
                           crossAxisAlignment:CrossAxisAlignment.start,
                           mainAxisAlignment:MainAxisAlignment.start,
                           children: <Widget>[
@@ -304,10 +436,6 @@ class _Cmp_Field_Quizz_State extends State<Cmp_Fields_Quizz> {
                               ),
                           ],
                         )
-
-
-                  ],
-                ),
               )
 
 
@@ -317,7 +445,11 @@ class _Cmp_Field_Quizz_State extends State<Cmp_Fields_Quizz> {
 
             ],
           ),
-        ),
+            )
+            
+          ],
+        )
+      ),
     );
 
   }

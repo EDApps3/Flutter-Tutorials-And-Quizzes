@@ -22,6 +22,7 @@ class CmpGreyCardImageTitle extends StatelessWidget {
           child: new Row(
               children: <Widget>[
                 IconButton(
+                  onPressed:(){},
                   icon:CardIcon,
                 ),
                 Text(

@@ -1,18 +1,18 @@
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorials_and_quizzes/57_BackDrop/3_BackDrop_Custom.dart';
-import 'package:flutter_tutorials_and_quizzes/58_Animated_Icon/10_AI_10.dart';
-import 'package:flutter_tutorials_and_quizzes/58_Animated_Icon/11_AI_11.dart';
-import 'package:flutter_tutorials_and_quizzes/58_Animated_Icon/12_AI_12.dart';
-import 'package:flutter_tutorials_and_quizzes/58_Animated_Icon/1_AI_1.dart';
-import 'package:flutter_tutorials_and_quizzes/58_Animated_Icon/2_AI_2.dart';
-import 'package:flutter_tutorials_and_quizzes/58_Animated_Icon/3_AI_3.dart';
-import 'package:flutter_tutorials_and_quizzes/58_Animated_Icon/4_AI_4.dart';
-import 'package:flutter_tutorials_and_quizzes/58_Animated_Icon/5_AI_5.dart';
-import 'package:flutter_tutorials_and_quizzes/58_Animated_Icon/6_AI_6.dart';
-import 'package:flutter_tutorials_and_quizzes/58_Animated_Icon/7_AI_7.dart';
-import 'package:flutter_tutorials_and_quizzes/58_Animated_Icon/8_AI_8.dart';
-import 'package:flutter_tutorials_and_quizzes/58_Animated_Icon/9_AI_9.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/57_BackDrop/3_BackDrop_Custom.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/58_Animated_Icon/10_AI_10.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/58_Animated_Icon/11_AI_11.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/58_Animated_Icon/12_AI_12.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/58_Animated_Icon/1_AI_1.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/58_Animated_Icon/2_AI_2.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/58_Animated_Icon/3_AI_3.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/58_Animated_Icon/4_AI_4.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/58_Animated_Icon/5_AI_5.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/58_Animated_Icon/6_AI_6.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/58_Animated_Icon/7_AI_7.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/58_Animated_Icon/8_AI_8.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/58_Animated_Icon/9_AI_9.dart';
 import 'package:flutter_tutorials_and_quizzes/_Comp_Courses/Cmp_Code.dart';
 import 'package:flutter_tutorials_and_quizzes/_Comp_Courses/Cmp_Code_Page.dart';
 import 'package:flutter_tutorials_and_quizzes/_Comp_Courses/Cmp_ListTile_GoCode2.dart';
@@ -922,7 +922,7 @@ class _Animated_IconsState extends State<Animated_Icons> with TickerProviderStat
                     BackRoute:"/Animated_Icons",
                     NextRoute:"/AI2",
                     ItemList:SetList("AnimatedIcons.home_menu"),
-                    CodeRoute:"lib/58_Animated_Icon/1_AI_1.dart",
+                    CodeRoute:"lib/Codes_FrontEnd/58_Animated_Icon/1_AI_1.dart",
                     TabIcon:Icon(Icons.video_library),
                     ToDo:"We Need To Write A Page That Show A Centered AnimatedIcons.home_menu\n",
                     TxtExplanation:Exp("AI_1_Run","_AI_1_tate"),
@@ -1113,7 +1113,7 @@ class _Animated_IconsState extends State<Animated_Icons> with TickerProviderStat
             BackRoute:"/Animated_Icons",
             NextRoute:"/AI2",
             ItemList:SetList("AnimatedIcons.home_menu"),
-            CodeRoute:"lib/58_Animated_Icon/1_AI_1.dart",
+            CodeRoute:"lib/Codes_FrontEnd/58_Animated_Icon/1_AI_1.dart",
             TabIcon:Icon(Icons.video_library),
             ToDo:"We Need To Write A Page That Show A Centered AnimatedIcons.home_menu\n",
             TxtExplanation:Exp("AI_1_Run","_AI_1_tate"),
@@ -1125,7 +1125,7 @@ class _Animated_IconsState extends State<Animated_Icons> with TickerProviderStat
             BackRoute:"/AI1",
             NextRoute:"/AI3",
             ItemList:SetList("AnimatedIcons.close_menu"),
-            CodeRoute:"lib/58_Animated_Icon/2_AI_2.dart",
+            CodeRoute:"lib/Codes_FrontEnd/58_Animated_Icon/2_AI_2.dart",
             TabIcon:Icon(Icons.video_library),
             ToDo:"We Need To Write A Page That Show A Centered AnimatedIcons.close_menu\n",
             TxtExplanation:Exp("AI_2_Run","_AI_2_tate"),
@@ -1137,7 +1137,7 @@ class _Animated_IconsState extends State<Animated_Icons> with TickerProviderStat
             BackRoute:"/AI2",
             NextRoute:"/AI4",
             ItemList:SetList("AnimatedIcons.menu_close"),
-            CodeRoute:"lib/58_Animated_Icon/3_AI_3.dart",
+            CodeRoute:"lib/Codes_FrontEnd/58_Animated_Icon/3_AI_3.dart",
             TabIcon:Icon(Icons.video_library),
             ToDo:"We Need To Write A Page That Show A Centered AnimatedIcons.menu_close\n",
             TxtExplanation:Exp("AI_3_Run","_AI_3_tate"),
@@ -1150,7 +1150,7 @@ class _Animated_IconsState extends State<Animated_Icons> with TickerProviderStat
             BackRoute:"/AI3",
             NextRoute:"/AI5",
             ItemList:SetList("AnimatedIcons.list_view"),
-            CodeRoute:"lib/58_Animated_Icon/4_AI_4.dart",
+            CodeRoute:"lib/Codes_FrontEnd/58_Animated_Icon/4_AI_4.dart",
             TabIcon:Icon(Icons.video_library),
             ToDo:"We Need To Write A Page That Show A Centered AnimatedIcons.list_view\n",
             TxtExplanation:Exp("AI_4_Run","_AI_4_tate"),
@@ -1163,7 +1163,7 @@ class _Animated_IconsState extends State<Animated_Icons> with TickerProviderStat
             BackRoute:"/AI4",
             NextRoute:"/AI6",
             ItemList:SetList("AnimatedIcons.add_event"),
-            CodeRoute:"lib/58_Animated_Icon/5_AI_5.dart",
+            CodeRoute:"lib/Codes_FrontEnd/58_Animated_Icon/5_AI_5.dart",
             TabIcon:Icon(Icons.video_library),
             ToDo:"We Need To Write A Page That Show A Centered AnimatedIcons.add_event\n",
             TxtExplanation:Exp("AI_5_Run","_AI_5_tate"),
@@ -1176,7 +1176,7 @@ class _Animated_IconsState extends State<Animated_Icons> with TickerProviderStat
             BackRoute:"/AI5",
             NextRoute:"/AI7",
             ItemList:SetList("AnimatedIcons.event_add"),
-            CodeRoute:"lib/58_Animated_Icon/6_AI_6.dart",
+            CodeRoute:"lib/Codes_FrontEnd/58_Animated_Icon/6_AI_6.dart",
             TabIcon:Icon(Icons.video_library),
             ToDo:"We Need To Write A Page That Show A Centered AnimatedIcons.event_add\n",
             TxtExplanation:Exp("AI_6_Run","_AI_6_tate"),
@@ -1189,7 +1189,7 @@ class _Animated_IconsState extends State<Animated_Icons> with TickerProviderStat
             BackRoute:"/AI6",
             NextRoute:"/AI8",
             ItemList:SetList("AnimatedIcons.arrow_menu"),
-            CodeRoute:"lib/58_Animated_Icon/7_AI_7.dart",
+            CodeRoute:"lib/Codes_FrontEnd/58_Animated_Icon/7_AI_7.dart",
             TabIcon:Icon(Icons.video_library),
             ToDo:"We Need To Write A Page That Show A Centered AnimatedIcons.arrow_menu\n",
             TxtExplanation:Exp("AI_7_Run","_AI_7_tate"),
@@ -1202,7 +1202,7 @@ class _Animated_IconsState extends State<Animated_Icons> with TickerProviderStat
             BackRoute:"/AI7",
             NextRoute:"/AI9",
             ItemList:SetList("AnimatedIcons.menu_arrow"),
-            CodeRoute:"lib/58_Animated_Icon/8_AI_8.dart",
+            CodeRoute:"lib/Codes_FrontEnd/58_Animated_Icon/8_AI_8.dart",
             TabIcon:Icon(Icons.video_library),
             ToDo:"We Need To Write A Page That Show A Centered AnimatedIcons.menu_arrow\n",
             TxtExplanation:Exp("AI_8_Run","_AI_8_tate"),
@@ -1216,7 +1216,7 @@ class _Animated_IconsState extends State<Animated_Icons> with TickerProviderStat
             BackRoute:"/AI8",
             NextRoute:"/AI10",
             ItemList:SetList("AnimatedIcons.ellipsis_search"),
-            CodeRoute:"lib/58_Animated_Icon/9_AI_9.dart",
+            CodeRoute:"lib/Codes_FrontEnd/58_Animated_Icon/9_AI_9.dart",
             TabIcon:Icon(Icons.video_library),
             ToDo:"We Need To Write A Page That Show A Centered AnimatedIcons.ellipsis_search\n",
             TxtExplanation:Exp("AI_9_Run","_AI_9_tate"),
@@ -1229,7 +1229,7 @@ class _Animated_IconsState extends State<Animated_Icons> with TickerProviderStat
             BackRoute:"/AI9",
             NextRoute:"/AI11",
             ItemList:SetList("AnimatedIcons.search_ellipsis"),
-            CodeRoute:"lib/58_Animated_Icon/10_AI_10.dart",
+            CodeRoute:"lib/Codes_FrontEnd/58_Animated_Icon/10_AI_10.dart",
             TabIcon:Icon(Icons.video_library),
             ToDo:"We Need To Write A Page That Show A Centered AnimatedIcons.search_ellipsis\n",
             TxtExplanation:Exp("AI_10_Run","_AI_10_tate"),
@@ -1242,7 +1242,7 @@ class _Animated_IconsState extends State<Animated_Icons> with TickerProviderStat
             BackRoute:"/AI10",
             NextRoute:"/AI12",
             ItemList:SetList("AnimatedIcons.play_pause"),
-            CodeRoute:"lib/58_Animated_Icon/11_AI_11.dart",
+            CodeRoute:"lib/Codes_FrontEnd/58_Animated_Icon/11_AI_11.dart",
             TabIcon:Icon(Icons.video_library),
             ToDo:"We Need To Write A Page That Show A Centered AnimatedIcons.play_pause\n",
             TxtExplanation:Exp("AI_11_Run","_AI_11_tate"),
@@ -1255,7 +1255,7 @@ class _Animated_IconsState extends State<Animated_Icons> with TickerProviderStat
             BackRoute:"/AI11",
             NextRoute:"/Main",
             ItemList:SetList("AnimatedIcons.pause_play"),
-            CodeRoute:"lib/58_Animated_Icon/12_AI_12.dart",
+            CodeRoute:"lib/Codes_FrontEnd/58_Animated_Icon/12_AI_12.dart",
             TabIcon:Icon(Icons.video_library),
             ToDo:"We Need To Write A Page That Show A Centered AnimatedIcons.pause_play\n",
             TxtExplanation:Exp("AI_12_Run","_AI_12_tate"),
@@ -1267,14 +1267,13 @@ class _Animated_IconsState extends State<Animated_Icons> with TickerProviderStat
             BackRoute:"/BackDrop_Right",
             NextRoute:"/Animated_Icons",
             ItemList:BackDrop_Custom_List,
-            CodeRoute:"lib/57_BackDrop/3_BackDrop_Custom.dart",
+            CodeRoute:"lib/Codes_FrontEnd/57_BackDrop/3_BackDrop_Custom.dart",
             TabIcon:Icon(Icons.menu),
             ToDo:"Create A Page Containing Taking Teal Background Color Backdrop,Customizable Icon.Set 2 ListTile That Each Change FrontLayer Page",
             TxtExplanation:BackDrop_Custom_Explanation,
             RunCodeRoute:new CustomBackDrop(),
           ),
 
-          "/Main": (BuildContext context)                        => Main(),
 
 
 

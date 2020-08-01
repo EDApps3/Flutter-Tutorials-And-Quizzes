@@ -1,0 +1,20 @@
+<?php
+$servername = "localhost";
+$username   = "id12598271_root";
+$password   = "rootroot";
+$DbName     = "id12598271_dbtest";
+
+try {
+    $conn = new PDO(
+        "mysql:host=$servername;dbname=$DbName",
+        $username,
+        $password
+    );
+    
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch(PDOException $e){
+    echo "Connection failed: " . $e->getMessage();
+}
+
+?>

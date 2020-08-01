@@ -888,9 +888,6 @@ List DataTable_Delete_list =[
 
 
 
-
-
-
 String DataTable_DeleteAll_Explanation=
     "-main is a principal method called once the program is loaded\n\n"
     "-Once Program Is Loaded runApp Will Run And Call Our Class That We Created(DeleteAllDataTable) To Be Runned\n\n"
@@ -1072,6 +1069,145 @@ List DataTable_DeleteAll_list =[
 //-------------------------------------------------------------
 //-------------------------------------------------------------
 //-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+
+
+String DataTable_BgColor_Explanation=
+    "-Same As Simple Data Table!\n\n";
+
+
+List DataTable_BgColor_list =[
+  SizedBox(height:5,),
+  Container (
+    padding: new EdgeInsets.only(bottom: 20.0),
+    child:
+    new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CmpTitle(Title:"Changing DataTable BgColor?",),
+              Divider(),
+              CmpSubTitle(SubTitle:"Not Provided OfficialY And We Will Edit The Main Code Of It.",),
+            ]
+        ),
+      ),
+    ),
+  ),
+  SizedBox(height:5,),
+  SizedBox(height:10,),
+  Container (
+    padding: new EdgeInsets.only(bottom: 20.0),
+    child:
+    new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CmpTitle(Title:"Getting Started:",),
+              Divider(),
+              CmpSubTitle(SubTitle:"Main Package Will Be Located In flutter> packages> flutter> lib >src >material We Need To Copy It To Our Project To Start Editing It\nDataTable Changed To CustomDataTable And Same For DataCell And DataRow To Avoid Packages Conflicts...Change To Do:\n",),
+              CmpSubTitle(SubTitle:"1-Change Spacing To 0\n",),
+              CmpCode(
+                CodeTxt:
+                  "CustomDataTable({\n"
+                  " ...\n"
+                  " this.horizontalMargin = 0.0,\n"
+                  " this.columnSpacing    = 0.0,\n"
+                  " ...\n"
+                  "})\n"
+              ),
+
+              CmpSubTitle(SubTitle:"2-Providing Color Like Header Set To teal\n",),
+              CmpCode(
+                CodeTxt:
+                  "label = Container(\n"
+                  "  color:Colors.teal,\n"
+                  "  padding: padding,\n"
+                  "  ..."
+              ),
+             
+
+            ]
+        ),
+      ),
+    ),
+  ),
+];
+
+
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+
+
+
+
+
+String DataTable_Pagination_Explanation=
+    "Soon...\n\n";
+
+
+List DataTable_Pagination_list =[
+  SizedBox(height:5,),
+  Container (
+    padding: new EdgeInsets.only(bottom: 20.0),
+    child:
+    new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CmpTitle(Title:"What Is Paginated DataTable?",),
+              Divider(),
+              CmpSubTitle(SubTitle:"Display Number Of Rows Wich We Can Fetch By Next And Previous.",),
+            ]
+        ),
+      ),
+    ),
+  ),
+  SizedBox(height:5,),
+  SizedBox(height:10,),
+  Container (
+    padding: new EdgeInsets.only(bottom: 20.0),
+    child:
+    new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CmpTitle(Title:"Getting Started:",),
+              Divider(),
+              CmpSubTitle(SubTitle:"Soon...\n",),
+              
+            ]
+        ),
+      ),
+    ),
+  ),
+];
+
+
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+
+
 //-------------------------------------------------------------
 //-------------------------------------------------------------
 //-------------------------------------------------------------

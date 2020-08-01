@@ -5,6 +5,7 @@ import 'package:flutter_tutorials_and_quizzes/_Comp_Courses/Cmp_SubTitle.dart';
 import 'package:flutter_tutorials_and_quizzes/_Comp_Courses/Cmp_Title.dart';
 
 import 'main.dart';
+import 'SettingPage.dart';
 
 
 
@@ -13,16 +14,15 @@ class SoonAlert extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner:false,
-      title:"Running Quizzes",
-      home:Scaffold(
+    return Scaffold(
+      backgroundColor:ThemeBg,
         appBar:AppBar(
+          backgroundColor:ThemeAppBar,
           title:Text("Running Quizzes..."),
           leading:IconButton(
             icon:Icon(Icons.arrow_back),
             onPressed:(){
-              Navigator.push(context,MaterialPageRoute(builder:(context)=>Main()));
+              Navigator.of(context).pop();
             },
           )
         ),
@@ -57,7 +57,7 @@ class SoonAlert extends StatelessWidget {
              ),
            ],
          )
-      ),
+      
     );
 
 

@@ -1,47 +1,93 @@
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter_tutorials_and_quizzes/main.dart';
+import 'package:admob_flutter/admob_flutter.dart';
+import 'UserDataInfo.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
-
-BannerAd MyBanner;
 InterstitialAd MyinterstitialAd;
+AdmobBanner    MyBanner;
+
+const String testDevice = 'C0824EEB8BC13759DD074F008FB94448';
 
 String AddAppID="ca-app-pub-1650436277039127~3083637146";
-String AddBanID=BannerAd.testAdUnitId;
-String AddIntID=InterstitialAd.testAdUnitId;
+String AddBanID="NoAds",AddIntID="NoAds";
+String  InterstitialCounter="16";
 
-MobileAdTargetingInfo MytargetingInfo = MobileAdTargetingInfo(
-  keywords: <String>['flutterio', 'flutterTutorials'],
-  contentUrl: 'https://flutter.io',
-  birthday:DateTime.now(),
-  childDirected:false,
-  designedForFamilies:false,
-  gender:MobileAdGender.unknown,
-  testDevices: <String>[]
+
+class AdmobData {
+  String BannerID;
+  String InterstitialID;
+  String InterstitialCounter;
+
+  AdmobData(
+      this.BannerID,
+      this.InterstitialID,
+      this.InterstitialCounter,
+  );
+
+  Map<String, dynamic> toMap() {
+    var map = <String, dynamic>{
+      'BannerID'            : BannerID,
+      'InterstitialID'      : InterstitialID,
+      'InterstitialCounter' : InterstitialCounter,
+    };
+    return map;
+  }
+
+  AdmobData.fromMap(Map<String, dynamic> map) {
+    BannerID            = map['BannerID'];
+    InterstitialID      = map['InterstitialID'];
+    InterstitialCounter = map['InterstitialCounter'];
+  }
+
+}
+
+
+void getAdmob() async {
+  var url = 'https://httpfluttertest.000webhostapp.com/Flutter_FTQ/GetAdmob.php';
+  http.Response response = await http.get(url);
+  var maps = jsonDecode(response.body);
+  print(response.body);
+  List<AdmobData> AdmobDataArr = [];
+   if (maps.length > 0) {
+      AdmobDataArr.add(AdmobData.fromMap(maps[0]));
+      AddBanID = AdmobDataArr[0].BannerID;
+      AddIntID = AdmobDataArr[0].InterstitialID;
+      InterstitialCounter = AdmobDataArr[0].InterstitialCounter;
+   }
+}
+
+
+ const MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+    testDevices: testDevice != null ? <String>[testDevice] : null,
+    keywords: <String>['foo', 'bar'],
+    contentUrl: 'http://foo.com/bar.html',
+    childDirected: true,
+    nonPersonalizedAds: true,
 );
 
-BannerAd createMyBannerAd() {
-  return BannerAd(
-    adUnitId:AddBanID,
-    size: AdSize.banner,
-    targetingInfo: MytargetingInfo,
-    listener: (MobileAdEvent event) {
-      if(event==MobileAdEvent.failedToLoad){
-        print("Banner Failed To Load,Load Another Again!\n");
-        MyBanner..load()..show();
-      }
-      else if(event==MobileAdEvent.loaded){
-        print("Banner Loaded,Must Show!\n");
-        MyBanner..show();
-      }
 
-    },
+void createMyBannerAd() {
+  MyBanner=AdmobBanner(
+    adUnitId:AddBanID,
+    adSize:AdmobBannerSize.BANNER,
+    listener: (AdmobAdEvent event , Map<String,dynamic > args){
+      if(event==AdmobAdEvent.loaded){
+        print("--->Banner Loaded");
+      }
+      else if(event==AdmobAdEvent.failedToLoad){
+        print("--->Banner Failed To Load");
+      }
+    }
   );
 }
+
 
 InterstitialAd createMyInterstitialAd() {
   return InterstitialAd(
     adUnitId:AddIntID,
-    targetingInfo: MytargetingInfo,
+    targetingInfo: targetingInfo,
     listener: (MobileAdEvent event) {
       print("Interstitial $event");
     },
@@ -49,24 +95,35 @@ InterstitialAd createMyInterstitialAd() {
 }
 
 void InitAd(){
-  FirebaseAdMob.instance.initialize(
-      appId:AddAppID
-  );
+  FirebaseAdMob.instance.initialize(appId:AddAppID);
+  Admob.initialize(AddAppID);
 }
 
 
-void ShowMyAds(){
+Future<void> ShowMyAds() async {
 
-  if(loadBannerAd>18){
-    MyBanner = createMyBannerAd()..load();
-    loadBannerAd=0;
+  if(UID=="W7c6gejcz5eI5MEqMuWn"){
+    AddBanID=BannerAd.testAdUnitId;
+    AddIntID=InterstitialAd.testAdUnitId;
+    InterstitialCounter="16";
   }
+  
+  print("Banner              -->  $AddBanID");
+  print("Inters              -->  $AddIntID");
+  print("InterstitialCounter -->  $InterstitialCounter");
 
-  if(loadIntertitialAd>11){
+   loadIntertitialAd++;
+   print("AD $loadIntertitialAd");
+   if(loadIntertitialAd>int.parse(InterstitialCounter) && AddIntID!="NoAds"){
     MyinterstitialAd = createMyInterstitialAd()..load()..show();
     loadIntertitialAd=0;
-  }
+   }
 }
+
+
+
+
+
 
 
 

@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorials_and_quizzes/0_Quizzes/1_Intro_GenerateQuizzes.dart';
 import 'dart:math';
 import 'package:flutter_tutorials_and_quizzes/_Comp_Courses/Cmp_Quizz_2Radio.dart';
 import 'package:flutter_tutorials_and_quizzes/_Comp_Courses/Cmp_Quizz_4Radio.dart';
-
+import 'package:flutter_tutorials_and_quizzes/_Comp_Quizzes/Cmp_Fields_Quizz.dart';
+import '2_Keywords/1_Keywords_Q1.dart';
+import '2_Keywords/2_Keywords_Q2.dart';
 
 class cl_KeywordsQuizz extends StatelessWidget{
-  int KeywordsQuizzRan=new Random().nextInt(14);
+ int KeywordsQuizzRan=new Random().nextInt(16);
+
+  var Text_NullController= new TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -175,11 +179,11 @@ class cl_KeywordsQuizz extends StatelessWidget{
         SolutionTxt:"White Is Default AppBar  Text Color",
         CorrectIndex:4,
         GoRoute:"/Generate_Keywords_Quizz",
-       )
+       ):
 
 
-
-      :Cmp_Quizz_4Radio(
+       (KeywordsQuizzRan==13)?
+       Cmp_Quizz_4Radio(
         AppBarTitle:"Keywords Quizz",
         Question:"Scaffold Included Inside:",
         Ans1Txt:"Home",
@@ -189,7 +193,55 @@ class cl_KeywordsQuizz extends StatelessWidget{
         SolutionTxt:"Scaffold Included Inside MaterialApp",
         CorrectIndex:4,
         GoRoute:"/Generate_Keywords_Quizz",
-      ),
+      ):
+
+
+      (KeywordsQuizzRan==14)?
+       Cmp_Fields_Quizz (
+        AppBarTitle: "Keywords Quizz",
+        Question: Keywords_Q1_Question,
+        SolutionTxt: Keywords_Q1_TxtSol,
+        GoRoute: "/Generate_Keywords_Quizz",
+        Ans1Txt: Keywords_Q1_T1_Controller,
+        Ans2Txt: Keywords_Q1_T2_Controller,
+        Ans3Txt: Text_NullController,
+        Ans4Txt: Text_NullController,
+        Ans5Txt: Text_NullController,
+        Ans6Txt: Text_NullController,
+        Ans7Txt: Text_NullController,
+        CorrectAns1: Keywords_Q1_T1_Answer,
+        CorrectAns2: Keywords_Q1_T2_Answer,
+        CorrectAns3: "NotSet",
+        CorrectAns4: "NotSet",
+        CorrectAns5: "NotSet",
+        CorrectAns6: "NotSet",
+        CorrectAns7: "NotSet",
+        QuizzList: Keywords_Q1_list,
+       ) :
+
+
+
+       Cmp_Fields_Quizz (
+        AppBarTitle: "Keywords Quizz",
+        Question: Keywords_Q2_Question,
+        SolutionTxt: Keywords_Q2_TxtSol,
+        GoRoute: "/Generate_Keywords_Quizz",
+        Ans1Txt: Keywords_Q2_T1_Controller,
+        Ans2Txt: Keywords_Q2_T2_Controller,
+        Ans3Txt: Text_NullController,
+        Ans4Txt: Text_NullController,
+        Ans5Txt: Text_NullController,
+        Ans6Txt: Text_NullController,
+        Ans7Txt: Text_NullController,
+        CorrectAns1: Keywords_Q2_T1_Answer,
+        CorrectAns2: Keywords_Q2_T2_Answer,
+        CorrectAns3: "NotSet",
+        CorrectAns4: "NotSet",
+        CorrectAns5: "NotSet",
+        CorrectAns6: "NotSet",
+        CorrectAns7: "NotSet",
+        QuizzList: Keywords_Q2_list,
+       ),
 
 
 

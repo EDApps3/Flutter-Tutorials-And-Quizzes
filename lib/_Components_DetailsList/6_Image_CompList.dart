@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../_Comp_Courses/Cmp_Code.dart';
 import '../_Comp_Courses/Cmp_SubTitle.dart';
 import '../_Comp_Courses/Cmp_Title.dart';
+import '../_Comp_Courses/Cmp_SubTitle.dart';
 
 
 String ImageInsert_Explanation=
@@ -172,6 +173,250 @@ List ImageNetwork_list =[
     ),
   ),
 ];
+
+
+
+
+
+
+
+
+//-----------------------------------------------------
+//-----------------------------------------------------
+//-----------------------------------------------------
+//-----------------------------------------------------
+
+String Image_Fit_Contain_Explanation=
+    "-main is a principal method called once the program is loaded\n\n"
+    "-Once Program Is Loaded runApp Will Run And Call Our Class That We Created(ImgFitContain) To Be Runned\n\n"
+    "-This Class Is Stateless Widget Due To No State Change Just Displaying Image\n\n"
+    "-As Flutter is Based On Widget A Widget must be Builded\n\n"
+    "-Creating An Material App That Hold the Title Of The App That Show When We Need To Close It\n\n"
+    "-As An Home It Contain A Scaffold That Allow Us To Create AppBar And The Body Of The Page (All Widgets That Appear)\n\n"
+    "-As An AppBar It Has An Title\n\n"
+    "-As An Body It Take ListView That Allow Scrolling And Avoid OverFlow\n\n"
+    "-Taking Column Padded By 8 On All Sides Where Elements Displayed As Rows\n\n"
+    "-Row 1 Taking Simple Styled Text\n\n"
+    "-Row 2 Taking Original Image\n\n"
+    "-Row 3 Taking Simple Styled Text\n\n"
+    "-Row 4 Taking Container With Width And Height With A Border To Show Effect Where Image Is Set To Contain The Container\n\n";
+
+
+
+
+List Image_Fit_Contain_list =[
+  SizedBox(height:5,),
+  Container (
+    padding: new EdgeInsets.only(bottom: 20.0),
+    child:
+    new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CmpTitle(Title:"BoxFit Contain:",),
+              Divider(),
+              CmpSubTitle(SubTitle:"As Large As Possible Containing The Box",)
+            ]
+        ),
+      ),
+    ),
+  ),
+  SizedBox(height:5,),
+  Container (
+    padding: new EdgeInsets.only(bottom: 20.0),
+    child:
+    new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CmpTitle(Title:"Code:",),
+              Divider(),
+              CmpCode(
+                CodeTxt:
+                 "Container(\n"
+                 " decoration:BoxDecoration(\n"
+                 "  border:Border.all(),\n"
+                 " ),\n"
+                 " height:300,\n"
+                 " width :300,\n"
+                 " child:Image.asset(\n"
+                 "  'Images/S2.jpg',\n"
+                 "  fit:BoxFit.contain,\n"
+                 " ),\n"
+                 ")\n"
+              ),
+            ]
+        ),
+      ),
+    ),
+  ),
+];
+
+
+
+
+
+
+
+
+//-----------------------------------------------------
+//-----------------------------------------------------
+//-----------------------------------------------------
+//-----------------------------------------------------
+
+String Image_Fit_Cover_Explanation=
+    "-main is a principal method called once the program is loaded\n\n"
+    "-Once Program Is Loaded runApp Will Run And Call Our Class That We Created(ImgFitCover) To Be Runned\n\n"
+    "-This Class Is Stateless Widget Due To No State Change Just Displaying Image\n\n"
+    "-As Flutter is Based On Widget A Widget must be Builded\n\n"
+    "-Creating An Material App That Hold the Title Of The App That Show When We Need To Close It\n\n"
+    "-As An Home It Contain A Scaffold That Allow Us To Create AppBar And The Body Of The Page (All Widgets That Appear)\n\n"
+    "-As An AppBar It Has An Title\n\n"
+    "-As An Body It Take ListView That Allow Scrolling And Avoid OverFlow\n\n"
+    "-Taking Column Padded By 8 On All Sides Where Elements Displayed As Rows\n\n"
+    "-Row 1 Taking Simple Styled Text\n\n"
+    "-Row 2 Taking Original Image\n\n"
+    "-Row 3 Taking Simple Styled Text\n\n"
+    "-Row 4 Taking Container With Width And Height With A Border To Show Effect Where Image Is Set To Cover The Container\n\n";
+
+
+
+
+List Image_Fit_Cover_list =[
+  SizedBox(height:5,),
+  Container (
+    padding: new EdgeInsets.only(bottom: 20.0),
+    child:
+    new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CmpTitle(Title:"BoxFit Cover:",),
+              Divider(),
+              CmpSubTitle(SubTitle:"As Small As Possible Covering Entire Box",)
+            ]
+        ),
+      ),
+    ),
+  ),
+  SizedBox(height:5,),
+  Container (
+    padding: new EdgeInsets.only(bottom: 20.0),
+    child:
+    new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CmpTitle(Title:"Code:",),
+              Divider(),
+              CmpCode(
+                CodeTxt:
+                 "Container(\n"
+                 " decoration:BoxDecoration(\n"
+                 "  border:Border.all(),\n"
+                 " ),\n"
+                 " height:300,\n"
+                 " width :300,\n"
+                 " child:Image.asset(\n"
+                 "  'Images/S2.jpg',\n"
+                 "  fit:BoxFit.cover,\n"
+                 " ),\n"
+                 ")\n"
+              ),
+            ]
+        ),
+      ),
+    ),
+  ),
+];
+
+
+
+
+
+//-----------------------------------------------------
+//-----------------------------------------------------
+//-----------------------------------------------------
+//-----------------------------------------------------
+
+String Image_Fit_Fill_Explanation=
+    "-main is a principal method called once the program is loaded\n\n"
+    "-Once Program Is Loaded runApp Will Run And Call Our Class That We Created(ImgFitFill) To Be Runned\n\n"
+    "-This Class Is Stateless Widget Due To No State Change Just Displaying Image\n\n"
+    "-As Flutter is Based On Widget A Widget must be Builded\n\n"
+    "-Creating An Material App That Hold the Title Of The App That Show When We Need To Close It\n\n"
+    "-As An Home It Contain A Scaffold That Allow Us To Create AppBar And The Body Of The Page (All Widgets That Appear)\n\n"
+    "-As An AppBar It Has An Title\n\n"
+    "-As An Body It Take ListView That Allow Scrolling And Avoid OverFlow\n\n"
+    "-Taking Column Padded By 8 On All Sides Where Elements Displayed As Rows\n\n"
+    "-Row 1 Taking Simple Styled Text\n\n"
+    "-Row 2 Taking Original Image\n\n"
+    "-Row 3 Taking Simple Styled Text\n\n"
+    "-Row 4 Taking Container With Width And Height With A Border To Show Effect Where Image Is Set To Fill The Container\n\n";
+
+
+
+
+List Image_Fit_Fill_list =[
+  SizedBox(height:5,),
+  Container (
+    padding: new EdgeInsets.only(bottom: 20.0),
+    child:
+    new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CmpTitle(Title:"BoxFit Cover:",),
+              Divider(),
+              CmpSubTitle(SubTitle:"Scalled To Box Size ,Quality Will Be Losed!",)
+            ]
+        ),
+      ),
+    ),
+  ),
+  SizedBox(height:5,),
+  Container (
+    padding: new EdgeInsets.only(bottom: 20.0),
+    child:
+    new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CmpTitle(Title:"Code:",),
+              Divider(),
+              CmpCode(
+                CodeTxt:
+                 "Container(\n"
+                 " decoration:BoxDecoration(\n"
+                 "  border:Border.all(),\n"
+                 " ),\n"
+                 " height:300,\n"
+                 " width :300,\n"
+                 " child:Image.asset(\n"
+                 "  'Images/S2.jpg',\n"
+                 "  fit:BoxFit.fill,\n"
+                 " ),\n"
+                 ")\n"
+              ),
+            ]
+        ),
+      ),
+    ),
+  ),
+];
+
 
 
 

@@ -33,6 +33,12 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
+
+    aaptOptions {
+        noCompress 'tflite'
+        noCompress 'lite'
+    }
+
     compileSdkVersion 28
 
     sourceSets {
@@ -79,6 +85,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    implementation 'com.google.firebase:firebase-messaging:20.2.3'
 }
 
 

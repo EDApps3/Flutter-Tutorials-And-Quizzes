@@ -1,0 +1,12 @@
+<?php
+ 
+require_once('DbConnect.php');
+
+$DelID=$_GET["DelID"];
+
+$statement = $conn->prepare("DELETE FROM WallPaper WHERE WallPaperID=$DelID");
+$statement->execute();
+
+
+ 
+?>

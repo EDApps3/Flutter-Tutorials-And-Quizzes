@@ -1,0 +1,2 @@
+0 Phone
+1 laptop

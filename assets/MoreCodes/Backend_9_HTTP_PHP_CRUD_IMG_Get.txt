@@ -1,0 +1,10 @@
+<?php
+require_once('DbConnect.php');
+
+$statement = $conn->prepare("SELECT * FROM WallPaper");
+$statement->execute();
+$results = $statement->fetchAll(PDO::FETCH_ASSOC);
+$json = json_encode($results);
+echo $json;
+
+?>

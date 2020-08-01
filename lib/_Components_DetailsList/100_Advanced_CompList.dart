@@ -273,10 +273,225 @@ List A7_list =[
 
 
 String A8_Explanation=
-    "Soon!\n\n";
+    "-main Is The Proncipal Method Runned Once Program Started And Lunching Class TapSoundBounceBtnRun\n\n"
+    "-Creating Class TapSoundBounceBtnRun StatefullWidget Due To Scale Animation,Create Its State Needed\n\n"
+    "-Creating State Class _TapSoundBounceBtnState That Extends Its State From the Main Class TapSoundBounceBtnRun\n\n"
+    "-To Play Sound Variable Of AudioPlayer And AudioCache Need To Be Declared\n\n"
+    "-Creating AnimationController Variable AC Used To Control The Bounce Animation Of The Button\n\n"
+    "-Once Page Initialized We Set AnimationController AC To Be Played By 100ms And Scaling From 0.2 to 0.1 Taking A Listener To detect Call\n\n"
+    "-Initializing State And Sound\n\n"
+    "-initPlayer Used To Create New Instance Of audio Player And Cache To Be PLayed\n\n"
+    "-As Flutter Is Based On Widgets,We Need To Create One\n\n"
+    "-Taking Material App That Set The Theme And Title taking A Scaffold As Home\n\n"
+    "-Scaffold Allow Using AppBar And Set The Body Of The Page\n\n"
+    "-As An AppBar Taking Simpple Title\n\n"
+    "-As An Body Taking Centered Container Globbed By Transform To Play The Animation Globbed By Festure Detector To detect Tap And Play Tap Sound\n\n";
 
 List A8_list =[
   SizedBox(height:5,),
+];
+
+
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+
+/*
+String A9_Explanation=
+    "-Creating Json Variable Image_DATA That Will Hold Informations Of Each Item\n\n"
+    "-Taking 3 Attributes: ImageTitle, ImageDesc And ImageName\n\n"
+    "-main Is The Principal Method That Run First,Once Program Runned Will Lunch Class ListViewItemStack\n\n"
+    "-ListViewItemStack Is StatefullWidget To Do State Change(Scaling Animation),Creating Its State Needed\n\n"
+    "-Creating State Class _ListViewItemStackState That Extends Its Main State From The Main Class ListViewItemStack\n\n"
+    "-";
+*/
+
+String A9_Explanation=
+    "Soon!";
+
+List A9_list =[
+  SizedBox(height:5,),
+];
+
+
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+
+
+String A10_Explanation=
+    "-Main Is The Principal Method Used To Run HiddenTopAppBar\n\n"
+    "-Creating HiddenTopAppBar StatefullWidget Due To Detect Scroll State\n\n"
+    "-Creating State Class HiddenTopAppBarState That Extend Its Main State From The Main Class HiddenTopAppBar\n\n"
+    "-Method initState Used To Initialize Page State Once Loaded\n\n"
+    "-As Flutter Is Based On Widgets A Widget Needed To Be Created\n\n"
+    "-Returning Material App That Allow Setting Title And Theme Set To Light By Default And Scaffold\n\n"
+    "-Scaffold Allow Us To Set Body Of The Page\n\n"
+    "-As We Need To Hide AppBar We Need To Use NestedScrollView Taking headerSliverBuilder That Detect Scrolling And returning SliverAppBar\n\n"
+    "-Now SliverAppBar Will Auto Hide When user Scroll Down And re-appear When User Scroll To The Top\n\n"
+    "-SliverAppBar Taking Height,Title Anf Leading That Show An Icon...\n\n"
+    "-NestedScrollView Take As Body A ListView Taking 3 Images Separated By Divider\n\n";
+
+List A10_list =[
+  SizedBox(height:5,),
+  Container (
+    padding: new EdgeInsets.only(bottom: 20.0),
+    child:
+    new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CmpTitle(Title:"Getting Started:",),
+              Divider(),
+              CmpSubTitle(SubTitle:"No Package Needed",),
+            ]
+        ),
+      ),
+    ),
+  ),
+
+];
+
+
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+
+
+String A11_Explanation=
+    "-Main Is The Principal Method Used To Run HiddenBottomAppBar\n\n"
+    "-Creating HiddenBottomAppBar StatefullWidget Due To Detect Scroll State\n\n"
+    "-Creating State Class HiddenBottomAppBarState That Extend Its Main State From The Main Class HiddenBottomAppBar\n\n"
+    "-Creating ScrollController _HideBottomAppBarController That Will be Given To The ListView To Detect the Scroll\n\n"
+    "-Creating Bool Variable _isVisible When Set To true We Show The AppBar And When False We Need To Hide It\n\n"
+    "-Method initState Used To Initialize Page State Once Loaded Setting Is Visible To True (Bottom AppBar Shown On Start)\n\n"
+    "-Initializing Controller _HideBottomAppBarController And Adding A Listener That Will Do Action On Any Scroll\n\n"
+    "-If User Scrolling Down Reverse(Up) Will Change Visibility\n\n"
+    "-As Flutter Is Based On Widgets A Widget Needed To Be Created\n\n"
+    "-Returning Material App That Allow Setting Title And Theme Set To Light By Default And Scaffold\n\n"
+    "-Scaffold Allow Us To Set Body Of The Page And The Bottom Navigation App Bar\n\n"
+    "-As Body Taking ListView With Texts And Images Separated By Divider\n\n"
+    "-As Bottom Navigation Bar Taking An Animated Container That Will Show And Hide If Visible Set To True Will Animate From 0 to 60 And Vice Versa To Hide\n\n"
+    "-If Visible Bar Appear As Blue Container With Centered Text,If Not A Transparent Container\n\n";
+
+
+List A11_list =[
+  SizedBox(height:5,),
+  Container (
+    padding: new EdgeInsets.only(bottom: 20.0),
+    child:
+    new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CmpTitle(Title:"Getting Started:",),
+              Divider(),
+              CmpSubTitle(SubTitle:"No Package Needed",),
+            ]
+        ),
+      ),
+    ),
+  ),
+
+];
+
+
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+//-------------------------------------------------------------
+
+
+String A12_Explanation=
+    "-main Is The Principal Method Used To Run The Class Bookmarking\n\n"
+    "-Before Creating Class Bookmarking We Need To Create A Class WallPaper Where We Will Store Data\n\n"
+    "-Creating Class WallPaper Having Data:\n"
+    "  WID: ID Of The Image Allow Us To Know Wich Image To Update To Bookmarked Or No\n"
+    "  ImgSrc: Path Of The Image\n"
+    "  Title : Title Of The Image\n"
+    "  IsBookmarked: Go Between true And false Indicate If Image Is Bookmarked\n\n"
+    "-Creating Constructor That Initialize The Data\n\n"
+    "-Creating Method toMap That Convert Data To Map From Object\n\n"
+    "-Creating fromMap That Get Data Into Our Variables From Mapped Object\n\n"
+    "-Creating List BKWallPaperLst Used To Store Wallpaper Object Getten From SQFLite\n\n"
+    "-Create Class DBSQL Used To Create All SQFLite Actions\n\n"
+    "-Creating Variable Needed For ColumnsName, Database Name, And Database\n\n"
+    "-get db Used To Create The Database If Not Created By Calling initDbBookmarking,If Created The Current Database Will be Returned\n\n"
+    "-Method initDbBookmarking Used To Create The Database Path Version And Info,Once Created Tables Needed To Be Created Using _onCreate Method\n\n"
+    "-First Defining 2 Objects Of WallPaper That Will Be Shown To The User On Start And Not Bookmarked\n\n"
+    "-Now Excuting SQL Create Query And Insert The 2 Objects Created Into The Table\n\n"
+    "-Creating Future Method getWallPapers That Will get All Stored Wallpapers Where We Have To Run Query That Select All The Objects Storred In The Table And Saving It Into List maps\n\n"
+    "-Now Creating Another List WallPaperArr Where We Will Save the Data If There Is Data(>0) By Looping Once Done Return The List Containing All WallPaper Objects\n\n"
+    "-Finally Creating Update method updateBookmarkContent That Take A Object And Update Its Data By Its WID\n\n\n\n"
+    "-Now Starting With Creating The UI,Create Class Bookmarking StatefullWidget Due To Detecting That We Have Got The Data Then Display it Using Future Builder\n\n"
+    "-Creating State Class BookmarkingState That Extend Its State From The Main Class Bookmarking\n\n"
+    "-Creating FutureList FList Used To Get The Data From GetWallPaper Method That We Have Created\n\n"
+    "-Method initState Initialise Page State And Call refreshList Method Once Page Loaded\n\n"
+    "-refreshList Update The Data In The UI Once A Change Occur\n\n"
+    "-Creating Method Future UpdateW That Get An Object Where We Know Wich WID And His Data And Pass It To DBQL Update,If Bookmarked true We Set To False And ViceVersa,Once Done We Will refresh the List So If Wallpaper Is BookmarkeD Will Refresh To Appear Not Bookmarked To The User\n\n"
+    "-Creating ListView Widget DisplayWallPapers That Will Load WallPapers From The Snapshot List Passed WLst Where We loop And Display Data Into Card Where Its Data Appear In Column And Rows...If Bookmarked Icon Favorite Set to Red If Not To Bordered Grey\n\n"
+    "-As Flutter Is Based On Widgets We Need To Create One\n\n"
+    "-Returning Material App That Allow Setting The Title And Theme To Light By Default And Allow Us To Use Scaffold\n\n"
+    "-As An AppBar Taking A Simple Text Leaded By An Icon\n\n"
+    "-As An Body Taking Future Builder To Detect Where FList is Finished Getting Data To Show Them Instead Of The Loading Logo!";
+
+List A12_list =[
+  SizedBox(height:10,),
+  Container (
+    padding: new EdgeInsets.only(bottom: 20.0),
+    child:
+    new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CmpTitle(Title:"Getting Started:",),
+              Divider(),
+              CmpSubTitle(SubTitle:"We Need To Import Into The Yaml The Plugins:",),
+              SizedBox(height: 16,),
+              Image.asset("Images/A_12.PNG",),
+              CmpSubTitle(SubTitle:"\n\nDon't Forget To Get Packages!",),
+              CmpSubTitle(SubTitle: "\n\nWe Need To Import:\n\n",),
+              CmpCode(CodeTxt:
+                "import 'dart:async';\n"
+                "import 'dart:io' as io;\n"
+                "import 'package:path/path.dart';\n"
+                "import 'package:sqflite/sqflite.dart';\n"
+                "import 'package:path_provider/path_provider.dart';\n",
+              )
+            ]
+        ),
+      ),
+    ),
+  ),
 ];
 
 

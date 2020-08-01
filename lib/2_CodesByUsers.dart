@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audio_cache.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_tutorials_and_quizzes/SettingPage.dart';
-
 import 'UsersCodesPage.dart';
+import 'AppSoundPlay.dart';
+import 'AppLang.dart';
 
 class CodesByUsersUI extends StatefulWidget {
   @override
@@ -11,46 +10,34 @@ class CodesByUsersUI extends StatefulWidget {
 }
 
 class CodesByUsersUIState extends State<CodesByUsersUI> {
-  AudioPlayer advancedPlayer;
-  AudioCache audioCache;
 
   @override
   void initState(){
     super.initState();
-    initPlayer();
   }
 
-  void initPlayer(){
-    advancedPlayer = new AudioPlayer();
-    audioCache = new AudioCache(fixedPlayer: advancedPlayer);
-  }
-
-  void PlayTapSound() async{
-    if(SoundResult=="NotMuted") {
-      audioCache.play('Music/Tap.mp3');
-    }
-  }
 
   Widget build(BuildContext context) {
     return ClipRRect(
         borderRadius:BorderRadius.circular(30.0),
     child:
     Card(
-      color: Colors.cyan,
+      color:(ThemeResult=="Light")?Colors.cyan:CardBg.withOpacity(0.6),
       child:
       ListTile (
-        leading:new Icon(Icons.code),
+        leading:new Icon(Icons.code,color:Colors.blueGrey,size:45,),
         title: Text (
-          "Codes By Users",
+          CodesByUserTxtTrans,
           style: TextStyle(
             color: Colors.white,
             fontFamily: "Raleway",
           ),
         ),
         subtitle: Text (
-          "Discover Users Code!",
+          DiscoverUsersCodeTxtTrans,
           style: TextStyle(
             fontFamily: "PT Mono",
+            color:Colors.white,
           ),
         ),
         onTap: (){

@@ -1,7 +1,78 @@
+
+
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorials_and_quizzes/_Comp_Courses/CmpWebView.dart';
+import '../AppLang.dart';
 import '../_Comp_Courses/Cmp_Code.dart';
 import '../_Comp_Courses/Cmp_SubTitle.dart';
 import '../_Comp_Courses/Cmp_Title.dart';
+import 'package:get/get.dart';
+import '../AppSoundPlay.dart';
+
+
+var TextOffGlobal =ListTile(
+    leading:Icon(Icons.title,size:65,),
+    title:Text("Text Class",),
+    subtitle:Text("Tap Here To See The Official Documentation Provided By Flutter Team On Text Widget!",),
+    onTap:(){
+      PlayTapSound();
+      Get.to(
+      CmpWebViewPage(
+        Title:"Text Class",
+        GoUrl:"https://api.flutter.dev/flutter/widgets/Text-class.html",
+      )
+      );
+    },
+  );
+
+
+var TextOffDirection =ListTile(
+    leading:Icon(Icons.title,size:65,),
+    title:Text("Text Class",),
+    subtitle:Text("Tap Here To See The Official Documentation Provided By Flutter Team On Text Widget!",),
+    onTap:(){
+      PlayTapSound();
+      Get.to(
+      CmpWebViewPage(
+        Title:"Text Direction",
+        GoUrl:"https://api.flutter.dev/flutter/widgets/Text/textDirection.html",
+      )
+      );
+    },
+  );
+
+
+List Text_OffDoc_TextDirection=[
+  SizedBox(height:10),
+  TextOffGlobal,
+  SizedBox(height:10),
+  TextOffDirection,
+];
+
+
+
+var ToDoText1="We Need To Write A Simple Text That Flows From Left To Right And Appear in The Center Of The Body";
+var ToDoText2="We Need To Write A Simple Text That Flows From Right To Left And Appear in The Center Of The Body";
+
+/*
+var TText1,TText2,TText3,TText4,TText5,TText6,TText7,TText8,TText9,TText10;
+
+void TranslateTextCompList() async{
+  TText1="Text Flows From Left To Right Example:English,French...";
+  await TranslateWord(TText1).then((value){ TText1 =value; });
+  await TranslateWord(TextDirection_ltr_Explanation).then((value){ TextDirection_ltr_Explanation =value; });
+
+
+  TText2="Text Flows From Right To Left Example:Arabic,Hebrew...";
+  await TranslateWord(TText2).then((value){ TText2 =value; });
+  await TranslateWord(TextDirection_rtl_Explanation).then((value){ TextDirection_rtl_Explanation =value; });
+
+  await TranslateWord(ToDoText1).then((value){ ToDoText1 =value; });
+  await TranslateWord(ToDoText2).then((value){ ToDoText2 =value; });
+
+}
+
+*/
 
 
 String TextDirection_ltr_Explanation=
@@ -1171,3 +1242,5 @@ List TextAlignRight_list =[
 //--------------------------------------------------
 //--------------------------------------------------
 //--------------------------------------------------
+
+

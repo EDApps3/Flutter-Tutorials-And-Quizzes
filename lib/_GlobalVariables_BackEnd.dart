@@ -317,3 +317,98 @@ List FireBasePushNotification_List =[
 //-----------------------------------------
 //-----------------------------------------
 //-----------------------------------------
+
+List PhoneVerification_List =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.data_usage),
+    CardTitle:"Phone Verification",
+    CardSubTitle:"Phone Verification",
+    GoRoute:"/Phone_Verification",
+  ),
+];
+
+
+
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+
+List HTTP_PHP_Auth_List =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.data_usage),
+    CardTitle:"Getting Started",
+    CardSubTitle:"Getting DB Ready",
+    GoRoute:"/HTTP_PHP_Auth_GettingStarted",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.data_usage),
+    CardTitle:"SignUp",
+    CardSubTitle:"Registering Account",
+    GoRoute:"/HTTP_PHP_Auth_SignUp",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.data_usage),
+    CardTitle:"SignIn",
+    CardSubTitle:"SignIn",
+    GoRoute:"/HTTP_PHP_Auth_SignIn",
+  ),
+];
+
+
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+//-----------------------------------------
+
+List HTTP_PHP_CRUDImg_List =[
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.data_usage),
+    CardTitle:"Getting Started",
+    CardSubTitle:"Getting DB Ready",
+    GoRoute:"/HTTP_PHP_CRUD_Image_GettingStarted",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.data_usage),
+    CardTitle:"Insert Data",
+    CardSubTitle:"Data Including Image And Text",
+    GoRoute:"/HTTP_PHP_CRUD_Image_Insert",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.data_usage),
+    CardTitle:"Retrieve Data",
+    CardSubTitle:"Data Loaded From Database",
+    GoRoute:"/HTTP_PHP_CRUD_Image_Get",
+  ),
+  CmpExpTileCard(
+    CardBg:Colors.grey[200],
+    CardIcon:Icon(Icons.data_usage),
+    CardTitle:"Delete Data",
+    CardSubTitle:"Removing Data From Database",
+    GoRoute:"/HTTP_PHP_CRUD_Image_Delete",
+  ),
+];
+
+
+
+
+

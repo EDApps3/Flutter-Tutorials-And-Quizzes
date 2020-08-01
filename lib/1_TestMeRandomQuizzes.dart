@@ -6,6 +6,7 @@ import 'package:flutter_tutorials_and_quizzes/0_Quizzes/0_GenerateRandomQuizzes.
 import 'SettingPage.dart';
 import 'SoonAlert.dart';
 import 'main.dart';
+import 'AppLang.dart';
 
 class TestMeRandomQuizzesUI extends StatefulWidget {
   @override
@@ -38,21 +39,22 @@ class TestMeRandomQuizzesUIState extends State<TestMeRandomQuizzesUI> {
         borderRadius:BorderRadius.circular(30.0),
     child:
       Card(
-      color: Colors.lightGreen,
+      color: (ThemeResult=="Light")?Colors.lightGreen:CardBg,
       child:
       ListTile (
         leading: Image.asset("Images/Quizz.png"),
         title: Text (
-          "Test Me",
+          TestMeTxtTrans,
           style: TextStyle(
             color: Colors.white,
             fontFamily: "Raleway",
           ),
         ),
         subtitle: Text (
-          "Run Random Quizzes",
+          RunRandomQuizzesTxtTrans,
           style: TextStyle(
             fontFamily: "PT Mono",
+            color:Colors.white,
           ),
         ),
         onTap: (){

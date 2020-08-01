@@ -1,0 +1,8 @@
+ <?php
+    
+    require_once('DbConnect.php');
+    $DelID=$_GET['DelID'];
+    $statement = $conn->prepare("DELETE FROM Products WHERE ProductID=$DelID");
+    $statement->execute();
+
+?>

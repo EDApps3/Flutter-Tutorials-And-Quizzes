@@ -1,15 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorials_and_quizzes/_Comp_Quizzes/2_Text_TextField_Text.dart';
-import 'package:flutter_tutorials_and_quizzes/_Comp_Quizzes/5_TextField_Text_TextField_Text.dart';
 import 'package:flutter_tutorials_and_quizzes/_Comp_Quizzes/Cmp_Fields_Quizz.dart';
 import 'dart:math';
 
+import '6_Image/Image_Q1.dart';
+import '6_Image/Image_Q2.dart';
+import '6_Image/Image_Q3.dart';
+import '6_Image/Image_Q4.dart';
+import '6_Image/Image_Q5.dart';
+import '6_Image/Image_Q6.dart';
+import '6_Image/Image_Q7.dart';
+import '6_Image/Image_Q8.dart';
 
 
-class cl_ImageQuizz extends StatelessWidget {
-  var ImageQuizzRan=new Random().nextInt(11);
+
+List Image_Quizzes_IndexLst=new List();
+
+class cl_ImageQuizz extends StatefulWidget {
+  cl_ImageQuizz({Key key}) : super(key: key);
+  cl_ImageQuizz_State createState() => cl_ImageQuizz_State();
+}
+
+class cl_ImageQuizz_State extends State<cl_ImageQuizz> {
+  var ImageQuizzRan=new Random().nextInt(8);
+  bool foundNum=false;
 
   var Text_NullController= new TextEditingController();
+
+  @override
+  void initState(){
+    ImageQuizzRan=new Random().nextInt(8);
+    setState(() {foundNum=false;});
+
+      if(Image_Quizzes_IndexLst.length==8){
+        Image_Quizzes_IndexLst=new List();
+      }
+
+      if(Image_Quizzes_IndexLst.length==0){
+       Image_Quizzes_IndexLst.add(ImageQuizzRan);
+       foundNum=true;
+      }
+      else{
+        while(foundNum==false){
+         if(Image_Quizzes_IndexLst.contains(ImageQuizzRan)){
+          ImageQuizzRan=new Random().nextInt(8);
+         }
+         else{
+          Image_Quizzes_IndexLst.add(ImageQuizzRan);
+          foundNum=true;
+         }
+        }
+      }
+
+      Image_Quizzes_IndexLst.sort();
+      print(Image_Quizzes_IndexLst.toString());
+  }
+  
 
 
   @override
@@ -40,6 +85,7 @@ class cl_ImageQuizz extends StatelessWidget {
         QuizzList: Image_Q1_list,
        ) :
 
+
       (ImageQuizzRan==1)?
        Cmp_Fields_Quizz (
         AppBarTitle: "Image Quizz",
@@ -63,7 +109,7 @@ class cl_ImageQuizz extends StatelessWidget {
         QuizzList: Image_Q2_list,
        ) :
 
-      (ImageQuizzRan==3)?
+      (ImageQuizzRan==2)?
       Cmp_Fields_Quizz (
         AppBarTitle: "Image Quizz",
         Question: Image_Q3_Question,
@@ -87,6 +133,7 @@ class cl_ImageQuizz extends StatelessWidget {
       ) :
 
 
+      (ImageQuizzRan==3)?
       Cmp_Fields_Quizz (
         AppBarTitle: "Image Quizz",
         Question: Image_Q4_Question,
@@ -107,333 +154,106 @@ class cl_ImageQuizz extends StatelessWidget {
         CorrectAns6: "NotSet",
         CorrectAns7: "NotSet",
         QuizzList: Image_Q4_list,
-      ),
+      ) :
+
+
+      (ImageQuizzRan==4)?
+     Cmp_Fields_Quizz (
+        AppBarTitle: "Image Quizz",
+        Question: Image_Q5_Question,
+        SolutionTxt: Image_Q5_TxtSol,
+        GoRoute: "/Generate_Image_Quizz",
+        Ans1Txt: Image_Q5_T1_Controller,
+        Ans2Txt: Image_Q5_T2_Controller,
+        Ans3Txt: Image_Q5_T3_Controller,
+        Ans4Txt: Image_Q5_T4_Controller,
+        Ans5Txt: Image_Q5_T5_Controller,
+        Ans6Txt: Image_Q5_T6_Controller,
+        Ans7Txt: Text_NullController,
+        CorrectAns1: Image_Q5_T1_Answer,
+        CorrectAns2: Image_Q5_T2_Answer,
+        CorrectAns3: Image_Q5_T3_Answer,
+        CorrectAns4: Image_Q5_T4_Answer,
+        CorrectAns5: Image_Q5_T5_Answer,
+        CorrectAns6: Image_Q5_T6_Answer,
+        CorrectAns7: "NotSet",
+        QuizzList: Image_Q5_list,
+      ):
+
+      
+      (ImageQuizzRan==5)?
+     Cmp_Fields_Quizz (
+        AppBarTitle: "Image Quizz",
+        Question: Image_Q6_Question,
+        SolutionTxt: Image_Q6_TxtSol,
+        GoRoute: "/Generate_Image_Quizz",
+        Ans1Txt: Image_Q6_T1_Controller,
+        Ans2Txt: Image_Q6_T2_Controller,
+        Ans3Txt: Image_Q6_T3_Controller,
+        Ans4Txt: Text_NullController,
+        Ans5Txt: Text_NullController,
+        Ans6Txt: Text_NullController,
+        Ans7Txt: Text_NullController,
+        CorrectAns1: Image_Q6_T1_Answer,
+        CorrectAns2: Image_Q6_T2_Answer,
+        CorrectAns3: Image_Q6_T3_Answer,
+        CorrectAns4: "NotSet",
+        CorrectAns5: "NotSet",
+        CorrectAns6: "NotSet",
+        CorrectAns7: "NotSet",
+        QuizzList: Image_Q6_list,
+      ):
+
+      (ImageQuizzRan==6)?
+     Cmp_Fields_Quizz (
+        AppBarTitle: "Image Quizz",
+        Question: Image_Q7_Question,
+        SolutionTxt: Image_Q7_TxtSol,
+        GoRoute: "/Generate_Image_Quizz",
+        Ans1Txt: Image_Q7_T1_Controller,
+        Ans2Txt: Image_Q7_T2_Controller,
+        Ans3Txt: Image_Q7_T3_Controller,
+        Ans4Txt: Text_NullController,
+        Ans5Txt: Text_NullController,
+        Ans6Txt: Text_NullController,
+        Ans7Txt: Text_NullController,
+        CorrectAns1: Image_Q7_T1_Answer,
+        CorrectAns2: Image_Q7_T2_Answer,
+        CorrectAns3: Image_Q7_T3_Answer,
+        CorrectAns4: "NotSet",
+        CorrectAns5: "NotSet",
+        CorrectAns6: "NotSet",
+        CorrectAns7: "NotSet",
+        QuizzList: Image_Q7_list,
+      ):
+
+
+      Cmp_Fields_Quizz (
+        AppBarTitle: "Image Quizz",
+        Question: Image_Q8_Question,
+        SolutionTxt: Image_Q8_TxtSol,
+        GoRoute: "/Generate_Image_Quizz",
+        Ans1Txt: Image_Q8_T1_Controller,
+        Ans2Txt: Image_Q8_T2_Controller,
+        Ans3Txt: Image_Q8_T3_Controller,
+        Ans4Txt: Text_NullController,
+        Ans5Txt: Text_NullController,
+        Ans6Txt: Text_NullController,
+        Ans7Txt: Text_NullController,
+        CorrectAns1: Image_Q8_T1_Answer,
+        CorrectAns2: Image_Q8_T2_Answer,
+        CorrectAns3: Image_Q8_T3_Answer,
+        CorrectAns4: "NotSet",
+        CorrectAns5: "NotSet",
+        CorrectAns6: "NotSet",
+        CorrectAns7: "NotSet",
+        QuizzList: Image_Q8_list,
+      )
 
 
 
     );
   }
-
-
-
-
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-
-
-  String Image_Q1_TxtSol =
-      "Image.asset(\n"
-      "  'Images/Welcome.png',\n"
-      ")\n";
-
-  String Image_Q1_Question = "Fill The Missing Fields To Load An png Image Having Welcome As Name In The Center Of The Body";
-
-  static var Image_Q1_T1_Controller = new TextEditingController();
-  static var Image_Q1_T1_Answer = "Image";
-
-  static var Image_Q1_T2_Controller = new TextEditingController();
-  static var Image_Q1_T2_Answer = "asset";
-
-  static var Image_Q1_T3_Controller = new TextEditingController();
-  static var Image_Q1_T3_Answer = "Welcome.png";
-
-  List Image_Q1_list = [
-    Text (
-      "import 'package:flutter/material.dart';\n\n"
-
-          "void main() {\n"
-          "  runApp(Quizz());\n"
-          "}\n\n"
-
-          "class Quizz extends StatelessWidget{\n"
-          "  @override\n"
-          "  Widget build(BuildContext context) {\n"
-          "   return MaterialApp(\n"
-          "     home:\n"
-          "      Scaffold(\n"
-          "       body:Center(\n"
-          "        child:\n"
-    ),
-    CmpQuizz_TextField_Text_TextField_Text(
-      Spacing:64.0,
-      TC1_Controller:Image_Q1_T1_Controller,
-      TC1_Width:Image_Q1_T1_Answer.length*10.0,
-      TC1_MaxLength:Image_Q1_T1_Answer.length,
-      Text1:".",
-      TC2_Controller:Image_Q1_T2_Controller,
-      TC2_Width:Image_Q1_T2_Answer.length*10.0,
-      TC2_MaxLength:Image_Q1_T2_Answer.length,
-      Text2:"(",
-    ),
-    CmpQuizz_Text_TextField_Text (
-        Spacing: 67.0,
-        Text1: "'Images/",
-        TC1_Width: Image_Q1_T3_Answer.length * 10.0,
-        TC1_Controller: Image_Q1_T3_Controller,
-        TC1_MaxLength: Image_Q1_T3_Answer.length,
-        Text2: "',"
-    ),
-    Text(
-          "\t             ),\n"
-          "\t           ),\n"
-          "\t         ),\n"
-          "\t       );\n"
-          "\t      }\n"
-          "\t   }\n",
-    ),
-  ];
-
-
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-
-
-  String Image_Q2_TxtSol =
-      "Image.asset(\n"
-      "  'Images/Welcome.png',\n"
-      "   width:100,\n"
-      ")\n";
-
-  String Image_Q2_Question = "Fill The Missing Fields To Change Image Width To 100";
-
-  static var Image_Q2_T1_Controller = new TextEditingController();
-  static var Image_Q2_T1_Answer = "width";
-
-  static var Image_Q2_T2_Controller = new TextEditingController();
-  static var Image_Q2_T2_Answer = "100";
-
-
-  List Image_Q2_list = [
-    Text (
-        "import 'package:flutter/material.dart';\n\n"
-
-            "void main() {\n"
-            "  runApp(Quizz());\n"
-            "}\n\n"
-
-            "class Quizz extends StatelessWidget{\n"
-            "  @override\n"
-            "  Widget build(BuildContext context) {\n"
-            "   return MaterialApp(\n"
-            "     home:\n"
-            "      Scaffold(\n"
-            "       body:Center(\n"
-            "        child:\n"
-            "         Image.asset("
-            "          'Welcome.png',"
-    ),
-    CmpQuizz_TextField_Text_TextField_Text(
-      Spacing:64.0,
-      TC1_Controller:Image_Q2_T1_Controller,
-      TC1_Width: Image_Q2_T1_Answer.length * 10.0,
-      TC1_MaxLength: Image_Q2_T1_Answer.length,
-      TC2_Controller:Image_Q2_T2_Controller,
-      Text1:":",
-      TC2_Width: Image_Q2_T2_Answer.length * 10.0,
-      TC2_MaxLength: Image_Q2_T2_Answer.length,
-      Text2:",",
-    ),
-    Text(
-          "\t           ),\n"
-          "\t          ),\n"
-          "\t         ),\n"
-          "\t       );\n"
-          "\t      }\n"
-          "\t   }\n",
-    ),
-  ];
-
-
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-
-  String Image_Q3_TxtSol =
-      "Image.asset(\n"
-      "  'Images/Welcome.png',\n"
-      "   height:300,\n"
-      ")\n";
-
-  String Image_Q3_Question = "Fill The Missing Fields To Change Image Height To 300";
-
-  static var Image_Q3_T1_Controller = new TextEditingController();
-  static var Image_Q3_T1_Answer = "height";
-
-  static var Image_Q3_T2_Controller = new TextEditingController();
-  static var Image_Q3_T2_Answer = "300";
-
-
-  List Image_Q3_list = [
-    Text (
-        "import 'package:flutter/material.dart';\n\n"
-
-            "void main() {\n"
-            "  runApp(Quizz());\n"
-            "}\n\n"
-
-            "class Quizz extends StatelessWidget{\n"
-            "  @override\n"
-            "  Widget build(BuildContext context) {\n"
-            "   return MaterialApp(\n"
-            "     home:\n"
-            "      Scaffold(\n"
-            "       body:Center(\n"
-            "        child:\n"
-            "         Image.asset("
-            "          'Welcome.png',"
-    ),
-    CmpQuizz_TextField_Text_TextField_Text(
-      Spacing:64.0,
-      TC1_Controller:Image_Q3_T1_Controller,
-      TC1_Width: Image_Q3_T1_Answer.length * 10.0,
-      TC1_MaxLength: Image_Q3_T1_Answer.length,
-      TC2_Controller:Image_Q3_T2_Controller,
-      Text1:":",
-      TC2_Width: Image_Q3_T2_Answer.length * 10.0,
-      TC2_MaxLength: Image_Q3_T2_Answer.length,
-      Text2:",",
-    ),
-    Text(
-      "\t           ),\n"
-          "\t          ),\n"
-          "\t         ),\n"
-          "\t       );\n"
-          "\t      }\n"
-          "\t   }\n",
-    ),
-  ];
-
-
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-
-
-  String Image_Q4_TxtSol =
-      "Image.asset(\n"
-      "  'Images/Welcome.png',\n"
-      "   width:400,\n"
-      "   height:400,\n"
-      ")\n";
-
-  String Image_Q4_Question = "Fill The Missing Fields To Change Image Width & Height To 400";
-
-  static var Image_Q4_T1_Controller = new TextEditingController();
-  static var Image_Q4_T1_Answer = "width";
-
-  static var Image_Q4_T2_Controller = new TextEditingController();
-  static var Image_Q4_T2_Answer = "400";
-
-  static var Image_Q4_T3_Controller = new TextEditingController();
-  static var Image_Q4_T3_Answer = "height";
-
-  static var Image_Q4_T4_Controller = new TextEditingController();
-  static var Image_Q4_T4_Answer = "400";
-
-
-  List Image_Q4_list = [
-    Text (
-        "import 'package:flutter/material.dart';\n\n"
-
-            "void main() {\n"
-            "  runApp(Quizz());\n"
-            "}\n\n"
-
-            "class Quizz extends StatelessWidget{\n"
-            "  @override\n"
-            "  Widget build(BuildContext context) {\n"
-            "   return MaterialApp(\n"
-            "     home:\n"
-            "      Scaffold(\n"
-            "       body:Center(\n"
-            "        child:\n"
-            "         Image.asset("
-            "          'Welcome.png',"
-    ),
-    CmpQuizz_TextField_Text_TextField_Text(
-      Spacing:64.0,
-      TC1_Controller:Image_Q4_T1_Controller,
-      TC1_Width: Image_Q4_T1_Answer.length * 10.0,
-      TC1_MaxLength: Image_Q4_T1_Answer.length,
-      Text1:":",
-      TC2_Controller:Image_Q4_T2_Controller,
-      TC2_Width: Image_Q4_T2_Answer.length * 10.0,
-      TC2_MaxLength: Image_Q4_T2_Answer.length,
-      Text2:",",
-    ),
-    CmpQuizz_TextField_Text_TextField_Text(
-      Spacing:64.0,
-      TC1_Controller:Image_Q4_T3_Controller,
-      TC1_Width: Image_Q4_T3_Answer.length * 10.0,
-      TC1_MaxLength: Image_Q4_T3_Answer.length,
-      Text1:":",
-      TC2_Controller:Image_Q4_T4_Controller,
-      TC2_Width: Image_Q4_T4_Answer.length * 10.0,
-      TC2_MaxLength: Image_Q4_T4_Answer.length,
-      Text2:",",
-    ),
-    Text(
-      "\t           ),\n"
-          "\t          ),\n"
-          "\t         ),\n"
-          "\t       );\n"
-          "\t      }\n"
-          "\t   }\n",
-    ),
-  ];
-
-
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-
 
 
 

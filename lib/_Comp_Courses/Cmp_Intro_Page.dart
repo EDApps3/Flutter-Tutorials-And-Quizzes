@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorials_and_quizzes/_Components_DetailsList/1_Introduction_CompList.dart';
 import 'package:marquee/marquee.dart';
-import '../LoadFireBaseAdmob.dart';
-import '../SettingPage.dart';
 import '../main.dart';
-import 'package:audioplayers/audio_cache.dart';
-import 'package:audioplayers/audioplayers.dart';
-import 'package:flutter_tutorials_and_quizzes/Backend_5_FireBase_Admob/1_FireBase_Admob_Banner.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_BackEnd/Backend_5_FireBase_Admob/1_FireBase_Admob_Banner.dart';
+import '../AppSoundPlay.dart';
+import '../SettingPage.dart';
+import '../LoadFireBaseAdmob.dart';
 
 typedef void OnError(Exception exception);
 
@@ -28,53 +26,37 @@ class CmpIntroPage extends StatefulWidget {
 }
 
 class _CmpIntroPageState extends State<CmpIntroPage> {
-  AudioPlayer advancedPlayer;
-  AudioCache audioCache;
   ScrollController SCIntroPage = new ScrollController();
 
 
   @override
   void initState(){
     super.initState();
-    initPlayer();
-    WidgetsBinding.instance.addPostFrameCallback((_)=>ShowMyAds());
-  }
-
-
-  void initPlayer(){
-    advancedPlayer = new AudioPlayer();
-    audioCache = new AudioCache(fixedPlayer: advancedPlayer);
-  }
-
-  void PlayTapSound() async{
-    if(SoundResult=="NotMuted") {
-      audioCache.play('Music/Tap.mp3');
-    }
+    ShowMyAds();
   }
 
   @override
   Widget build(BuildContext context){
     return WillPopScope(
       onWillPop:(){
-        MyBanner?.dispose();
-        bannerAdTutorial?.dispose();
-        loadBannerAd++;
-        loadIntertitialAd++;
+        ShowMyAds();
         PlayTapSound();
         Navigator.pop(context);
       },
-      child:Scaffold(
+      child:Scaffold(  
+        backgroundColor:(ThemeResult=="Light")?Colors.white:CardBg.withBlue(255).withGreen(255).withRed(255),
         appBar: AppBar(
+          backgroundColor:ThemeAppBar,
           leading: Padding(
             padding:
             EdgeInsets.only(left: 12),
             child:  IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: (){
-                MyBanner?.dispose();
-                bannerAdTutorial?.dispose();
-                loadBannerAd++;
-                loadIntertitialAd++;
+                if(bannerAdTutorial!=null){
+                 bannerAdTutorial.dispose();
+                }
+                ShowMyAds();
                 PlayTapSound();
                 Navigator.pushNamed(context,widget.BackRoute);
               },
@@ -110,10 +92,7 @@ class _CmpIntroPageState extends State<CmpIntroPage> {
             IconButton(
               icon: Icon(Icons.format_list_numbered),
               onPressed: (){
-                MyBanner?.dispose();
-                bannerAdTutorial?.dispose();
-                loadBannerAd++;
-                loadIntertitialAd++;
+                ShowMyAds();
                 PlayTapSound();
                 Navigator.pushNamed(context,"/Main");
               },
@@ -121,10 +100,8 @@ class _CmpIntroPageState extends State<CmpIntroPage> {
             IconButton(
               icon: Icon(Icons.arrow_forward),
               onPressed: (){
-                MyBanner?.dispose();
                 bannerAdTutorial?.dispose();
-                loadBannerAd++;
-                loadIntertitialAd++;
+                ShowMyAds();
                 PlayTapSound();
                 Navigator.pushNamed(context,widget.NextRoute);
               },

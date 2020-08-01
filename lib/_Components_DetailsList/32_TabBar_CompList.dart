@@ -125,3 +125,59 @@ List TabBar_Bottom_list =[
 //-----------------------------------------------
 //-----------------------------------------------
 //-----------------------------------------------
+
+
+
+
+String TabBar_Top_Hidden_Explanation=
+    "Soon!";
+
+
+List TabBar_Top_Hidden_list =[
+  SizedBox(height:5,),
+  Container (
+    padding: new EdgeInsets.only(bottom: 20.0),
+    child:
+    new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CmpTitle(Title:"Soon",),
+            ]
+        ),
+      ),
+    ),
+  ),
+];
+
+
+
+
+String TabBar_Bottom_Hidden_Explanation=
+    "Soon!";
+
+
+List TabBar_Bottom_Hidden_list =[
+  SizedBox(height:5,),
+  Container (
+    padding: new EdgeInsets.only(bottom: 20.0),
+    child:
+    new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CmpTitle(Title:"Soon",),
+            ]
+        ),
+      ),
+    ),
+  ),
+];
+
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------

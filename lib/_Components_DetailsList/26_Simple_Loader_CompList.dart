@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_tutorials_and_quizzes/26_SimpleLoader/1_SLD1_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/26_SimpleLoader/2_SLD2_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/1_LD1_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/2_LD2_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/26_SimpleLoader/1_SLD1_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/26_SimpleLoader/2_SLD2_Run.dart';
 import 'package:flutter_tutorials_and_quizzes/_Comp_Courses/Cmp_Code_Page.dart';
 import 'package:flutter_tutorials_and_quizzes/_Comp_Courses/Cmp_ListTile_GoCode.dart';
 import 'package:marquee/marquee.dart';
 import '../_Comp_Courses/Cmp_Code.dart';
 import '../_Comp_Courses/Cmp_SubTitle.dart';
 import '../_Comp_Courses/Cmp_Title.dart';
-import '../main.dart';
 import '27_Advanced_Loader_CompList.dart';
 
 
@@ -166,7 +162,7 @@ class Simple_Loader_State extends State<Simple_Loader> {
           BackRoute:"/Simple_Loaders",
           NextRoute:"/SLD2",
           ItemList:SLD1_list,
-          CodeRoute:"lib/26_SimpleLoader/1_SLD1_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/26_SimpleLoader/1_SLD1_Run.dart",
           TabIcon:Icon(Icons.timelapse),
           ToDo:"We Need To Write A Page That Show A Centered LinearProgressIndicator\n",
           TxtExplanation:SLD1_Explanation,
@@ -178,7 +174,7 @@ class Simple_Loader_State extends State<Simple_Loader> {
           BackRoute:"/SLD1",
           NextRoute:"/Advanced_Loaders",
           ItemList:SLD2_list,
-          CodeRoute:"lib/26_SimpleLoader/2_SLD2_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/26_SimpleLoader/2_SLD2_Run.dart",
           TabIcon:Icon(Icons.timelapse),
           ToDo:"We Need To Write A Page That Show A Centered CircularProgressIndicator\n",
           TxtExplanation:SLD2_Explanation,

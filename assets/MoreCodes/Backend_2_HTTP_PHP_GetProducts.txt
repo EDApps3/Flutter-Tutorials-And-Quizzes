@@ -1,0 +1,10 @@
+ <?php
+    
+    require_once('DbConnect.php');
+    $statement=$conn->prepare('SELECT * FROM Products');
+    $statement->execute();
+    $results=\$statement->fetchAll(PDO::FETCH_ASSOC);
+    $json = json_encode($results);
+    echo \$json;
+    
+?>

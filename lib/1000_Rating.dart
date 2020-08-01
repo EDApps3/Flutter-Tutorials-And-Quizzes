@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import 'SettingPage.dart';
+import 'AppLang.dart';
 
 class RatingUI extends StatefulWidget {
   @override
@@ -56,7 +56,7 @@ class RatingUIState extends State<RatingUI> {
         subtitle: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text (
-            "Rate Us 5 Stars So We Can Keep Going And Upload New Contents,Codes And Quizzes",
+            Rate5TxtTrans,
             style: TextStyle(
               fontFamily: "PT Mono",
             ),

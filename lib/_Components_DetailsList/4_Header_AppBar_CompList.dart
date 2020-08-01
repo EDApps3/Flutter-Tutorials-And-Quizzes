@@ -588,3 +588,89 @@ List AppBar_DoubleSideIcon_list =[
 //--------------------------------------------------
 //--------------------------------------------------
 //--------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+String AppBar_PrefferedSize_Explanation=
+    "-main is a principal method called once the program is loaded\n\n"
+    "-Once Program Is Loaded runApp Will Run And Call Our Class That We Created(AppBarSize) To Be Runned\n\n"
+    "-This Class Is Stateless Widget As We Just Need To Create An AppBar(No Change To Do)\n\n"
+    "-As Flutter is Based On Widget A Widget must be Builded\n\n"
+    "-Creating An Material App That Allow Us To Use Scaffold And Set The Theme To Light\n\n"
+    "-Scaffold Allow Us To Use AppBar\n\n"
+    "-To Set AppBar Size We Need To Use PreferredSize Where Size Of The Height Is Given\n\n"
+    "-Content Set By flexibleSpace\n\n";
+
+
+List AppBar_PrefferedSize_list =[
+  SizedBox(height:5,),
+  Container (
+    padding: new EdgeInsets.only(bottom: 20.0),
+    child:
+    new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CmpTitle(Title:"AppBar Size:",),
+              Divider(),
+              CmpSubTitle(SubTitle:"Changing AppBar Size",),
+            ]
+        ),
+      ),
+    ),
+  ),
+  SizedBox(height:10,),
+  Container (
+    padding: new EdgeInsets.only(bottom: 20.0),
+    child:
+    new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CmpTitle(Title:"Code:",),
+              Divider(),
+              CmpCode(
+                CodeTxt:
+                "Scaffold(\n"
+                " appBar: PreferredSize(\n"
+                "  preferredSize:Size.fromHeight(150.0),\n"
+                "   child:AppBar(\n"
+                "    flexibleSpace:Center(\n"
+                "     child:Text('AppBar With Height 150'),\n"
+                "    ),\n"
+                "   ),\n"
+                "  ),\n"
+                ")\n"            
+              ),
+            ]
+        ),
+      ),
+    ),
+  ),
+];
+
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------

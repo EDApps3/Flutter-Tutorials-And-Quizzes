@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorials_and_quizzes/_Comp_Courses/Cmp_SubTitle.dart';
 import 'package:flutter_tutorials_and_quizzes/_Comp_Courses/Cmp_Title.dart';
 
 import 'Cmp_Code.dart';
@@ -43,6 +42,7 @@ class Cmp_ListTile_GoCode2 extends StatelessWidget {
               margin:
               const EdgeInsets.only(top:200.0),
               child: IconButton(
+                onPressed:(){},
                 icon:new Icon(
                   Icons.arrow_forward_ios,
                   size:20,

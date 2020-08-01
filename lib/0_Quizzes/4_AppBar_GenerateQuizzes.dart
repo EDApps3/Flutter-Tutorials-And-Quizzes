@@ -1,18 +1,67 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorials_and_quizzes/_Comp_Quizzes/1_TextField_Text.dart';
-import 'package:flutter_tutorials_and_quizzes/_Comp_Quizzes/2_Text_TextField_Text.dart';
-import 'package:flutter_tutorials_and_quizzes/_Comp_Quizzes/4_TextField_Text_TextField_Text_TextField_Text.dart';
-import 'package:flutter_tutorials_and_quizzes/_Comp_Quizzes/5_TextField_Text_TextField_Text.dart';
 import 'package:flutter_tutorials_and_quizzes/_Comp_Quizzes/Cmp_Fields_Quizz.dart';
 import 'dart:math';
+import '4_Header_AppBar/Header_AppBar_Q1.dart';
+import '4_Header_AppBar/Header_AppBar_Q2.dart';
+import '4_Header_AppBar/Header_AppBar_Q3.dart';
+import '4_Header_AppBar/Header_AppBar_Q4.dart';
+import '4_Header_AppBar/Header_AppBar_Q5.dart';
+import '4_Header_AppBar/Header_AppBar_Q6.dart';
+import '4_Header_AppBar/Header_AppBar_Q7.dart';
+import '4_Header_AppBar/Header_AppBar_Q8.dart';
 
-import '../4_AppBar/Quizzes/AppBar_Q5.dart';
-import '../4_AppBar/Quizzes/AppBar_Q6.dart';
 
-class cl_HeaderAppBarQuizz extends StatelessWidget{
-  int HeaderAppBarQuizzRan=new Random().nextInt(7);
+List HeaderAppBar_Quizzes_IndexLst=new List();
 
-  var Text_NullController= new TextEditingController();
+class cl_HeaderAppBarQuizz extends StatefulWidget {
+  cl_HeaderAppBarQuizz({Key key}) : super(key: key);
+  cl_HeaderAppBarQuizz_State createState() => cl_HeaderAppBarQuizz_State();
+}
+
+class cl_HeaderAppBarQuizz_State extends State<cl_HeaderAppBarQuizz> {
+  int HeaderAppBarQuizzRan;
+    bool foundNum2=false;
+    var Text_NullController= new TextEditingController();
+
+
+    @override
+  void initState(){
+    HeaderAppBarQuizzRan=new Random().nextInt(8);
+    foundNum2=false;
+
+      if(HeaderAppBar_Quizzes_IndexLst.length==8){
+        HeaderAppBar_Quizzes_IndexLst=new List();
+      }
+
+      if(HeaderAppBar_Quizzes_IndexLst.length==0){
+       HeaderAppBar_Quizzes_IndexLst.add(HeaderAppBarQuizzRan);
+       foundNum2=true;
+      }
+      else{
+        while(foundNum2==false){
+         if(HeaderAppBar_Quizzes_IndexLst.contains(HeaderAppBarQuizzRan)){
+          HeaderAppBarQuizzRan=new Random().nextInt(8);
+         }
+         else{
+          HeaderAppBar_Quizzes_IndexLst.add(HeaderAppBarQuizzRan);
+          foundNum2=true;
+         }
+        }
+      }
+
+      HeaderAppBar_Quizzes_IndexLst.sort();
+    
+
+
+    print(HeaderAppBar_Quizzes_IndexLst.toString());
+    super.initState();
+
+    
+
+  }
+  
+
+
 
 
   @override
@@ -25,7 +74,7 @@ class cl_HeaderAppBarQuizz extends StatelessWidget{
         AppBarTitle: "Header AppBar Quizz",
         Question: AppBar_Q1_Question,
         SolutionTxt: AppBar_Q1_TxtSol,
-        GoRoute: "/Generate_AppBar_Quizz",
+        GoRoute: "/Generate_HeaderAppBar_Quizz",
         Ans1Txt: AppBar_Q1_T1_Controller,
         Ans2Txt: AppBar_Q1_T2_Controller,
         Ans3Txt: Text_NullController,
@@ -35,7 +84,7 @@ class cl_HeaderAppBarQuizz extends StatelessWidget{
         Ans7Txt: Text_NullController,
         CorrectAns1: AppBar_Q1_T1_Answer,
         CorrectAns2: AppBar_Q1_T2_Answer,
-        CorrectAns3: "Not Set",
+        CorrectAns3: "NotSet",
         CorrectAns4: "NotSet",
         CorrectAns5: "NotSet",
         CorrectAns6: "NotSet",
@@ -50,7 +99,7 @@ class cl_HeaderAppBarQuizz extends StatelessWidget{
         AppBarTitle: "Header AppBar Quizz",
         Question: AppBar_Q2_Question,
         SolutionTxt: AppBar_Q2_TxtSol,
-        GoRoute: "/Generate_AppBar_Quizz",
+        GoRoute: "/Generate_HeaderAppBar_Quizz",
         Ans1Txt: AppBar_Q2_T1_Controller,
         Ans2Txt: AppBar_Q2_T2_Controller,
         Ans3Txt: AppBar_Q2_T3_Controller,
@@ -75,7 +124,7 @@ class cl_HeaderAppBarQuizz extends StatelessWidget{
         AppBarTitle: "Header AppBar Quizz",
         Question: AppBar_Q3_Question,
         SolutionTxt: AppBar_Q3_TxtSol,
-        GoRoute: "/Generate_AppBar_Quizz",
+        GoRoute: "/Generate_HeaderAppBar_Quizz",
         Ans1Txt: AppBar_Q3_T1_Controller,
         Ans2Txt: AppBar_Q3_T2_Controller,
         Ans3Txt: AppBar_Q3_T3_Controller,
@@ -100,7 +149,7 @@ class cl_HeaderAppBarQuizz extends StatelessWidget{
         AppBarTitle: "Header AppBar Quizz",
         Question: AppBar_Q4_Question,
         SolutionTxt: AppBar_Q4_TxtSol,
-        GoRoute: "/Generate_AppBar_Quizz",
+        GoRoute: "/Generate_HeaderAppBar_Quizz",
         Ans1Txt: AppBar_Q4_T1_Controller,
         Ans2Txt: AppBar_Q4_T2_Controller,
         Ans3Txt: Text_NullController,
@@ -119,348 +168,108 @@ class cl_HeaderAppBarQuizz extends StatelessWidget{
        ) :
 
 
-
-
-
-
       (HeaderAppBarQuizzRan==4)?
-        AppBarQ5()
+        Cmp_Fields_Quizz (
+        AppBarTitle: "Header AppBar Quizz",
+        Question: AppBar_Q5_Question,
+        SolutionTxt: AppBar_Q5_TxtSol,
+        GoRoute: "/Generate_HeaderAppBar_Quizz",
+        Ans1Txt: AppBar_Q5_T1_Controller,
+        Ans2Txt: AppBar_Q5_T2_Controller,
+        Ans3Txt: Text_NullController,
+        Ans4Txt: Text_NullController,
+        Ans5Txt: Text_NullController,
+        Ans6Txt: Text_NullController,
+        Ans7Txt: Text_NullController,
+        CorrectAns1: AppBar_Q5_T1_Answer,
+        CorrectAns2: AppBar_Q5_T2_Answer,
+        CorrectAns3: "NotSet",
+        CorrectAns4: "NotSet",
+        CorrectAns5: "NotSet",
+        CorrectAns6: "NotSet",
+        CorrectAns7: "NotSet",
+        QuizzList: AppBar_Q5_list,
+       ) :
+
+       (HeaderAppBarQuizzRan==5)?
+        Cmp_Fields_Quizz (
+        AppBarTitle: "Header AppBar Quizz",
+        Question: AppBar_Q6_Question,
+        SolutionTxt: AppBar_Q6_TxtSol,
+        GoRoute: "/Generate_HeaderAppBar_Quizz",
+        Ans1Txt: AppBar_Q6_T1_Controller,
+        Ans2Txt: AppBar_Q6_T2_Controller,
+        Ans3Txt: Text_NullController,
+        Ans4Txt: Text_NullController,
+        Ans5Txt: Text_NullController,
+        Ans6Txt: Text_NullController,
+        Ans7Txt: Text_NullController,
+        CorrectAns1: AppBar_Q6_T1_Answer,
+        CorrectAns2: AppBar_Q6_T2_Answer,
+        CorrectAns3: "NotSet",
+        CorrectAns4: "NotSet",
+        CorrectAns5: "NotSet",
+        CorrectAns6: "NotSet",
+        CorrectAns7: "NotSet",
+        QuizzList: AppBar_Q6_list,
+       ):
+
+        (HeaderAppBarQuizzRan==6)?
+        Cmp_Fields_Quizz (
+        AppBarTitle: "Header AppBar Quizz",
+        Question: AppBar_Q7_Question,
+        SolutionTxt: AppBar_Q7_TxtSol,
+        GoRoute: "/Generate_HeaderAppBar_Quizz",
+        Ans1Txt: AppBar_Q7_T1_Controller,
+        Ans2Txt: AppBar_Q7_T2_Controller,
+        Ans3Txt: Text_NullController,
+        Ans4Txt: Text_NullController,
+        Ans5Txt: Text_NullController,
+        Ans6Txt: Text_NullController,
+        Ans7Txt: Text_NullController,
+        CorrectAns1: AppBar_Q7_T1_Answer,
+        CorrectAns2: AppBar_Q7_T2_Answer,
+        CorrectAns3: "NotSet",
+        CorrectAns4: "NotSet",
+        CorrectAns5: "NotSet",
+        CorrectAns6: "NotSet",
+        CorrectAns7: "NotSet",
+        QuizzList: AppBar_Q7_list,
+       ):
 
 
 
 
 
-       :AppBarQ6(),
+        Cmp_Fields_Quizz (
+        AppBarTitle: "Header AppBar Quizz",
+        Question: AppBar_Q8_Question,
+        SolutionTxt: AppBar_Q8_TxtSol,
+        GoRoute: "/Generate_HeaderAppBar_Quizz",
+        Ans1Txt: AppBar_Q8_T1_Controller,
+        Ans2Txt: AppBar_Q8_T2_Controller,
+        Ans3Txt: Text_NullController,
+        Ans4Txt: Text_NullController,
+        Ans5Txt: Text_NullController,
+        Ans6Txt: Text_NullController,
+        Ans7Txt: Text_NullController,
+        CorrectAns1: AppBar_Q8_T1_Answer,
+        CorrectAns2: AppBar_Q8_T2_Answer,
+        CorrectAns3: "NotSet",
+        CorrectAns4: "NotSet",
+        CorrectAns5: "NotSet",
+        CorrectAns6: "NotSet",
+        CorrectAns7: "NotSet",
+        QuizzList: AppBar_Q8_list,
+       ),
+
+    
 
 
 
 
     );
   }
-
-
-
-
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-
-  String AppBar_Q1_TxtSol =
-      "appBar:AppBar(\n"
-      " title:Text('Welcome'),\n"
-      "),";
-
-  String AppBar_Q1_Question = "Fill The Missing Field To Set AppBar Title To Welcome";
-
-  static var AppBar_Q1_T1_Controller = new TextEditingController();
-  static var AppBar_Q1_T1_Answer = "AppBar";
-
-  static var AppBar_Q1_T2_Controller = new TextEditingController();
-  static var AppBar_Q1_T2_Answer = "title";
-
-
-  List AppBar_Q1_list = [
-    Text (
-          "import 'package:flutter/material.dart';\n\n"
-
-          "void main() {\n"
-          "  runApp(Quizz());\n"
-          "}\n\n"
-
-          "class Quizz extends StatelessWidget{\n"
-          "  @override\n"
-          "  Widget build(BuildContext context) {\n"
-          "   return MaterialApp(\n"
-          "    debugShowCheckedModeBanner:false,\n"
-          "    title:'Quizz',\n"
-          "    home:Scaffold(\n",
-    ),
-    CmpQuizz_Text_TextField_Text(
-      Spacing:62.0,
-      Text1:"appBar:",
-      TC1_Controller:AppBar_Q1_T1_Controller,
-      TC1_Width:AppBar_Q1_T1_Answer.length*10.0,
-      TC1_MaxLength:AppBar_Q1_T1_Answer.length,
-      Text2:"(",
-    ),
-    CmpQuizz_TextField_Text(
-      Spacing:65.0,
-      TC1_Controller:AppBar_Q1_T2_Controller,
-      TC1_Width:AppBar_Q1_T2_Answer.length*10.0,
-      TC1_MaxLength:AppBar_Q1_T2_Answer.length,
-      Text1:":Text('Welcome')",
-    ),
-    Text(
-        "                     ),\n"
-        "                     body:Center(\n"
-        "                      child:\n"
-        "                       Text(\n"
-        "                        'AppBar Title'\n"
-        "                       ),\n"
-        "                      ),\n"
-        "                 ),\n"
-        "         );\n"
-        "   }\n"
-        " }\n"
-    ),
-  ];
-
-
-
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-
-  String AppBar_Q2_TxtSol ="theme:ThemeData.light(),";
-
-  String AppBar_Q2_Question = "Fill The Missing Fields To Turn AppBar Theme To Light";
-
-  static var AppBar_Q2_T1_Controller = new TextEditingController();
-  static var AppBar_Q2_T1_Answer = "theme";
-
-  static var AppBar_Q2_T2_Controller = new TextEditingController();
-  static var AppBar_Q2_T2_Answer = "ThemeData";
-
-  static var AppBar_Q2_T3_Controller = new TextEditingController();
-  static var AppBar_Q2_T3_Answer = "light()";
-
-
-  List AppBar_Q2_list = [
-    Text (
-          "import 'package:flutter/material.dart';\n\n"
-
-          "void main() {\n"
-          "  runApp(Quizz());\n"
-          "}\n\n"
-
-          "class Quizz extends StatelessWidget{\n"
-          "  @override\n"
-          "  Widget build(BuildContext context) {\n"
-          "   return MaterialApp(\n"
-          "    debugShowCheckedModeBanner:false,\n"
-          "    title:'Quizz',\n"
-    ),
-    CmpQuizz_TextField_Text_TextField_Text_TextField_Text(
-      Spacing:62.0,
-      TC1_Controller:AppBar_Q2_T1_Controller,
-      TC1_Width:AppBar_Q2_T1_Answer.length*10.0,
-      TC1_MaxLength:AppBar_Q2_T1_Answer.length,
-      Text1:":",
-      TC2_Controller:AppBar_Q2_T2_Controller,
-      TC2_Width:AppBar_Q2_T2_Answer.length*10.0,
-      TC2_MaxLength:AppBar_Q2_T2_Answer.length,
-      Text2:".",
-      TC3_Controller:AppBar_Q2_T3_Controller,
-      TC3_Width:AppBar_Q2_T3_Answer.length*10.0,
-      TC3_MaxLength:AppBar_Q2_T3_Answer.length,
-      Text3:",",
-    ),
-    Text(
-            "       home:Scaffold(\n"
-            "        appBar:AppBar(\n"
-            "          title:Text('Light AppBar Theme'),"
-            "        ),\n"
-            "        body:Center(\n"
-            "         child:\n"
-            "          Text(\n"
-            "            'Light AppBar Theme'\n"
-            "          ),\n"
-            "        ),\n"
-            "       ),\n"
-            "     );\n"
-            "   }\n"
-            " }\n"
-    ),
-  ];
-
-
-
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-
-
-  String AppBar_Q3_TxtSol ="theme:ThemeData.light(),";
-
-  String AppBar_Q3_Question = "Fill The Missing Fields To Turn AppBar Theme To Dark";
-
-  static var AppBar_Q3_T1_Controller = new TextEditingController();
-  static var AppBar_Q3_T1_Answer = "theme";
-
-  static var AppBar_Q3_T2_Controller = new TextEditingController();
-  static var AppBar_Q3_T2_Answer = "ThemeData";
-
-  static var AppBar_Q3_T3_Controller = new TextEditingController();
-  static var AppBar_Q3_T3_Answer = "dark()";
-
-
-  List AppBar_Q3_list = [
-    Text (
-        "import 'package:flutter/material.dart';\n\n"
-
-            "void main() {\n"
-            "  runApp(Quizz());\n"
-            "}\n\n"
-
-            "class Quizz extends StatelessWidget{\n"
-            "  @override\n"
-            "  Widget build(BuildContext context) {\n"
-            "   return MaterialApp(\n"
-            "    debugShowCheckedModeBanner:false,\n"
-            "    title:'Quizz',\n"
-    ),
-    CmpQuizz_TextField_Text_TextField_Text_TextField_Text(
-      Spacing:62.0,
-      TC1_Controller:AppBar_Q3_T1_Controller,
-      TC1_Width:AppBar_Q3_T1_Answer.length*10.0,
-      TC1_MaxLength:AppBar_Q3_T1_Answer.length,
-      Text1:":",
-      TC2_Controller:AppBar_Q3_T2_Controller,
-      TC2_Width:AppBar_Q3_T2_Answer.length*10.0,
-      TC2_MaxLength:AppBar_Q3_T2_Answer.length,
-      Text2:".",
-      TC3_Controller:AppBar_Q3_T3_Controller,
-      TC3_Width:AppBar_Q3_T3_Answer.length*10.0,
-      TC3_MaxLength:AppBar_Q3_T3_Answer.length,
-      Text3:",",
-    ),
-    Text(
-        "       home:Scaffold(\n"
-            "        appBar:AppBar(\n"
-            "          title:Text('Dark AppBar Theme'),"
-            "        ),\n"
-            "        body:Center(\n"
-            "         child:\n"
-            "          Text(\n"
-            "            'Dark AppBar Theme'\n"
-            "          ),\n"
-            "        ),\n"
-            "       ),\n"
-            "     );\n"
-            "   }\n"
-            " }\n"
-    ),
-  ];
-
-
-
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-
-
-  String AppBar_Q4_TxtSol =
-      "appBar:AppBar(\n"
-      "  title:Text('Red Bg')\n"
-      "  backgroundColor:Colors.red,\n"
-      ")";
-
-  String AppBar_Q4_Question = "Fill The Missing Fields To Turn AppBar Background Color To Red";
-
-  static var AppBar_Q4_T1_Controller = new TextEditingController();
-  static var AppBar_Q4_T1_Answer = "backgroundColor";
-
-  static var AppBar_Q4_T2_Controller = new TextEditingController();
-  static var AppBar_Q4_T2_Answer = "Colors";
-
-
-  List AppBar_Q4_list = [
-    Text (
-         "import 'package:flutter/material.dart';\n\n"
-
-          "void main() {\n"
-          "  runApp(Quizz());\n"
-          "}\n\n"
-
-          "class Quizz extends StatelessWidget{\n"
-          "  @override\n"
-          "  Widget build(BuildContext context) {\n"
-          "   return MaterialApp(\n"
-          "    debugShowCheckedModeBanner:false,\n"
-          "    title:'Quizz',\n"
-          "    home:Scaffold(\n"
-          "     appBar:AppBar(\n"
-          "       title:Text('Red Bg'),"
-    ),
-    CmpQuizz_TextField_Text_TextField_Text(
-      Spacing:42.0,
-      TC1_Controller:AppBar_Q4_T1_Controller,
-      TC1_Width:AppBar_Q4_T1_Answer.length*10.0,
-      TC1_MaxLength:AppBar_Q4_T1_Answer.length,
-      Text1:":",
-      TC2_Controller:AppBar_Q4_T2_Controller,
-      TC2_Width:AppBar_Q4_T2_Answer.length*10.0,
-      TC2_MaxLength:AppBar_Q4_T2_Answer.length,
-      Text2:".red,",
-    ),
-    Text(
-            "    ),\n"
-            "    body:Center(\n"
-            "       child:\n"
-            "         Text(\n"
-            "           'Red Bg'\n"
-            "          ),\n"
-            "     ),\n"
-            "    ),\n"
-            "   );\n"
-            "  }\n"
-            " }\n"
-    ),
-  ];
-
-
-
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
-
-
-
 
 
 

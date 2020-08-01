@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorials_and_quizzes/_Comp_Courses/Cmp_Title.dart';
 import 'package:marquee/marquee.dart';
-import '../LoadFireBaseAdmob.dart';
 import '../SettingPage.dart';
 import '../main.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:flutter_tutorials_and_quizzes/Backend_5_FireBase_Admob/1_FireBase_Admob_Banner.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_BackEnd/Backend_5_FireBase_Admob/1_FireBase_Admob_Banner.dart';
+import 'CmpWebView.dart';
 import 'EditedCodeView.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import '../LoadFireBaseAdmob.dart';
 
 
 
@@ -18,7 +20,7 @@ TextEditingController CodeTxtField = new TextEditingController();
 
 
 
-var Public_RunCodeRout,Public_CodeRoute,Public_ItemList,Public_ToDo,Pub_Exp;
+var Public_RunCodeRout,Public_CodeRoute,Public_ItemList,Public_ToDo,Pub_Exp,PubOfDocList;
 
 
 class CmpCodePage extends StatefulWidget {
@@ -27,6 +29,7 @@ class CmpCodePage extends StatefulWidget {
   final List ItemList;
   final Icon TabIcon;
   var RunCodeRoute;
+  var OffDocList;
 
   CmpCodePage({
     @required this.Title,
@@ -38,6 +41,7 @@ class CmpCodePage extends StatefulWidget {
     @required this.ToDo,
     @required this.TxtExplanation,
     @required this.RunCodeRoute,
+    @required this.OffDocList,
   });
 
   @override
@@ -58,18 +62,17 @@ class _CmpCodePageState extends State<CmpCodePage> with SingleTickerProviderStat
 
   @override
   Future initState()  {
+    ShowMyAds();
     super.initState();
     Public_RunCodeRout=widget.RunCodeRoute;
     Public_CodeRoute=widget.CodeRoute;
     Public_ToDo=widget.ToDo;
     Pub_Exp=widget.TxtExplanation;
     Public_ItemList=widget.ItemList;
+    PubOfDocList=widget.OffDocList;
 
     initPlayer();
-    tabController = new TabController(vsync: this, length: 3,);
-
-    WidgetsBinding.instance.addPostFrameCallback((_)=>ShowMyAds());
-
+    tabController = new TabController(vsync: this, length: 4,);
 
   }
 
@@ -90,25 +93,33 @@ class _CmpCodePageState extends State<CmpCodePage> with SingleTickerProviderStat
   Widget build(BuildContext context) {
     return WillPopScope(
         onWillPop:(){
-          MyBanner?.dispose();
+         try{
           bannerAdTutorial?.dispose();
-          loadBannerAd++;
-          loadIntertitialAd++;
+         }
+         catch(ex){
+          print(ex);
+         }
+         ShowMyAds();
       PlayTapSound();
       Navigator.pop(context);
     },
     child:Scaffold(
+        backgroundColor:(ThemeResult=="Light")?Colors.white:CardBg.withBlue(255).withGreen(255).withRed(255),
       appBar: new AppBar(
+                backgroundColor:ThemeAppBar,
         leading: IconButton(
           icon: new Icon(
             Icons.arrow_back,
             color: Colors.white,
           ),
           onPressed: (){
-            MyBanner?.dispose();
-            bannerAdTutorial?.dispose();
-            loadBannerAd++;
-            loadIntertitialAd++;
+            try{
+             bannerAdTutorial?.dispose();
+            }
+            catch(ex){
+              print(ex);
+            }
+            ShowMyAds();
             PlayTapSound();
             Navigator.pushNamed(context,widget.BackRoute);
           },
@@ -143,10 +154,13 @@ class _CmpCodePageState extends State<CmpCodePage> with SingleTickerProviderStat
           IconButton(
             icon: Icon(Icons.format_list_numbered),
             onPressed: (){
-              MyBanner?.dispose();
+             try{
               bannerAdTutorial?.dispose();
-              loadBannerAd++;
-              loadIntertitialAd++;
+             }
+             catch(ex){
+              print(ex);
+             }
+              ShowMyAds();
               PlayTapSound();
               Navigator.pushNamed(context,"/Main");
             },
@@ -154,10 +168,13 @@ class _CmpCodePageState extends State<CmpCodePage> with SingleTickerProviderStat
           IconButton(
             icon: Icon(Icons.arrow_forward),
             onPressed: (){
-              MyBanner?.dispose();
-              bannerAdTutorial?.dispose();
-              loadBannerAd++;
-              loadIntertitialAd++;
+              try{
+               bannerAdTutorial?.dispose();
+              }
+              catch(ex){
+               print(ex);
+              }
+              ShowMyAds();
               PlayTapSound();
               Navigator.pushNamed(context,widget.NextRoute);
             },
@@ -169,18 +186,8 @@ class _CmpCodePageState extends State<CmpCodePage> with SingleTickerProviderStat
             Tab(icon: widget.TabIcon,text:"About"),
             Tab(icon: Icon(Icons.code,),text:"Code"),
             Tab(icon: Icon(Icons.receipt,),text:"Run"),
+            Tab(icon: Icon(Icons.info,),text:"Doc"),
           ],
-          onTap:(index){
-            if(index==1){
-              MyBanner.dispose();
-            }
-            else if(index==2){
-              MyBanner.dispose();
-            }
-            else{
-              ShowMyAds();
-            }
-          },
         ),
       ),
 
@@ -190,6 +197,7 @@ class _CmpCodePageState extends State<CmpCodePage> with SingleTickerProviderStat
           About(),
           CodeView(),
           RunCode(),
+          OffDoc(),
         ],
 
       ),
@@ -213,6 +221,7 @@ class AboutState extends State<About> with AutomaticKeepAliveClientMixin {
   Widget build(BuildContext context) {
 
     return Scaffold(
+        backgroundColor:(ThemeResult=="Light")?Colors.white:CardBg.withBlue(255).withGreen(255).withRed(255),
       body:
       ListView (
         controller:SCCodePage,
@@ -373,13 +382,11 @@ class CodeView extends StatefulWidget {
 class CodeViewState extends State<CodeView> with AutomaticKeepAliveClientMixin {
 
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner:false,
-      home:Scaffold(
+    return Scaffold(
+        backgroundColor:(ThemeResult=="Light")?Colors.white:CardBg.withBlue(255).withGreen(255).withRed(255),
         body:EditedSourceCodeView(
           filePath:Public_CodeRoute,
         ),
-      ),
     );
   }
 
@@ -393,12 +400,100 @@ class RunCode extends StatefulWidget {
   @override
   RunCodeState createState() => new RunCodeState();
 }
-class RunCodeState extends State<RunCode> with AutomaticKeepAliveClientMixin {
+
+class RunCodeState extends State<RunCode> {
+
+  @override
+  void initState(){
+    super.initState();
+  }
+
+  @override
+  void dispose(){
+    super.dispose();
+  }
 
   Widget build(BuildContext context) {
-
     return Scaffold(
         body:Public_RunCodeRout
+    );
+  }
+
+}
+
+
+
+
+
+
+
+class OffDoc extends StatefulWidget {
+  @override
+  OffDocState createState() => new OffDocState();
+}
+
+class OffDocState extends State<OffDoc> with AutomaticKeepAliveClientMixin {
+
+  @override
+  void initState(){
+    super.initState();
+  }
+
+  @override
+  void dispose(){
+    super.dispose();
+  }
+
+  Widget OffDocWidget(){
+    return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment:MainAxisAlignment.center,
+                crossAxisAlignment:CrossAxisAlignment.center,
+                children: <Widget>[
+                   for(var item in PubOfDocList)
+                    Container(child:item),
+                  ],
+              ),
+            );
+  }
+
+    Widget SoonOffDocWidget(){
+    return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment:MainAxisAlignment.center,
+                crossAxisAlignment:CrossAxisAlignment.center,
+                children: <Widget>[
+                    SizedBox(height:200,),
+                  Center(child:Text("Soon!This Tab Will Include Official Reference Of The Used Widget.",textAlign:TextAlign.center),)
+  
+                  ],
+              ),
+            );
+  }
+
+
+
+             
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor:(ThemeResult=="Light")?Colors.white:CardBg.withBlue(255).withGreen(255).withRed(255),
+        body:ListView(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment:MainAxisAlignment.center,
+                crossAxisAlignment:CrossAxisAlignment.center,
+                children: <Widget>[
+                  (PubOfDocList==null)?SoonOffDocWidget():OffDocWidget(),
+                 ],
+              ),
+            ),
+          ],
+        )
     );
   }
 

@@ -1,0 +1,23 @@
+<?php
+ 
+  require_once('DbConnect.php');
+
+  $UserName = $_POST['UserName'];
+  $UserPass = $_POST['UserPass'];
+  
+  $St = $conn->prepare("SELECT * FROM Users WHERE UserName='$UserName'");
+  $St->execute();
+  $count = $St->rowCount();
+
+  if($count>0){
+     echo "Failed";
+  }
+  else{
+    $statement = $conn->prepare('INSERT INTO Users VALUES(null,"'.$UserName.'","'.$UserPass.'")');
+    $statement->execute();
+    echo "Success";
+  }
+
+    
+
+?>

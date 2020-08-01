@@ -1,8 +1,8 @@
-import 'package:audioplayers/audio_cache.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'AppSoundPlay.dart';
 import 'SettingPage.dart';
 import 'main.dart';
+import 'LoadFireBaseAdmob.dart';
 
 typedef void OnError(Exception exception);
 
@@ -12,25 +12,15 @@ class UsersCodePage extends StatefulWidget {
 }
 
 class _UsersCodePageState extends State<UsersCodePage> {
-  AudioPlayer advancedPlayer;
-  AudioCache audioCache;
+
 
   @override
   void initState(){
+    loadIntertitialAd++;
+    //ShowMyAds();
     super.initState();
-    initPlayer();
   }
 
-  void initPlayer(){
-    advancedPlayer = new AudioPlayer();
-    audioCache = new AudioCache(fixedPlayer: advancedPlayer);
-  }
-
-  void PlayTapSound() async{
-    if(SoundResult=="NotMuted") {
-      audioCache.play('Music/Tap.mp3');
-    }
-  }
 
   @override
   Widget build(BuildContext context){
@@ -40,7 +30,7 @@ class _UsersCodePageState extends State<UsersCodePage> {
             icon:Icon(Icons.arrow_back),
             onPressed:(){
               PlayTapSound();
-              Navigator.push(context,MaterialPageRoute(builder:(context)=>Main()));
+              Navigator.of(context).pop();
             },
           ),
           title:Text("Users Codes"),

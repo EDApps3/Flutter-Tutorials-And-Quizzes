@@ -1,0 +1,7 @@
+ <?php
+    
+    require_once('DbConnect.php');
+    $statement = $conn->prepare("DELETE FROM Products");
+    $statement->execute();
+
+?>

@@ -141,7 +141,7 @@ class cl_FlutterSyntaxe_State extends State<cl_FlutterSyntaxe> {
   String FlutterSyntaxe_Q1_TxtSol =
   "SourceCodeView(\n"
   " filePath:\n"
-  "  'lib/SourceCode.txt',\n"
+  "  'lib/Codes_FrontEnd/SourceCode.txt',\n"
   ")";
 
 
@@ -187,7 +187,7 @@ class cl_FlutterSyntaxe_State extends State<cl_FlutterSyntaxe> {
         TC1_Controller: FlutterSyntaxe_Q1_T2_Controller,
         TC1_Width:FlutterSyntaxe_Q1_T2_Answer.length*10.0,
         TC1_MaxLength:FlutterSyntaxe_Q1_T2_Answer.length,
-        Text1: ":'lib/SourceCode.txt',",
+        Text1: ":'lib/Codes_FrontEnd/SourceCode.txt',",
     ),
     Text(
           "        ),\n"
@@ -289,7 +289,7 @@ class cl_FlutterSyntaxe_State extends State<cl_FlutterSyntaxe> {
   String FlutterSyntaxe_Q3_TxtSol =
       "WidgetWithCodeView(\n"
       " filePath:\n"
-      "  'lib/QuizzCode.txt',\n"
+      "  'lib/Codes_FrontEnd/QuizzCode.txt',\n"
       " child:Quizz(),\n"
       ")";
 
@@ -335,7 +335,7 @@ class cl_FlutterSyntaxe_State extends State<cl_FlutterSyntaxe> {
       TC1_Controller: FlutterSyntaxe_Q3_T2_Controller,
       TC1_Width:FlutterSyntaxe_Q3_T2_Answer.length*10.0,
       TC1_MaxLength:FlutterSyntaxe_Q3_T2_Answer.length,
-      Text1: ":'lib/QuizzCode.txt',",
+      Text1: ":'lib/Codes_FrontEnd/QuizzCode.txt',",
     ),
     Text(
           "        child:Quizz(),\n"

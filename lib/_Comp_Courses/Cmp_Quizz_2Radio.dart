@@ -3,8 +3,13 @@ import 'package:flutter_tutorials_and_quizzes/0_Quizzes/0_GenerateRandomQuizzes.
 import 'package:flutter_tutorials_and_quizzes/main.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:toast/toast.dart';
 
+import '../CheckConnection.dart';
+import '../MainSplashScreen.dart';
 import '../SettingPage.dart';
+import '../UserDataInfo.dart';
+import '../LoadFireBaseAdmob.dart';
 
 
 enum Answers {
@@ -40,6 +45,7 @@ class _Cmp_Quizz_2Radio_State extends State<Cmp_Quizz_2Radio> {
 
   @override
   void initState(){
+    ShowMyAds();
     super.initState();
     initPlayer();
   }
@@ -75,6 +81,21 @@ class _Cmp_Quizz_2Radio_State extends State<Cmp_Quizz_2Radio> {
       Result="Correct Answer";
       TxtClr=Colors.green;
       PlayWinSound();
+
+      if(RandQuizz==false){
+        AvatarTokens=AvatarTokens+1;
+        AvatarXp    =AvatarXp+10;
+      }
+      else{
+        AvatarTokens=AvatarTokens+2;
+        AvatarXp    =AvatarXp+20;
+      }
+      
+
+      var dbApp = new DBApp();
+      UserData US=new UserData("1",AvatarTokens,AvatarXp,AvatarName,AvatarImg,UID,PID,1);
+      dbApp.updateUserData(US);
+      dbApp.getAvatarInfo();
     }
     else{
       Result="Wrong Answer";
@@ -92,9 +113,8 @@ class _Cmp_Quizz_2Radio_State extends State<Cmp_Quizz_2Radio> {
         ),
         content:
         Container(
-          height: 300,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          height: 310,
+          child: ListView(
             children: <Widget>[
               Divider(color: Colors.black,),
               Text(
@@ -104,6 +124,79 @@ class _Cmp_Quizz_2Radio_State extends State<Cmp_Quizz_2Radio> {
                   fontFamily:"Lora",
                 ),
               ),
+
+              Divider(color:Colors.grey),
+
+
+              
+                (SelectedIndex==widget.CorrectIndex && RandQuizz==false)?
+                Container(
+                  color:Colors.transparent,
+                  width:double.infinity,
+                  height:65,
+                  child:Column(
+                    crossAxisAlignment:CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text("Simple Quizz Rewards X1",style: TextStyle(color: Colors.blue,fontFamily:"Lora",),),
+                      Row(
+                      children: <Widget>[
+                      Text("You Earned:",style: TextStyle(color: Colors.teal,fontFamily:"Lora",),),
+                      Image.asset("Images/coin.gif",width:15,height:15),
+                      Text("1"),
+                      SizedBox(width:10,),
+                      Image.asset("Images/Star.gif",width:15,height:15),
+                      Text("10"),
+                    ],
+                  ),
+                    ],
+                  )
+                 ):(SelectedIndex==widget.CorrectIndex && RandQuizz==true)?
+                Container(
+                  color:Colors.transparent,
+                  width:double.infinity,
+                  height:65,
+                  child:Column(
+                    crossAxisAlignment:CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text("Random Quizz Rewards X2",style: TextStyle(color: Colors.blue,fontFamily:"Lora",),),
+                      Row(
+                      children: <Widget>[
+                      Text("You Earned:",style: TextStyle(color: Colors.teal,fontFamily:"Lora",),),
+                      Image.asset("Images/coin.gif",width:15,height:15),
+                      Text("2"),
+                      SizedBox(width:10,),
+                      Image.asset("Images/Star.gif",width:15,height:15),
+                      Text("20"),
+                    ],
+                  ),
+                    ],
+                  )
+                 ):
+                
+                Container(
+                  color:Colors.transparent,
+                  width:double.infinity,
+                  height:65,
+                  child:Column(
+                    children: <Widget>[
+                      Text("",style: TextStyle(color: Colors.blue,fontFamily:"Lora",),),
+                      Row(
+                      children: <Widget>[
+                      Text("You Earned:",style: TextStyle(color: Colors.teal,fontFamily:"Lora",),),
+                      Image.asset("Images/coin.gif",width:15,height:15),
+                      Text("0"),
+                      SizedBox(width:10,),
+                      Image.asset("Images/Star.gif",width:15,height:15),
+                      Text("0"),
+                    ],
+                  ),
+                    ],
+                  ),
+                ),
+
+              
+
+              Divider(),
               SizedBox(height: 27,),
               SizedBox(
                   width: double.infinity,
@@ -116,7 +209,7 @@ class _Cmp_Quizz_2Radio_State extends State<Cmp_Quizz_2Radio> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        "Great! Load Another Quizz ",
+                        "Load Another Quizz",
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily:"PT Mono",
@@ -124,8 +217,20 @@ class _Cmp_Quizz_2Radio_State extends State<Cmp_Quizz_2Radio> {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    onPressed: (){
+                    onPressed: () async {
                       PlayTapSound();
+                      loadIntertitialAd++;
+                       CheckUserConnected();
+                      if(IsUserConnected==true){
+                        Toast.show (
+                          "Updating Data...",
+                          context,
+                          duration: Toast.LENGTH_SHORT,
+                          gravity: Toast.BOTTOM,
+                          textColor: Colors.white,
+                        );
+                        await UpdateDataFireStore();
+                      }
                       Navigator.of(context,rootNavigator: true).pop('dialog');
                       if(RandQuizz==false){
                         Navigator.of(context).pushReplacementNamed(widget.GoRoute);
@@ -148,7 +253,7 @@ class _Cmp_Quizz_2Radio_State extends State<Cmp_Quizz_2Radio> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        "Thanks! Get Me Back To Menu ",
+                        "Get Me Back To Menu ",
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily:"PT Mono",
@@ -156,10 +261,22 @@ class _Cmp_Quizz_2Radio_State extends State<Cmp_Quizz_2Radio> {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    onPressed: (){
+                    onPressed: () async {
+                      loadIntertitialAd++;
                       PlayTapSound();
+                       CheckUserConnected();
+                      if(IsUserConnected==true){
+                        Toast.show (
+                          "Updating Data...",
+                          context,
+                          duration: Toast.LENGTH_SHORT,
+                          gravity: Toast.BOTTOM,
+                          textColor: Colors.white,
+                        );
+                        await UpdateDataFireStore();
+                      }
                       Navigator.of(context,rootNavigator: true).pop('dialog');
-                      Navigator.push(context,MaterialPageRoute(builder:(context)=>Main()));
+                      Navigator.push(context,MaterialPageRoute(builder:(context)=>MainSplashScreen()));
                     },
                   )
               ),
@@ -168,28 +285,32 @@ class _Cmp_Quizz_2Radio_State extends State<Cmp_Quizz_2Radio> {
 
         )
 
+          
     );
 
     showDialog(
+        
+        barrierDismissible:false,
         context: context,
         builder: (BuildContext context) {
-          return alert;
+          return WillPopScope(child:alert,onWillPop:() async => false,);
         });
   }
 
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title:widget.AppBarTitle,
-      home: Scaffold(
+    return WillPopScope(
+      onWillPop:() async => false,
+      child:Scaffold(
+                backgroundColor:(ThemeResult=="Light")?Colors.white:CardBg.withBlue(255).withGreen(255).withRed(255),
         appBar: AppBar(
+          backgroundColor:ThemeAppBar,
           leading: IconButton(
             icon: new Icon(Icons.arrow_back),
             onPressed: (){
               PlayTapSound();
-              Navigator.push(context,MaterialPageRoute(builder:(context)=>Main()));
+              Navigator.push(context,MaterialPageRoute(builder:(context)=>MainSplashScreen()));
             },
           ),
           title:Text(widget.AppBarTitle),

@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/10_LD10_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/11_LD11_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/12_LD12_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/13_LD13_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/14_LD14_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/15_LD15_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/16_LD16_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/17_LD17_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/18_LD18_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/19_LD19_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/1_LD1_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/20_LD20_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/2_LD2_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/3_LD3_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/4_LD4_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/5_LD5_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/6_LD6_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/7_LD7_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/8_LD8_Run.dart';
-import 'package:flutter_tutorials_and_quizzes/27_Advanced_Loader/9_LD9_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/10_LD10_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/11_LD11_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/12_LD12_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/13_LD13_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/14_LD14_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/15_LD15_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/16_LD16_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/17_LD17_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/18_LD18_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/19_LD19_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/1_LD1_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/20_LD20_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/2_LD2_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/3_LD3_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/4_LD4_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/5_LD5_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/6_LD6_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/7_LD7_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/8_LD8_Run.dart';
+import 'package:flutter_tutorials_and_quizzes/Codes_FrontEnd/27_Advanced_Loader/9_LD9_Run.dart';
 import 'package:flutter_tutorials_and_quizzes/_Comp_Courses/Cmp_Code_Page.dart';
 import 'package:flutter_tutorials_and_quizzes/_Comp_Courses/Cmp_Intro_Page.dart';
 import 'package:flutter_tutorials_and_quizzes/_Comp_Courses/Cmp_ListTile_GoCode.dart';
@@ -83,7 +83,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
             IconButton(
               icon: Icon(Icons.format_list_numbered),
               onPressed: (){
-                Navigator.push(context,MaterialPageRoute(builder:(context)=>Main()));
+                Navigator.pushNamed(context,"/Main");
               },
             ),
             IconButton(
@@ -393,7 +393,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/Advanced_Loaders",
           NextRoute:"/LD2",
           ItemList:LD1_list,
-          CodeRoute:"lib/27_Advanced_Loader/1_LD1_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/1_LD1_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit RotatingCircle Loader In The Center With Loading Text\n",
           TxtExplanation:LD1_Explanation,
@@ -405,7 +405,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/LD1",
           NextRoute:"/LD3",
           ItemList:LD2_list,
-          CodeRoute:"lib/27_Advanced_Loader/2_LD2_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/2_LD2_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit ChasingDots Loader In The Center With Loading Text\n",
           TxtExplanation:LD2_Explanation,
@@ -417,7 +417,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/LD2",
           NextRoute:"/LD4",
           ItemList:LD3_list,
-          CodeRoute:"lib/27_Advanced_Loader/3_LD3_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/3_LD3_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit Circle Loader In The Center With Loading Text\n",
           TxtExplanation:LD3_Explanation,
@@ -429,7 +429,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/LD3",
           NextRoute:"/LD5",
           ItemList:LD4_list,
-          CodeRoute:"lib/27_Advanced_Loader/4_LD4_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/4_LD4_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit CubeGrid Loader In The Center With Loading Text\n",
           TxtExplanation:LD4_Explanation,
@@ -441,7 +441,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/LD4",
           NextRoute:"/LD6",
           ItemList:LD5_list,
-          CodeRoute:"lib/27_Advanced_Loader/5_LD5_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/5_LD5_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit DoubleBounce Loader In The Center With Loading Text\n",
           TxtExplanation:LD5_Explanation,
@@ -453,7 +453,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/LD5",
           NextRoute:"/LD7",
           ItemList:LD6_list,
-          CodeRoute:"lib/27_Advanced_Loader/6_LD6_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/6_LD6_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit DualRing Loader In The Center With Loading Text\n",
           TxtExplanation:LD6_Explanation,
@@ -466,7 +466,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/LD6",
           NextRoute:"/LD8",
           ItemList:LD7_list,
-          CodeRoute:"lib/27_Advanced_Loader/7_LD7_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/7_LD7_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit FadingCircle Loader In The Center With Loading Text\n",
           TxtExplanation:LD7_Explanation,
@@ -479,7 +479,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/LD7",
           NextRoute:"/LD9",
           ItemList:LD8_list,
-          CodeRoute:"lib/27_Advanced_Loader/8_LD8_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/8_LD8_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit FadingCube Loader In The Center With Loading Text\n",
           TxtExplanation:LD8_Explanation,
@@ -492,7 +492,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/LD8",
           NextRoute:"/LD10",
           ItemList:LD9_list,
-          CodeRoute:"lib/27_Advanced_Loader/9_LD9_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/9_LD9_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit FadingFour Loader In The Center With Loading Text\n",
           TxtExplanation:LD9_Explanation,
@@ -505,7 +505,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/LD9",
           NextRoute:"/LD11",
           ItemList:LD10_list,
-          CodeRoute:"lib/27_Advanced_Loader/10_LD10_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/10_LD10_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit FadingGrid Loader In The Center With Loading Text\n",
           TxtExplanation:LD10_Explanation,
@@ -517,7 +517,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/LD10",
           NextRoute:"/LD12",
           ItemList:LD11_list,
-          CodeRoute:"lib/27_Advanced_Loader/11_LD11_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/11_LD11_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit FoldingCube Loader In The Center With Loading Text\n",
           TxtExplanation:LD11_Explanation,
@@ -529,7 +529,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/LD11",
           NextRoute:"/LD13",
           ItemList:LD12_list,
-          CodeRoute:"lib/27_Advanced_Loader/12_LD12_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/12_LD12_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit HourGlass Loader In The Center With Loading Text\n",
           TxtExplanation:LD12_Explanation,
@@ -541,7 +541,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/LD12",
           NextRoute:"/LD14",
           ItemList:LD13_list,
-          CodeRoute:"lib/27_Advanced_Loader/13_LD13_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/13_LD13_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit Pouring HourGlass Loader In The Center With Loading Text\n",
           TxtExplanation:LD13_Explanation,
@@ -554,7 +554,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/LD13",
           NextRoute:"/LD15",
           ItemList:LD14_list,
-          CodeRoute:"lib/27_Advanced_Loader/14_LD14_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/14_LD14_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit Pulse Loader In The Center With Loading Text\n",
           TxtExplanation:LD14_Explanation,
@@ -567,7 +567,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/LD14",
           NextRoute:"/LD16",
           ItemList:LD15_list,
-          CodeRoute:"lib/27_Advanced_Loader/15_LD15_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/15_LD15_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit Pumping Heart Loader In The Center With Loading Text\n",
           TxtExplanation:LD15_Explanation,
@@ -580,7 +580,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/LD15",
           NextRoute:"/LD17",
           ItemList:LD16_list,
-          CodeRoute:"lib/27_Advanced_Loader/16_LD16_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/16_LD16_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit Ring Loader In The Center With Loading Text\n",
           TxtExplanation:LD16_Explanation,
@@ -592,7 +592,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/LD16",
           NextRoute:"/LD18",
           ItemList:LD17_list,
-          CodeRoute:"lib/27_Advanced_Loader/17_LD17_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/17_LD17_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit Ripple Loader In The Center With Loading Text\n",
           TxtExplanation:LD17_Explanation,
@@ -605,7 +605,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/LD17",
           NextRoute:"/LD19",
           ItemList:LD18_list,
-          CodeRoute:"lib/27_Advanced_Loader/18_LD18_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/18_LD18_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit Wave Loader In The Center With Loading Text\n",
           TxtExplanation:LD18_Explanation,
@@ -617,7 +617,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/LD18",
           NextRoute:"/LD20",
           ItemList:LD19_list,
-          CodeRoute:"lib/27_Advanced_Loader/19_LD19_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/19_LD19_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit Wandering Cubes Loader In The Center With Loading Text\n",
           TxtExplanation:LD19_Explanation,
@@ -636,7 +636,7 @@ class Advanced_Loader_State extends State<Advanced_Loader> {
           BackRoute:"/LD19",
           NextRoute:"/Animation_Intro",
           ItemList:LD20_list,
-          CodeRoute:"lib/27_Advanced_Loader/20_LD20_Run.dart",
+          CodeRoute:"lib/Codes_FrontEnd/27_Advanced_Loader/20_LD20_Run.dart",
           TabIcon:Icon(Icons.av_timer),
           ToDo:"We Need To Write A Page That Show A SpinKit Three Bounce Loader In The Center With Loading Text\n",
           TxtExplanation:LD20_Explanation,

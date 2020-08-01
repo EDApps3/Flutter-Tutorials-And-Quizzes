@@ -1,8 +1,8 @@
 import 'dart:math';
 import 'package:animated_floatactionbuttons/animated_floatactionbuttons.dart';
 import 'package:flutter/material.dart';
-
 import 'FlutterSyntaxeHighlighter.dart';
+import '../SettingPage.dart';
 
 class EditedSourceCodeView extends StatefulWidget {
   final String filePath;
@@ -23,6 +23,21 @@ class _SourceCodeViewState extends State<EditedSourceCodeView> {
   EditedSyntaxHighlighterStyle style =EditedSyntaxHighlighterStyle.lightThemeStyle();
   int _RadioThemeValue = 0;
   Color ContainerView=Colors.white;
+
+  @override
+  void initState(){
+    if(ThemeResult=="Light"){
+      _RadioThemeValue=0;
+      ContainerView=Colors.white;
+      style =EditedSyntaxHighlighterStyle.lightThemeStyle();
+    }
+    else{
+      _RadioThemeValue=1;
+      ContainerView=ThemeBg;
+      style =EditedSyntaxHighlighterStyle.darkThemeStyle();
+    }
+    super.initState();
+  }
 
   void _RadioThemeChange(int value) {
     setState(() {
@@ -52,7 +67,9 @@ class _SourceCodeViewState extends State<EditedSourceCodeView> {
   Widget _getCodeView(String codeContent, BuildContext context) {
     codeContent = codeContent.replaceAll('\r\n', '\n');
 
-    return Column(
+    return Container(
+      color:(ThemeResult=="Light")?Colors.white:CardBg.withBlue(255).withGreen(255).withRed(255),
+      child:Column(
       children: <Widget>[
         Row(
           children: <Widget>[
@@ -117,6 +134,7 @@ class _SourceCodeViewState extends State<EditedSourceCodeView> {
           ),
         )
       ],
+      ),
     );
   }
 
@@ -124,7 +142,7 @@ class _SourceCodeViewState extends State<EditedSourceCodeView> {
     return <Widget>[
       FloatingActionButton(
         backgroundColor:Colors.green,
-        heroTag: null,
+        heroTag:new Random().nextInt(999).toString(),
         child: Icon(Icons.zoom_out),
         tooltip: 'Zoom out',
         onPressed: () => setState(() {
@@ -133,7 +151,7 @@ class _SourceCodeViewState extends State<EditedSourceCodeView> {
       ),
       FloatingActionButton(
         backgroundColor:Colors.green,
-        heroTag: null,
+        heroTag:new Random().nextInt(999).toString(),
         child: Icon(Icons.zoom_in),
         tooltip: 'Zoom in',
         onPressed: () => setState(() {
@@ -145,12 +163,16 @@ class _SourceCodeViewState extends State<EditedSourceCodeView> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
+    return Container(
+      color:ContainerView,
+      child:
+    FutureBuilder(
       future: DefaultAssetBundle.of(context).loadString(widget.filePath) ??
           'Error loading source code from $this.filePath',
       builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
         if (snapshot.hasData) {
           return Scaffold(
+            backgroundColor:(ThemeResult=="Light")?Colors.white:CardBg.withBlue(255).withGreen(255).withRed(255),
             body: Padding(
               padding: EdgeInsets.all(4.0),
               child: _getCodeView(snapshot.data, context),
@@ -166,6 +188,7 @@ class _SourceCodeViewState extends State<EditedSourceCodeView> {
           return Center(child: CircularProgressIndicator());
         }
       },
+    ),
     );
   }
 }

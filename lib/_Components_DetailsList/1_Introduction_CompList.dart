@@ -1,7 +1,52 @@
+
 import 'package:flutter/material.dart';
 import '../_Comp_Courses/Cmp_GreyCard_Image_Title.dart';
 import '../_Comp_Courses/Cmp_SubTitle.dart';
 import '../_Comp_Courses/Cmp_Title.dart';
+import '../AppLang.dart';
+
+var T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16;
+
+
+
+void TranslateIntroCompList() async{
+  T1="What Is ";
+  T2="Is An Open-Source Mobile Application Development Framework.";
+  T3="Who Developed ";
+  T4="is Released By Google On May 2017";
+  T5="What Are Platforms Supported By";
+  T6="is A Cross Platform Used to Develop Applications for:\n";
+  T7 ="What Is";
+  T8 ="is A Client-Optimized Programming Language For Fast Apps On Multiple Platforms.";
+  T9 ="Who Developed DART?";
+  T10=" is Released By Google On November 2013.";
+  T11="What Are Platforms Supported By";
+  T12=" is A CrossPlatform Used to Develop Applications for Mobile,Website And Desktop!";
+  T13="Is DART Considered As Oriented Programing Language?";
+  T14="Is an Object Oriented Programing Language";
+  T15="Why Using ";
+  T16="Fast Development,High Performance,API Very Coordinated";
+
+  await TranslateWord(T1).then((value){ T1 =value; });
+  await TranslateWord(T2).then((value){ T2 =value; });
+  await TranslateWord(T3).then((value){ T3 =value; });
+  await TranslateWord(T4).then((value){ T4 =value; });
+  await TranslateWord(T5).then((value){ T5 =value; });
+  await TranslateWord(T6).then((value){ T6 =value; });
+  await TranslateWord(T7).then((value){ T7 =value; });
+  await TranslateWord(T8).then((value){ T8 =value; });
+  await TranslateWord(T9).then((value){ T9 =value; });
+  await TranslateWord(T10).then((value){ T10 =value; });
+  await TranslateWord(T11).then((value){ T11 =value; });
+  await TranslateWord(T12).then((value){ T12 =value; });
+  await TranslateWord(T13).then((value){ T13 =value; });
+  await TranslateWord(T14).then((value){ T14 =value; });
+  await TranslateWord(T15).then((value){ T15 =value; });
+  await TranslateWord(T16).then((value){ T16 =value; });
+}
+
+
+
 
 List FlutterIntroCompList =[
    CmpGreyCardImageTitle(
@@ -187,12 +232,6 @@ List FlutterUseIntroCompList =[
     ),
   ),
 ];
-
-
-
-
-
-
 
 
 

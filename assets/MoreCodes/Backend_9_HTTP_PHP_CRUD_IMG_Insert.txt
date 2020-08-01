@@ -1,0 +1,18 @@
+<?php
+ 
+require_once('DbConnect.php');
+
+    $image = $_POST['image'];
+    $name  = $_POST['name'];
+    $Desc  = $_POST['Desc'];
+
+    $realImage = base64_decode($image);
+    file_put_contents("WallPaperImages/$name", $realImage);
+    
+    $statement = $conn->prepare('INSERT INTO WallPaper VALUES(null,"'.$name.'","'.$Desc.'")');
+    $statement->execute();
+
+
+
+ 
+?>
