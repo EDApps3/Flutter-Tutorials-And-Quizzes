@@ -139,7 +139,7 @@ class GiftsState extends State<Gifts> {
   }
 
   Future<List<GiftClaimData>> getGiftClaimData() async {
-    var url = 'https://httpfluttertest.000webhostapp.com/Flutter_FTQ/GetGiftClaim.php';
+    var url = '../GetGiftClaim.php';
     http.Response response = await http.get(url);
     var maps = jsonDecode(response.body);
     print(response.body);
@@ -228,7 +228,7 @@ class GiftsState extends State<Gifts> {
 
 
   Future<void> AddClaim(GiftID) async {
-    String uploadEndPoint = 'https://httpfluttertest.000webhostapp.com/Flutter_FTQ/ClaimGift.php';
+    String uploadEndPoint = '../ClaimGift.php';
      await http.post(uploadEndPoint, body: {
         "GiftID": GiftID,
         "UID"  : UID.toString(),
