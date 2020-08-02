@@ -28,7 +28,7 @@ class GiftAdminAddState extends State<GiftAdminAdd> {
 
 
   Future<void> AddNotification() async {
-    String uploadEndPoint = 'https://httpfluttertest.000webhostapp.com/Flutter_FTQ/AddNotification.php';
+    String uploadEndPoint = '../AddNotification.php';
      await http.post(uploadEndPoint, body: {
         "Notif_Date"        : GiftDateCtrl.text        ,
         "Notif_Title"       : GiftTitleCtrl.text       ,
@@ -68,7 +68,7 @@ class GiftAdminAddState extends State<GiftAdminAdd> {
   }
 
   Future<void> SendGift() async {
-    String uploadEndPoint = 'https://httpfluttertest.000webhostapp.com/Flutter_FTQ/SendGift.php';
+    String uploadEndPoint = '../SendGift.php';
      await http.post(uploadEndPoint, body: {
         "GiftTitle"       : GiftTitleCtrl.text   ,
         "GiftDescription" : GiftDescrCtrl.text   ,
