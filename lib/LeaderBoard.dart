@@ -23,7 +23,7 @@ TextEditingController LeaderBoardGiftDateCtrl   = new TextEditingController();
 
 
 Future<void> SendGift(String GiftTo) async {
-    String uploadEndPoint = 'https://httpfluttertest.000webhostapp.com/Flutter_FTQ/SendGift.php';
+    String uploadEndPoint = '...SendGift.php';
      await http.post(uploadEndPoint, body: {
         "GiftTitle"       : LeaderBoardGiftTitleCtrl.text   ,
         "GiftDescription" : LeaderBoardGiftDescrCtrl.text   ,
