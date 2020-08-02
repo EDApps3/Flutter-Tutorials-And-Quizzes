@@ -90,7 +90,7 @@ class SamplesState extends State<Samples> {
   ScrollController SCSample = new ScrollController();
 
   Future<List<SampleData>> getSampleData() async {
-    var url = 'https://httpfluttertest.000webhostapp.com/Flutter_FTQ/GetSampleClaim.php';
+    var url = '../GetSampleClaim.php';
     http.Response response = await http.get(url);
 
     var maps = jsonDecode(response.body);
@@ -232,7 +232,7 @@ class SamplesState extends State<Samples> {
 
 
   Future<void> ClaimSample(String SampleName,int Price) async {
-    String uploadEndPoint = 'https://httpfluttertest.000webhostapp.com/Flutter_FTQ/ClaimSample.php';
+    String uploadEndPoint = '../ClaimSample.php';
      await http.post(uploadEndPoint, body: {
         "ClaimBy"     : UID,
         "SampleName"  : SampleName,
