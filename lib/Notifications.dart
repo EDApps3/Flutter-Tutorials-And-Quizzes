@@ -117,7 +117,7 @@ class NotificationPageState extends State<NotificationPage> {
 
 
   Future<List<NotificationData>> getNotificationData() async {
-    var url = 'https://httpfluttertest.000webhostapp.com/Flutter_FTQ/GetNotification.php';
+    var url = '.../GetNotification.php';
     http.Response response = await http.get(url);
     var maps = jsonDecode(response.body);
     print(response.body);
@@ -131,7 +131,7 @@ class NotificationPageState extends State<NotificationPage> {
   }
 
   Future<List<NotificationReadData>> getNotificationReadData() async {
-    var url = 'https://httpfluttertest.000webhostapp.com/Flutter_FTQ/GetNotificationRead.php';
+    var url = '.../GetNotificationRead.php';
     http.Response response = await http.get(url);
     var maps = jsonDecode(response.body);
     print(response.body);
