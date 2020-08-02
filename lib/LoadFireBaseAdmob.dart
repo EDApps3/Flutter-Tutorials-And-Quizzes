@@ -45,7 +45,7 @@ class AdmobData {
 
 
 void getAdmob() async {
-  var url = 'https://httpfluttertest.000webhostapp.com/Flutter_FTQ/GetAdmob.php';
+  var url = '.../GetAdmob.php';
   http.Response response = await http.get(url);
   var maps = jsonDecode(response.body);
   print(response.body);
