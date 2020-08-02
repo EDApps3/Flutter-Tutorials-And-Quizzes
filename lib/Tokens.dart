@@ -60,7 +60,7 @@ class TokensPageState extends State<TokensPage> {
 
 
   Future<void> AddPurchase(Package) async {
-    var url  = 'https://httpfluttertest.000webhostapp.com/Flutter_FTQ/AddPurchase.php';
+    var url  = '...AddPurchase.php';
     String D = new DateTime.now().toString();
     http.Response response = await http.post(url, body: {
         "AvatarName"    : AvatarName,
