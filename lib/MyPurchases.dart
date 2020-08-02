@@ -56,7 +56,7 @@ class NotificationPageState extends State<MyPurchasePage> {
 
 
   Future<List<MyPurchaseData>> getPurchaseData() async {
-    var url = 'https://httpfluttertest.000webhostapp.com/Flutter_FTQ/GetPurchase.php?UID='+UID;
+    var url = '...GetPurchase.php?UID='+UID;
     http.Response response = await http.get(url);
 
     var maps = jsonDecode(response.body);
