@@ -45,7 +45,7 @@ class NotificationAdminAddState extends State<NotificationAdminAdd> {
   }
 
   Future<void> AddNotification() async {
-    String uploadEndPoint = 'https://httpfluttertest.000webhostapp.com/Flutter_FTQ/AddNotification.php';
+    String uploadEndPoint = '.../AddNotification.php';
      await http.post(uploadEndPoint, body: {
         "Notif_Date"        : NotifDateCtrl.text        ,
         "Notif_Title"       : NotifTitleCtrl.text       ,
