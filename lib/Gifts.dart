@@ -125,7 +125,7 @@ class GiftsState extends State<Gifts> {
 
 
   Future<List<GiftData>> getGiftData() async {
-    var url = 'https://httpfluttertest.000webhostapp.com/Flutter_FTQ/GetGifts.php';
+    var url = '../GetGifts.php';
     http.Response response = await http.get(url);
     var maps = jsonDecode(response.body);
     print(response.body);
