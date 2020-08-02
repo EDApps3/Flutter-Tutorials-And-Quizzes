@@ -23,7 +23,7 @@ class GiftAdminDeletePageState extends State<GiftAdminDeletePage> {
 
 
   Future<List<GiftData>> getGiftData() async {
-    var url = 'https://httpfluttertest.000webhostapp.com/Flutter_FTQ/GetGifts.php';
+    var url = '../GetGifts.php';
     http.Response response = await http.get(url);
     var maps = jsonDecode(response.body);
     print(response.body);
@@ -55,7 +55,7 @@ class GiftAdminDeletePageState extends State<GiftAdminDeletePage> {
     setState(() {
       Deleting=true;
     });
-    String uploadEndPoint = 'https://httpfluttertest.000webhostapp.com/Flutter_FTQ/DeleteGift.php';
+    String uploadEndPoint = '../DeleteGift.php';
      await http.post(uploadEndPoint, body: {
         "GiftID": gift.GiftID,
      });
