@@ -29,7 +29,7 @@ class NotificationAdminDeletePageState extends State<NotificationAdminDeletePage
 
 
   Future<List<NotificationData>> getNotificationData() async {
-    var url = 'https://httpfluttertest.000webhostapp.com/Flutter_FTQ/GetNotification.php';
+    var url = '.../GetNotification.php';
     http.Response response = await http.get(url);
     var maps = jsonDecode(response.body);
     print(response.body);
@@ -61,7 +61,7 @@ class NotificationAdminDeletePageState extends State<NotificationAdminDeletePage
     setState(() {
       Deleting=true;
     });
-    String uploadEndPoint = 'https://httpfluttertest.000webhostapp.com/Flutter_FTQ/DeleteNotification.php';
+    String uploadEndPoint = '.../DeleteNotification.php';
      await http.post(uploadEndPoint, body: {
         "Notif_ID": Notif.Notif_ID,
      });
